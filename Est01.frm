@@ -4,7 +4,7 @@ Begin VB.Form Est01
    BackColor       =   &H00C0C0C0&
    BorderStyle     =   0  'None
    Caption         =   "ESTACION 01 - Detenido"
-   ClientHeight    =   6930
+   ClientHeight    =   5205
    ClientLeft      =   0
    ClientTop       =   -30
    ClientWidth     =   15360
@@ -14,7 +14,7 @@ Begin VB.Form Est01
    MaxButton       =   0   'False
    MinButton       =   0   'False
    Picture         =   "Est01.frx":0000
-   ScaleHeight     =   6930
+   ScaleHeight     =   5205
    ScaleWidth      =   15360
    ShowInTaskbar   =   0   'False
    Begin RM100.DC_Control_Bt E1New 
