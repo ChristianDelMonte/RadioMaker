@@ -1,0 +1,68 @@
+100  RMVoice - State window
+101  Actual Time
+102  Temperature
+103  Humidity
+104  Commands
+105  General Config
+106  Hour file:
+107  Minutes file:
+108  Temperature file:
+109  Humidity file:
+110  Actual Lenguaje:
+111  Climatic data for:
+112  Voice type:
+113  &Config...
+114  C&lose
+1144 refreshing...
+115  ONLY RMVoice Plug-In for ONLY Radiomaker. Please go to the Radiomaker Main window and click in system hour main panel to lunch the app. Refeer to documentation for more info.
+1166 General Config
+116  Select Lenguaje
+117  Select State / Province for climatic data extraction
+118  Temperature viz
+119  Grados Farenhit
+120  Grados Centigrados
+121  On-line Refresh time
+122  Remember you must have an permanent internet conection to refresh climatic data
+123  Refresh time
+124  seconds.
+125  Voice selection
+126  Male
+127  Female
+128  Custom
+129  Custom audio files
+130  Hour:
+131  Minutes:
+132  Temperature:
+133  Humidity:
+1331 &browse...
+134  &Apply
+135  &Close
+136  &New...
+137  Add to database
+138  States / Province already in database:
+139  Name of State / Province:
+140  URL for climatic conection:
+141  &Import...
+142  &Save and continue
+143  &Close
+144  Add new description
+145  Add new URL
+146  ONLY RMVoice - Text file import
+147  All Text files (*.txt)|*.txt|Text files
+148  All audio files (*.mp3)|*.mp3|Audio files
+149  ONLY RMVoice - Open audio file
+150  play hour...
+151  play minutes...
+152  play temperature...
+153  play humidity...
+1001 Cant play the file from given position.
+1002 Cant initialize Bass.dll audio library
+1003 Cant access to digital audio sustem
+1004 DirectX 8+ not initialized
+1005 Do you want to continue anyway?
+1006 Cant load specific audio file
+1007 Cant stop actual stream
+1008 Cant play the file in mode:
+1009 LOOP
+1010 RMVoice: File audio region data not found.
+1011 Invalid autorization code.

@@ -1,0 +1,68 @@
+100  RMVoice - Ventana de estado
+101  Hora Actual
+102  Temperatura
+103  Humedad
+104  Comandos
+105  Configuraciones generales
+106  Archivo de Hora:
+107  Archivo de minutos:
+108  Archivo de Temperatura:
+109  Archivo de Humedad:
+110  Idioma Actual:
+111  Datos Climaticos para:
+112  Tipo de Voz:
+113  &Configuración...
+114  C&errar
+1144 actualizando...
+115  ONLY RMVoice Plug-In para ONLY Radiomaker. Dirijase a Radiomaker y haga click en el panel de hora del sistema para ejecutar la aplicacion. Ante cualquier duda consulte la documentacion.
+1166 Configuraciones generales
+116  Seleccione Idioma
+117  Seleccione Estado / Provincia para la extracción de datos climáticos
+118  Visualización de temperatura
+119  Grados Farenhit
+120  Grados Centigrados
+121  Tiempo de actualizacion on-line
+122  Recuerde que debe poseer una coneccion a internet permanente para poder actualizar los datos climáticos
+123  Tiempo de refresco
+124  segundos.
+125  Seleccion de voces
+126  Masculina
+127  Femenina
+128  Personalizada
+129  Archivos de audio personalizados
+130  Hora:
+131  Minutos:
+132  Temperatura:
+133  Humedad:
+1331 &examinar...
+134  &Aplicar
+135  &Cerrar
+136  &Nuevo...
+137  Agregar a Base de Datos
+138  Estados / Provincias ya cargados:
+139  Nombre de Estado / Provincia:
+140  URL de conección climática:
+141  &Importar...
+142  &Guardar y continuar
+143  &Cerrar
+144  ingresar nueva descripción
+145  ingresar nueva url
+146  ONLY RMVoice - importar archivo de texto
+147  Archivos de texto (*.txt)|*.txt|Archivos de texto
+148  Archivos de audio (*.mp3)|*.mp3|Archivos de Audio
+149  ONLY RMVoice - Abrir archivo de Audio
+150  reproducir hora...
+151  reproducir minutos...
+152  reproducir temperatura...
+153  reproducir humedad...
+1001 No se puede reproducir el archivo desde la posición especificada.
+1002 No se puede inicializar la libreria de audio Bass.dll.
+1003 No se puede acceder al sistema de audio digital.
+1004 DirectX 8+ no inicializado.
+1005 Desea continuar de todas maneras?
+1006 No se puede cargar el archivo de audio especificado.
+1007 No se puede detener la reproducción actual
+1008 No se puede reproducir el archivo en modo:
+1009 LOOP
+1010 RMVoice: Archivo de regiones de reproduccion de audio no encontrado.
+1011 Codigo de autorización inválido.

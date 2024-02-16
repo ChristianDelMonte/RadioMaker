@@ -1,0 +1,232 @@
+[Root]
+Most Recent Package=Paquete de instalación estándar 1
+
+
+[Package|RM100.dep 1|Root]
+SubWizProgID=PDWizard.DepPkgSubWiz
+BuildFolder=D:\Programacion\Radio Maker\ExeFiles
+
+[Package|RM100.dep 1|Configure DAO ISAMs]
+Applicable=No
+
+[Package|RM100.dep 1|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|RM100.dep 1|Files Found]
+
+[Package|RM100.dep 1|Files Released]
+STKIT432.DLL=
+
+[Package|RM100.dep 1|Missing Dependency Information]
+C:\Program Files\Microsoft Visual Studio\VB98\CONTROLS\DISC.OCX=
+
+[Package|RM100.dep 1|Out-of-Date Dependency Information]
+
+[Package|RM100.dep 1|Files Added]
+D:\Programacion\Radio Maker\ADD\WINSYS.ADD\OGG.DLL=
+D:\Programacion\Radio Maker\ADD\WINSYS.ADD\VORBIS.DLL=
+
+[Package|RM100.dep 1|Files Removed]
+
+[Package|RM100.dep 1|Files In Project]
+D:\Programacion\Radio Maker\ExeFiles\Rm100.exe=Yes
+C:\WINDOWS\SYSTEM\msvbvm60.dll=Yes
+C:\WINDOWS\SYSTEM\OLEAUT32.DLL=Yes
+C:\WINDOWS\SYSTEM\OLEPRO32.DLL=Yes
+C:\WINDOWS\SYSTEM\ASYCFILT.DLL=Yes
+C:\WINDOWS\SYSTEM\STDOLE2.TLB=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINDOWS\SYSTEM\VB6ES.DLL=Yes
+C:\WINDOWS\SYSTEM\BASS.DLL=Yes
+C:\WINDOWS\SYSTEM\comdlg32.ocx=Yes
+C:\WINDOWS\SYSTEM\CMDLGES.DLL=Yes
+C:\WINDOWS\SYSTEM\PICCLP32.OCX=Yes
+C:\WINDOWS\SYSTEM\PCCLPES.DLL=Yes
+C:\WINDOWS\SYSTEM\SYSINFO.OCX=Yes
+C:\WINDOWS\SYSTEM\SYSINES.DLL=Yes
+C:\WINDOWS\SYSTEM\MSCOMCTL.OCX=Yes
+C:\WINDOWS\SYSTEM\MSCMCES.DLL=Yes
+C:\WINDOWS\SYSTEM\COMCTL32.OCX=Yes
+C:\WINDOWS\SYSTEM\CMCTLES.DLL=Yes
+C:\WINDOWS\SYSTEM\TABCTL32.OCX=Yes
+C:\WINDOWS\SYSTEM\TABCTES.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\CONTROLS\DISC.OCX=Yes
+D:\Programacion\Radio Maker\ADD\WINSYS.ADD\OGG.DLL=Yes
+D:\Programacion\Radio Maker\ADD\WINSYS.ADD\VORBIS.DLL=Yes
+
+[Package|RM100.dep 1|Configure Registry Files]
+Applicable=
+
+[Package|RM100.dep 1|Configure Remote Servers]
+Applicable=
+
+[Package|RM100.dep 1|Install Locations]
+D:\Programacion\Radio Maker\ExeFiles\Rm100.exe=$(AppPath)
+C:\WINDOWS\SYSTEM\msvbvm60.dll=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\VB6ES.DLL=$(WinSysPath)
+C:\WINDOWS\SYSTEM\BASS.DLL=$(AppPath)
+C:\WINDOWS\SYSTEM\comdlg32.ocx=$(WinSysPath)
+C:\WINDOWS\SYSTEM\CMDLGES.DLL=$(WinSysPath)
+C:\WINDOWS\SYSTEM\PICCLP32.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\PCCLPES.DLL=$(WinSysPath)
+C:\WINDOWS\SYSTEM\SYSINFO.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\SYSINES.DLL=$(WinSysPath)
+C:\WINDOWS\SYSTEM\MSCOMCTL.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\MSCMCES.DLL=$(WinSysPath)
+C:\WINDOWS\SYSTEM\COMCTL32.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\CMCTLES.DLL=$(WinSysPath)
+C:\WINDOWS\SYSTEM\TABCTL32.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\TABCTES.DLL=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\CONTROLS\DISC.OCX=$(WinSysPath)
+D:\Programacion\Radio Maker\ADD\WINSYS.ADD\OGG.DLL=$(AppPath)
+D:\Programacion\Radio Maker\ADD\WINSYS.ADD\VORBIS.DLL=$(AppPath)
+
+[Package|RM100.dep 1|Configure Shared Files]
+Applicable=
+
+[Package|RM100.dep 1|DepFile]
+DepCabFile=Rm100.CAB
+DepCabRun=Rm100.INF
+
+[Package|RM100.dep 1|Package]
+PackageFolder=D:\Programacion\Radio Maker\ExeFiles
+ProjectFolder=D:\Programacion\Radio Maker\RscFull
+ServerSideCab=
+File1=D:\Programacion\Radio Maker\ExeFiles\Rm100.DEP
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
+
+
+[Package|Paquete de instalación estándar 1|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=D:\TEMP
+
+[Package|Paquete de instalación estándar 1|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Paquete de instalación estándar 1|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Paquete de instalación estándar 1|Files Found]
+
+[Package|Paquete de instalación estándar 1|Files Released]
+STKIT432.DLL=
+
+[Package|Paquete de instalación estándar 1|Missing Dependency Information]
+C:\Program Files\Microsoft Visual Studio\VB98\CONTROLS\DISC.OCX=
+
+[Package|Paquete de instalación estándar 1|Out-of-Date Dependency Information]
+
+[Package|Paquete de instalación estándar 1|Files Added]
+d:\programacion\radio maker\add\winsys.add\ogg.dll=
+d:\programacion\radio maker\add\winsys.add\vorbis.dll=
+
+[Package|Paquete de instalación estándar 1|Files Removed]
+
+[Package|Paquete de instalación estándar 1|Files In Project]
+C:\WINDOWS\SYSTEM\msvbvm60.dll=Yes
+C:\WINDOWS\SYSTEM\OLEAUT32.DLL=Yes
+C:\WINDOWS\SYSTEM\OLEPRO32.DLL=Yes
+C:\WINDOWS\SYSTEM\ASYCFILT.DLL=Yes
+C:\WINDOWS\SYSTEM\STDOLE2.TLB=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINDOWS\SYSTEM\VB6ES.DLL=Yes
+C:\WINDOWS\SYSTEM\BASS.DLL=Yes
+C:\WINDOWS\SYSTEM\comdlg32.ocx=Yes
+C:\WINDOWS\SYSTEM\CMDLGES.DLL=Yes
+C:\WINDOWS\SYSTEM\PICCLP32.OCX=Yes
+C:\WINDOWS\SYSTEM\PCCLPES.DLL=Yes
+C:\WINDOWS\SYSTEM\SYSINFO.OCX=Yes
+C:\WINDOWS\SYSTEM\SYSINES.DLL=Yes
+C:\WINDOWS\SYSTEM\MSCOMCTL.OCX=Yes
+C:\WINDOWS\SYSTEM\MSCMCES.DLL=Yes
+C:\WINDOWS\SYSTEM\COMCTL32.OCX=Yes
+C:\WINDOWS\SYSTEM\CMCTLES.DLL=Yes
+C:\WINDOWS\SYSTEM\TABCTL32.OCX=Yes
+C:\WINDOWS\SYSTEM\TABCTES.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\CONTROLS\DISC.OCX=Yes
+D:\Programacion\Radio Maker\ADD\WINSYS.ADD\OGG.DLL=Yes
+D:\Programacion\Radio Maker\ADD\WINSYS.ADD\VORBIS.DLL=Yes
+D:\Programacion\Radio Maker\ADD\AppPath.ADD\Rm100.exe=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINDOWS\SYSTEM\VB6STKIT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+
+[Package|Paquete de instalación estándar 1|Configure Registry Files]
+Applicable=No
+
+[Package|Paquete de instalación estándar 1|Configure Remote Servers]
+Applicable=No
+
+[Package|Paquete de instalación estándar 1|Install Locations]
+D:\Programacion\Radio Maker\ExeFiles\Rm100.exe=$(AppPath)
+C:\WINDOWS\SYSTEM\msvbvm60.dll=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\VB6ES.DLL=$(WinSysPath)
+C:\WINDOWS\SYSTEM\BASS.DLL=$(WinSysPath)
+C:\WINDOWS\SYSTEM\comdlg32.ocx=$(WinSysPath)
+C:\WINDOWS\SYSTEM\CMDLGES.DLL=$(WinSysPath)
+C:\WINDOWS\SYSTEM\PICCLP32.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\PCCLPES.DLL=$(WinSysPath)
+C:\WINDOWS\SYSTEM\SYSINFO.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\SYSINES.DLL=$(WinSysPath)
+C:\WINDOWS\SYSTEM\MSCOMCTL.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\MSCMCES.DLL=$(WinSysPath)
+C:\WINDOWS\SYSTEM\COMCTL32.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\CMCTLES.DLL=$(WinSysPath)
+C:\WINDOWS\SYSTEM\TABCTL32.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\TABCTES.DLL=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\CONTROLS\DISC.OCX=$(WinSysPath)
+D:\Programacion\Radio Maker\ADD\WINSYS.ADD\OGG.DLL=$(WinSysPath)
+D:\Programacion\Radio Maker\ADD\WINSYS.ADD\VORBIS.DLL=$(WinSysPath)
+D:\Programacion\Radio Maker\ADD\AppPath.ADD\Rm100.exe=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINDOWS\SYSTEM\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+
+[Package|Paquete de instalación estándar 1|Configure Shared Files]
+Applicable=Yes
+D:\Programacion\Radio Maker\ADD\AppPath.ADD\Rm100.exe=No
+
+[Package|Paquete de instalación estándar 1|DepFile]
+DepCabFile=Rm100.CAB
+DepCabRun=Rm100.INF
+
+[Package|Paquete de instalación estándar 1|Distribution]
+Type=single
+Size=
+Title=Radio Maker 1.0
+
+[Package|Paquete de instalación estándar 1|IconGroups]
+Group0=Radio Maker 1.0
+PrivateGroup0=Verdadero
+Parent0=$(Programs)
+
+[Package|Paquete de instalación estándar 1|Radio Maker 1.0]
+Icon1=Rm100.exe
+Title1=Radio Maker 1.0
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|Paquete de instalación estándar 1|Package]
+PackageFolder=D:\TEMP
+ProjectFolder=D:\Programacion\Radio Maker\RscFull
+ServerSideCab=
+File1=D:\TEMP\setup.exe
+File2=D:\TEMP\Setup.Lst
+File3=D:\TEMP\Rm100.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
