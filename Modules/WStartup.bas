@@ -19,12 +19,29 @@ Private Declare Function waveOutGetNumDevs Lib "winmm.dll" () As Long
 
 Private Function GetScreenInfo() As String
 
+        '********** REFERENCIAS *****************
+        'Contantes de ventanas en 1024 x 768
+            'Private Const WidthMax = 15360
+            'Private Const HeightMax = 11520
+        
+        'Contantes de ventanas en 1600 x 900
+            'Private Const WidthMax = 24000
+            'Private Const HeightMax = 13500
+        
+        'Contantes de ventanas en 1920 x 1080
+            'Private Const WidthMax = 28800
+            'Private Const HeightMax = 16200
+        '********** REFERENCIAS *****************
+
+Debug.Print "pantalla alto (height): " & TopMenu.SysInfo1.WorkAreaHeight
+Debug.Print "pantalla ancho (width): " & TopMenu.SysInfo1.WorkAreaWidth
+
 'If TopMenu.SysInfo1.WorkAreaWidth < "15360" And TopMenu.SysInfo1.WorkAreaHeight < "11520" Then
 '    GetScreenInfo = "NotOk"
 '    Exit Function
 'Else
 '    If TopMenu.SysInfo1.WorkAreaWidth >= "15360" And TopMenu.SysInfo1.WorkAreaHeight >= "11520" Then
-'        GetScreenInfo = "Ok"
+        GetScreenInfo = "Ok"
 '        Exit Function
 '    End If
 'End If
@@ -103,6 +120,8 @@ End Sub
 Private Function GetHdInfo(Whd As String) As String
 
 'Extraccion de la Informacion del Disco duro
+'*** AGREGAR! ******************************
+
 GetHdInfo = "OK"
 Exit Function
 
@@ -114,6 +133,8 @@ End Function
 Private Function GetTimeDateInfo() As String
 
 'Extraccion de la informacion de la Fecha y la Hora del sistema
+'*** AGREGAR! ******************************
+
 GetTimeDateInfo = "OK"
 Exit Function
 
@@ -217,12 +238,12 @@ End Select
 CallResult = GetState
 If CallResult = "NotOk" Then
     'display all default windows
-    'ShowWindow "TopMenu"
-    'ShowWindow "DwMenu"
-    'ShowWindow "Est01"
-    'ShowWindow "Est02"
-    'ShowWindow "Prg01"
-    'ShowWindow "Tnd01"
+    ShowWindow "TopMenu"
+    ShowWindow "DwMenu"
+    ShowWindow "Est01"
+    ShowWindow "Est02"
+    ShowWindow "Prg01"
+    ShowWindow "Tnd01"
 End If
 
 '/// habilitamos el reloj del topmenu

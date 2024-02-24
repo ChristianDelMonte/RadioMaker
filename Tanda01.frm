@@ -2,27 +2,25 @@ VERSION 5.00
 Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.5#0"; "comctl32.Ocx"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "mscomctl.OCX"
 Begin VB.Form Tanda01 
-   BackColor       =   &H00C0C0C0&
-   BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "TANDA - Detenido"
-   ClientHeight    =   7050
-   ClientLeft      =   45
-   ClientTop       =   345
-   ClientWidth     =   7620
+   BorderStyle     =   0  'None
+   ClientHeight    =   7440
+   ClientLeft      =   15
+   ClientTop       =   -30
+   ClientWidth     =   7635
    ControlBox      =   0   'False
    FillColor       =   &H00808080&
    ForeColor       =   &H00808080&
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   7050
-   ScaleWidth      =   7620
+   ScaleHeight     =   7440
+   ScaleWidth      =   7635
    ShowInTaskbar   =   0   'False
    Begin MSComctlLib.ListView T1View 
       Height          =   4455
-      Left            =   120
+      Left            =   150
       TabIndex        =   76
-      Top             =   960
+      Top             =   1380
       Width           =   7335
       _ExtentX        =   12938
       _ExtentY        =   7858
@@ -37,9 +35,9 @@ Begin VB.Form Tanda01
    End
    Begin ComctlLib.Slider T1Vol 
       Height          =   255
-      Left            =   1590
+      Left            =   1620
       TabIndex        =   74
-      Top             =   8280
+      Top             =   8700
       Width           =   3195
       _ExtentX        =   5636
       _ExtentY        =   450
@@ -47,9 +45,9 @@ Begin VB.Form Tanda01
    End
    Begin ComctlLib.ProgressBar Prbar1 
       Height          =   285
-      Left            =   120
+      Left            =   150
       TabIndex        =   73
-      Top             =   5490
+      Top             =   5910
       Width           =   7335
       _ExtentX        =   12938
       _ExtentY        =   503
@@ -58,22 +56,22 @@ Begin VB.Form Tanda01
    End
    Begin VB.VScrollBar VScroll1 
       Height          =   255
-      Left            =   6870
+      Left            =   6900
       Max             =   0
       Min             =   10
       TabIndex        =   68
-      Top             =   150
+      Top             =   570
       Value           =   3
       Width           =   135
    End
    Begin VB.CommandButton CmdBlock 
       Height          =   375
-      Left            =   2220
+      Left            =   2250
       Picture         =   "Tanda01.frx":0000
       Style           =   1  'Graphical
       TabIndex        =   67
       ToolTipText     =   "Agregar / Eliminar / modificar bloques"
-      Top             =   6525
+      Top             =   6945
       UseMaskColor    =   -1  'True
       Width           =   375
    End
@@ -81,370 +79,370 @@ Begin VB.Form Tanda01
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   7230
+      Left            =   7260
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   64
       TabStop         =   0   'False
       ToolTipText     =   "Hora de FINALIZACION de la Tanda en reproducción"
-      Top             =   5940
+      Top             =   6360
       Width           =   190
    End
    Begin VB.PictureBox T1F7 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   7050
+      Left            =   7080
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   63
       TabStop         =   0   'False
       ToolTipText     =   "Hora de FINALIZACION de la Tanda en reproducción"
-      Top             =   5940
+      Top             =   6360
       Width           =   190
    End
    Begin VB.PictureBox T1F6 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   6870
+      Left            =   6900
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   62
       TabStop         =   0   'False
       ToolTipText     =   "Hora de FINALIZACION de la Tanda en reproducción"
-      Top             =   5940
+      Top             =   6360
       Width           =   190
    End
    Begin VB.PictureBox T1F5 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   6690
+      Left            =   6720
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   61
       TabStop         =   0   'False
       ToolTipText     =   "Hora de FINALIZACION de la Tanda en reproducción"
-      Top             =   5940
+      Top             =   6360
       Width           =   190
    End
    Begin VB.PictureBox T1F4 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   6495
+      Left            =   6525
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   60
       TabStop         =   0   'False
       ToolTipText     =   "Hora de FINALIZACION de la Tanda en reproducción"
-      Top             =   5940
+      Top             =   6360
       Width           =   190
    End
    Begin VB.PictureBox T1F3 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   6300
+      Left            =   6330
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   59
       TabStop         =   0   'False
       ToolTipText     =   "Hora de FINALIZACION de la Tanda en reproducción"
-      Top             =   5940
+      Top             =   6360
       Width           =   190
    End
    Begin VB.PictureBox T1F2 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   6120
+      Left            =   6150
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   58
       TabStop         =   0   'False
       ToolTipText     =   "Hora de FINALIZACION de la Tanda en reproducción"
-      Top             =   5940
+      Top             =   6360
       Width           =   190
    End
    Begin VB.PictureBox T1F1 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   5925
+      Left            =   5955
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   57
       TabStop         =   0   'False
       ToolTipText     =   "Hora de FINALIZACION de la Tanda en reproducción"
-      Top             =   5940
+      Top             =   6360
       Width           =   190
    End
    Begin VB.PictureBox T1I8 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   4620
+      Left            =   4650
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   55
       TabStop         =   0   'False
       ToolTipText     =   "Hora de INICIO de reproducción"
-      Top             =   5940
+      Top             =   6360
       Width           =   190
    End
    Begin VB.PictureBox T1I7 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   4440
+      Left            =   4470
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   54
       TabStop         =   0   'False
       ToolTipText     =   "Hora de INICIO de reproducción"
-      Top             =   5940
+      Top             =   6360
       Width           =   190
    End
    Begin VB.PictureBox T1I6 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   4260
+      Left            =   4290
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   53
       TabStop         =   0   'False
       ToolTipText     =   "Hora de INICIO de reproducción"
-      Top             =   5940
+      Top             =   6360
       Width           =   190
    End
    Begin VB.PictureBox T1I5 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   4080
+      Left            =   4110
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   52
       TabStop         =   0   'False
       ToolTipText     =   "Hora de INICIO de reproducción"
-      Top             =   5940
+      Top             =   6360
       Width           =   190
    End
    Begin VB.PictureBox T1I4 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   3885
+      Left            =   3915
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   51
       TabStop         =   0   'False
       ToolTipText     =   "Hora de INICIO de reproducción"
-      Top             =   5940
+      Top             =   6360
       Width           =   190
    End
    Begin VB.PictureBox T1I3 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   3690
+      Left            =   3720
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   50
       TabStop         =   0   'False
       ToolTipText     =   "Hora de INICIO de reproducción"
-      Top             =   5940
+      Top             =   6360
       Width           =   190
    End
    Begin VB.PictureBox T1I2 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   3510
+      Left            =   3540
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   49
       TabStop         =   0   'False
       ToolTipText     =   "Hora de INICIO de reproducción"
-      Top             =   5940
+      Top             =   6360
       Width           =   190
    End
    Begin VB.PictureBox T1I1 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   3315
+      Left            =   3345
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   48
       TabStop         =   0   'False
       ToolTipText     =   "Hora de INICIO de reproducción"
-      Top             =   5940
+      Top             =   6360
       Width           =   190
    End
    Begin VB.PictureBox T1t1 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   795
+      Left            =   825
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   46
       TabStop         =   0   'False
       ToolTipText     =   "Duración TOTAL de la Tanda"
-      Top             =   5940
+      Top             =   6360
       Width           =   190
    End
    Begin VB.PictureBox T1t2 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   990
+      Left            =   1020
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   45
       TabStop         =   0   'False
       ToolTipText     =   "Duración TOTAL de la Tanda"
-      Top             =   5940
+      Top             =   6360
       Width           =   190
    End
    Begin VB.PictureBox T1t3 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   1170
+      Left            =   1200
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   44
       TabStop         =   0   'False
       ToolTipText     =   "Duración TOTAL de la Tanda"
-      Top             =   5940
+      Top             =   6360
       Width           =   190
    End
    Begin VB.PictureBox T1t4 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   1365
+      Left            =   1395
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   43
       TabStop         =   0   'False
       ToolTipText     =   "Duración TOTAL de la Tanda"
-      Top             =   5940
+      Top             =   6360
       Width           =   190
    End
    Begin VB.PictureBox T1t5 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   1560
+      Left            =   1590
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   42
       TabStop         =   0   'False
       ToolTipText     =   "Duración TOTAL de la Tanda"
-      Top             =   5940
+      Top             =   6360
       Width           =   190
    End
    Begin VB.PictureBox T1t6 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   1740
+      Left            =   1770
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   41
       TabStop         =   0   'False
       ToolTipText     =   "Duración TOTAL de la Tanda"
-      Top             =   5940
+      Top             =   6360
       Width           =   190
    End
    Begin VB.PictureBox T1t7 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   1920
+      Left            =   1950
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   40
       TabStop         =   0   'False
       ToolTipText     =   "Duración TOTAL de la Tanda"
-      Top             =   5940
+      Top             =   6360
       Width           =   190
    End
    Begin VB.PictureBox T1t8 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   2100
+      Left            =   2130
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   39
       TabStop         =   0   'False
       ToolTipText     =   "Duración TOTAL de la Tanda"
-      Top             =   5940
+      Top             =   6360
       Width           =   190
    End
    Begin VB.CommandButton T1OrderA 
       Enabled         =   0   'False
       Height          =   375
-      Left            =   5460
+      Left            =   5490
       Style           =   1  'Graphical
       TabIndex        =   37
       ToolTipText     =   "Reordenar / actualizar tiempo desde el tema seleccionado hacia el final de la lista"
-      Top             =   6525
+      Top             =   6945
       UseMaskColor    =   -1  'True
       Width           =   800
    End
    Begin VB.CommandButton T1Order 
       Enabled         =   0   'False
       Height          =   375
-      Left            =   4680
+      Left            =   4710
       Style           =   1  'Graphical
       TabIndex        =   36
       ToolTipText     =   "Reordenar / actualizar tiempo desde el comienzo de la Lista"
-      Top             =   6525
+      Top             =   6945
       UseMaskColor    =   -1  'True
       Width           =   800
    End
    Begin VB.Timer ClockTimer 
-      Left            =   2190
-      Top             =   9585
+      Left            =   2220
+      Top             =   10005
    End
    Begin VB.CommandButton T1Stop 
       Enabled         =   0   'False
       Height          =   375
-      Left            =   1620
+      Left            =   1650
       Style           =   1  'Graphical
       TabIndex        =   3
       ToolTipText     =   "Detener"
-      Top             =   6525
+      Top             =   6945
       UseMaskColor    =   -1  'True
       Width           =   500
    End
    Begin VB.CommandButton T1Play 
       Enabled         =   0   'False
       Height          =   375
-      Left            =   930
+      Left            =   960
       Style           =   1  'Graphical
       TabIndex        =   2
       ToolTipText     =   "Reproducir seleccionado"
-      Top             =   6525
+      Top             =   6945
       UseMaskColor    =   -1  'True
       Width           =   700
    End
    Begin VB.CommandButton T1Next 
       Enabled         =   0   'False
       Height          =   375
-      Left            =   150
+      Left            =   180
       Style           =   1  'Graphical
       TabIndex        =   1
       ToolTipText     =   "Reproducir continuo"
-      Top             =   6525
+      Top             =   6945
       UseMaskColor    =   -1  'True
       Width           =   795
    End
@@ -452,130 +450,130 @@ Begin VB.Form Tanda01
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   3330
+      Left            =   3360
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   35
       TabStop         =   0   'False
-      Top             =   450
+      Top             =   870
       Width           =   190
    End
    Begin VB.PictureBox T1p0 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   3330
+      Left            =   3360
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   34
       TabStop         =   0   'False
-      Top             =   165
+      Top             =   585
       Width           =   190
    End
    Begin VB.Timer SyncTimer 
-      Left            =   2190
-      Top             =   9135
+      Left            =   2220
+      Top             =   9555
    End
    Begin VB.TextBox Intr 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       ForeColor       =   &H00FFFF00&
       Height          =   195
-      Left            =   6600
+      Left            =   6630
       Locked          =   -1  'True
       MaxLength       =   2
       TabIndex        =   26
       Text            =   "2"
-      Top             =   180
+      Top             =   600
       Width           =   405
    End
    Begin VB.CommandButton T1Del 
       Enabled         =   0   'False
       Height          =   375
-      Left            =   3765
+      Left            =   3795
       Style           =   1  'Graphical
       TabIndex        =   6
       ToolTipText     =   "Eliminar"
-      Top             =   6525
+      Top             =   6945
       UseMaskColor    =   -1  'True
       Width           =   375
    End
    Begin VB.CommandButton T1Down 
       Enabled         =   0   'False
       Height          =   375
-      Left            =   3405
+      Left            =   3435
       Style           =   1  'Graphical
       TabIndex        =   5
       ToolTipText     =   "Bajar"
-      Top             =   6525
+      Top             =   6945
       UseMaskColor    =   -1  'True
       Width           =   375
    End
    Begin VB.CommandButton T1Up 
       Enabled         =   0   'False
       Height          =   375
-      Left            =   3045
+      Left            =   3075
       Style           =   1  'Graphical
       TabIndex        =   4
       ToolTipText     =   "Subir"
-      Top             =   6525
+      Top             =   6945
       UseMaskColor    =   -1  'True
       Width           =   375
    End
    Begin VB.Timer TmOut2 
-      Left            =   5925
-      Top             =   8505
+      Left            =   5955
+      Top             =   8925
    End
    Begin VB.Timer TmIn2 
-      Left            =   5430
-      Top             =   8505
+      Left            =   5460
+      Top             =   8925
    End
    Begin VB.Timer TmOut1 
-      Left            =   5925
-      Top             =   8010
+      Left            =   5955
+      Top             =   8430
    End
    Begin VB.Timer TmIn1 
-      Left            =   5430
-      Top             =   8010
+      Left            =   5460
+      Top             =   8430
    End
    Begin VB.CommandButton T1Save 
       Height          =   375
-      Left            =   7065
+      Left            =   7095
       Style           =   1  'Graphical
       TabIndex        =   10
       ToolTipText     =   "Guardar Tanda"
-      Top             =   6525
+      Top             =   6945
       UseMaskColor    =   -1  'True
       Width           =   375
    End
    Begin VB.CommandButton T1Open 
       Height          =   375
-      Left            =   6705
+      Left            =   6735
       Style           =   1  'Graphical
       TabIndex        =   9
       ToolTipText     =   "Abrir Tanda"
-      Top             =   6525
+      Top             =   6945
       UseMaskColor    =   -1  'True
       Width           =   375
    End
    Begin VB.CommandButton T1New 
       Height          =   375
-      Left            =   6345
+      Left            =   6375
       Style           =   1  'Graphical
       TabIndex        =   8
       ToolTipText     =   "Nueva Tanda"
-      Top             =   6525
+      Top             =   6945
       UseMaskColor    =   -1  'True
       Width           =   375
    End
    Begin VB.CommandButton T1Prop 
       Enabled         =   0   'False
       Height          =   375
-      Left            =   4230
+      Left            =   4260
       Style           =   1  'Graphical
       TabIndex        =   7
       ToolTipText     =   "Propiedades de audio"
-      Top             =   6525
+      Top             =   6945
       UseMaskColor    =   -1  'True
       Width           =   375
    End
@@ -583,135 +581,167 @@ Begin VB.Form Tanda01
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   3540
+      Left            =   3570
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   19
       TabStop         =   0   'False
-      Top             =   450
+      Top             =   870
       Width           =   190
    End
    Begin VB.PictureBox T1p8 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   3735
+      Left            =   3765
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   18
       TabStop         =   0   'False
-      Top             =   450
+      Top             =   870
       Width           =   190
    End
    Begin VB.PictureBox T1p9 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   3915
+      Left            =   3945
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   17
       TabStop         =   0   'False
-      Top             =   450
+      Top             =   870
       Width           =   190
    End
    Begin VB.PictureBox T1p10 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   4110
+      Left            =   4140
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   16
       TabStop         =   0   'False
-      Top             =   450
+      Top             =   870
       Width           =   190
    End
    Begin VB.PictureBox T1p11 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   4305
+      Left            =   4335
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   15
       TabStop         =   0   'False
-      Top             =   450
+      Top             =   870
       Width           =   190
    End
    Begin VB.PictureBox T1p1 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   3540
+      Left            =   3570
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   14
       TabStop         =   0   'False
-      Top             =   165
+      Top             =   585
       Width           =   190
    End
    Begin VB.PictureBox T1p2 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   3735
+      Left            =   3765
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   13
       TabStop         =   0   'False
-      Top             =   165
+      Top             =   585
       Width           =   190
    End
    Begin VB.PictureBox T1p3 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   3915
+      Left            =   3945
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   12
       TabStop         =   0   'False
-      Top             =   165
+      Top             =   585
       Width           =   190
    End
    Begin VB.PictureBox T1p4 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   4110
+      Left            =   4140
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   11
       TabStop         =   0   'False
-      Top             =   165
+      Top             =   585
       Width           =   190
    End
    Begin VB.PictureBox T1p5 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   4305
+      Left            =   4335
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   0
       TabStop         =   0   'False
-      Top             =   165
+      Top             =   585
       Width           =   190
    End
    Begin ComctlLib.Slider T2Vol 
       Height          =   255
-      Left            =   1590
+      Left            =   1620
       TabIndex        =   75
-      Top             =   8670
+      Top             =   9090
       Width           =   3195
       _ExtentX        =   5636
       _ExtentY        =   450
       _Version        =   327682
    End
+   Begin RM100.TitelBar TitelBar1 
+      Align           =   1  'Align Top
+      Height          =   375
+      Left            =   0
+      TabIndex        =   77
+      Top             =   0
+      Width           =   7635
+      _ExtentX        =   13467
+      _ExtentY        =   661
+      BackColor       =   8421504
+      BackColorCover  =   3
+      BackColorV2Begin=   4210752
+      BackColorV2End  =   0
+      BackColorV1Begin=   4210752
+      BackColorV1End  =   0
+      ForeColor       =   16777215
+      ShowMinimized   =   0   'False
+      ShowMaximizedEnabled=   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "System"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Caption         =   "  TANDAS - Detenido"
+      CaptionPosX     =   1
+      BorderNormal    =   2
+      BorderColorDarkLight=   12632256
+   End
    Begin ComctlLib.ImageList ImageList1 
-      Left            =   780
-      Top             =   8370
+      Left            =   810
+      Top             =   8790
       _ExtentX        =   1005
       _ExtentY        =   1005
       BackColor       =   -2147483643
@@ -721,9 +751,9 @@ Begin VB.Form Tanda01
    Begin VB.Label BlkFn 
       BackColor       =   &H00FFFF00&
       Height          =   195
-      Left            =   2190
+      Left            =   2220
       TabIndex        =   72
-      Top             =   7890
+      Top             =   8310
       Visible         =   0   'False
       Width           =   1635
    End
@@ -732,9 +762,9 @@ Begin VB.Form Tanda01
       Caption         =   "no definido.blk"
       ForeColor       =   &H00FFFF00&
       Height          =   195
-      Left            =   5520
+      Left            =   5550
       TabIndex        =   71
-      Top             =   480
+      Top             =   900
       Width           =   1275
    End
    Begin VB.Label LBlk 
@@ -742,9 +772,9 @@ Begin VB.Form Tanda01
       Caption         =   "/ Man"
       ForeColor       =   &H00FFFF00&
       Height          =   195
-      Left            =   6870
+      Left            =   6900
       TabIndex        =   70
-      Top             =   480
+      Top             =   900
       Width           =   495
    End
    Begin VB.Label Label9 
@@ -753,18 +783,18 @@ Begin VB.Form Tanda01
       Caption         =   "Bloque:"
       ForeColor       =   &H00808080&
       Height          =   195
-      Left            =   4860
+      Left            =   4890
       TabIndex        =   69
-      Top             =   480
+      Top             =   900
       Width           =   585
    End
    Begin VB.Label FTime 
       BackColor       =   &H00FF8080&
       Caption         =   "---"
       Height          =   240
-      Left            =   3090
+      Left            =   3120
       TabIndex        =   66
-      Top             =   7380
+      Top             =   7800
       Visible         =   0   'False
       Width           =   825
    End
@@ -773,9 +803,9 @@ Begin VB.Form Tanda01
       Caption         =   "FIN:"
       ForeColor       =   &H00C0C0C0&
       Height          =   195
-      Left            =   5580
+      Left            =   5610
       TabIndex        =   65
-      Top             =   5940
+      Top             =   6360
       Width           =   315
    End
    Begin VB.Label Label7 
@@ -783,9 +813,9 @@ Begin VB.Form Tanda01
       Caption         =   "INICIO:"
       ForeColor       =   &H00C0C0C0&
       Height          =   195
-      Left            =   2745
+      Left            =   2775
       TabIndex        =   56
-      Top             =   5940
+      Top             =   6360
       Width           =   555
    End
    Begin VB.Label Label5 
@@ -793,26 +823,26 @@ Begin VB.Form Tanda01
       Caption         =   "TOTAL:"
       ForeColor       =   &H00C0C0C0&
       Height          =   195
-      Left            =   150
+      Left            =   180
       TabIndex        =   47
-      Top             =   5940
+      Top             =   6360
       Width           =   585
    End
    Begin VB.Label Label6 
       BackColor       =   &H00000000&
       BorderStyle     =   1  'Fixed Single
       Height          =   345
-      Left            =   90
+      Left            =   120
       TabIndex        =   38
-      Top             =   5880
+      Top             =   6300
       Width           =   7395
    End
    Begin VB.Label SyncStream 
       BackColor       =   &H000080FF&
       Height          =   240
-      Left            =   2685
+      Left            =   2715
       TabIndex        =   33
-      Top             =   9225
+      Top             =   9645
       Visible         =   0   'False
       Width           =   1860
    End
@@ -820,9 +850,9 @@ Begin VB.Form Tanda01
       BackColor       =   &H000040C0&
       Caption         =   "0"
       Height          =   240
-      Left            =   4620
+      Left            =   4650
       TabIndex        =   32
-      Top             =   9225
+      Top             =   9645
       Visible         =   0   'False
       Width           =   465
    End
@@ -830,9 +860,9 @@ Begin VB.Form Tanda01
       BackColor       =   &H00FF8080&
       Caption         =   "00:00:00"
       Height          =   240
-      Left            =   2190
+      Left            =   2220
       TabIndex        =   31
-      Top             =   7380
+      Top             =   7800
       Visible         =   0   'False
       Width           =   825
    End
@@ -841,9 +871,9 @@ Begin VB.Form Tanda01
       Caption         =   "Dev-2:"
       ForeColor       =   &H00808080&
       Height          =   195
-      Left            =   180
+      Left            =   210
       TabIndex        =   30
-      Top             =   450
+      Top             =   870
       Width           =   510
    End
    Begin VB.Label Label3 
@@ -851,9 +881,9 @@ Begin VB.Form Tanda01
       Caption         =   "Dev-1:"
       ForeColor       =   &H00808080&
       Height          =   195
-      Left            =   180
+      Left            =   210
       TabIndex        =   29
-      Top             =   180
+      Top             =   600
       Width           =   510
    End
    Begin VB.Label Label2 
@@ -862,9 +892,9 @@ Begin VB.Form Tanda01
       Caption         =   "segs."
       ForeColor       =   &H00808080&
       Height          =   195
-      Left            =   7035
+      Left            =   7065
       TabIndex        =   28
-      Top             =   180
+      Top             =   600
       Width           =   375
    End
    Begin VB.Label Label1 
@@ -873,9 +903,9 @@ Begin VB.Form Tanda01
       Caption         =   "Inter:"
       ForeColor       =   &H00808080&
       Height          =   195
-      Left            =   6135
+      Left            =   6165
       TabIndex        =   27
-      Top             =   180
+      Top             =   600
       Width           =   420
    End
    Begin VB.Label Label13 
@@ -884,9 +914,9 @@ Begin VB.Form Tanda01
       Caption         =   "F-In/Out:"
       ForeColor       =   &H00808080&
       Height          =   195
-      Left            =   4860
+      Left            =   4890
       TabIndex        =   25
-      Top             =   180
+      Top             =   600
       Width           =   690
    End
    Begin VB.Label LFin 
@@ -894,27 +924,27 @@ Begin VB.Form Tanda01
       Caption         =   "Auto"
       ForeColor       =   &H00FFFF00&
       Height          =   195
-      Left            =   5625
+      Left            =   5655
       TabIndex        =   24
-      Top             =   180
+      Top             =   600
       Width           =   375
    End
    Begin VB.Label LKey 
       BackColor       =   &H0080FF80&
       Caption         =   "1"
       Height          =   240
-      Left            =   3870
+      Left            =   3900
       TabIndex        =   23
-      Top             =   7650
+      Top             =   8070
       Visible         =   0   'False
       Width           =   240
    End
    Begin VB.Label Fn 
       BackColor       =   &H00008000&
       Height          =   210
-      Left            =   2190
+      Left            =   2220
       TabIndex        =   22
-      Top             =   7650
+      Top             =   8070
       Visible         =   0   'False
       Width           =   1635
    End
@@ -923,8 +953,8 @@ Begin VB.Form Tanda01
       BackStyle       =   1  'Opaque
       BorderStyle     =   0  'Transparent
       Height          =   495
-      Left            =   90
-      Top             =   6465
+      Left            =   120
+      Top             =   6885
       Width           =   7410
    End
    Begin VB.Label T2Name 
@@ -933,9 +963,9 @@ Begin VB.Form Tanda01
       Caption         =   "---"
       ForeColor       =   &H00808000&
       Height          =   195
-      Left            =   675
+      Left            =   705
       TabIndex        =   21
-      Top             =   450
+      Top             =   870
       Width           =   2580
    End
    Begin VB.Label T1Name 
@@ -944,25 +974,25 @@ Begin VB.Form Tanda01
       Caption         =   "---"
       ForeColor       =   &H00808000&
       Height          =   195
-      Left            =   675
+      Left            =   705
       TabIndex        =   20
-      Top             =   180
+      Top             =   600
       Width           =   2580
    End
    Begin VB.Image Image1 
       Height          =   885
-      Left            =   4770
+      Left            =   4800
       Picture         =   "Tanda01.frx":0102
       Stretch         =   -1  'True
-      Top             =   0
+      Top             =   420
       Width           =   2700
    End
    Begin VB.Image Image2 
       Height          =   885
-      Left            =   45
+      Left            =   75
       Picture         =   "Tanda01.frx":1972
       Stretch         =   -1  'True
-      Top             =   0
+      Top             =   420
       Width           =   4635
    End
    Begin VB.Menu BlockMnu 
@@ -1507,8 +1537,8 @@ RestoreAllActiveColor 1
 If Stream01IsPlaying = True Or Music01IsPlaying = True Then 'stream01 fade out
     If LFin.Caption = "Auto" Then
         If Est12Control.Origen1.Caption = "E1" Then
-            Est01.TmOutAuto.Enabled = True
-            Est01.TmOutAuto.Interval = 50
+            Est01.TmoutAuto.Enabled = True
+            Est01.TmoutAuto.Interval = 50
         Else
             TmOut1.Enabled = True
             TmOut1.Interval = 50
@@ -1518,8 +1548,8 @@ End If
 If Stream02IsPlaying = True Or Music02IsPlaying = True Then 'stream02 fade out
     If LFin.Caption = "Auto" Then
         If Est12Control.Origen2.Caption = "E2" Then
-            Est02.TmOutAuto.Enabled = True
-            Est02.TmOutAuto.Interval = 50
+            Est02.TmoutAuto.Enabled = True
+            Est02.TmoutAuto.Interval = 50
         Else
             TmOut2.Enabled = True
             TmOut2.Interval = 50
@@ -1711,8 +1741,8 @@ RestoreAllActiveColor 1
 If Stream01IsPlaying = True Or Music01IsPlaying = True Then
     If LFin.Caption = "Auto" Then
         If Est12Control.Origen1.Caption = "E1" Then
-            Est01.TmOutAuto.Enabled = True
-            Est01.TmOutAuto.Interval = 50
+            Est01.TmoutAuto.Enabled = True
+            Est01.TmoutAuto.Interval = 50
         Else
             TmOut1.Enabled = True
             TmOut1.Interval = 50
@@ -1723,8 +1753,8 @@ End If
 If Stream02IsPlaying = True Or Music02IsPlaying = True Then
     If LFin.Caption = "Auto" Then
         If Est12Control.Origen2.Caption = "E2" Then
-            Est02.TmOutAuto.Enabled = True
-            Est02.TmOutAuto.Interval = 50
+            Est02.TmoutAuto.Enabled = True
+            Est02.TmoutAuto.Interval = 50
         Else
             TmOut2.Enabled = True
             TmOut2.Interval = 50

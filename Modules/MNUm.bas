@@ -47,6 +47,7 @@ End If
 FormatSegs = ForTime
 
 End Function
+
 Public Sub OrderTndTime(WOrderMode As String)
 
 Dim nIndex As Integer

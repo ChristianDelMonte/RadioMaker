@@ -2880,10 +2880,10 @@ If FileTP = "Stream" Then
     If Est02.LAplay.ForeColor = &HFFFF00 Then   'autoplay claro
         If Est02.pcontup.Visible = True Then    'play continuous activado?
             Stream02Play (BASS_SAMPLE_LOOP)
-            Est02.Caption = LoadResString(1004)     'reproduciendo
+            Est02.TitelBar1.Caption = LoadResString(1004)     'reproduciendo
         Else
             Stream02Play (0)
-            Est02.Caption = LoadResString(1004) 'reproduciendo
+            Est02.TitelBar1.Caption = LoadResString(1004) 'reproduciendo
         End If
     End If
 Else
@@ -2932,7 +2932,7 @@ Else
         'lets play the music
         If Est02.LAplay.ForeColor = &HFFFF00 Then 'claro
             Music02Play
-            Est02.Caption = LoadResString(1004) 'reproduciendo
+            Est02.TitelBar1.Caption = LoadResString(1004) 'reproduciendo
         End If
     Else
         Est02.Label1.ForeColor = &H808000     'celeste oscuro(desactivado)

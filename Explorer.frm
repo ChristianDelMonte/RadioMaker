@@ -3,17 +3,17 @@ Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.5#0"; "comctl32.Ocx"
 Begin VB.Form XPlorer 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Explorador de archivos"
-   ClientHeight    =   6180
+   ClientHeight    =   7230
    ClientLeft      =   45
    ClientTop       =   345
-   ClientWidth     =   8595
+   ClientWidth     =   10065
    ControlBox      =   0   'False
    ForeColor       =   &H8000000F&
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   6180
-   ScaleWidth      =   8595
+   ScaleHeight     =   7230
+   ScaleWidth      =   10065
    ShowInTaskbar   =   0   'False
    Begin VB.PictureBox picIcon 
       AutoRedraw      =   -1  'True
@@ -33,44 +33,44 @@ Begin VB.Form XPlorer
    Begin VB.ComboBox ExCombo 
       DragIcon        =   "Explorer.frx":0000
       Height          =   315
-      Left            =   3330
+      Left            =   4470
       TabIndex        =   2
-      Top             =   3480
+      Top             =   6030
       Width           =   3165
    End
    Begin VB.CommandButton Command2 
       Caption         =   "&Información de archivo..."
       Height          =   375
-      Left            =   90
+      Left            =   1230
       TabIndex        =   3
-      Top             =   3990
+      Top             =   6540
       Width           =   2055
    End
    Begin VB.CommandButton Command1 
       Caption         =   "&Cerrar"
       Height          =   375
-      Left            =   5370
+      Left            =   6510
       TabIndex        =   5
-      Top             =   3990
+      Top             =   6540
       Width           =   1095
    End
    Begin VB.FileListBox File1 
       DragIcon        =   "Explorer.frx":030A
-      Height          =   2235
-      Left            =   3345
+      Height          =   4770
+      Left            =   4710
       TabIndex        =   1
       Top             =   720
-      Width           =   3075
+      Width           =   5175
    End
    Begin ComctlLib.TreeView tvwDirTree 
       DragIcon        =   "Explorer.frx":0614
-      Height          =   2355
+      Height          =   4785
       Left            =   120
       TabIndex        =   0
       Top             =   720
-      Width           =   3135
-      _ExtentX        =   5530
-      _ExtentY        =   4154
+      Width           =   4515
+      _ExtentX        =   7964
+      _ExtentY        =   8440
       _Version        =   327682
       Indentation     =   353
       LabelEdit       =   1
@@ -88,17 +88,17 @@ Begin VB.Form XPlorer
    End
    Begin VB.Line Line2 
       BorderColor     =   &H80000014&
-      X1              =   6450
-      X2              =   90
-      Y1              =   3885
-      Y2              =   3885
+      X1              =   7590
+      X2              =   1230
+      Y1              =   6435
+      Y2              =   6435
    End
    Begin VB.Line Line1 
       BorderColor     =   &H80000010&
-      X1              =   6450
-      X2              =   75
-      Y1              =   3870
-      Y2              =   3870
+      X1              =   7590
+      X2              =   1215
+      Y1              =   6420
+      Y2              =   6420
    End
    Begin ComctlLib.ImageList imgDirTree 
       Left            =   1080
@@ -160,9 +160,9 @@ Begin VB.Form XPlorer
       Caption         =   "Tipos de Archivos:"
       ForeColor       =   &H00000000&
       Height          =   255
-      Left            =   3345
+      Left            =   4485
       TabIndex        =   4
-      Top             =   3165
+      Top             =   5715
       Width           =   1815
    End
 End

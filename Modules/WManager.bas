@@ -1,8 +1,10 @@
 Attribute VB_Name = "WindowManager"
 '********************* RM100 *********************
 '     RADIO MAKER WINDOW CONTROLLER MODULE
-'COPYRIGHT (C) 1987-2002 ONLY development inc.
+'COPYRIGHT (C) 1987-2024 ONLY development inc.
 'Christian A. Del Monte
+'*************************************************
+' ultima modificacion: 18-02-24
 '*************************************************
 
 Option Explicit
@@ -18,9 +20,23 @@ Private Const HWND_NOTOPMOST = -2
 Public Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (ByVal Hwnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
 Public Const SW_MAXIMIZE = 3
 
-'Contantes de ventanas en 1024x768
-Private Const WidthMax = 15360
-Private Const HeightMax = 11520
+        '********** REFERENCIAS *****************
+        'Contantes de ventanas en 1024 x 768
+            'Private Const WidthMax = 15360
+            'Private Const HeightMax = 11520
+        
+        'Contantes de ventanas en 1600 x 900
+            'Private Const WidthMax = 24000
+            'Private Const HeightMax = 13500
+        
+        'Contantes de ventanas en 1920 x 1080
+            'Private Const WidthMax = 28800
+            'Private Const HeightMax = 16200
+        '********** REFERENCIAS *****************
+
+'Contantes de ventanas en 1600x900
+Private Const WidthMax = 24000  ' 28800 en 1920
+Private Const HeightMax = 13500  ' 16200 en 1080
 
 Public Sub KeepOnTop(ByVal frmIn As Form)
 
@@ -95,12 +111,7 @@ End Sub
 
 Public Sub OrderWindow(WWindow As String, WWOrder As String)
 
-'maximo hacia la derecha (width) = 15360
-'maximo hacia abajo (height) = 11520
-
 Dim Result As String
-
-Exit Sub
 
 If WWOrder = "Default" Or WWOrder = "3x3" Then
     If TopMenu.ViewDefault.Checked = False Then
@@ -160,270 +171,80 @@ Select Case WWOrder
             Case "TopMenu"  '--------------------------------------------------
                 TopMenu.Top = 0
                 TopMenu.Left = 0
-                TopMenu.Height = 1365       'hacia abajo
-                TopMenu.Width = WidthMax       'hacia la derecha
+                TopMenu.Width = TopMenu.SysInfo1.WorkAreaWidth
+                TopMenu.Height = 1530
             Case "DwMenu"   '--------------------------------------------------
                 If TopMenu.SbHerram.Checked = False Then
                     DownMenu.WindowState = 0
                     DownMenu.Visible = True
                     TopMenu.SbHerram.Checked = True
                 End If
-                DownMenu.Top = HeightMax - 1000
                 DownMenu.Left = 0
-                DownMenu.Height = 1000
-                DownMenu.Width = WidthMax
-            Case "Est01a"    '--------------------------------------------------
+                DownMenu.Height = 1400
+                DownMenu.Top = TopMenu.SysInfo1.WorkAreaHeight - DownMenu.Height
+                DownMenu.Width = TopMenu.SysInfo1.WorkAreaWidth
+            Case "Est01"    '--------------------------------------------------
                 If TopMenu.SbEst01.Checked = False Then
                     Est01.WindowState = 0
                     Est01.Visible = True
                     TopMenu.SbEst01.Checked = True
                 End If
-                Est01.Top = 1365
-                Est01.Left = WidthMax / 2
-                Est01.Height = HeightMax - 2365
-                Est01.Width = WidthMax / 4
+                Est01.Top = TopMenu.Height
+                Est01.Left = WidthMax / 3
                 'ordenamos las ventanas
-                Result = GetWPos(1, "Default")
-            Case "Est02a"    '--------------------------------------------------
+                'Result = GetWPos(1, "Default")
+            Case "Est02"    '--------------------------------------------------
                 If TopMenu.SbEst02.Checked = False Then
                     Est02.WindowState = 0
                     Est02.Visible = True
                     TopMenu.SbEst02.Checked = True
                 End If
-                Est02.Top = 1365
-                Est02.Left = WidthMax / 2 + WidthMax / 4
-                Est02.Height = HeightMax - 2365
-                Est02.Width = WidthMax / 4
+                Est02.Top = TopMenu.Height + Est01.Height
+                Est02.Left = WidthMax / 3
                 'ordenamos las ventanas
-                Result = GetWPos(2, "Default")
+                'Result = GetWPos(2, "Default")
             Case "Tnd01"    '--------------------------------------------------
                 If TopMenu.SbTnd01.Checked = False Then
                     Tanda01.WindowState = 0
                     Tanda01.Visible = True
                     TopMenu.SbTnd01.Checked = True
                 End If
-                Tanda01.Top = 1365
+                Tanda01.Top = TopMenu.Height
                 Tanda01.Left = 0
-                Tanda01.Height = HeightMax - 2365
-                Tanda01.Width = WidthMax / 2
                 'ordenamos los controles
-                SetWinPos "Tnd01", WWOrder
+                'SetWinPos "Tnd01", WWOrder
             Case "Prg01"    '--------------------------------------------------
                 If TopMenu.SbPrg01.Checked = False Then
                     Prg01.WindowState = 0
                     Prg01.Visible = True
                     TopMenu.SbPrg01.Checked = True
                 End If
-                Prg01.Top = 1365
+                Prg01.Top = TopMenu.Height + Tanda01.Height
                 Prg01.Left = 0
-                Prg01.Height = HeightMax - 2365
-                Prg01.Width = WidthMax / 2
             Case "Explor01" '--------------------------------------------------
                 If TopMenu.SbExplor.Checked = False Then
                     XPlorer.Show
                     TopMenu.SbExplor.Checked = True
                 End If
-                XPlorer.Height = 6465
-                XPlorer.ScaleHeight = 6135
-                XPlorer.ScaleWidth = 6840
-                XPlorer.Width = 6930
                 'ordenamos la ventana y sus controles
-                SetWinPos "Explor01", WWOrder
+                'SetWinPos "Explor01", WWOrder
             Case Else   '--------------------------------------------------
         
         End Select
-    Case "4x4v"
+    Case "4x4v" '**************************REVISAR
         'organizacion 4x4 vertical
-        Select Case WWindow
-            Case "TopMenu"  '--------------------------------------------------
-                TopMenu.Top = 0
-                TopMenu.Left = 0
-                TopMenu.Height = 1365       'hacia abajo
-                TopMenu.Width = WidthMax       'hacia la derecha
-            Case "DwMenu"   '--------------------------------------------------
-                If TopMenu.SbHerram.Checked = False Then
-                    DownMenu.WindowState = 0
-                    DownMenu.Visible = True
-                    TopMenu.SbHerram.Checked = True
-                End If
-                DownMenu.Top = HeightMax - 1000
-                DownMenu.Left = 0
-                DownMenu.Height = 1000
-                DownMenu.Width = WidthMax
-            Case "Est01a"    '--------------------------------------------------
-                If TopMenu.SbEst01.Checked = False Then
-                    Est01.WindowState = 0
-                    Est01.Visible = True
-                    TopMenu.SbEst01.Checked = True
-                End If
-                Est01.Top = 1365
-                Est01.Left = WidthMax / 2
-                Est01.Height = (HeightMax - 2365) / 2
-                Est01.Width = WidthMax / 2
-                'ordenamos las ventanas
-                Result = GetWPos(1, "4x4v")
-            Case "Est02a"    '--------------------------------------------------
-                If TopMenu.SbEst02.Checked = False Then
-                    Est02.WindowState = 0
-                    Est02.Visible = True
-                    TopMenu.SbEst02.Checked = True
-                End If
-                Est02.Top = 1365 + Est01.Height
-                Est02.Left = WidthMax / 2
-                Est02.Height = (HeightMax - 2365) / 2
-                Est02.Width = WidthMax / 2
-                'ordenamos las ventanas
-                Result = GetWPos(2, "4x4v")
-                '**************************************************************
-            Case "Tnd01"    '--------------------------------------------------
-                If TopMenu.SbTnd01.Checked = False Then
-                    Tanda01.WindowState = 0
-                    Tanda01.Visible = True
-                    TopMenu.SbTnd01.Checked = True
-                End If
-                If Prg01.WindowState = 1 Then
-                    Tanda01.Height = HeightMax - 2365
-                Else
-                    Tanda01.Height = (HeightMax - 2365) / 2
-                End If
-                Tanda01.Top = 1365
-                Tanda01.Left = 0
-                Tanda01.Width = WidthMax / 2
-                'ordenamos los controles
-                SetWinPos "Tnd01", WWOrder
-            Case "Prg01"    '--------------------------------------------------
-                If TopMenu.SbPrg01.Checked = False Then
-                    Prg01.WindowState = 0
-                    Prg01.Visible = True
-                    TopMenu.SbPrg01.Checked = True
-                End If
-                If Tanda01.WindowState = 1 Then
-                    Prg01.Top = 1365
-                    Prg01.Height = HeightMax - 2365
-                Else
-                    Prg01.Top = 1365 + (HeightMax - 2365) / 2
-                    Prg01.Height = (HeightMax - 2365) / 2
-                    ShowWindow "Tnd01"
-                End If
-                Prg01.Left = 0
-                Prg01.Width = WidthMax / 2
-                'XXXX codigo para ordenar los contoles en Prog01
-                
-            Case "Explor01" '--------------------------------------------------
-                If TopMenu.SbExplor.Checked = False Then
-                    XPlorer.Show
-                    TopMenu.SbExplor.Checked = True
-                End If
-                XPlorer.Height = 6465
-                XPlorer.ScaleHeight = 6135
-                XPlorer.ScaleWidth = 6840
-                XPlorer.Width = 6930
-                'ordenamos la ventana y sus controles
-                SetWinPos "Explor01", WWOrder
-            Case Else
         
-        End Select
-    Case "4x4h"
+    Case "4x4h" ' *************************REVISAR
         'organizacion 44x4 horizontal
-        Select Case WWindow
-            Case "TopMenu"  '--------------------------------------------------
-                TopMenu.Top = 0
-                TopMenu.Left = 0
-                TopMenu.Height = 1365       'hacia abajo
-                TopMenu.Width = WidthMax       'hacia la derecha
-            Case "DwMenu"   '--------------------------------------------------
-                If TopMenu.SbHerram.Checked = False Then
-                    DownMenu.WindowState = 0
-                    DownMenu.Visible = True
-                    TopMenu.SbHerram.Checked = True
-                End If
-                DownMenu.Top = HeightMax - 1000
-                DownMenu.Left = 0
-                DownMenu.Height = 1000
-                DownMenu.Width = WidthMax
-            Case "Est01a"    '--------------------------------------------------
-                If TopMenu.SbEst01.Checked = False Then
-                    Est01.WindowState = 0
-                    Est01.Visible = True
-                    TopMenu.SbEst01.Checked = True
-                End If
-                Est01.Top = 1365
-                Est01.Left = 0      'WidthMax / 2
-                Est01.Height = (HeightMax - 2365) / 2
-                Est01.Width = WidthMax / 2
-                'ordenamos las ventanas
-                Result = GetWPos(1, "4x4h")
-            Case "Est02a"    '--------------------------------------------------
-                If TopMenu.SbEst02.Checked = False Then
-                    Est02.WindowState = 0
-                    Est02.Visible = True
-                    TopMenu.SbEst02.Checked = True
-                End If
-                Est02.Top = 1365    '1365 + Est01.Height
-                Est02.Left = WidthMax / 2
-                Est02.Height = (HeightMax - 2365) / 2
-                Est02.Width = WidthMax / 2
-                'ordenamos las ventanas
-                Result = GetWPos(2, "4x4h")
-                '**************************************************************
-            Case "Tnd01"    '--------------------------------------------------
-                If TopMenu.SbTnd01.Checked = False Then
-                    Tanda01.WindowState = 0
-                    Tanda01.Visible = True
-                    TopMenu.SbTnd01.Checked = True
-                End If
-                If Est01.WindowState = 1 Then
-                    Tanda01.Top = 1365
-                    Tanda01.Left = 0
-                    Tanda01.Height = HeightMax - 2365
-                    Tanda01.Width = WidthMax / 2
-                Else
-                    Tanda01.Top = 1365 + Est01.Height
-                    Tanda01.Left = 0
-                    Tanda01.Height = (HeightMax - 2365) / 2
-                    Tanda01.Width = WidthMax / 2
-                End If
-                'ordenamos los controles
-                SetWinPos "Tnd01", WWOrder
-            Case "Prg01"    '--------------------------------------------------
-                If TopMenu.SbPrg01.Checked = False Then
-                    Prg01.WindowState = 0
-                    Prg01.Visible = True
-                    TopMenu.SbPrg01.Checked = True
-                End If
-                If Est02.WindowState = 1 Then
-                    Prg01.Top = 1365
-                    Prg01.Left = WidthMax / 2
-                    Prg01.Height = HeightMax - 2365
-                    Prg01.Width = WidthMax / 2
-                Else
-                    Prg01.Top = 1365 + Est02.Height
-                    Prg01.Left = WidthMax / 2
-                    Prg01.Height = (HeightMax - 2365) / 2
-                    Prg01.Width = WidthMax / 2
-                End If
-                'XXXX codigo para ordenar los controles en Prog01
-                
-            Case "Explor01" '--------------------------------------------------
-                If TopMenu.SbExplor.Checked = False Then
-                    XPlorer.Show
-                    TopMenu.SbExplor.Checked = True
-                End If
-                XPlorer.Height = 6465
-                XPlorer.ScaleHeight = 6135
-                XPlorer.ScaleWidth = 6840
-                XPlorer.Width = 6930
-                'ordenamos la ventana y sus controles
-                SetWinPos "Explor01", WWOrder
-            Case Else
-                'xxx nothing...
-        End Select
+        
     Case Else
         'xxx nothing...
 End Select
 
 End Sub
 Private Sub SetWinPos(WWindow As String, WWOrder As String)
+
+' ***** CREO QUE HAY QUE REMOVER. EN REVISION 18-02-24
 
 Exit Sub
 
@@ -792,22 +613,6 @@ Select Case WWindow
             DownMenu.Show
         End If
         OrderWindow "DwMenu", WWOrder
-    Case "Est01"    '--------------------------------------------------
-        If Est01.WindowState = 1 Then
-            Est01.WindowState = 0
-            Est01.Visible = True
-        Else
-            Est01.Show
-        End If
-        'OrderWindow "Est01", WWOrder
-    Case "Est02"    '--------------------------------------------------
-        If Est02.WindowState = 1 Then
-            Est02.WindowState = 0
-            Est02.Visible = True
-        Else
-            Est02.Show
-        End If
-        'OrderWindow "Est02", WWOrder
     Case "Tnd01"    '--------------------------------------------------
         If Tanda01.WindowState = 1 Then
             Tanda01.WindowState = 0
@@ -824,6 +629,22 @@ Select Case WWindow
             Prg01.Show
         End If
         OrderWindow "Prg01", WWOrder
+    Case "Est01"    '--------------------------------------------------
+        If Est01.WindowState = 1 Then
+            Est01.WindowState = 0
+            Est01.Visible = True
+        Else
+            Est01.Show
+        End If
+        OrderWindow "Est01", WWOrder
+    Case "Est02"    '--------------------------------------------------
+        If Est02.WindowState = 1 Then
+            Est02.WindowState = 0
+            Est02.Visible = True
+        Else
+            Est02.Show
+        End If
+        OrderWindow "Est02", WWOrder
     Case "Explor01" '--------------------------------------------------
         XPlorer.Show
         OrderWindow "Explor01", WWOrder
@@ -843,20 +664,6 @@ Select Case WWindow
             DownMenu.Show
         End If
         OrderWindow "DwMenu", WWOrder
-        If Est01.WindowState = 1 Then
-            Est01.WindowState = 0
-            Est01.Visible = True
-        Else
-            Est01.Show
-        End If
-        OrderWindow "Est01", WWOrder
-        If Est02.WindowState = 1 Then
-            Est02.WindowState = 0
-            Est02.Visible = True
-        Else
-            Est02.Show
-        End If
-        OrderWindow "Est02", WWOrder
         If Tanda01.WindowState = 1 Then
             Tanda01.WindowState = 0
             Tanda01.Visible = True
@@ -871,6 +678,20 @@ Select Case WWindow
             Prg01.Show
         End If
         OrderWindow "Prg01", WWOrder
+        If Est01.WindowState = 1 Then
+            Est01.WindowState = 0
+            Est01.Visible = True
+        Else
+            Est01.Show
+        End If
+        OrderWindow "Est01", WWOrder
+        If Est02.WindowState = 1 Then
+            Est02.WindowState = 0
+            Est02.Visible = True
+        Else
+            Est02.Show
+        End If
+        OrderWindow "Est02", WWOrder
     Case Else   '--------------------------------------------------
         'xxx nothing...
 End Select

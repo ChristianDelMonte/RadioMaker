@@ -91,7 +91,7 @@ Dim NumCon As Integer
 Select Case EstNum
     Case 1
         For NumCon = 0 To 21
-            Est01.E11(NumCon).BackColor = &H404040        '&H8000000F     'GRIS (cara del boton)
+            Est01.E11(NumCon).BackColor = &H404040        'GRIS (cara del boton)
         Next NumCon
     Case 2
         For NumCon = 0 To 21
@@ -106,7 +106,7 @@ Sub RestoreActiveColor(ByVal index As Integer, ByVal EstNum As Long)
 
 Select Case EstNum
     Case 1
-        Est01.E11(index).BackColor = &H404040         '&H8000000F     'GRIS (cara del boton)
+        Est01.E11(index).BackColor = &H404040         'GRIS (cara del boton)
     Case 2
         Est02.E21(index).BackColor = &H404040        'GRIS (cara del boton)
 End Select
@@ -117,9 +117,9 @@ Sub ChangeActiveColor(ByVal index As Integer, ByVal EstNum As Long)
 
 Select Case EstNum
     Case 1
-        Est01.E11(index).BackColor = &H808000         'celeste
+        Est01.E11(index).BackColor = &HC0C000            'celeste
     Case 2
-        Est02.E21(index).BackColor = &H808000         'celeste
+        Est02.E21(index).BackColor = &HC0C000            'celeste
 End Select
 
 End Sub

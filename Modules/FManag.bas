@@ -1605,7 +1605,7 @@ Close #10
 Exit Sub
 
 HeaderErr:
-ErrorMsg err.Number, LoadResString(151)
+'ErrorMsg err.Number, LoadResString(151)
 ErrorReporte LoadResString(151)
 GoSub Restore
 Close #10

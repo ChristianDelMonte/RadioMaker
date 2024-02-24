@@ -1,66 +1,279 @@
 VERSION 5.00
 Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.5#0"; "comctl32.Ocx"
 Begin VB.Form Est02 
-   BackColor       =   &H00C0C0C0&
+   AutoRedraw      =   -1  'True
+   BackColor       =   &H00808080&
    BorderStyle     =   0  'None
    Caption         =   "ESTACION 02 - Detenido"
-   ClientHeight    =   5205
+   ClientHeight    =   5175
    ClientLeft      =   0
-   ClientTop       =   -30
+   ClientTop       =   0
    ClientWidth     =   15330
-   ControlBox      =   0   'False
-   ForeColor       =   &H8000000F&
+   ForeColor       =   &H00404040&
    LinkTopic       =   "Form3"
    LockControls    =   -1  'True
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   Picture         =   "Est02.frx":0000
-   ScaleHeight     =   5205
+   ScaleHeight     =   5175
    ScaleWidth      =   15330
    ShowInTaskbar   =   0   'False
-   Begin VB.PictureBox Picture2 
+   Begin VB.PictureBox pcontup 
+      AutoSize        =   -1  'True
+      BorderStyle     =   0  'None
+      Height          =   255
+      Left            =   11430
+      Picture         =   "Est02.frx":0000
+      ScaleHeight     =   255
+      ScaleWidth      =   405
+      TabIndex        =   89
+      ToolTipText     =   "Modo CONTINUO activado"
+      Top             =   570
+      Width           =   405
+   End
+   Begin VB.Frame Frame4 
+      BackColor       =   &H00404040&
+      Caption         =   "CUE"
+      ForeColor       =   &H00FFFF00&
+      Height          =   870
+      Left            =   12135
+      TabIndex        =   82
+      Top             =   2730
+      Width           =   3015
+      Begin VB.TextBox Text1 
+         Alignment       =   2  'Center
+         Height          =   285
+         Left            =   105
+         Locked          =   -1  'True
+         TabIndex        =   86
+         Text            =   "00:00:00"
+         Top             =   495
+         Width           =   975
+      End
+      Begin VB.TextBox Text2 
+         Alignment       =   2  'Center
+         Height          =   285
+         Left            =   1575
+         Locked          =   -1  'True
+         TabIndex        =   85
+         Text            =   "00:00:00"
+         Top             =   495
+         Width           =   975
+      End
+      Begin VB.CommandButton Command9 
+         Caption         =   "<M"
+         Height          =   300
+         Left            =   1110
+         TabIndex        =   84
+         ToolTipText     =   "Marcar la posicion de inicio de CUE"
+         Top             =   480
+         Width           =   375
+      End
+      Begin VB.CommandButton Command10 
+         Caption         =   "<M"
+         Height          =   300
+         Left            =   2565
+         TabIndex        =   83
+         ToolTipText     =   "Marcar la posicion de fin de CUE"
+         Top             =   480
+         Width           =   375
+      End
+      Begin VB.Label Lblcueinit 
+         Alignment       =   2  'Center
+         BackStyle       =   0  'Transparent
+         Caption         =   "CUE Inicio"
+         ForeColor       =   &H00808080&
+         Height          =   255
+         Left            =   105
+         TabIndex        =   88
+         Top             =   270
+         Width           =   975
+      End
+      Begin VB.Label Lblcueend 
+         Alignment       =   2  'Center
+         BackStyle       =   0  'Transparent
+         Caption         =   "CUE Final"
+         ForeColor       =   &H00808080&
+         Height          =   255
+         Left            =   1575
+         TabIndex        =   87
+         Top             =   270
+         Width           =   975
+      End
+   End
+   Begin VB.CommandButton CmdAutoPan 
+      Caption         =   "AUTO PANEO"
+      Height          =   255
+      Left            =   13800
+      TabIndex        =   81
+      ToolTipText     =   "Paneo Izq>Der - Der>Izq - automatico"
+      Top             =   2100
+      Width           =   1215
+   End
+   Begin VB.PictureBox pcontdw 
+      AutoSize        =   -1  'True
+      BorderStyle     =   0  'None
+      Height          =   255
+      Left            =   11430
+      Picture         =   "Est02.frx":05D8
+      ScaleHeight     =   255
+      ScaleWidth      =   405
+      TabIndex        =   80
+      ToolTipText     =   "Modo CONTINUO desactivado"
+      Top             =   570
+      Visible         =   0   'False
+      Width           =   405
+   End
+   Begin VB.PictureBox Picfft2 
+      AutoRedraw      =   -1  'True
+      BackColor       =   &H00404000&
+      BorderStyle     =   0  'None
+      Height          =   690
+      Left            =   8310
+      ScaleHeight     =   46
+      ScaleMode       =   3  'Pixel
+      ScaleWidth      =   135
+      TabIndex        =   79
+      Top             =   975
+      Width           =   2025
+   End
+   Begin VB.VScrollBar fxsc 
+      Height          =   1140
+      Index           =   0
+      Left            =   8190
+      Max             =   20
+      TabIndex        =   78
+      Top             =   2190
+      Value           =   10
+      Width           =   240
+   End
+   Begin VB.VScrollBar fxsc 
+      Height          =   1140
+      Index           =   1
+      Left            =   8535
+      Max             =   20
+      TabIndex        =   77
+      Top             =   2190
+      Value           =   10
+      Width           =   240
+   End
+   Begin VB.VScrollBar fxsc 
+      Height          =   1140
+      Index           =   2
+      Left            =   8880
+      Max             =   20
+      TabIndex        =   76
+      Top             =   2190
+      Value           =   10
+      Width           =   240
+   End
+   Begin VB.VScrollBar fxsc 
+      Height          =   1140
+      Index           =   3
+      Left            =   9225
+      Max             =   20
+      TabIndex        =   75
+      Top             =   2190
+      Value           =   10
+      Width           =   240
+   End
+   Begin VB.VScrollBar fxsc 
+      Height          =   1140
+      Index           =   4
+      Left            =   9570
+      Max             =   20
+      TabIndex        =   74
+      Top             =   2190
+      Value           =   10
+      Width           =   240
+   End
+   Begin VB.VScrollBar fxsc 
+      Height          =   1140
+      Index           =   5
+      Left            =   9915
+      Max             =   20
+      TabIndex        =   73
+      Top             =   2190
+      Value           =   10
+      Width           =   240
+   End
+   Begin VB.VScrollBar fxsc 
+      Height          =   1140
+      Index           =   6
+      Left            =   10260
+      Max             =   20
+      TabIndex        =   72
+      Top             =   2190
+      Value           =   10
+      Width           =   240
+   End
+   Begin VB.VScrollBar fxsc 
+      Height          =   1140
+      Index           =   7
+      Left            =   10605
+      Max             =   20
+      TabIndex        =   71
+      Top             =   2190
+      Value           =   10
+      Width           =   240
+   End
+   Begin VB.VScrollBar fxsc 
+      Height          =   1140
+      Index           =   8
+      Left            =   10950
+      Max             =   20
+      TabIndex        =   70
+      Top             =   2190
+      Value           =   10
+      Width           =   240
+   End
+   Begin VB.VScrollBar fxsc 
+      Height          =   1140
+      Index           =   9
+      Left            =   11295
+      Max             =   20
+      TabIndex        =   69
+      Top             =   2190
+      Value           =   10
+      Width           =   240
+   End
+   Begin VB.VScrollBar fxsc 
+      Height          =   1140
+      Index           =   10
+      Left            =   11670
+      Max             =   20
+      TabIndex        =   68
+      Top             =   2190
+      Value           =   18
+      Width           =   240
+   End
+   Begin VB.PictureBox Lrback 
       Appearance      =   0  'Flat
       AutoSize        =   -1  'True
-      BackColor       =   &H80000005&
+      BackColor       =   &H00404040&
       BorderStyle     =   0  'None
       ForeColor       =   &H80000008&
       Height          =   300
       Left            =   3945
-      Picture         =   "Est02.frx":2458F
       ScaleHeight     =   300
       ScaleMode       =   0  'User
       ScaleWidth      =   3630
-      TabIndex        =   51
+      TabIndex        =   20
       Top             =   750
       Width           =   3630
       Begin VB.PictureBox Lr 
          Appearance      =   0  'Flat
          AutoSize        =   -1  'True
-         BackColor       =   &H80000005&
+         BackColor       =   &H00000000&
          BorderStyle     =   0  'None
          ForeColor       =   &H80000008&
          Height          =   240
          Left            =   60
-         Picture         =   "Est02.frx":26BA3
          ScaleHeight     =   240
          ScaleWidth      =   3510
-         TabIndex        =   52
-         Top             =   30
+         TabIndex        =   21
+         Top             =   60
          Width           =   3510
       End
-   End
-   Begin VB.PictureBox pcontup 
-      AutoSize        =   -1  'True
-      BorderStyle     =   0  'None
-      Height          =   255
-      Left            =   11445
-      Picture         =   "Est02.frx":2BEE9
-      ScaleHeight     =   255
-      ScaleWidth      =   405
-      TabIndex        =   50
-      ToolTipText     =   "Modo CONTINUO activado"
-      Top             =   570
-      Width           =   405
    End
    Begin VB.PictureBox E2p7 
       BackColor       =   &H00000000&
@@ -69,7 +282,7 @@ Begin VB.Form Est02
       Left            =   2745
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   49
+      TabIndex        =   19
       Top             =   975
       Width           =   190
    End
@@ -80,7 +293,7 @@ Begin VB.Form Est02
       Left            =   2940
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   48
+      TabIndex        =   18
       Top             =   975
       Width           =   190
    End
@@ -91,7 +304,7 @@ Begin VB.Form Est02
       Left            =   3120
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   47
+      TabIndex        =   17
       Top             =   975
       Width           =   190
    End
@@ -102,7 +315,7 @@ Begin VB.Form Est02
       Left            =   3315
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   46
+      TabIndex        =   16
       Top             =   975
       Width           =   190
    End
@@ -113,7 +326,7 @@ Begin VB.Form Est02
       Left            =   3510
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   45
+      TabIndex        =   15
       Top             =   975
       Width           =   190
    End
@@ -124,7 +337,7 @@ Begin VB.Form Est02
       Left            =   2745
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   44
+      TabIndex        =   14
       Top             =   630
       Width           =   190
    End
@@ -135,7 +348,7 @@ Begin VB.Form Est02
       Left            =   2940
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   43
+      TabIndex        =   13
       Top             =   630
       Width           =   190
    End
@@ -146,7 +359,7 @@ Begin VB.Form Est02
       Left            =   3120
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   42
+      TabIndex        =   12
       Top             =   630
       Width           =   190
    End
@@ -157,7 +370,7 @@ Begin VB.Form Est02
       Left            =   3315
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   41
+      TabIndex        =   11
       Top             =   630
       Width           =   190
    End
@@ -168,106 +381,37 @@ Begin VB.Form Est02
       Left            =   3510
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   40
+      TabIndex        =   10
       Top             =   630
       Width           =   190
    End
-   Begin VB.PictureBox Picture1 
+   Begin VB.PictureBox Llback 
       Appearance      =   0  'Flat
       AutoSize        =   -1  'True
-      BackColor       =   &H80000005&
+      BackColor       =   &H00404040&
       BorderStyle     =   0  'None
       ForeColor       =   &H80000008&
       Height          =   300
       Left            =   3945
-      Picture         =   "Est02.frx":2C4C1
       ScaleHeight     =   300
       ScaleWidth      =   3630
-      TabIndex        =   38
+      TabIndex        =   8
       Top             =   450
       Width           =   3630
       Begin VB.PictureBox Ll 
          Appearance      =   0  'Flat
          AutoSize        =   -1  'True
-         BackColor       =   &H80000005&
+         BackColor       =   &H00000000&
          BorderStyle     =   0  'None
          ForeColor       =   &H80000008&
          Height          =   240
          Left            =   60
-         Picture         =   "Est02.frx":2EAD5
          ScaleHeight     =   240
          ScaleMode       =   0  'User
          ScaleWidth      =   3510
-         TabIndex        =   39
-         Top             =   30
+         TabIndex        =   9
+         Top             =   60
          Width           =   3510
-      End
-   End
-   Begin VB.Frame Frame4 
-      Caption         =   "CUE"
-      ForeColor       =   &H000000FF&
-      Height          =   870
-      Left            =   12030
-      TabIndex        =   31
-      Top             =   2520
-      Width           =   3195
-      Begin VB.TextBox Text1 
-         Alignment       =   2  'Center
-         Height          =   285
-         Left            =   165
-         Locked          =   -1  'True
-         TabIndex        =   35
-         Text            =   "00:00:00"
-         Top             =   495
-         Width           =   975
-      End
-      Begin VB.TextBox Text2 
-         Alignment       =   2  'Center
-         Height          =   285
-         Left            =   1665
-         Locked          =   -1  'True
-         TabIndex        =   34
-         Text            =   "00:00:00"
-         Top             =   495
-         Width           =   975
-      End
-      Begin VB.CommandButton Command9 
-         Caption         =   "<M"
-         Height          =   300
-         Left            =   1170
-         TabIndex        =   33
-         ToolTipText     =   "Marcar la posicion de inicio de CUE"
-         Top             =   480
-         Width           =   375
-      End
-      Begin VB.CommandButton Command10 
-         Caption         =   "<M"
-         Height          =   300
-         Left            =   2655
-         TabIndex        =   32
-         ToolTipText     =   "Marcar la posicion de fin de CUE"
-         Top             =   480
-         Width           =   375
-      End
-      Begin VB.Label Label6 
-         Alignment       =   2  'Center
-         BackStyle       =   0  'Transparent
-         Caption         =   "CUE Inicio"
-         Height          =   255
-         Left            =   165
-         TabIndex        =   37
-         Top             =   270
-         Width           =   975
-      End
-      Begin VB.Label Label7 
-         Alignment       =   2  'Center
-         BackStyle       =   0  'Transparent
-         Caption         =   "CUE Final"
-         Height          =   255
-         Left            =   1665
-         TabIndex        =   36
-         Top             =   270
-         Width           =   975
       End
    End
    Begin VB.Timer TmrCUE 
@@ -297,7 +441,7 @@ Begin VB.Form Est02
       Left            =   2535
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   30
+      TabIndex        =   7
       Top             =   630
       Width           =   190
    End
@@ -308,264 +452,18 @@ Begin VB.Form Est02
       Left            =   2535
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   29
+      TabIndex        =   6
       Top             =   975
       Width           =   190
    End
    Begin VB.TextBox TxtName 
       Height          =   465
       Left            =   5685
-      TabIndex        =   28
+      TabIndex        =   5
       Text            =   "Text3"
       Top             =   5610
       Visible         =   0   'False
       Width           =   1725
-   End
-   Begin VB.CommandButton SaveCUE 
-      Height          =   375
-      Left            =   11220
-      Style           =   1  'Graphical
-      TabIndex        =   27
-      ToolTipText     =   "Guardar Preferencias"
-      Top             =   4635
-      UseMaskColor    =   -1  'True
-      Width           =   375
-   End
-   Begin VB.CommandButton OpenCUE 
-      Height          =   375
-      Left            =   10845
-      Style           =   1  'Graphical
-      TabIndex        =   26
-      ToolTipText     =   "Abrir Preferencias"
-      Top             =   4635
-      UseMaskColor    =   -1  'True
-      Width           =   375
-   End
-   Begin VB.CommandButton E2Import 
-      Caption         =   "I"
-      Height          =   375
-      Left            =   11775
-      TabIndex        =   25
-      ToolTipText     =   "Importar archivo CUE"
-      Top             =   4635
-      UseMaskColor    =   -1  'True
-      Width           =   1110
-   End
-   Begin VB.CommandButton NewCUE 
-      Height          =   375
-      Left            =   10470
-      Style           =   1  'Graphical
-      TabIndex        =   24
-      ToolTipText     =   "Restaurar Preferencias"
-      Top             =   4635
-      UseMaskColor    =   -1  'True
-      Width           =   375
-   End
-   Begin VB.CommandButton CmdRestore 
-      Caption         =   "R"
-      Height          =   375
-      Left            =   9060
-      TabIndex        =   23
-      ToolTipText     =   "Restablecer valores a predeterminado"
-      Top             =   4635
-      UseMaskColor    =   -1  'True
-      Width           =   1005
-   End
-   Begin VB.CommandButton CmdActualiz 
-      Caption         =   "A"
-      Height          =   375
-      Left            =   8145
-      TabIndex        =   22
-      ToolTipText     =   "Actualizar datos"
-      Top             =   4635
-      UseMaskColor    =   -1  'True
-      Width           =   915
-   End
-   Begin VB.CommandButton E2Cue 
-      Caption         =   "AC"
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   375
-      Left            =   13335
-      Style           =   1  'Graphical
-      TabIndex        =   21
-      ToolTipText     =   "Activar / Desactivar CUE"
-      Top             =   4620
-      UseMaskColor    =   -1  'True
-      Width           =   1815
-   End
-   Begin VB.CommandButton CmdAutoPan 
-      Caption         =   "AUTO PANEO"
-      Height          =   255
-      Left            =   13815
-      TabIndex        =   20
-      ToolTipText     =   "Paneo Izq>Der - Der>Izq - automatico"
-      Top             =   1950
-      Width           =   1215
-   End
-   Begin VB.CommandButton CmdFIN 
-      Caption         =   "FADE IN"
-      Enabled         =   0   'False
-      Height          =   495
-      Left            =   12165
-      TabIndex        =   19
-      ToolTipText     =   "Fade-In automatico"
-      Top             =   1890
-      Width           =   555
-   End
-   Begin VB.CommandButton CmdFOut 
-      Caption         =   "FADE OUT"
-      Enabled         =   0   'False
-      Height          =   495
-      Left            =   12825
-      TabIndex        =   18
-      ToolTipText     =   "Fade-Out automatico"
-      Top             =   1890
-      Width           =   645
-   End
-   Begin VB.PictureBox pcontdw 
-      AutoSize        =   -1  'True
-      BorderStyle     =   0  'None
-      Height          =   255
-      Left            =   11445
-      Picture         =   "Est02.frx":33E1B
-      ScaleHeight     =   255
-      ScaleWidth      =   405
-      TabIndex        =   17
-      ToolTipText     =   "Modo CONTINUO desactivado"
-      Top             =   570
-      Visible         =   0   'False
-      Width           =   405
-   End
-   Begin VB.PictureBox Picfft2 
-      AutoRedraw      =   -1  'True
-      BackColor       =   &H00404000&
-      BorderStyle     =   0  'None
-      Height          =   690
-      Left            =   8325
-      ScaleHeight     =   46
-      ScaleMode       =   3  'Pixel
-      ScaleWidth      =   135
-      TabIndex        =   16
-      Top             =   975
-      Width           =   2025
-   End
-   Begin VB.VScrollBar fxsc 
-      Height          =   1290
-      Index           =   0
-      Left            =   8445
-      Max             =   20
-      TabIndex        =   15
-      Top             =   1860
-      Value           =   10
-      Width           =   240
-   End
-   Begin VB.VScrollBar fxsc 
-      Height          =   1290
-      Index           =   1
-      Left            =   8760
-      Max             =   20
-      TabIndex        =   14
-      Top             =   1860
-      Value           =   10
-      Width           =   240
-   End
-   Begin VB.VScrollBar fxsc 
-      Height          =   1290
-      Index           =   2
-      Left            =   9075
-      Max             =   20
-      TabIndex        =   13
-      Top             =   1860
-      Value           =   10
-      Width           =   240
-   End
-   Begin VB.VScrollBar fxsc 
-      Height          =   1290
-      Index           =   3
-      Left            =   9390
-      Max             =   20
-      TabIndex        =   12
-      Top             =   1860
-      Value           =   10
-      Width           =   240
-   End
-   Begin VB.VScrollBar fxsc 
-      Height          =   1290
-      Index           =   4
-      Left            =   9705
-      Max             =   20
-      TabIndex        =   11
-      Top             =   1860
-      Value           =   10
-      Width           =   240
-   End
-   Begin VB.VScrollBar fxsc 
-      Height          =   1290
-      Index           =   5
-      Left            =   10020
-      Max             =   20
-      TabIndex        =   10
-      Top             =   1860
-      Value           =   10
-      Width           =   240
-   End
-   Begin VB.VScrollBar fxsc 
-      Height          =   1290
-      Index           =   6
-      Left            =   10335
-      Max             =   20
-      TabIndex        =   9
-      Top             =   1860
-      Value           =   10
-      Width           =   240
-   End
-   Begin VB.VScrollBar fxsc 
-      Height          =   1290
-      Index           =   7
-      Left            =   10650
-      Max             =   20
-      TabIndex        =   8
-      Top             =   1860
-      Value           =   10
-      Width           =   240
-   End
-   Begin VB.VScrollBar fxsc 
-      Height          =   1290
-      Index           =   8
-      Left            =   10965
-      Max             =   20
-      TabIndex        =   7
-      Top             =   1860
-      Value           =   10
-      Width           =   240
-   End
-   Begin VB.VScrollBar fxsc 
-      Height          =   1290
-      Index           =   9
-      Left            =   11280
-      Max             =   20
-      TabIndex        =   6
-      Top             =   1860
-      Value           =   10
-      Width           =   240
-   End
-   Begin VB.VScrollBar fxsc 
-      Height          =   1050
-      Index           =   10
-      Left            =   11655
-      Max             =   20
-      TabIndex        =   5
-      Top             =   2100
-      Value           =   18
-      Width           =   240
    End
    Begin RM100.TitelBar TitelBar1 
       Align           =   1  'Align Top
@@ -583,6 +481,7 @@ Begin VB.Form Est02
       BackColorV1Begin=   4210752
       BackColorV1End  =   0
       ForeColor       =   16777215
+      ShowMinimized   =   0   'False
       ShowMaximizedEnabled=   -1  'True
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "System"
@@ -618,10 +517,11 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
       MaskColor       =   4210752
-      PicDown         =   "Est02.frx":343F3
-      PicHot          =   "Est02.frx":8E9A5
-      PicNormal       =   "Est02.frx":E8F57
+      PicDown         =   "Est02.frx":0BB0
+      PicHot          =   "Est02.frx":5B162
+      PicNormal       =   "Est02.frx":B5714
       PicSize         =   2
       PicSizeH        =   24
       PicSizeW        =   24
@@ -646,10 +546,11 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
       MaskColor       =   4210752
-      PicDown         =   "Est02.frx":143509
-      PicHot          =   "Est02.frx":19DABB
-      PicNormal       =   "Est02.frx":1F806D
+      PicDown         =   "Est02.frx":10FCC6
+      PicHot          =   "Est02.frx":16A278
+      PicNormal       =   "Est02.frx":1C482A
       PicSize         =   3
       PicSizeH        =   32
       PicSizeW        =   32
@@ -675,6 +576,7 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt E21 
       Height          =   585
@@ -697,24 +599,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-   End
-   Begin ComctlLib.Slider E2Pos 
-      Height          =   225
-      Left            =   8295
-      TabIndex        =   54
-      Top             =   3780
-      Width           =   6885
-      _ExtentX        =   12144
-      _ExtentY        =   397
-      _Version        =   327682
-      Max             =   100
-      TickFrequency   =   5
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt E21 
       Height          =   585
       Index           =   1
       Left            =   1995
-      TabIndex        =   55
+      TabIndex        =   23
       Top             =   1500
       Width           =   1815
       _ExtentX        =   3201
@@ -731,12 +622,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt E21 
       Height          =   585
       Index           =   2
       Left            =   3825
-      TabIndex        =   56
+      TabIndex        =   24
       Top             =   1500
       Width           =   1815
       _ExtentX        =   3201
@@ -753,12 +645,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt E21 
       Height          =   585
       Index           =   3
       Left            =   5655
-      TabIndex        =   57
+      TabIndex        =   25
       Top             =   1500
       Width           =   1815
       _ExtentX        =   3201
@@ -775,12 +668,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt E21 
       Height          =   585
       Index           =   4
       Left            =   165
-      TabIndex        =   58
+      TabIndex        =   26
       Top             =   2100
       Width           =   1815
       _ExtentX        =   3201
@@ -797,12 +691,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt E21 
       Height          =   585
       Index           =   5
       Left            =   1995
-      TabIndex        =   59
+      TabIndex        =   27
       Top             =   2100
       Width           =   1815
       _ExtentX        =   3201
@@ -819,12 +714,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt E21 
       Height          =   585
       Index           =   6
       Left            =   3825
-      TabIndex        =   60
+      TabIndex        =   28
       Top             =   2100
       Width           =   1815
       _ExtentX        =   3201
@@ -841,12 +737,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt E21 
       Height          =   585
       Index           =   7
       Left            =   5655
-      TabIndex        =   61
+      TabIndex        =   29
       Top             =   2100
       Width           =   1815
       _ExtentX        =   3201
@@ -863,12 +760,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt E21 
       Height          =   585
       Index           =   8
       Left            =   165
-      TabIndex        =   62
+      TabIndex        =   30
       Top             =   2700
       Width           =   1815
       _ExtentX        =   3201
@@ -885,12 +783,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt E21 
       Height          =   585
       Index           =   9
       Left            =   1995
-      TabIndex        =   63
+      TabIndex        =   31
       Top             =   2700
       Width           =   1815
       _ExtentX        =   3201
@@ -907,12 +806,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt E21 
       Height          =   585
       Index           =   10
       Left            =   3825
-      TabIndex        =   64
+      TabIndex        =   32
       Top             =   2700
       Width           =   1815
       _ExtentX        =   3201
@@ -929,12 +829,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt E21 
       Height          =   585
       Index           =   11
       Left            =   5655
-      TabIndex        =   65
+      TabIndex        =   33
       Top             =   2700
       Width           =   1815
       _ExtentX        =   3201
@@ -951,12 +852,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt E21 
       Height          =   585
       Index           =   12
       Left            =   165
-      TabIndex        =   66
+      TabIndex        =   34
       Top             =   3300
       Width           =   1815
       _ExtentX        =   3201
@@ -973,12 +875,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt E21 
       Height          =   585
       Index           =   13
       Left            =   1995
-      TabIndex        =   67
+      TabIndex        =   35
       Top             =   3300
       Width           =   1815
       _ExtentX        =   3201
@@ -995,12 +898,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt E21 
       Height          =   585
       Index           =   14
       Left            =   3825
-      TabIndex        =   68
+      TabIndex        =   36
       Top             =   3300
       Width           =   1815
       _ExtentX        =   3201
@@ -1017,12 +921,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt E21 
       Height          =   585
       Index           =   15
       Left            =   5655
-      TabIndex        =   69
+      TabIndex        =   37
       Top             =   3300
       Width           =   1815
       _ExtentX        =   3201
@@ -1039,12 +944,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt E21 
       Height          =   585
       Index           =   16
       Left            =   165
-      TabIndex        =   70
+      TabIndex        =   38
       Top             =   3900
       Width           =   1815
       _ExtentX        =   3201
@@ -1061,12 +967,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt E21 
       Height          =   585
       Index           =   17
       Left            =   1995
-      TabIndex        =   71
+      TabIndex        =   39
       Top             =   3900
       Width           =   1815
       _ExtentX        =   3201
@@ -1083,12 +990,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt E21 
       Height          =   585
       Index           =   18
       Left            =   3825
-      TabIndex        =   72
+      TabIndex        =   40
       Top             =   3900
       Width           =   1815
       _ExtentX        =   3201
@@ -1105,12 +1013,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt E21 
       Height          =   585
       Index           =   19
       Left            =   5655
-      TabIndex        =   73
+      TabIndex        =   41
       Top             =   3900
       Width           =   1815
       _ExtentX        =   3201
@@ -1127,12 +1036,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt E21 
       Height          =   585
       Index           =   20
       Left            =   165
-      TabIndex        =   74
+      TabIndex        =   42
       Top             =   4500
       Width           =   1815
       _ExtentX        =   3201
@@ -1149,12 +1059,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt E21 
       Height          =   585
       Index           =   21
       Left            =   1995
-      TabIndex        =   75
+      TabIndex        =   43
       Top             =   4500
       Width           =   1815
       _ExtentX        =   3201
@@ -1171,12 +1082,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt P21 
       Height          =   285
       Index           =   1
       Left            =   4785
-      TabIndex        =   76
+      TabIndex        =   44
       Top             =   1080
       Width           =   315
       _ExtentX        =   556
@@ -1193,12 +1105,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt P21 
       Height          =   285
       Index           =   2
       Left            =   5115
-      TabIndex        =   77
+      TabIndex        =   45
       Top             =   1080
       Width           =   315
       _ExtentX        =   556
@@ -1215,12 +1128,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt P21 
       Height          =   285
       Index           =   3
       Left            =   5445
-      TabIndex        =   78
+      TabIndex        =   46
       Top             =   1080
       Width           =   315
       _ExtentX        =   556
@@ -1237,12 +1151,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt P21 
       Height          =   285
       Index           =   4
       Left            =   5775
-      TabIndex        =   79
+      TabIndex        =   47
       Top             =   1080
       Width           =   315
       _ExtentX        =   556
@@ -1259,12 +1174,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt P21 
       Height          =   285
       Index           =   5
       Left            =   6105
-      TabIndex        =   80
+      TabIndex        =   48
       Top             =   1080
       Width           =   315
       _ExtentX        =   556
@@ -1281,12 +1197,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt P21 
       Height          =   285
       Index           =   6
       Left            =   6435
-      TabIndex        =   81
+      TabIndex        =   49
       Top             =   1080
       Width           =   315
       _ExtentX        =   556
@@ -1303,12 +1220,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt P21 
       Height          =   285
       Index           =   7
       Left            =   6765
-      TabIndex        =   82
+      TabIndex        =   50
       Top             =   1080
       Width           =   315
       _ExtentX        =   556
@@ -1325,12 +1243,13 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt P21 
       Height          =   285
       Index           =   8
       Left            =   7095
-      TabIndex        =   83
+      TabIndex        =   51
       Top             =   1080
       Width           =   315
       _ExtentX        =   556
@@ -1347,11 +1266,12 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
    End
    Begin RM100.DC_Control_Bt E2Pause 
       Height          =   465
       Left            =   4665
-      TabIndex        =   84
+      TabIndex        =   52
       Top             =   4620
       Width           =   675
       _ExtentX        =   1191
@@ -1368,18 +1288,17 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   4210752
       MaskColor       =   4210752
-      PicDown         =   "Est02.frx":25261F
-      PicHot          =   "Est02.frx":2ACBD1
-      PicNormal       =   "Est02.frx":307183
+      PicDown         =   "Est02.frx":21EDDC
+      PicHot          =   "Est02.frx":27938E
+      PicNormal       =   "Est02.frx":2D3940
       PicSizeH        =   32
       PicSizeW        =   32
    End
    Begin RM100.DC_Control_Bt E2Stop 
       Height          =   465
       Left            =   5385
-      TabIndex        =   85
+      TabIndex        =   53
       Top             =   4620
       Width           =   675
       _ExtentX        =   1191
@@ -1396,17 +1315,18 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
       MaskColor       =   4210752
-      PicDown         =   "Est02.frx":361735
-      PicHot          =   "Est02.frx":3BBCE7
-      PicNormal       =   "Est02.frx":416299
+      PicDown         =   "Est02.frx":32DEF2
+      PicHot          =   "Est02.frx":3884A4
+      PicNormal       =   "Est02.frx":3E2A56
       PicSizeH        =   32
       PicSizeW        =   32
    End
    Begin RM100.DC_Control_Bt E2Open 
       Height          =   465
       Left            =   6675
-      TabIndex        =   86
+      TabIndex        =   54
       Top             =   4620
       Width           =   375
       _ExtentX        =   661
@@ -1423,10 +1343,11 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
       MaskColor       =   4210752
-      PicDown         =   "Est02.frx":47084B
-      PicHot          =   "Est02.frx":4CADFD
-      PicNormal       =   "Est02.frx":5253AF
+      PicDown         =   "Est02.frx":43D008
+      PicHot          =   "Est02.frx":4975BA
+      PicNormal       =   "Est02.frx":4F1B6C
       PicSize         =   2
       PicSizeH        =   24
       PicSizeW        =   24
@@ -1434,7 +1355,7 @@ Begin VB.Form Est02
    Begin RM100.DC_Control_Bt E2Save 
       Height          =   465
       Left            =   7095
-      TabIndex        =   87
+      TabIndex        =   55
       Top             =   4620
       Width           =   375
       _ExtentX        =   661
@@ -1451,10 +1372,11 @@ Begin VB.Form Est02
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   -2147483633
       MaskColor       =   4210752
-      PicDown         =   "Est02.frx":57F961
-      PicHot          =   "Est02.frx":5D9F13
-      PicNormal       =   "Est02.frx":6344C5
+      PicDown         =   "Est02.frx":54C11E
+      PicHot          =   "Est02.frx":5A66D0
+      PicNormal       =   "Est02.frx":600C82
       PicSize         =   2
       PicSizeH        =   24
       PicSizeW        =   24
@@ -1468,16 +1390,659 @@ Begin VB.Form Est02
       Left            =   2385
       ScaleHeight     =   825
       ScaleWidth      =   1395
-      TabIndex        =   53
+      TabIndex        =   22
       Top             =   510
       Width           =   1395
+   End
+   Begin ComctlLib.Slider E2Pos 
+      Height          =   225
+      Left            =   8190
+      TabIndex        =   67
+      Top             =   3780
+      Width           =   6975
+      _ExtentX        =   12303
+      _ExtentY        =   397
+      _Version        =   327682
+      BorderStyle     =   1
+      Max             =   100
+      TickFrequency   =   5
+   End
+   Begin RM100.DC_Control_Bt NewCUE 
+      Height          =   465
+      Left            =   10320
+      TabIndex        =   90
+      ToolTipText     =   "Nuevo eq y cue"
+      Top             =   4620
+      Width           =   375
+      _ExtentX        =   661
+      _ExtentY        =   820
+      BackColor       =   4210752
+      ButtonStyle     =   4
+      Caption         =   ""
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483633
+      MaskColor       =   4210752
+      PicDown         =   "Est02.frx":65B234
+      PicHot          =   "Est02.frx":6B57E6
+      PicNormal       =   "Est02.frx":70FD98
+      PicSize         =   2
+      PicSizeH        =   24
+      PicSizeW        =   24
+   End
+   Begin RM100.DC_Control_Bt OpenCUE 
+      Height          =   465
+      Left            =   10740
+      TabIndex        =   91
+      ToolTipText     =   "Abrir eq y cue"
+      Top             =   4620
+      Width           =   375
+      _ExtentX        =   661
+      _ExtentY        =   820
+      BackColor       =   4210752
+      ButtonStyle     =   4
+      Caption         =   ""
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483633
+      MaskColor       =   4210752
+      PicDown         =   "Est02.frx":76A34A
+      PicHot          =   "Est02.frx":7C48FC
+      PicNormal       =   "Est02.frx":81EEAE
+      PicSize         =   2
+      PicSizeH        =   24
+      PicSizeW        =   24
+   End
+   Begin RM100.DC_Control_Bt SaveCUE 
+      Height          =   465
+      Left            =   11160
+      TabIndex        =   92
+      ToolTipText     =   "Guardar eq y cue"
+      Top             =   4620
+      Width           =   375
+      _ExtentX        =   661
+      _ExtentY        =   820
+      BackColor       =   4210752
+      ButtonStyle     =   4
+      Caption         =   ""
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483633
+      MaskColor       =   4210752
+      PicDown         =   "Est02.frx":879460
+      PicHot          =   "Est02.frx":8D3A12
+      PicNormal       =   "Est02.frx":92DFC4
+      PicSize         =   2
+      PicSizeH        =   24
+      PicSizeW        =   24
+   End
+   Begin RM100.DC_Control_Bt CmdActualiz 
+      Height          =   465
+      Left            =   8160
+      TabIndex        =   93
+      Top             =   4620
+      Width           =   975
+      _ExtentX        =   1720
+      _ExtentY        =   820
+      BackColor       =   4210752
+      ButtonStyle     =   4
+      Caption         =   "A"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483633
+   End
+   Begin RM100.DC_Control_Bt CmdRestore 
+      Height          =   465
+      Left            =   9180
+      TabIndex        =   94
+      Top             =   4620
+      Width           =   975
+      _ExtentX        =   1720
+      _ExtentY        =   820
+      BackColor       =   4210752
+      ButtonStyle     =   4
+      Caption         =   "R"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483633
+   End
+   Begin RM100.DC_Control_Bt E2Import 
+      Height          =   465
+      Left            =   11700
+      TabIndex        =   95
+      Top             =   4620
+      Width           =   1035
+      _ExtentX        =   1826
+      _ExtentY        =   820
+      BackColor       =   4210752
+      ButtonStyle     =   4
+      Caption         =   "I"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483633
+   End
+   Begin RM100.DC_Control_Bt E2Cue 
+      Height          =   465
+      Left            =   13620
+      TabIndex        =   96
+      Top             =   4620
+      Width           =   1515
+      _ExtentX        =   2672
+      _ExtentY        =   820
+      BackColor       =   4210752
+      ButtonStyle     =   4
+      Caption         =   "AC"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483633
+   End
+   Begin RM100.DC_Control_Bt CmdFIN 
+      Height          =   495
+      Left            =   12150
+      TabIndex        =   97
+      Top             =   2100
+      Width           =   585
+      _ExtentX        =   1032
+      _ExtentY        =   873
+      BackColor       =   4210752
+      ButtonStyle     =   4
+      Caption         =   "FI"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483633
+   End
+   Begin RM100.DC_Control_Bt CmdFOut 
+      Height          =   495
+      Left            =   12810
+      TabIndex        =   98
+      Top             =   2100
+      Width           =   585
+      _ExtentX        =   1032
+      _ExtentY        =   873
+      BackColor       =   4210752
+      ButtonStyle     =   4
+      Caption         =   "FO"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483633
+   End
+   Begin VB.Label Lblfx 
+      Alignment       =   2  'Center
+      BackColor       =   &H00000000&
+      Caption         =   "FX"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00808080&
+      Height          =   225
+      Left            =   11640
+      TabIndex        =   127
+      Top             =   1890
+      Width           =   285
+   End
+   Begin VB.Label fft10 
+      BackStyle       =   0  'Transparent
+      Caption         =   "10"
+      ForeColor       =   &H00808000&
+      Height          =   195
+      Left            =   11655
+      TabIndex        =   126
+      Top             =   1485
+      Width           =   195
+   End
+   Begin VB.Label fft8 
+      BackStyle       =   0  'Transparent
+      Caption         =   "8"
+      ForeColor       =   &H00808000&
+      Height          =   195
+      Left            =   11430
+      TabIndex        =   125
+      Top             =   1485
+      Width           =   150
+   End
+   Begin VB.Label fft6 
+      BackStyle       =   0  'Transparent
+      Caption         =   "6"
+      ForeColor       =   &H00FFFF00&
+      Height          =   195
+      Left            =   11205
+      TabIndex        =   124
+      Top             =   1485
+      Width           =   150
+   End
+   Begin VB.Label fft4 
+      BackStyle       =   0  'Transparent
+      Caption         =   "4"
+      ForeColor       =   &H00808000&
+      Height          =   195
+      Left            =   10980
+      TabIndex        =   123
+      Top             =   1485
+      Width           =   150
+   End
+   Begin VB.Label fft2 
+      BackStyle       =   0  'Transparent
+      Caption         =   "2"
+      ForeColor       =   &H00808000&
+      Height          =   195
+      Left            =   10800
+      TabIndex        =   122
+      Top             =   1485
+      Width           =   105
+   End
+   Begin VB.Label LCue 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Man"
+      ForeColor       =   &H00FFFF00&
+      Height          =   195
+      Left            =   11520
+      TabIndex        =   121
+      Top             =   1185
+      Width           =   375
+   End
+   Begin VB.Label Label14 
+      Alignment       =   1  'Right Justify
+      BackStyle       =   0  'Transparent
+      Caption         =   "CUE:"
+      ForeColor       =   &H00808080&
+      Height          =   195
+      Left            =   10800
+      TabIndex        =   120
+      Top             =   1185
+      Width           =   645
+   End
+   Begin VB.Label LFin 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Auto"
+      ForeColor       =   &H00FFFF00&
+      Height          =   195
+      Left            =   11520
+      TabIndex        =   119
+      Top             =   930
+      Width           =   375
+   End
+   Begin VB.Label Label13 
+      Alignment       =   1  'Right Justify
+      BackStyle       =   0  'Transparent
+      Caption         =   "F-In/Out:"
+      ForeColor       =   &H00808080&
+      Height          =   195
+      Left            =   10755
+      TabIndex        =   118
+      Top             =   930
+      Width           =   690
+   End
+   Begin VB.Label LAplay 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Autoplay"
+      ForeColor       =   &H00FFFF00&
+      Height          =   195
+      Left            =   10620
+      TabIndex        =   117
+      ToolTipText     =   "Autoreproducción al hacer click"
+      Top             =   570
+      Width           =   645
+   End
+   Begin VB.Label Lspcb 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Amb"
+      ForeColor       =   &H00808000&
+      Height          =   195
+      Left            =   10020
+      TabIndex        =   116
+      ToolTipText     =   "Espectro combinado"
+      Top             =   570
+      Width           =   375
+   End
+   Begin VB.Label Lspcd 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Der"
+      ForeColor       =   &H00808000&
+      Height          =   195
+      Left            =   9660
+      TabIndex        =   115
+      ToolTipText     =   "Espectro derecho"
+      Top             =   570
+      Width           =   285
+   End
+   Begin VB.Label Lspcz 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Izq"
+      ForeColor       =   &H00808000&
+      Height          =   195
+      Left            =   9345
+      TabIndex        =   114
+      ToolTipText     =   "Espectro izquierdo"
+      Top             =   570
+      Width           =   285
+   End
+   Begin VB.Label Lspc 
+      BackStyle       =   0  'Transparent
+      Caption         =   "SPC"
+      ForeColor       =   &H00808000&
+      Height          =   195
+      Left            =   8730
+      TabIndex        =   113
+      ToolTipText     =   "Modo Espectro"
+      Top             =   570
+      Width           =   375
+   End
+   Begin VB.Label Lfft 
+      BackStyle       =   0  'Transparent
+      Caption         =   "FFT"
+      ForeColor       =   &H00FFFF00&
+      Height          =   195
+      Left            =   8310
+      TabIndex        =   112
+      ToolTipText     =   "Modo FFT"
+      Top             =   570
+      Width           =   375
+   End
+   Begin VB.Label LblCurrent 
+      Alignment       =   2  'Center
+      BackColor       =   &H00000000&
+      Caption         =   "00:00:00"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   11.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00FFFFFF&
+      Height          =   255
+      Left            =   9240
+      TabIndex        =   111
+      Top             =   4050
+      Width           =   1170
+   End
+   Begin VB.Label LblEnd 
+      Alignment       =   2  'Center
+      BackColor       =   &H00000000&
+      Caption         =   "00:00:00"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   11.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00FFFFFF&
+      Height          =   255
+      Left            =   13950
+      TabIndex        =   110
+      Top             =   4050
+      Width           =   1170
+   End
+   Begin RM100.ucKnob E2Vol 
+      Height          =   1305
+      Left            =   12120
+      TabIndex        =   109
+      Top             =   750
+      Width           =   1335
+      _ExtentX        =   2355
+      _ExtentY        =   2302
+      Value           =   50
+      ForeColor       =   4210752
+      TickForeColor   =   16776960
+   End
+   Begin RM100.ucKnob E2Slide 
+      Height          =   1305
+      Left            =   13710
+      TabIndex        =   108
+      Top             =   750
+      Width           =   1335
+      _ExtentX        =   2355
+      _ExtentY        =   2302
+      Min             =   -100
+      ForeColor       =   4210752
+      TicksLongFrequency=   20
+      TicksSmallHiden =   -1  'True
+      TicksStyleCircle=   -1  'True
+      TickForeColor   =   16776960
+   End
+   Begin VB.Label Lvlrvb 
+      Alignment       =   2  'Center
+      BackColor       =   &H00000000&
+      Caption         =   "Rvb"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00808080&
+      Height          =   225
+      Left            =   11640
+      TabIndex        =   107
+      Top             =   3390
+      Width           =   315
+   End
+   Begin VB.Label Lblvolumen 
+      Alignment       =   2  'Center
+      BackColor       =   &H00000000&
+      Caption         =   "VOLUMEN"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00808080&
+      Height          =   195
+      Left            =   12120
+      TabIndex        =   106
+      Top             =   480
+      Width           =   1305
+   End
+   Begin VB.Label Lblpaneo 
+      Alignment       =   2  'Center
+      BackColor       =   &H00000000&
+      Caption         =   "PANEO"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00808080&
+      Height          =   195
+      Left            =   13740
+      TabIndex        =   105
+      Top             =   480
+      Width           =   1305
+   End
+   Begin VB.Label Lblposproc 
+      BackStyle       =   0  'Transparent
+      Caption         =   "En proceso:"
+      ForeColor       =   &H00808080&
+      Height          =   255
+      Left            =   8310
+      TabIndex        =   104
+      Top             =   4110
+      Width           =   915
+   End
+   Begin VB.Label Lblprocfin 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Finalización:"
+      ForeColor       =   &H00808080&
+      Height          =   255
+      Left            =   12990
+      TabIndex        =   103
+      Top             =   4110
+      Width           =   915
+   End
+   Begin VB.Label LblEcualizer 
+      Alignment       =   2  'Center
+      BackColor       =   &H00000000&
+      Caption         =   "ECUALIZADOR"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00808080&
+      Height          =   225
+      Left            =   8190
+      TabIndex        =   102
+      Top             =   1890
+      Width           =   3345
+   End
+   Begin VB.Label Lbleq 
+      Alignment       =   2  'Center
+      BackColor       =   &H00000000&
+      Caption         =   "125 Hz"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00808080&
+      Height          =   225
+      Index           =   0
+      Left            =   8160
+      TabIndex        =   101
+      Top             =   3390
+      Width           =   615
+   End
+   Begin VB.Label Lbleq 
+      Alignment       =   2  'Center
+      BackColor       =   &H00000000&
+      Caption         =   "1 K"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00808080&
+      Height          =   225
+      Index           =   1
+      Left            =   9720
+      TabIndex        =   100
+      Top             =   3390
+      Width           =   285
+   End
+   Begin VB.Label Lbleq 
+      Alignment       =   2  'Center
+      BackColor       =   &H00000000&
+      Caption         =   "16 K"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00808080&
+      Height          =   225
+      Index           =   2
+      Left            =   11130
+      TabIndex        =   99
+      Top             =   3390
+      Width           =   405
    End
    Begin VB.Label Fn 
       BackColor       =   &H00808000&
       ForeColor       =   &H00000000&
       Height          =   255
       Left            =   1185
-      TabIndex        =   119
+      TabIndex        =   66
       Top             =   5625
       Visible         =   0   'False
       Width           =   3075
@@ -1499,7 +2064,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00FFFFFF&
       Height          =   285
       Left            =   3975
-      TabIndex        =   118
+      TabIndex        =   65
       ToolTipText     =   "Numero de Página"
       Top             =   1065
       Width           =   495
@@ -1511,7 +2076,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00808000&
       Height          =   660
       Left            =   210
-      TabIndex        =   117
+      TabIndex        =   64
       Top             =   600
       Width           =   2130
    End
@@ -1519,7 +2084,7 @@ Begin VB.Form Est02
       BackColor       =   &H0080FF80&
       Height          =   255
       Left            =   4305
-      TabIndex        =   116
+      TabIndex        =   63
       Top             =   5625
       Visible         =   0   'False
       Width           =   900
@@ -1528,19 +2093,10 @@ Begin VB.Form Est02
       BackColor       =   &H00C0FFC0&
       Height          =   240
       Left            =   4305
-      TabIndex        =   115
+      TabIndex        =   62
       Top             =   5985
       Visible         =   0   'False
       Width           =   825
-   End
-   Begin VB.Label Label12 
-      BackStyle       =   0  'Transparent
-      Caption         =   "Rvb"
-      Height          =   195
-      Left            =   11625
-      TabIndex        =   114
-      Top             =   3165
-      Width           =   330
    End
    Begin VB.Image E2Pic 
       Height          =   4560
@@ -1552,7 +2108,7 @@ Begin VB.Form Est02
       Caption         =   "0"
       Height          =   255
       Left            =   9525
-      TabIndex        =   113
+      TabIndex        =   61
       Top             =   5580
       Visible         =   0   'False
       Width           =   1005
@@ -1561,7 +2117,7 @@ Begin VB.Form Est02
       Caption         =   "0"
       Height          =   255
       Left            =   8535
-      TabIndex        =   112
+      TabIndex        =   60
       Top             =   5805
       Visible         =   0   'False
       Width           =   1035
@@ -1570,7 +2126,7 @@ Begin VB.Form Est02
       Caption         =   "0"
       Height          =   255
       Left            =   8535
-      TabIndex        =   111
+      TabIndex        =   59
       Top             =   5580
       Visible         =   0   'False
       Width           =   960
@@ -1579,7 +2135,7 @@ Begin VB.Form Est02
       Caption         =   "100"
       Height          =   255
       Left            =   9525
-      TabIndex        =   110
+      TabIndex        =   58
       Top             =   5820
       Visible         =   0   'False
       Width           =   885
@@ -1588,7 +2144,7 @@ Begin VB.Form Est02
       Caption         =   "100"
       Height          =   255
       Left            =   9525
-      TabIndex        =   109
+      TabIndex        =   57
       Top             =   6030
       Visible         =   0   'False
       Width           =   375
@@ -1597,265 +2153,10 @@ Begin VB.Form Est02
       Caption         =   "0"
       Height          =   255
       Left            =   9975
-      TabIndex        =   108
+      TabIndex        =   56
       Top             =   6030
       Visible         =   0   'False
       Width           =   375
-   End
-   Begin VB.Shape Shape1 
-      BackColor       =   &H00000000&
-      BackStyle       =   1  'Opaque
-      BorderStyle     =   0  'Transparent
-      Height          =   555
-      Left            =   8055
-      Top             =   4530
-      Width           =   7185
-   End
-   Begin VB.Label Label4 
-      Alignment       =   2  'Center
-      BackColor       =   &H00000000&
-      Caption         =   "FX"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00FFFFFF&
-      Height          =   225
-      Left            =   11655
-      TabIndex        =   107
-      ToolTipText     =   "Numero de Página"
-      Top             =   1830
-      Width           =   255
-   End
-   Begin VB.Label fft10 
-      BackStyle       =   0  'Transparent
-      Caption         =   "10"
-      ForeColor       =   &H00808000&
-      Height          =   195
-      Left            =   11670
-      TabIndex        =   106
-      Top             =   1485
-      Width           =   195
-   End
-   Begin VB.Label fft8 
-      BackStyle       =   0  'Transparent
-      Caption         =   "8"
-      ForeColor       =   &H00808000&
-      Height          =   195
-      Left            =   11445
-      TabIndex        =   105
-      Top             =   1485
-      Width           =   150
-   End
-   Begin VB.Label fft6 
-      BackStyle       =   0  'Transparent
-      Caption         =   "6"
-      ForeColor       =   &H00FFFF00&
-      Height          =   195
-      Left            =   11220
-      TabIndex        =   104
-      Top             =   1485
-      Width           =   150
-   End
-   Begin VB.Label fft4 
-      BackStyle       =   0  'Transparent
-      Caption         =   "4"
-      ForeColor       =   &H00808000&
-      Height          =   195
-      Left            =   10995
-      TabIndex        =   103
-      Top             =   1485
-      Width           =   150
-   End
-   Begin VB.Label fft2 
-      BackStyle       =   0  'Transparent
-      Caption         =   "2"
-      ForeColor       =   &H00808000&
-      Height          =   195
-      Left            =   10815
-      TabIndex        =   102
-      Top             =   1485
-      Width           =   105
-   End
-   Begin VB.Label LCue 
-      BackStyle       =   0  'Transparent
-      Caption         =   "Man"
-      ForeColor       =   &H00FFFF00&
-      Height          =   195
-      Left            =   11535
-      TabIndex        =   101
-      Top             =   1185
-      Width           =   375
-   End
-   Begin VB.Label Label14 
-      Alignment       =   1  'Right Justify
-      BackStyle       =   0  'Transparent
-      Caption         =   "CUE:"
-      ForeColor       =   &H00808080&
-      Height          =   195
-      Left            =   10815
-      TabIndex        =   100
-      Top             =   1185
-      Width           =   645
-   End
-   Begin VB.Label LFin 
-      BackStyle       =   0  'Transparent
-      Caption         =   "Auto"
-      ForeColor       =   &H00FFFF00&
-      Height          =   195
-      Left            =   11535
-      TabIndex        =   99
-      Top             =   930
-      Width           =   375
-   End
-   Begin VB.Label Label13 
-      Alignment       =   1  'Right Justify
-      BackStyle       =   0  'Transparent
-      Caption         =   "F-In/Out:"
-      ForeColor       =   &H00808080&
-      Height          =   195
-      Left            =   10770
-      TabIndex        =   98
-      Top             =   930
-      Width           =   690
-   End
-   Begin VB.Label LAplay 
-      BackStyle       =   0  'Transparent
-      Caption         =   "Autoplay"
-      ForeColor       =   &H00FFFF00&
-      Height          =   195
-      Left            =   10635
-      TabIndex        =   97
-      ToolTipText     =   "Autoreproducción al hacer click"
-      Top             =   570
-      Width           =   645
-   End
-   Begin VB.Label Lspcb 
-      BackStyle       =   0  'Transparent
-      Caption         =   "Amb"
-      ForeColor       =   &H00808000&
-      Height          =   195
-      Left            =   10035
-      TabIndex        =   96
-      ToolTipText     =   "Espectro combinado"
-      Top             =   570
-      Width           =   375
-   End
-   Begin VB.Label Lspcd 
-      BackStyle       =   0  'Transparent
-      Caption         =   "Der"
-      ForeColor       =   &H00808000&
-      Height          =   195
-      Left            =   9675
-      TabIndex        =   95
-      ToolTipText     =   "Espectro derecho"
-      Top             =   570
-      Width           =   285
-   End
-   Begin VB.Label Lspcz 
-      BackStyle       =   0  'Transparent
-      Caption         =   "Izq"
-      ForeColor       =   &H00808000&
-      Height          =   195
-      Left            =   9360
-      TabIndex        =   94
-      ToolTipText     =   "Espectro izquierdo"
-      Top             =   570
-      Width           =   285
-   End
-   Begin VB.Label Lspc 
-      BackStyle       =   0  'Transparent
-      Caption         =   "SPC"
-      ForeColor       =   &H00808000&
-      Height          =   195
-      Left            =   8745
-      TabIndex        =   93
-      ToolTipText     =   "Modo Espectro"
-      Top             =   570
-      Width           =   375
-   End
-   Begin VB.Label Lfft 
-      BackStyle       =   0  'Transparent
-      Caption         =   "FFT"
-      ForeColor       =   &H00FFFF00&
-      Height          =   195
-      Left            =   8325
-      TabIndex        =   92
-      ToolTipText     =   "Modo FFT"
-      Top             =   570
-      Width           =   375
-   End
-   Begin VB.Label LblCurrent 
-      Alignment       =   2  'Center
-      BackColor       =   &H00000000&
-      Caption         =   "00:00:00"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   11.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00FFFFFF&
-      Height          =   255
-      Left            =   9255
-      TabIndex        =   91
-      Top             =   4050
-      Width           =   1170
-   End
-   Begin VB.Label LblEnd 
-      Alignment       =   2  'Center
-      BackColor       =   &H00000000&
-      Caption         =   "00:00:00"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   11.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00FFFFFF&
-      Height          =   255
-      Left            =   13965
-      TabIndex        =   90
-      Top             =   4050
-      Width           =   1170
-   End
-   Begin RM100.ucKnob E2Vol 
-      Height          =   1305
-      Left            =   12135
-      TabIndex        =   89
-      Top             =   480
-      Width           =   1335
-      _ExtentX        =   2355
-      _ExtentY        =   2302
-      Value           =   50
-      ForeColor       =   4210752
-      TickForeColor   =   16776960
-   End
-   Begin RM100.ucKnob E2Slide 
-      Height          =   1305
-      Left            =   13725
-      TabIndex        =   88
-      Top             =   480
-      Width           =   1335
-      _ExtentX        =   2355
-      _ExtentY        =   2302
-      Value           =   50
-      ForeColor       =   4210752
-      TicksLongFrequency=   50
-      TicksSmallHiden =   -1  'True
-      TicksStyleCircle=   -1  'True
-      TickForeColor   =   16776960
    End
 End
 Attribute VB_Name = "Est02"
@@ -1964,8 +2265,8 @@ Dim i As Integer
 Static ZMax%, RMax%
 
 On Error Resume Next
-WRight = WRight / 12
-WLeft = WLeft / 12
+WRight = WRight / 10
+WLeft = WLeft / 10
 
 'right level meter
 'If WRight > 180 Then
@@ -2158,21 +2459,6 @@ fxsc(10).Value = 18
 
 End Sub
 
-Private Sub Command1_Click()
-
-If Command1.Caption = "<" Then
-    Est02.Width = 15360
-    Est02.Left = 0
-    Command1.Caption = ">"
-    Command1.ToolTipText = "Ocultar AVANZADO"
-Else
-    ShowWindow "Est02"
-    Command1.Caption = "<"
-    Command1.ToolTipText = "Mostrar AVANZADO"
-End If
-
-End Sub
-
 Private Sub Command10_Click()
 
 Text2.text = LblCurrent.Caption
@@ -2200,13 +2486,13 @@ Private Sub E21_Click(index As Integer)
 'desactivamos los CUE que esten activados
 If Est02.E2Cue.Caption = "Desactivar CUE" Then
     Est02.E2Cue.Caption = "Activar CUE"
-    Est02.E2Cue.BackColor = &H8000000F    'gris
+    Est02.E2Cue.BackColor = &H404040       'gris
     Est02.TmrCUE.Interval = 0
     Est02.TmrCUE.Enabled = False
 End If
 If E2Cue.Caption = "Desactivar CUE" Then
     E2Cue.Caption = "Activar CUE"
-    E2Cue.BackColor = &H8000000F    'gris
+    E2Cue.BackColor = &H404040       'gris
     TmrCUE.Interval = 0
     TmrCUE.Enabled = False
 End If
@@ -2355,12 +2641,12 @@ End If
 
 If E2Cue.Caption = "Activar CUE" Then
     E2Cue.Caption = "Desactivar CUE"
-    E2Cue.BackColor = &HFFFF&   'amarillo
+    E2Cue.BackColor = &HC0C000      'celeste
     TmrCUE.Enabled = True
     TmrCUE.Interval = 100
 Else
     E2Cue.Caption = "Activar CUE"
-    E2Cue.BackColor = &H8000000F    'gris
+    E2Cue.BackColor = &H404040       'gris
     TmrCUE.Interval = 0
     TmrCUE.Enabled = False
 End If
@@ -2462,13 +2748,13 @@ Private Sub E2Play_Click()
 'desactivamos los CUE que esten activados
 If Est02.E2Cue.Caption = "Desactivar CUE" Then
     Est02.E2Cue.Caption = "Activar CUE"
-    Est02.E2Cue.BackColor = &H8000000F    'gris
+    Est02.E2Cue.BackColor = &H404040       'gris
     Est02.TmrCUE.Interval = 0
     Est02.TmrCUE.Enabled = False
 End If
 If E2Cue.Caption = "Desactivar CUE" Then
     E2Cue.Caption = "Activar CUE"
-    E2Cue.BackColor = &H8000000F    'gris
+    E2Cue.BackColor = &H404040       'gris
     TmrCUE.Interval = 0
     TmrCUE.Enabled = False
 End If
@@ -2683,7 +2969,7 @@ Picfft2.Cls
 'chequeamos el cue auto in est02
 If E2Cue.Caption = "Desactivar CUE" Then
     E2Cue.Caption = "Activar CUE"
-    E2Cue.BackColor = &H8000000F    'gris
+    E2Cue.BackColor = &H404040       'gris
     TmrCUE.Interval = 0
     TmrCUE.Enabled = False
 End If
@@ -2798,14 +3084,17 @@ E2Import.Caption = LoadResString(2006)
 CmdRestore.Caption = LoadResString(2005)
 CmdActualiz.Caption = LoadResString(2004)
 
+'*** load some pictures *****
+Est02.Picture = LoadPicture(App.path & "\Imagenes\EST_FND.jpg")
+
 '*** load commands pictures
     E2Pic.Picture = LoadResPicture("EST_02", 0)
     'load led1
-    Picture1.Picture = LoadResPicture("BACK_LED", 0)
-    Ll.Picture = LoadResPicture("FRONT_LED", 0)
+    Llback.Picture = LoadPicture(App.path & "\Imagenes\FND_LVL_METER.jpg")
+    Ll.Picture = LoadPicture(App.path & "\Imagenes\LVL_METER.jpg")
     'load led2
-    Picture2.Picture = LoadResPicture("BACK_LED", 0)
-    Lr.Picture = LoadResPicture("FRONT_LED", 0)
+    Lrback.Picture = LoadPicture(App.path & "\Imagenes\FND_LVL_METER.jpg")
+    Lr.Picture = LoadPicture(App.path & "\Imagenes\LVL_METER.jpg")
     'Load control pictures
     'E2Play.Picture = LoadResPicture("R_PLAY", 0)
     'E2Pause.Picture = LoadResPicture("R_PAUSE", 0)
@@ -2815,9 +3104,9 @@ CmdActualiz.Caption = LoadResString(2004)
     'E2Open.Picture = LoadResPicture("ICO_OPEN", 0)
     'E2Save.Picture = LoadResPicture("ICO_SAVE", 0)
     '--- and more...
-    NewCUE.Picture = LoadResPicture("ICO_NEW", 0)
-    OpenCUE.Picture = LoadResPicture("ICO_OPEN", 0)
-    SaveCUE.Picture = LoadResPicture("ICO_SAVE", 0)
+    'NewCUE.Picture = LoadResPicture("ICO_NEW", 0)
+    'OpenCUE.Picture = LoadResPicture("ICO_OPEN", 0)
+    'SaveCUE.Picture = LoadResPicture("ICO_SAVE", 0)
     '--- and much mooooore....
     'Image1.Picture = LoadResPicture("EST_PANEL", 0)
     'Picture3.Picture = LoadResPicture("EST_PANEL_FFT", 0)
@@ -3077,7 +3366,7 @@ If E2Vol.Value = 100 Or E2Vol.Value = CLng(LblInvol.Caption) Then
     TMin.Interval = 0
     TMin.Enabled = False
 Else
-    E2Vol.Value = E2Vol.Value + 1
+    E2Vol.Value = E2Vol.Value + 2
 End If
 
 End Sub
@@ -3088,7 +3377,7 @@ If E2Vol.Value = 0 Or E2Vol.Value = CLng(LblOutvol.Caption) Then
     Tmout.Interval = 0
     Tmout.Enabled = False
 Else
-    E2Vol.Value = E2Vol.Value - 1
+    E2Vol.Value = E2Vol.Value - 2
 End If
 
 End Sub
@@ -3125,7 +3414,7 @@ If E2Vol.Value = 0 Then
     TmoutAuto.Interval = 0
     TmoutAuto.Enabled = False
 Else
-    E2Vol.Value = E2Vol.Value - 1
+    E2Vol.Value = E2Vol.Value - 2
 End If
 
 End Sub

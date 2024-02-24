@@ -76,7 +76,12 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-'Copyright (c) 2002 - 2022 ONLY development inc.
+'***************************************************
+'Copyright (c) 2002 - 2024 ONLY development inc.
+'Christian A. Del Monte
+'creadig@gmail.com / creadig@hotmail.com
+'Provincia de Salta. Rep. Argentina
+'***************************************************
 
 Option Explicit
 
@@ -94,19 +99,19 @@ End Sub
 
 Private Sub Form_Load()
 
-'---some strings to load
+'---version del sistema
 LblVersion.Caption = "Versión: " & App.Major & "." & App.Minor & "." & App.Revision
 
-'abrimos el archivo de configuracion
+'guardamos la version actual para chequeos necesarios
 On Error Resume Next
 Open App.path & AppUpdateDir & AppUpdateVerFile For Output As #16
 Write #16, App.Major & "." & App.Minor & "." & App.Revision, App.path
 Close #16
 
 '---some bitmaps to load
-PicSplash.Picture = LoadResPicture("RM_INTRO", 0)
-Status.Picture = LoadResPicture("PROGRESS_01", 0)
-Progress.Picture = LoadResPicture("PROGRESS_02", 0)
+PicSplash.Picture = LoadPicture(App.path & "\Imagenes\RM_LOGO_INIT.bmp")
+Status.Picture = LoadPicture(App.path & "\Imagenes\ProgressINITB.bmp")
+Progress.Picture = LoadPicture(App.path & "\Imagenes\ProgressINITA.bmp")
 
 'KeepOnTop RMSplash
 Progress.Height = 6000

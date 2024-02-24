@@ -1,15 +1,15 @@
 VERSION 5.00
 Begin VB.Form DownMenu 
-   BorderStyle     =   4  'Fixed ToolWindow
-   ClientHeight    =   1050
-   ClientLeft      =   45
-   ClientTop       =   315
+   BorderStyle     =   0  'None
+   ClientHeight    =   1305
+   ClientLeft      =   0
+   ClientTop       =   -75
    ClientWidth     =   15240
    ForeColor       =   &H8000000F&
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   1050
+   ScaleHeight     =   1305
    ScaleWidth      =   15240
    ShowInTaskbar   =   0   'False
    Begin VB.CommandButton CmdSearch 
@@ -19,7 +19,7 @@ Begin VB.Form DownMenu
       Style           =   1  'Graphical
       TabIndex        =   6
       ToolTipText     =   "Explorador de archivos"
-      Top             =   120
+      Top             =   420
       UseMaskColor    =   -1  'True
       Width           =   780
    End
@@ -31,7 +31,7 @@ Begin VB.Form DownMenu
       Style           =   1  'Graphical
       TabIndex        =   9
       ToolTipText     =   "Creador de Bloques"
-      Top             =   120
+      Top             =   420
       UseMaskColor    =   -1  'True
       Width           =   780
    End
@@ -43,7 +43,7 @@ Begin VB.Form DownMenu
       Style           =   1  'Graphical
       TabIndex        =   5
       ToolTipText     =   "Programación Horaria"
-      Top             =   120
+      Top             =   420
       UseMaskColor    =   -1  'True
       Width           =   780
    End
@@ -63,7 +63,7 @@ Begin VB.Form DownMenu
       Style           =   1  'Graphical
       TabIndex        =   4
       ToolTipText     =   "Estacion 02"
-      Top             =   120
+      Top             =   420
       UseMaskColor    =   -1  'True
       Width           =   780
    End
@@ -83,7 +83,7 @@ Begin VB.Form DownMenu
       Style           =   1  'Graphical
       TabIndex        =   3
       ToolTipText     =   "Estacion 01"
-      Top             =   120
+      Top             =   420
       UseMaskColor    =   -1  'True
       Width           =   780
    End
@@ -94,7 +94,7 @@ Begin VB.Form DownMenu
       Style           =   1  'Graphical
       TabIndex        =   2
       ToolTipText     =   "Programacion de Tandas"
-      Top             =   120
+      Top             =   420
       UseMaskColor    =   -1  'True
       Width           =   780
    End
@@ -105,7 +105,7 @@ Begin VB.Form DownMenu
       Style           =   1  'Graphical
       TabIndex        =   1
       ToolTipText     =   "Creacion de Tandas"
-      Top             =   120
+      Top             =   420
       UseMaskColor    =   -1  'True
       Width           =   780
    End
@@ -116,7 +116,7 @@ Begin VB.Form DownMenu
       Style           =   1  'Graphical
       TabIndex        =   7
       ToolTipText     =   "Papelera"
-      Top             =   120
+      Top             =   420
       UseMaskColor    =   -1  'True
       Width           =   780
    End
@@ -127,20 +127,52 @@ Begin VB.Form DownMenu
       Style           =   1  'Graphical
       TabIndex        =   0
       ToolTipText     =   "Configuracion"
-      Top             =   120
+      Top             =   420
       UseMaskColor    =   -1  'True
       Width           =   780
    End
    Begin VB.CommandButton XCmd 
       Caption         =   "X"
       Height          =   750
-      Left            =   14355
+      Left            =   14310
       Style           =   1  'Graphical
       TabIndex        =   8
       ToolTipText     =   "Salir del Sistema"
-      Top             =   120
+      Top             =   450
       UseMaskColor    =   -1  'True
       Width           =   780
+   End
+   Begin RM100.TitelBar TitelBar1 
+      Align           =   1  'Align Top
+      Height          =   375
+      Left            =   0
+      TabIndex        =   11
+      Top             =   0
+      Width           =   15240
+      _ExtentX        =   26882
+      _ExtentY        =   661
+      BackColor       =   8421504
+      BackColorCover  =   3
+      BackColorV2Begin=   4210752
+      BackColorV2End  =   0
+      BackColorV1Begin=   4210752
+      BackColorV1End  =   0
+      ForeColor       =   16777215
+      ShowMinimized   =   0   'False
+      ShowMaximizedEnabled=   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "System"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Caption         =   "  Barra de Herramientas"
+      CaptionPosX     =   1
+      BorderNormal    =   2
+      BorderColorDarkLight=   12632256
    End
    Begin VB.Label Label1 
       Alignment       =   2  'Center
@@ -149,7 +181,7 @@ Begin VB.Form DownMenu
       Height          =   615
       Left            =   8520
       TabIndex        =   10
-      Top             =   240
+      Top             =   540
       Width           =   5655
    End
 End
