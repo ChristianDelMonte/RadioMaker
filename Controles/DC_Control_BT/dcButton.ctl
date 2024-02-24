@@ -1160,11 +1160,13 @@ End Property
 
 ' //-- Public Procedures --//
 
-'Public Sub About()
+Public Sub About()
+Attribute About.VB_Description = "Shows information about the control and its author."
+Attribute About.VB_UserMemId = -552
 '   Shows information about the control and its author.
-'    ShellExecute UserControl.Hwnd, "open", DC_URL, "", "", SW_SHOWNORMAL
+    ShellExecute UserControl.Hwnd, "open", DC_URL, "", "", SW_SHOWNORMAL
     
-'End Sub
+End Sub
 
 Public Sub ColorScheme( _
         Optional Style As eButtonStyles = -1, _
