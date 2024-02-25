@@ -3,21 +3,21 @@ Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "ComDlg32.OCX"
 Object = "{27395F88-0C0C-101B-A3C9-08002B2F49FB}#1.1#0"; "PicClp32.Ocx"
 Object = "{6FBA474E-43AC-11CE-9A0E-00AA0062BB4C}#1.0#0"; "sysinfo.Ocx"
 Begin VB.Form TopMenu 
-   BackColor       =   &H00000000&
+   BackColor       =   &H00808080&
    BorderStyle     =   0  'None
    Caption         =   "Only RadioMaker"
-   ClientHeight    =   840
+   ClientHeight    =   870
    ClientLeft      =   330
    ClientTop       =   375
-   ClientWidth     =   15600
-   FillColor       =   &H00808080&
-   ForeColor       =   &H00808080&
+   ClientWidth     =   18630
+   FillColor       =   &H00404040&
+   ForeColor       =   &H00000000&
    Icon            =   "TopMenu2.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   840
-   ScaleWidth      =   15600
+   ScaleHeight     =   870
+   ScaleWidth      =   18630
    ShowInTaskbar   =   0   'False
    Begin SysInfoLib.SysInfo SysInfo1 
       Left            =   10200
@@ -603,12 +603,14 @@ Begin VB.Form TopMenu
       Picture         =   "TopMenu2.frx":3274
    End
    Begin VB.PictureBox PicSmall 
+      Appearance      =   0  'Flat
       AutoSize        =   -1  'True
-      BackColor       =   &H00404040&
+      BackColor       =   &H00000000&
+      ForeColor       =   &H80000008&
       Height          =   735
-      Left            =   30
-      ScaleHeight     =   675
-      ScaleWidth      =   2400
+      Left            =   90
+      ScaleHeight     =   705
+      ScaleWidth      =   2430
       TabIndex        =   0
       Top             =   60
       Width           =   2460
@@ -754,8 +756,9 @@ Begin VB.Form TopMenu
       Width           =   1410
    End
    Begin VB.Image TopPic 
+      Appearance      =   0  'Flat
       Height          =   735
-      Left            =   2550
+      Left            =   2610
       Picture         =   "TopMenu2.frx":9368
       Stretch         =   -1  'True
       Top             =   60

@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.5#0"; "comctl32.Ocx"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "mscomctl.OCX"
 Begin VB.Form FrmTime 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Programación Horaria"
@@ -10,7 +10,6 @@ Begin VB.Form FrmTime
    ControlBox      =   0   'False
    ForeColor       =   &H8000000F&
    LinkTopic       =   "Form1"
-   LockControls    =   -1  'True
    MaxButton       =   0   'False
    MinButton       =   0   'False
    ScaleHeight     =   6195
@@ -294,25 +293,25 @@ Begin VB.Form FrmTime
       TabIndex        =   103
       Top             =   150
       Width           =   9645
-      Begin ComctlLib.Slider SldVel 
-         Height          =   195
-         Left            =   7830
-         TabIndex        =   138
-         Top             =   330
-         Width           =   1305
-         _ExtentX        =   2302
-         _ExtentY        =   344
-         _Version        =   327682
-      End
-      Begin ComctlLib.Slider SldVol 
+      Begin MSComctlLib.Slider SldVel 
          Height          =   255
-         Left            =   3960
+         Left            =   7740
+         TabIndex        =   138
+         Top             =   270
+         Width           =   1365
+         _ExtentX        =   2408
+         _ExtentY        =   450
+         _Version        =   393216
+      End
+      Begin MSComctlLib.Slider SldVol 
+         Height          =   255
+         Left            =   3840
          TabIndex        =   137
          Top             =   270
-         Width           =   1245
-         _ExtentX        =   2196
+         Width           =   1395
+         _ExtentX        =   2461
          _ExtentY        =   450
-         _Version        =   327682
+         _Version        =   393216
       End
       Begin VB.Label Label11 
          BackStyle       =   0  'Transparent
@@ -1705,10 +1704,10 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Private Sub Command1_Click(Index As Integer)
+Private Sub Command1_Click(index As Integer)
 
 On Error Resume Next
-TopMenu.WaveCmd.InitDir = App.Path & AppDefaultMusicPath
+TopMenu.WaveCmd.InitDir = App.path & AppDefaultMusicPath
 TopMenu.WaveCmd.Filter = "Archivos de Audio (*.wav; *.mp1; *.mp2; *.mp3)|*.wav; *.mp1; *.mp2; *.mp3|Todos los archivos de Audio"
 TopMenu.WaveCmd.DialogTitle = "Programacion Horaria - Abrir archivo de Audio"
 TopMenu.WaveCmd.CancelError = True
@@ -1716,10 +1715,10 @@ TopMenu.WaveCmd.ShowOpen
 
 If err.Number = 32755 Then Exit Sub
 
-Text1(Index).Text = TopMenu.WaveCmd.filename
-Text1(Index).BackColor = &HC0FFFF
-Text2(Index).SetFocus
-Text2(Index).BackColor = &HC0FFFF
+Text1(index).text = TopMenu.WaveCmd.filename
+Text1(index).BackColor = &HC0FFFF
+Text2(index).SetFocus
+Text2(index).BackColor = &HC0FFFF
 
 End Sub
 
@@ -1855,8 +1854,8 @@ If Ni >= 23 Then
 End If
 
 For i = Ni To 23
-    NFile = Text1(i).Text
-    Ltime = Text2(i).Text & ":00"
+    NFile = Text1(i).text
+    Ltime = Text2(i).text & ":00"
     Atime = time$
     Lh = Left$(Ltime, 2): Lm = Mid$(Ltime, 4, 2)
     Ah = Left$(Atime, 2): Am = Mid$(Atime, 4, 2)
@@ -1870,10 +1869,10 @@ For i = Ni To 23
                 If Am >= Lm Then
                     'nothing to do, go to the next textbox
                 Else
-                    TopMenu.PHName.Caption = Text1(i).Text
+                    TopMenu.PHName.Caption = Text1(i).text
                     TopMenu.PHName.ForeColor = &HFFFF00 'activada
-                    TopMenu.PHTime.Caption = Text2(i).Text & ":00"
-                    SetTOPTime (Text2(i).Text & ":00")
+                    TopMenu.PHTime.Caption = Text2(i).text & ":00"
+                    SetTOPTime (Text2(i).text & ":00")
                     TopMenu.NumberIdx.Caption = i
                     'activamos el reloj de control de PH
                     PHTimer.Enabled = True
@@ -1883,10 +1882,10 @@ For i = Ni To 23
                     Exit For
                 End If
             Else
-                TopMenu.PHName.Caption = Text1(i).Text
+                TopMenu.PHName.Caption = Text1(i).text
                 TopMenu.PHName.ForeColor = &HFFFF00 'activada
-                TopMenu.PHTime.Caption = Text2(i).Text & ":00"
-                SetTOPTime (Text2(i).Text & ":00")
+                TopMenu.PHTime.Caption = Text2(i).text & ":00"
+                SetTOPTime (Text2(i).text & ":00")
                 TopMenu.NumberIdx.Caption = i
                 'activamos el reloj de control de PH
                 PHTimer.Enabled = True
@@ -1948,9 +1947,9 @@ Private Sub PHNew_Click()
 Dim Cont As Integer
 'reset the form
 For Cont = 0 To 23
-    Text1(Cont).Text = ""
+    Text1(Cont).text = ""
     Text1(Cont).BackColor = &HFFFFFF
-    Text2(Cont).Text = "00:00"
+    Text2(Cont).text = "00:00"
     Text2(Cont).BackColor = &HFFFFFF
 Next Cont
 
@@ -1959,7 +1958,7 @@ End Sub
 Private Sub PHOpen_Click()
 
 On Error Resume Next
-TopMenu.PHCmd.InitDir = App.Path & AppPHDir
+TopMenu.PHCmd.InitDir = App.path & AppPHDir
 TopMenu.PHCmd.Filter = "Archivo PH (*.ph1)|*.ph1|Archivos de Programación Horaria"
 TopMenu.PHCmd.DialogTitle = "Programación Horaria - Abrir archivo"
 TopMenu.PHCmd.CancelError = True
@@ -1978,7 +1977,7 @@ End Sub
 Private Sub PHSave_Click()
 
 On Error Resume Next
-TopMenu.PHCmd.InitDir = App.Path & AppPHDir
+TopMenu.PHCmd.InitDir = App.path & AppPHDir
 TopMenu.PHCmd.Filter = "Archivo PH (*.ph1)|*.ph1|Archivos de Programación horaria"
 TopMenu.PHCmd.DialogTitle = "Programacion Horaria - Guardar archivo"
 TopMenu.PHCmd.FilterIndex = 1
@@ -2019,12 +2018,12 @@ End If
 
 End Sub
 
-Private Sub RmvItm_Click(Index As Integer)
+Private Sub RmvItm_Click(index As Integer)
 
-Text1(Index).Text = ""
-Text1(Index).BackColor = &HFFFFFF
-Text2(Index).Text = "00:00"
-Text2(Index).BackColor = &HFFFFFF
+Text1(index).text = ""
+Text1(index).BackColor = &HFFFFFF
+Text2(index).text = "00:00"
+Text2(index).BackColor = &HFFFFFF
 
 End Sub
 
@@ -2112,35 +2111,35 @@ End If
 
 End Sub
 
-Private Sub Text2_Change(Index As Integer)
+Private Sub Text2_Change(index As Integer)
 
-If Text1(Index).Text = "" Or Text1(Index).Text = " " Then
-    Text2(Index).Text = "00:00"
+If Text1(index).text = "" Or Text1(index).text = " " Then
+    Text2(index).text = "00:00"
 End If
 
 End Sub
 
-Private Sub Text2_GotFocus(Index As Integer)
+Private Sub Text2_GotFocus(index As Integer)
 
-Text2(Index).SelStart = 0
-Text2(Index).SelLength = Len(Text2(Index).Text)
+Text2(index).SelStart = 0
+Text2(index).SelLength = Len(Text2(index).text)
 
 End Sub
 
-Private Sub Text2_LostFocus(Index As Integer)
+Private Sub Text2_LostFocus(index As Integer)
 
 Dim LenCheck
-LenCheck = Len(Text2(Index).Text)
+LenCheck = Len(Text2(index).text)
 
 'check the len for validations
 If LenCheck < 5 Then
     MsgBox "Hora de Lanzamiento no válida. Utilice un formato de 24hs. (nó AM/PM).", vbInformation
-    Text2(Index).SetFocus
+    Text2(index).SetFocus
     Exit Sub
 End If
 If LenCheck > 5 Then
     MsgBox "Hora de Lanzamiento no válida. Utilice un formato de 24hs. (nó AM/PM).", vbInformation
-    Text2(Index).SetFocus
+    Text2(index).SetFocus
     Exit Sub
 End If
 
@@ -2148,8 +2147,8 @@ Dim Hora As String
 Dim Minutos As String
 
 'extraemos los datos de hora especificados para el lanzamiento
-Hora = Left$(Text2(Index).Text, 2)
-Minutos = Right$(Text2(Index).Text, 2)
+Hora = Left$(Text2(index).text, 2)
+Minutos = Right$(Text2(index).text, 2)
 
 'Procedemos al chequeo de la misma
 On Error Resume Next
@@ -2159,7 +2158,7 @@ If LenCheck = 5 Then
             'xxx
         Else
             MsgBox "La hora de Lanzamiento especificada: " & Hora & " no es válida. Utilice un formato de 24hs. (nó AM/PM).", vbInformation
-            Text2(Index).SetFocus
+            Text2(index).SetFocus
             Exit Sub
         End If
     Else
@@ -2169,7 +2168,7 @@ If LenCheck = 5 Then
                 'xxx
             Else
                 MsgBox "Los minutos de Lanzamiento especificados: " & Minutos & " no son válidos. Utilice un formato de 24hs. (nó AM/PM).", vbInformation
-                Text2(Index).SetFocus
+                Text2(index).SetFocus
                 Exit Sub
             End If
         Else
@@ -2178,7 +2177,7 @@ If LenCheck = 5 Then
     End If
 Else
     MsgBox "Hora de Lanzamiento no válida. Utilice un formato de 24hs. (nó AM/PM).", vbInformation
-    Text2(Index).SetFocus
+    Text2(index).SetFocus
     Exit Sub
 End If
 

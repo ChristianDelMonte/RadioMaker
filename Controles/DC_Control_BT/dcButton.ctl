@@ -1,17 +1,17 @@
 VERSION 5.00
 Begin VB.UserControl DC_Control_Bt 
    AutoRedraw      =   -1  'True
-   ClientHeight    =   495
+   ClientHeight    =   510
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   1500
+   ClientWidth     =   1200
    ClipBehavior    =   0  'None
    DefaultCancel   =   -1  'True
    HitBehavior     =   0  'None
    LockControls    =   -1  'True
-   ScaleHeight     =   33
+   ScaleHeight     =   34
    ScaleMode       =   3  'Pixel
-   ScaleWidth      =   100
+   ScaleWidth      =   80
    ToolboxBitmap   =   "dcButton.ctx":0000
 End
 Attribute VB_Name = "DC_Control_Bt"
@@ -1160,6 +1160,13 @@ End Property
 
 ' //-- Public Procedures --//
 
+<<<<<<< HEAD
+'Public Sub About()
+'   Shows information about the control and its author.
+'    ShellExecute UserControl.Hwnd, "open", DC_URL, "", "", SW_SHOWNORMAL
+    
+'End Sub
+=======
 Public Sub About()
 Attribute About.VB_Description = "Shows information about the control and its author."
 Attribute About.VB_UserMemId = -552
@@ -1167,6 +1174,7 @@ Attribute About.VB_UserMemId = -552
     ShellExecute UserControl.Hwnd, "open", DC_URL, "", "", SW_SHOWNORMAL
     
 End Sub
+>>>>>>> 04bd5cd54907c603a905d1f685b7572bc392195d
 
 Public Sub ColorScheme( _
         Optional Style As eButtonStyles = -1, _

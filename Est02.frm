@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.5#0"; "comctl32.Ocx"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "mscomctl.OCX"
 Begin VB.Form Est02 
    AutoRedraw      =   -1  'True
    BackColor       =   &H00808080&
@@ -17,6 +17,17 @@ Begin VB.Form Est02
    ScaleHeight     =   5175
    ScaleWidth      =   15330
    ShowInTaskbar   =   0   'False
+   Begin MSComctlLib.Slider E2Pos 
+      Height          =   315
+      Left            =   8220
+      TabIndex        =   127
+      Top             =   3750
+      Width           =   6915
+      _ExtentX        =   12197
+      _ExtentY        =   556
+      _Version        =   393216
+      BorderStyle     =   1
+   End
    Begin VB.PictureBox pcontup 
       AutoSize        =   -1  'True
       BorderStyle     =   0  'None
@@ -25,7 +36,7 @@ Begin VB.Form Est02
       Picture         =   "Est02.frx":0000
       ScaleHeight     =   255
       ScaleWidth      =   405
-      TabIndex        =   89
+      TabIndex        =   88
       ToolTipText     =   "Modo CONTINUO activado"
       Top             =   570
       Width           =   405
@@ -36,7 +47,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00FFFF00&
       Height          =   870
       Left            =   12135
-      TabIndex        =   82
+      TabIndex        =   81
       Top             =   2730
       Width           =   3015
       Begin VB.TextBox Text1 
@@ -44,7 +55,7 @@ Begin VB.Form Est02
          Height          =   285
          Left            =   105
          Locked          =   -1  'True
-         TabIndex        =   86
+         TabIndex        =   85
          Text            =   "00:00:00"
          Top             =   495
          Width           =   975
@@ -54,7 +65,7 @@ Begin VB.Form Est02
          Height          =   285
          Left            =   1575
          Locked          =   -1  'True
-         TabIndex        =   85
+         TabIndex        =   84
          Text            =   "00:00:00"
          Top             =   495
          Width           =   975
@@ -63,7 +74,7 @@ Begin VB.Form Est02
          Caption         =   "<M"
          Height          =   300
          Left            =   1110
-         TabIndex        =   84
+         TabIndex        =   83
          ToolTipText     =   "Marcar la posicion de inicio de CUE"
          Top             =   480
          Width           =   375
@@ -72,7 +83,7 @@ Begin VB.Form Est02
          Caption         =   "<M"
          Height          =   300
          Left            =   2565
-         TabIndex        =   83
+         TabIndex        =   82
          ToolTipText     =   "Marcar la posicion de fin de CUE"
          Top             =   480
          Width           =   375
@@ -84,7 +95,7 @@ Begin VB.Form Est02
          ForeColor       =   &H00808080&
          Height          =   255
          Left            =   105
-         TabIndex        =   88
+         TabIndex        =   87
          Top             =   270
          Width           =   975
       End
@@ -95,7 +106,7 @@ Begin VB.Form Est02
          ForeColor       =   &H00808080&
          Height          =   255
          Left            =   1575
-         TabIndex        =   87
+         TabIndex        =   86
          Top             =   270
          Width           =   975
       End
@@ -104,7 +115,7 @@ Begin VB.Form Est02
       Caption         =   "AUTO PANEO"
       Height          =   255
       Left            =   13800
-      TabIndex        =   81
+      TabIndex        =   80
       ToolTipText     =   "Paneo Izq>Der - Der>Izq - automatico"
       Top             =   2100
       Width           =   1215
@@ -117,7 +128,7 @@ Begin VB.Form Est02
       Picture         =   "Est02.frx":05D8
       ScaleHeight     =   255
       ScaleWidth      =   405
-      TabIndex        =   80
+      TabIndex        =   79
       ToolTipText     =   "Modo CONTINUO desactivado"
       Top             =   570
       Visible         =   0   'False
@@ -132,7 +143,7 @@ Begin VB.Form Est02
       ScaleHeight     =   46
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   135
-      TabIndex        =   79
+      TabIndex        =   78
       Top             =   975
       Width           =   2025
    End
@@ -141,7 +152,7 @@ Begin VB.Form Est02
       Index           =   0
       Left            =   8190
       Max             =   20
-      TabIndex        =   78
+      TabIndex        =   77
       Top             =   2190
       Value           =   10
       Width           =   240
@@ -151,7 +162,7 @@ Begin VB.Form Est02
       Index           =   1
       Left            =   8535
       Max             =   20
-      TabIndex        =   77
+      TabIndex        =   76
       Top             =   2190
       Value           =   10
       Width           =   240
@@ -161,7 +172,7 @@ Begin VB.Form Est02
       Index           =   2
       Left            =   8880
       Max             =   20
-      TabIndex        =   76
+      TabIndex        =   75
       Top             =   2190
       Value           =   10
       Width           =   240
@@ -171,7 +182,7 @@ Begin VB.Form Est02
       Index           =   3
       Left            =   9225
       Max             =   20
-      TabIndex        =   75
+      TabIndex        =   74
       Top             =   2190
       Value           =   10
       Width           =   240
@@ -181,7 +192,7 @@ Begin VB.Form Est02
       Index           =   4
       Left            =   9570
       Max             =   20
-      TabIndex        =   74
+      TabIndex        =   73
       Top             =   2190
       Value           =   10
       Width           =   240
@@ -191,7 +202,7 @@ Begin VB.Form Est02
       Index           =   5
       Left            =   9915
       Max             =   20
-      TabIndex        =   73
+      TabIndex        =   72
       Top             =   2190
       Value           =   10
       Width           =   240
@@ -201,7 +212,7 @@ Begin VB.Form Est02
       Index           =   6
       Left            =   10260
       Max             =   20
-      TabIndex        =   72
+      TabIndex        =   71
       Top             =   2190
       Value           =   10
       Width           =   240
@@ -211,7 +222,7 @@ Begin VB.Form Est02
       Index           =   7
       Left            =   10605
       Max             =   20
-      TabIndex        =   71
+      TabIndex        =   70
       Top             =   2190
       Value           =   10
       Width           =   240
@@ -221,7 +232,7 @@ Begin VB.Form Est02
       Index           =   8
       Left            =   10950
       Max             =   20
-      TabIndex        =   70
+      TabIndex        =   69
       Top             =   2190
       Value           =   10
       Width           =   240
@@ -231,7 +242,7 @@ Begin VB.Form Est02
       Index           =   9
       Left            =   11295
       Max             =   20
-      TabIndex        =   69
+      TabIndex        =   68
       Top             =   2190
       Value           =   10
       Width           =   240
@@ -241,7 +252,7 @@ Begin VB.Form Est02
       Index           =   10
       Left            =   11670
       Max             =   20
-      TabIndex        =   68
+      TabIndex        =   67
       Top             =   2190
       Value           =   18
       Width           =   240
@@ -1394,23 +1405,10 @@ Begin VB.Form Est02
       Top             =   510
       Width           =   1395
    End
-   Begin ComctlLib.Slider E2Pos 
-      Height          =   225
-      Left            =   8190
-      TabIndex        =   67
-      Top             =   3780
-      Width           =   6975
-      _ExtentX        =   12303
-      _ExtentY        =   397
-      _Version        =   327682
-      BorderStyle     =   1
-      Max             =   100
-      TickFrequency   =   5
-   End
    Begin RM100.DC_Control_Bt NewCUE 
       Height          =   465
       Left            =   10320
-      TabIndex        =   90
+      TabIndex        =   89
       ToolTipText     =   "Nuevo eq y cue"
       Top             =   4620
       Width           =   375
@@ -1440,7 +1438,7 @@ Begin VB.Form Est02
    Begin RM100.DC_Control_Bt OpenCUE 
       Height          =   465
       Left            =   10740
-      TabIndex        =   91
+      TabIndex        =   90
       ToolTipText     =   "Abrir eq y cue"
       Top             =   4620
       Width           =   375
@@ -1470,7 +1468,7 @@ Begin VB.Form Est02
    Begin RM100.DC_Control_Bt SaveCUE 
       Height          =   465
       Left            =   11160
-      TabIndex        =   92
+      TabIndex        =   91
       ToolTipText     =   "Guardar eq y cue"
       Top             =   4620
       Width           =   375
@@ -1500,7 +1498,7 @@ Begin VB.Form Est02
    Begin RM100.DC_Control_Bt CmdActualiz 
       Height          =   465
       Left            =   8160
-      TabIndex        =   93
+      TabIndex        =   92
       Top             =   4620
       Width           =   975
       _ExtentX        =   1720
@@ -1522,7 +1520,7 @@ Begin VB.Form Est02
    Begin RM100.DC_Control_Bt CmdRestore 
       Height          =   465
       Left            =   9180
-      TabIndex        =   94
+      TabIndex        =   93
       Top             =   4620
       Width           =   975
       _ExtentX        =   1720
@@ -1544,7 +1542,7 @@ Begin VB.Form Est02
    Begin RM100.DC_Control_Bt E2Import 
       Height          =   465
       Left            =   11700
-      TabIndex        =   95
+      TabIndex        =   94
       Top             =   4620
       Width           =   1035
       _ExtentX        =   1826
@@ -1566,7 +1564,7 @@ Begin VB.Form Est02
    Begin RM100.DC_Control_Bt E2Cue 
       Height          =   465
       Left            =   13620
-      TabIndex        =   96
+      TabIndex        =   95
       Top             =   4620
       Width           =   1515
       _ExtentX        =   2672
@@ -1588,7 +1586,7 @@ Begin VB.Form Est02
    Begin RM100.DC_Control_Bt CmdFIN 
       Height          =   495
       Left            =   12150
-      TabIndex        =   97
+      TabIndex        =   96
       Top             =   2100
       Width           =   585
       _ExtentX        =   1032
@@ -1610,7 +1608,7 @@ Begin VB.Form Est02
    Begin RM100.DC_Control_Bt CmdFOut 
       Height          =   495
       Left            =   12810
-      TabIndex        =   98
+      TabIndex        =   97
       Top             =   2100
       Width           =   585
       _ExtentX        =   1032
@@ -1645,7 +1643,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00808080&
       Height          =   225
       Left            =   11640
-      TabIndex        =   127
+      TabIndex        =   126
       Top             =   1890
       Width           =   285
    End
@@ -1655,7 +1653,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00808000&
       Height          =   195
       Left            =   11655
-      TabIndex        =   126
+      TabIndex        =   125
       Top             =   1485
       Width           =   195
    End
@@ -1665,7 +1663,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00808000&
       Height          =   195
       Left            =   11430
-      TabIndex        =   125
+      TabIndex        =   124
       Top             =   1485
       Width           =   150
    End
@@ -1675,7 +1673,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00FFFF00&
       Height          =   195
       Left            =   11205
-      TabIndex        =   124
+      TabIndex        =   123
       Top             =   1485
       Width           =   150
    End
@@ -1685,7 +1683,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00808000&
       Height          =   195
       Left            =   10980
-      TabIndex        =   123
+      TabIndex        =   122
       Top             =   1485
       Width           =   150
    End
@@ -1695,7 +1693,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00808000&
       Height          =   195
       Left            =   10800
-      TabIndex        =   122
+      TabIndex        =   121
       Top             =   1485
       Width           =   105
    End
@@ -1705,7 +1703,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00FFFF00&
       Height          =   195
       Left            =   11520
-      TabIndex        =   121
+      TabIndex        =   120
       Top             =   1185
       Width           =   375
    End
@@ -1716,7 +1714,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00808080&
       Height          =   195
       Left            =   10800
-      TabIndex        =   120
+      TabIndex        =   119
       Top             =   1185
       Width           =   645
    End
@@ -1726,7 +1724,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00FFFF00&
       Height          =   195
       Left            =   11520
-      TabIndex        =   119
+      TabIndex        =   118
       Top             =   930
       Width           =   375
    End
@@ -1737,7 +1735,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00808080&
       Height          =   195
       Left            =   10755
-      TabIndex        =   118
+      TabIndex        =   117
       Top             =   930
       Width           =   690
    End
@@ -1747,7 +1745,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00FFFF00&
       Height          =   195
       Left            =   10620
-      TabIndex        =   117
+      TabIndex        =   116
       ToolTipText     =   "Autoreproducción al hacer click"
       Top             =   570
       Width           =   645
@@ -1758,7 +1756,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00808000&
       Height          =   195
       Left            =   10020
-      TabIndex        =   116
+      TabIndex        =   115
       ToolTipText     =   "Espectro combinado"
       Top             =   570
       Width           =   375
@@ -1769,7 +1767,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00808000&
       Height          =   195
       Left            =   9660
-      TabIndex        =   115
+      TabIndex        =   114
       ToolTipText     =   "Espectro derecho"
       Top             =   570
       Width           =   285
@@ -1780,7 +1778,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00808000&
       Height          =   195
       Left            =   9345
-      TabIndex        =   114
+      TabIndex        =   113
       ToolTipText     =   "Espectro izquierdo"
       Top             =   570
       Width           =   285
@@ -1791,7 +1789,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00808000&
       Height          =   195
       Left            =   8730
-      TabIndex        =   113
+      TabIndex        =   112
       ToolTipText     =   "Modo Espectro"
       Top             =   570
       Width           =   375
@@ -1802,7 +1800,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00FFFF00&
       Height          =   195
       Left            =   8310
-      TabIndex        =   112
+      TabIndex        =   111
       ToolTipText     =   "Modo FFT"
       Top             =   570
       Width           =   375
@@ -1823,7 +1821,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00FFFFFF&
       Height          =   255
       Left            =   9240
-      TabIndex        =   111
+      TabIndex        =   110
       Top             =   4050
       Width           =   1170
    End
@@ -1843,14 +1841,14 @@ Begin VB.Form Est02
       ForeColor       =   &H00FFFFFF&
       Height          =   255
       Left            =   13950
-      TabIndex        =   110
+      TabIndex        =   109
       Top             =   4050
       Width           =   1170
    End
    Begin RM100.ucKnob E2Vol 
       Height          =   1305
       Left            =   12120
-      TabIndex        =   109
+      TabIndex        =   108
       Top             =   750
       Width           =   1335
       _ExtentX        =   2355
@@ -1862,7 +1860,7 @@ Begin VB.Form Est02
    Begin RM100.ucKnob E2Slide 
       Height          =   1305
       Left            =   13710
-      TabIndex        =   108
+      TabIndex        =   107
       Top             =   750
       Width           =   1335
       _ExtentX        =   2355
@@ -1890,7 +1888,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00808080&
       Height          =   225
       Left            =   11640
-      TabIndex        =   107
+      TabIndex        =   106
       Top             =   3390
       Width           =   315
    End
@@ -1910,7 +1908,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00808080&
       Height          =   195
       Left            =   12120
-      TabIndex        =   106
+      TabIndex        =   105
       Top             =   480
       Width           =   1305
    End
@@ -1930,7 +1928,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00808080&
       Height          =   195
       Left            =   13740
-      TabIndex        =   105
+      TabIndex        =   104
       Top             =   480
       Width           =   1305
    End
@@ -1940,7 +1938,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00808080&
       Height          =   255
       Left            =   8310
-      TabIndex        =   104
+      TabIndex        =   103
       Top             =   4110
       Width           =   915
    End
@@ -1950,7 +1948,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00808080&
       Height          =   255
       Left            =   12990
-      TabIndex        =   103
+      TabIndex        =   102
       Top             =   4110
       Width           =   915
    End
@@ -1970,7 +1968,7 @@ Begin VB.Form Est02
       ForeColor       =   &H00808080&
       Height          =   225
       Left            =   8190
-      TabIndex        =   102
+      TabIndex        =   101
       Top             =   1890
       Width           =   3345
    End
@@ -1991,7 +1989,7 @@ Begin VB.Form Est02
       Height          =   225
       Index           =   0
       Left            =   8160
-      TabIndex        =   101
+      TabIndex        =   100
       Top             =   3390
       Width           =   615
    End
@@ -2012,7 +2010,7 @@ Begin VB.Form Est02
       Height          =   225
       Index           =   1
       Left            =   9720
-      TabIndex        =   100
+      TabIndex        =   99
       Top             =   3390
       Width           =   285
    End
@@ -2033,7 +2031,7 @@ Begin VB.Form Est02
       Height          =   225
       Index           =   2
       Left            =   11130
-      TabIndex        =   99
+      TabIndex        =   98
       Top             =   3390
       Width           =   405
    End

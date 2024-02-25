@@ -1,20 +1,79 @@
 VERSION 5.00
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.5#0"; "comctl32.Ocx"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "mscomctl.OCX"
 Begin VB.Form XPlorer 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Explorador de archivos"
-   ClientHeight    =   7230
+   ClientHeight    =   8175
    ClientLeft      =   45
    ClientTop       =   345
-   ClientWidth     =   10065
+   ClientWidth     =   9930
    ControlBox      =   0   'False
    ForeColor       =   &H8000000F&
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   7230
-   ScaleWidth      =   10065
+   ScaleHeight     =   8175
+   ScaleWidth      =   9930
    ShowInTaskbar   =   0   'False
+   Begin MSComctlLib.ImageList imgDirTree 
+      Left            =   1110
+      Top             =   7470
+      _ExtentX        =   1005
+      _ExtentY        =   1005
+      BackColor       =   -2147483643
+      ImageWidth      =   16
+      ImageHeight     =   16
+      MaskColor       =   12632256
+      _Version        =   393216
+      BeginProperty Images {2C247F25-8591-11D1-B16A-00C0F0283628} 
+         NumListImages   =   8
+         BeginProperty ListImage1 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Explorer.frx":0000
+            Key             =   "open"
+         EndProperty
+         BeginProperty ListImage2 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Explorer.frx":0112
+            Key             =   "closed"
+         EndProperty
+         BeginProperty ListImage3 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Explorer.frx":0224
+            Key             =   "leaf"
+         EndProperty
+         BeginProperty ListImage4 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Explorer.frx":0336
+            Key             =   "floppy"
+         EndProperty
+         BeginProperty ListImage5 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Explorer.frx":0448
+            Key             =   "hard"
+         EndProperty
+         BeginProperty ListImage6 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Explorer.frx":055A
+            Key             =   "cdroom"
+         EndProperty
+         BeginProperty ListImage7 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Explorer.frx":066C
+            Key             =   "net"
+         EndProperty
+         BeginProperty ListImage8 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Explorer.frx":077E
+            Key             =   "desk"
+         EndProperty
+      EndProperty
+   End
+   Begin MSComctlLib.TreeView tvwDirTree 
+      Height          =   4785
+      Left            =   210
+      TabIndex        =   7
+      Top             =   720
+      Width           =   4365
+      _ExtentX        =   7699
+      _ExtentY        =   8440
+      _Version        =   393217
+      HideSelection   =   0   'False
+      Style           =   7
+      Appearance      =   1
+   End
    Begin VB.PictureBox picIcon 
       AutoRedraw      =   -1  'True
       AutoSize        =   -1  'True
@@ -25,16 +84,16 @@ Begin VB.Form XPlorer
       ScaleHeight     =   16
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   16
-      TabIndex        =   6
+      TabIndex        =   5
       Top             =   7680
       Visible         =   0   'False
       Width           =   235
    End
    Begin VB.ComboBox ExCombo 
-      DragIcon        =   "Explorer.frx":0000
+      DragIcon        =   "Explorer.frx":0890
       Height          =   315
       Left            =   4470
-      TabIndex        =   2
+      TabIndex        =   1
       Top             =   6030
       Width           =   3165
    End
@@ -42,7 +101,7 @@ Begin VB.Form XPlorer
       Caption         =   "&Información de archivo..."
       Height          =   375
       Left            =   1230
-      TabIndex        =   3
+      TabIndex        =   2
       Top             =   6540
       Width           =   2055
    End
@@ -50,41 +109,17 @@ Begin VB.Form XPlorer
       Caption         =   "&Cerrar"
       Height          =   375
       Left            =   6510
-      TabIndex        =   5
+      TabIndex        =   4
       Top             =   6540
       Width           =   1095
    End
    Begin VB.FileListBox File1 
-      DragIcon        =   "Explorer.frx":030A
+      DragIcon        =   "Explorer.frx":0B9A
       Height          =   4770
       Left            =   4710
-      TabIndex        =   1
-      Top             =   720
-      Width           =   5175
-   End
-   Begin ComctlLib.TreeView tvwDirTree 
-      DragIcon        =   "Explorer.frx":0614
-      Height          =   4785
-      Left            =   120
       TabIndex        =   0
       Top             =   720
-      Width           =   4515
-      _ExtentX        =   7964
-      _ExtentY        =   8440
-      _Version        =   327682
-      Indentation     =   353
-      LabelEdit       =   1
-      Style           =   7
-      Appearance      =   1
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
+      Width           =   5175
    End
    Begin VB.Line Line2 
       BorderColor     =   &H80000014&
@@ -100,57 +135,11 @@ Begin VB.Form XPlorer
       Y1              =   6420
       Y2              =   6420
    End
-   Begin ComctlLib.ImageList imgDirTree 
-      Left            =   1080
-      Top             =   7440
-      _ExtentX        =   1005
-      _ExtentY        =   1005
-      BackColor       =   -2147483643
-      ImageWidth      =   16
-      ImageHeight     =   16
-      MaskColor       =   16777215
-      _Version        =   327682
-      BeginProperty Images {0713E8C2-850A-101B-AFC0-4210102A8DA7} 
-         NumListImages   =   8
-         BeginProperty ListImage1 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "Explorer.frx":091E
-            Key             =   "open"
-         EndProperty
-         BeginProperty ListImage2 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "Explorer.frx":0A30
-            Key             =   "closed"
-         EndProperty
-         BeginProperty ListImage3 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "Explorer.frx":0B42
-            Key             =   "leaf"
-         EndProperty
-         BeginProperty ListImage4 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "Explorer.frx":0C54
-            Key             =   "floppy"
-         EndProperty
-         BeginProperty ListImage5 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "Explorer.frx":0D66
-            Key             =   "hard"
-         EndProperty
-         BeginProperty ListImage6 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "Explorer.frx":0E78
-            Key             =   "cdrom"
-         EndProperty
-         BeginProperty ListImage7 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "Explorer.frx":0F8A
-            Key             =   "net"
-         EndProperty
-         BeginProperty ListImage8 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "Explorer.frx":109C
-            Key             =   "desk"
-         EndProperty
-      EndProperty
-   End
    Begin VB.Label lblPath 
       ForeColor       =   &H00C0C0C0&
       Height          =   495
       Left            =   120
-      TabIndex        =   7
+      TabIndex        =   6
       Top             =   120
       Width           =   6570
    End
@@ -161,7 +150,7 @@ Begin VB.Form XPlorer
       ForeColor       =   &H00000000&
       Height          =   255
       Left            =   4485
-      TabIndex        =   4
+      TabIndex        =   3
       Top             =   5715
       Width           =   1815
    End
@@ -212,13 +201,13 @@ KeepOnTop XPlorer
 
 End Sub
 
-Private Sub tvwDirTree_Collapse(ByVal Node As ComctlLib.Node)
+Private Sub tvwDirTree_Collapse(ByVal Node As MSComctlLib.Node)
 
 tvwDirTree_NodeClick Node
 
 End Sub
 
-Private Sub tvwDirTree_Expand(ByVal Node As ComctlLib.Node)
+Private Sub tvwDirTree_Expand(ByVal Node As MSComctlLib.Node)
 
 Dim lRet As Long, k As Integer
 On Error Resume Next
@@ -337,7 +326,7 @@ HideWindow "Explor01"
 
 End Sub
 
-Private Sub tvwDirTree_NodeClick(ByVal Node As ComctlLib.Node)
+Private Sub tvwDirTree_NodeClick(ByVal Node As MSComctlLib.Node)
 
 On Error Resume Next
 'if it is a floppy then recheck

@@ -1,5 +1,4 @@
 VERSION 5.00
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.5#0"; "comctl32.Ocx"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "mscomctl.OCX"
 Begin VB.Form Tanda01 
    BorderStyle     =   0  'None
@@ -16,43 +15,127 @@ Begin VB.Form Tanda01
    ScaleHeight     =   7440
    ScaleWidth      =   7635
    ShowInTaskbar   =   0   'False
-   Begin MSComctlLib.ListView T1View 
-      Height          =   4455
-      Left            =   150
-      TabIndex        =   76
-      Top             =   1380
-      Width           =   7335
-      _ExtentX        =   12938
-      _ExtentY        =   7858
-      LabelWrap       =   -1  'True
-      HideSelection   =   -1  'True
-      _Version        =   393217
-      ForeColor       =   -2147483640
-      BackColor       =   -2147483643
-      BorderStyle     =   1
-      Appearance      =   1
-      NumItems        =   0
-   End
-   Begin ComctlLib.Slider T1Vol 
-      Height          =   255
-      Left            =   1620
-      TabIndex        =   74
-      Top             =   8700
-      Width           =   3195
-      _ExtentX        =   5636
-      _ExtentY        =   450
-      _Version        =   327682
-   End
-   Begin ComctlLib.ProgressBar Prbar1 
+   Begin MSComctlLib.ProgressBar Prbar1 
       Height          =   285
       Left            =   150
-      TabIndex        =   73
+      TabIndex        =   77
       Top             =   5910
       Width           =   7335
       _ExtentX        =   12938
       _ExtentY        =   503
-      _Version        =   327682
+      _Version        =   393216
       Appearance      =   0
+      Min             =   1e-4
+   End
+   Begin MSComctlLib.ImageList ImageList1 
+      Left            =   840
+      Top             =   8790
+      _ExtentX        =   1005
+      _ExtentY        =   1005
+      BackColor       =   -2147483643
+      MaskColor       =   12632256
+      _Version        =   393216
+   End
+   Begin MSComctlLib.Slider T1Vol 
+      Height          =   255
+      Left            =   1860
+      TabIndex        =   75
+      Top             =   8730
+      Width           =   3255
+      _ExtentX        =   5741
+      _ExtentY        =   450
+      _Version        =   393216
+      LargeChange     =   10
+      SmallChange     =   10
+      Max             =   100
+      SelStart        =   100
+      TickFrequency   =   10
+      Value           =   100
+   End
+   Begin MSComctlLib.ListView T1View 
+      Height          =   4455
+      Left            =   150
+      TabIndex        =   74
+      Top             =   1410
+      Width           =   7335
+      _ExtentX        =   12938
+      _ExtentY        =   7858
+      View            =   3
+      LabelWrap       =   -1  'True
+      HideSelection   =   0   'False
+      FlatScrollBar   =   -1  'True
+      FullRowSelect   =   -1  'True
+      GridLines       =   -1  'True
+      HotTracking     =   -1  'True
+      HoverSelection  =   -1  'True
+      _Version        =   393217
+      Icons           =   "ImageList1"
+      SmallIcons      =   "ImageList1"
+      ColHdrIcons     =   "ImageList1"
+      ForeColor       =   -2147483640
+      BackColor       =   -2147483643
+      BorderStyle     =   1
+      Appearance      =   1
+      NumItems        =   10
+      BeginProperty ColumnHeader(1) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
+         Key             =   "a1"
+         Text            =   "1"
+         Object.Width           =   706
+      EndProperty
+      BeginProperty ColumnHeader(2) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
+         SubItemIndex    =   1
+         Key             =   "a2"
+         Text            =   "2"
+         Object.Width           =   706
+      EndProperty
+      BeginProperty ColumnHeader(3) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
+         SubItemIndex    =   2
+         Key             =   "a3"
+         Text            =   "3"
+         Object.Width           =   706
+      EndProperty
+      BeginProperty ColumnHeader(4) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
+         SubItemIndex    =   3
+         Key             =   "a4"
+         Text            =   "4"
+         Object.Width           =   706
+      EndProperty
+      BeginProperty ColumnHeader(5) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
+         SubItemIndex    =   4
+         Key             =   "a5"
+         Text            =   "5"
+         Object.Width           =   706
+      EndProperty
+      BeginProperty ColumnHeader(6) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
+         SubItemIndex    =   5
+         Key             =   "a6"
+         Text            =   "6"
+         Object.Width           =   706
+      EndProperty
+      BeginProperty ColumnHeader(7) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
+         SubItemIndex    =   6
+         Key             =   "a7"
+         Text            =   "7"
+         Object.Width           =   706
+      EndProperty
+      BeginProperty ColumnHeader(8) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
+         SubItemIndex    =   7
+         Key             =   "a8"
+         Text            =   "8"
+         Object.Width           =   706
+      EndProperty
+      BeginProperty ColumnHeader(9) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
+         SubItemIndex    =   8
+         Key             =   "a9"
+         Text            =   "9"
+         Object.Width           =   706
+      EndProperty
+      BeginProperty ColumnHeader(10) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
+         SubItemIndex    =   9
+         Key             =   "a10"
+         Text            =   "10"
+         Object.Width           =   706
+      EndProperty
    End
    Begin VB.VScrollBar VScroll1 
       Height          =   255
@@ -409,10 +492,6 @@ Begin VB.Form Tanda01
       UseMaskColor    =   -1  'True
       Width           =   800
    End
-   Begin VB.Timer ClockTimer 
-      Left            =   2220
-      Top             =   10005
-   End
    Begin VB.CommandButton T1Stop 
       Enabled         =   0   'False
       Height          =   375
@@ -697,21 +776,11 @@ Begin VB.Form Tanda01
       Top             =   585
       Width           =   190
    End
-   Begin ComctlLib.Slider T2Vol 
-      Height          =   255
-      Left            =   1620
-      TabIndex        =   75
-      Top             =   9090
-      Width           =   3195
-      _ExtentX        =   5636
-      _ExtentY        =   450
-      _Version        =   327682
-   End
    Begin RM100.TitelBar TitelBar1 
       Align           =   1  'Align Top
       Height          =   375
       Left            =   0
-      TabIndex        =   77
+      TabIndex        =   73
       Top             =   0
       Width           =   7635
       _ExtentX        =   13467
@@ -739,14 +808,21 @@ Begin VB.Form Tanda01
       BorderNormal    =   2
       BorderColorDarkLight=   12632256
    End
-   Begin ComctlLib.ImageList ImageList1 
-      Left            =   810
-      Top             =   8790
-      _ExtentX        =   1005
-      _ExtentY        =   1005
-      BackColor       =   -2147483643
-      MaskColor       =   12632256
-      _Version        =   327682
+   Begin MSComctlLib.Slider T2Vol 
+      Height          =   255
+      Left            =   1830
+      TabIndex        =   76
+      Top             =   9180
+      Width           =   3255
+      _ExtentX        =   5741
+      _ExtentY        =   450
+      _Version        =   393216
+      LargeChange     =   10
+      SmallChange     =   10
+      Max             =   100
+      SelStart        =   100
+      TickFrequency   =   10
+      Value           =   100
    End
    Begin VB.Label BlkFn 
       BackColor       =   &H00FFFF00&
@@ -1070,6 +1146,7 @@ Dim PosNcv As String
 
 'dimensiones de listitem
 Dim ItmZ As ListItem
+
 Dim TxtKey As String
 Dim NewKey As String
 Dim ANum As Integer
@@ -1220,6 +1297,10 @@ End Sub
 Private Sub BlockMnu_insert_Click()
 
 '/// Insertar un bloque publicitario.
+
+End Sub
+
+Private Sub ClockTimer_Timer()
 
 End Sub
 
@@ -1566,8 +1647,8 @@ T1View.ListItems.Item(nIndex).Selected = True   'select the item
 
 'gets the file info
 FileN = T1View.SelectedItem.text    'file
-'FileTP = T1View.SelectedItem.SubItems(1).Text   'filetype
-'SSTitle = T1View.SelectedItem.SubItems(2).Text  'file title
+FileTP = T1View.SelectedItem.SubItems(1).text   'filetype
+SSTitle = T1View.SelectedItem.SubItems(2).text  'file title
 
 '//// checks for file exists
 If FileExist(FileN) = False Then
@@ -1578,8 +1659,8 @@ If FileExist(FileN) = False Then
     Tanda01.T1View.ListItems.Item(nIndex).Selected = True
     'gets the file info of new file
     FileN = T1View.SelectedItem.text    'file
-'    FileTP = T1View.SelectedItem.SubItems(1).Text   'filetype
-'    SSTitle = T1View.SelectedItem.SubItems(2).Text  'file title
+    FileTP = T1View.SelectedItem.SubItems(1).text   'filetype
+    SSTitle = T1View.SelectedItem.SubItems(2).text  'file title
 End If
 
 '****************** FILE CUE & FX PRESETS load...
@@ -1770,8 +1851,8 @@ T1View.ListItems.Item(nIndex).Selected = True   'select the item
 
 '//// gets the file info
 FileN = T1View.SelectedItem.text    'file
-'FileTP = T1View.SelectedItem.SubItems(1).Text   'filetype
-'SSTitle = T1View.SelectedItem.SubItems(2).Text  'file title
+FileTP = T1View.SelectedItem.SubItems(1)   'filetype
+SSTitle = T1View.SelectedItem.SubItems(2)  'file title
 
 '//// checks for file exists
 If FileExist(FileN) = False Then
@@ -1782,8 +1863,8 @@ If FileExist(FileN) = False Then
     Tanda01.T1View.ListItems.Item(nIndex).Selected = True
     'gets the file info of new file
     FileN = T1View.SelectedItem.text    'file
-'    FileTP = T1View.SelectedItem.SubItems(1).Text   'filetype
-'    SSTitle = T1View.SelectedItem.SubItems(2).Text  'file title
+    FileTP = T1View.SelectedItem.SubItems(1)  'filetype
+    SSTitle = T1View.SelectedItem.SubItems(2) 'file title
 End If
 
 '****************** FILE CUE & FX PRESETS load...
@@ -2272,5 +2353,3 @@ Private Sub VScroll1_Change()
 Intr.text = VScroll1.Value
 
 End Sub
-
-

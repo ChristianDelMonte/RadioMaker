@@ -278,12 +278,12 @@ lRet = FindClose(lFileHdl)
 
 End Function
 
-Sub ListDirs(tvwTree As ComctlLib.TreeView, ByVal sStartDir As String)
+Sub ListDirs(tvwTree As MSComctlLib.TreeView, ByVal sStartDir As String)
 
 'Esta funcion busca todos los subdirectorios dentro del directorio dado para
 'a su vez buscar mas sub directorios dentro de los mismos.
 
-Dim lpFindFileData As WIN32_FIND_DATA, lFileHdl  As Long, nodX As ComctlLib.Node
+Dim lpFindFileData As WIN32_FIND_DATA, lFileHdl  As Long, nodX As Node
 Dim sTemp As String, sTemp2 As String, lRet As Long, iLastIndex  As Integer
 
 On Error Resume Next
@@ -316,23 +316,23 @@ End If
 lRet = FindClose(lFileHdl)
 End Sub
 
-Public Function ListDrives(frm As Form, tvwTree As ComctlLib.TreeView, imgList As ComctlLib.ImageList, picImage As PictureBox) As String
+Public Function ListDrives(frm As Form, tvwTree As TreeView, imgList As ImageList, picImage As PictureBox) As String
 
 Dim sTemp As String, sTemp2 As String
 Dim lRet As Long
 Dim iNullSpot As Integer
-Dim nodX As ComctlLib.Node, lDrive As Long
+Dim nodX As Node, lDrive As Long
 Dim sSubDir As String
 Dim sCompName As String
 Dim sSelectDrive As String
 Dim sDrvPic As String
-Dim imgX As ComctlLib.ListImage
+Dim imgx As ListImage
 Dim lpFindFileData As WIN32_FIND_DATA, lFileHdl  As Long
 
 Screen.MousePointer = 13
 
 If ExtractIcon(picImage) Then
-    Set imgX = imgList.ListImages.Add(, "desktop", picImage.Image)
+    Set imgx = imgList.ListImages.Add(, "desktop", picImage.Image)
     sDrvPic = "desktop"
 Else
     sDrvPic = "open"

@@ -1,5 +1,4 @@
 VERSION 5.00
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.5#0"; "comctl32.Ocx"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "mscomctl.OCX"
 Begin VB.Form FrmBlock 
    BorderStyle     =   3  'Fixed Dialog
@@ -11,16 +10,30 @@ Begin VB.Form FrmBlock
    ControlBox      =   0   'False
    ForeColor       =   &H8000000F&
    LinkTopic       =   "Form1"
+   LockControls    =   -1  'True
    MaxButton       =   0   'False
    MinButton       =   0   'False
    ScaleHeight     =   5715
    ScaleWidth      =   11340
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
+   Begin MSComctlLib.ProgressBar PrgBar1 
+      Height          =   255
+      Left            =   4770
+      TabIndex        =   46
+      Top             =   5190
+      Width           =   2895
+      _ExtentX        =   5106
+      _ExtentY        =   450
+      _Version        =   393216
+      Appearance      =   0
+      Min             =   1e-4
+      Max             =   100
+   End
    Begin MSComctlLib.ListView ViewBlock 
       Height          =   3975
       Left            =   2760
-      TabIndex        =   46
+      TabIndex        =   45
       Top             =   600
       Width           =   3015
       _ExtentX        =   5318
@@ -33,17 +46,6 @@ Begin VB.Form FrmBlock
       BorderStyle     =   1
       Appearance      =   1
       NumItems        =   0
-   End
-   Begin ComctlLib.ProgressBar PrgBar1 
-      Height          =   285
-      Left            =   4740
-      TabIndex        =   45
-      Top             =   5160
-      Width           =   2115
-      _ExtentX        =   3731
-      _ExtentY        =   503
-      _Version        =   327682
-      Appearance      =   1
    End
    Begin VB.CommandButton BLOpen 
       Height          =   375
