@@ -1,5 +1,6 @@
 VERSION 5.00
 Begin VB.Form DownMenu 
+   BackColor       =   &H00808080&
    BorderStyle     =   0  'None
    ClientHeight    =   1305
    ClientLeft      =   0
@@ -306,6 +307,9 @@ Private Sub Est2Cmd_Click()
 End Sub
 
 Private Sub Form_Load()
+
+'*** load some pictures *****
+Me.Picture = LoadPicture(App.path & "\Imagenes\FND_COMPLETO.jpg")
 
 TndCmd.Picture = LoadResPicture("ICO_TND", 0): TndCmd.Caption = ""
 PrgTndCmd.Picture = LoadResPicture("ICO_PRG", 0): PrgTndCmd.Caption = ""

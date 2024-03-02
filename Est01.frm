@@ -13,6 +13,7 @@ Begin VB.Form Est01
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
+   OLEDropMode     =   1  'Manual
    ScaleHeight     =   5205
    ScaleWidth      =   15330
    ShowInTaskbar   =   0   'False
@@ -2832,7 +2833,6 @@ End If
 TitelBar1.Caption = "ESTACION 01 - Pausado"
 
 End Sub
-
 
 Private Sub E1Play_Click()
 

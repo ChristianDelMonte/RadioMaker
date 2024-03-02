@@ -151,7 +151,7 @@ End Sub
 
 Public Sub CheckForTimers(ByVal WState As Long)
 
-'wastate:   1=activar   0=desactivar
+'wstate:   1=activar   0=desactivar
 
 'gets the config device data
 ConfigData = OpenConfigFile

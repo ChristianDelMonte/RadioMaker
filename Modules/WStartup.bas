@@ -254,14 +254,14 @@ TopMenu.ClockTimer.Interval = 1000
 Unload RMSplash
 
 '/// chequeamos por la existencia de Plug-Ins
-'TopMenu.GetPlugInList "RMPlayer.dll"
-'TopMenu.GetPlugInList "RMRipper.dll"
-'TopMenu.GetPlugInList "RMVoice.dll"
-'TopMenu.GetPlugInList "RMController.dll"
-'TopMenu.GetPlugInList "RMXModule.dll"
-'TopMenu.GetPlugInList "RMFilter.dll"
-'TopMenu.GetPlugInList "RMEditec.dll"
-'TopMenu.GetPlugInList "RMDatabase.dll"
+TopMenu.GetPlugInList "RMPlayer.dll"
+TopMenu.GetPlugInList "RMRipper.dll"
+TopMenu.GetPlugInList "RMVoice.dll"
+TopMenu.GetPlugInList "RMController.dll"
+TopMenu.GetPlugInList "RMXModule.dll"
+TopMenu.GetPlugInList "RMFilter.dll"
+TopMenu.GetPlugInList "RMEditec.dll"
+TopMenu.GetPlugInList "RMDatabase.dll"
 
 '/// Mostramos las sugerencias del dia y Retornamos el control al usuario
 'frmTip.Show: frmTip.cmdOK.SetFocus

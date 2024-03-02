@@ -1160,22 +1160,6 @@ End Property
 
 ' //-- Public Procedures --//
 
-<<<<<<< HEAD
-'Public Sub About()
-'   Shows information about the control and its author.
-'    ShellExecute UserControl.Hwnd, "open", DC_URL, "", "", SW_SHOWNORMAL
-    
-'End Sub
-=======
-Public Sub About()
-Attribute About.VB_Description = "Shows information about the control and its author."
-Attribute About.VB_UserMemId = -552
-'   Shows information about the control and its author.
-    ShellExecute UserControl.Hwnd, "open", DC_URL, "", "", SW_SHOWNORMAL
-    
-End Sub
->>>>>>> 04bd5cd54907c603a905d1f685b7572bc392195d
-
 Public Sub ColorScheme( _
         Optional Style As eButtonStyles = -1, _
         Optional NoRedraw As Boolean)
@@ -4313,9 +4297,9 @@ Private Sub UserControl_Terminate()
     
     On Error GoTo Jmp_Skip      ' Bug fixed:
                                 ' IDE crash when UNLOAD called from its own event
-    If (Ambient.UserMode) Then  '
+    'If (Ambient.UserMode) Then  '
         Call sc_Terminate       ' Stop subclassers
-    End If                      '
+    'End If                      '
                                 ' Jump through here on occurence of error
 Jmp_Skip:                       ' Error 398: Client Site not available...
 End Sub

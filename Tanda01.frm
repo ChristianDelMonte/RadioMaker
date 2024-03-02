@@ -1,6 +1,7 @@
 VERSION 5.00
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "mscomctl.OCX"
 Begin VB.Form Tanda01 
+   BackColor       =   &H00404040&
    BorderStyle     =   0  'None
    ClientHeight    =   7440
    ClientLeft      =   15
@@ -12,13 +13,14 @@ Begin VB.Form Tanda01
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
+   OLEDropMode     =   1  'Manual
    ScaleHeight     =   7440
    ScaleWidth      =   7635
    ShowInTaskbar   =   0   'False
    Begin MSComctlLib.ProgressBar Prbar1 
       Height          =   285
       Left            =   150
-      TabIndex        =   77
+      TabIndex        =   76
       Top             =   5910
       Width           =   7335
       _ExtentX        =   12938
@@ -39,7 +41,7 @@ Begin VB.Form Tanda01
    Begin MSComctlLib.Slider T1Vol 
       Height          =   255
       Left            =   1860
-      TabIndex        =   75
+      TabIndex        =   74
       Top             =   8730
       Width           =   3255
       _ExtentX        =   5741
@@ -55,7 +57,7 @@ Begin VB.Form Tanda01
    Begin MSComctlLib.ListView T1View 
       Height          =   4455
       Left            =   150
-      TabIndex        =   74
+      TabIndex        =   73
       Top             =   1410
       Width           =   7335
       _ExtentX        =   12938
@@ -63,6 +65,7 @@ Begin VB.Form Tanda01
       View            =   3
       LabelWrap       =   -1  'True
       HideSelection   =   0   'False
+      OLEDropMode     =   1
       FlatScrollBar   =   -1  'True
       FullRowSelect   =   -1  'True
       GridLines       =   -1  'True
@@ -76,6 +79,7 @@ Begin VB.Form Tanda01
       BackColor       =   -2147483643
       BorderStyle     =   1
       Appearance      =   1
+      OLEDropMode     =   1
       NumItems        =   10
       BeginProperty ColumnHeader(1) {BDD1F052-858B-11D1-B16A-00C0F0283628} 
          Key             =   "a1"
@@ -142,7 +146,7 @@ Begin VB.Form Tanda01
       Left            =   6900
       Max             =   0
       Min             =   10
-      TabIndex        =   68
+      TabIndex        =   67
       Top             =   570
       Value           =   3
       Width           =   135
@@ -152,7 +156,7 @@ Begin VB.Form Tanda01
       Left            =   2250
       Picture         =   "Tanda01.frx":0000
       Style           =   1  'Graphical
-      TabIndex        =   67
+      TabIndex        =   66
       ToolTipText     =   "Agregar / Eliminar / modificar bloques"
       Top             =   6945
       UseMaskColor    =   -1  'True
@@ -165,7 +169,7 @@ Begin VB.Form Tanda01
       Left            =   7260
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   64
+      TabIndex        =   63
       TabStop         =   0   'False
       ToolTipText     =   "Hora de FINALIZACION de la Tanda en reproducción"
       Top             =   6360
@@ -178,7 +182,7 @@ Begin VB.Form Tanda01
       Left            =   7080
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   63
+      TabIndex        =   62
       TabStop         =   0   'False
       ToolTipText     =   "Hora de FINALIZACION de la Tanda en reproducción"
       Top             =   6360
@@ -191,7 +195,7 @@ Begin VB.Form Tanda01
       Left            =   6900
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   62
+      TabIndex        =   61
       TabStop         =   0   'False
       ToolTipText     =   "Hora de FINALIZACION de la Tanda en reproducción"
       Top             =   6360
@@ -204,7 +208,7 @@ Begin VB.Form Tanda01
       Left            =   6720
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   61
+      TabIndex        =   60
       TabStop         =   0   'False
       ToolTipText     =   "Hora de FINALIZACION de la Tanda en reproducción"
       Top             =   6360
@@ -217,7 +221,7 @@ Begin VB.Form Tanda01
       Left            =   6525
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   60
+      TabIndex        =   59
       TabStop         =   0   'False
       ToolTipText     =   "Hora de FINALIZACION de la Tanda en reproducción"
       Top             =   6360
@@ -230,7 +234,7 @@ Begin VB.Form Tanda01
       Left            =   6330
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   59
+      TabIndex        =   58
       TabStop         =   0   'False
       ToolTipText     =   "Hora de FINALIZACION de la Tanda en reproducción"
       Top             =   6360
@@ -243,7 +247,7 @@ Begin VB.Form Tanda01
       Left            =   6150
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   58
+      TabIndex        =   57
       TabStop         =   0   'False
       ToolTipText     =   "Hora de FINALIZACION de la Tanda en reproducción"
       Top             =   6360
@@ -256,7 +260,7 @@ Begin VB.Form Tanda01
       Left            =   5955
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   57
+      TabIndex        =   56
       TabStop         =   0   'False
       ToolTipText     =   "Hora de FINALIZACION de la Tanda en reproducción"
       Top             =   6360
@@ -269,7 +273,7 @@ Begin VB.Form Tanda01
       Left            =   4650
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   55
+      TabIndex        =   54
       TabStop         =   0   'False
       ToolTipText     =   "Hora de INICIO de reproducción"
       Top             =   6360
@@ -282,7 +286,7 @@ Begin VB.Form Tanda01
       Left            =   4470
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   54
+      TabIndex        =   53
       TabStop         =   0   'False
       ToolTipText     =   "Hora de INICIO de reproducción"
       Top             =   6360
@@ -295,7 +299,7 @@ Begin VB.Form Tanda01
       Left            =   4290
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   53
+      TabIndex        =   52
       TabStop         =   0   'False
       ToolTipText     =   "Hora de INICIO de reproducción"
       Top             =   6360
@@ -308,7 +312,7 @@ Begin VB.Form Tanda01
       Left            =   4110
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   52
+      TabIndex        =   51
       TabStop         =   0   'False
       ToolTipText     =   "Hora de INICIO de reproducción"
       Top             =   6360
@@ -321,7 +325,7 @@ Begin VB.Form Tanda01
       Left            =   3915
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   51
+      TabIndex        =   50
       TabStop         =   0   'False
       ToolTipText     =   "Hora de INICIO de reproducción"
       Top             =   6360
@@ -334,7 +338,7 @@ Begin VB.Form Tanda01
       Left            =   3720
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   50
+      TabIndex        =   49
       TabStop         =   0   'False
       ToolTipText     =   "Hora de INICIO de reproducción"
       Top             =   6360
@@ -347,7 +351,7 @@ Begin VB.Form Tanda01
       Left            =   3540
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   49
+      TabIndex        =   48
       TabStop         =   0   'False
       ToolTipText     =   "Hora de INICIO de reproducción"
       Top             =   6360
@@ -360,7 +364,7 @@ Begin VB.Form Tanda01
       Left            =   3345
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   48
+      TabIndex        =   47
       TabStop         =   0   'False
       ToolTipText     =   "Hora de INICIO de reproducción"
       Top             =   6360
@@ -373,7 +377,7 @@ Begin VB.Form Tanda01
       Left            =   825
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   46
+      TabIndex        =   45
       TabStop         =   0   'False
       ToolTipText     =   "Duración TOTAL de la Tanda"
       Top             =   6360
@@ -386,7 +390,7 @@ Begin VB.Form Tanda01
       Left            =   1020
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   45
+      TabIndex        =   44
       TabStop         =   0   'False
       ToolTipText     =   "Duración TOTAL de la Tanda"
       Top             =   6360
@@ -399,7 +403,7 @@ Begin VB.Form Tanda01
       Left            =   1200
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   44
+      TabIndex        =   43
       TabStop         =   0   'False
       ToolTipText     =   "Duración TOTAL de la Tanda"
       Top             =   6360
@@ -412,7 +416,7 @@ Begin VB.Form Tanda01
       Left            =   1395
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   43
+      TabIndex        =   42
       TabStop         =   0   'False
       ToolTipText     =   "Duración TOTAL de la Tanda"
       Top             =   6360
@@ -425,7 +429,7 @@ Begin VB.Form Tanda01
       Left            =   1590
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   42
+      TabIndex        =   41
       TabStop         =   0   'False
       ToolTipText     =   "Duración TOTAL de la Tanda"
       Top             =   6360
@@ -438,7 +442,7 @@ Begin VB.Form Tanda01
       Left            =   1770
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   41
+      TabIndex        =   40
       TabStop         =   0   'False
       ToolTipText     =   "Duración TOTAL de la Tanda"
       Top             =   6360
@@ -451,7 +455,7 @@ Begin VB.Form Tanda01
       Left            =   1950
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   40
+      TabIndex        =   39
       TabStop         =   0   'False
       ToolTipText     =   "Duración TOTAL de la Tanda"
       Top             =   6360
@@ -464,7 +468,7 @@ Begin VB.Form Tanda01
       Left            =   2130
       ScaleHeight     =   210
       ScaleWidth      =   195
-      TabIndex        =   39
+      TabIndex        =   38
       TabStop         =   0   'False
       ToolTipText     =   "Duración TOTAL de la Tanda"
       Top             =   6360
@@ -780,7 +784,7 @@ Begin VB.Form Tanda01
       Align           =   1  'Align Top
       Height          =   375
       Left            =   0
-      TabIndex        =   73
+      TabIndex        =   72
       Top             =   0
       Width           =   7635
       _ExtentX        =   13467
@@ -811,7 +815,7 @@ Begin VB.Form Tanda01
    Begin MSComctlLib.Slider T2Vol 
       Height          =   255
       Left            =   1830
-      TabIndex        =   76
+      TabIndex        =   75
       Top             =   9180
       Width           =   3255
       _ExtentX        =   5741
@@ -828,7 +832,7 @@ Begin VB.Form Tanda01
       BackColor       =   &H00FFFF00&
       Height          =   195
       Left            =   2220
-      TabIndex        =   72
+      TabIndex        =   71
       Top             =   8310
       Visible         =   0   'False
       Width           =   1635
@@ -839,7 +843,7 @@ Begin VB.Form Tanda01
       ForeColor       =   &H00FFFF00&
       Height          =   195
       Left            =   5550
-      TabIndex        =   71
+      TabIndex        =   70
       Top             =   900
       Width           =   1275
    End
@@ -849,7 +853,7 @@ Begin VB.Form Tanda01
       ForeColor       =   &H00FFFF00&
       Height          =   195
       Left            =   6900
-      TabIndex        =   70
+      TabIndex        =   69
       Top             =   900
       Width           =   495
    End
@@ -860,7 +864,7 @@ Begin VB.Form Tanda01
       ForeColor       =   &H00808080&
       Height          =   195
       Left            =   4890
-      TabIndex        =   69
+      TabIndex        =   68
       Top             =   900
       Width           =   585
    End
@@ -869,7 +873,7 @@ Begin VB.Form Tanda01
       Caption         =   "---"
       Height          =   240
       Left            =   3120
-      TabIndex        =   66
+      TabIndex        =   65
       Top             =   7800
       Visible         =   0   'False
       Width           =   825
@@ -880,7 +884,7 @@ Begin VB.Form Tanda01
       ForeColor       =   &H00C0C0C0&
       Height          =   195
       Left            =   5610
-      TabIndex        =   65
+      TabIndex        =   64
       Top             =   6360
       Width           =   315
    End
@@ -890,7 +894,7 @@ Begin VB.Form Tanda01
       ForeColor       =   &H00C0C0C0&
       Height          =   195
       Left            =   2775
-      TabIndex        =   56
+      TabIndex        =   55
       Top             =   6360
       Width           =   555
    End
@@ -900,18 +904,9 @@ Begin VB.Form Tanda01
       ForeColor       =   &H00C0C0C0&
       Height          =   195
       Left            =   180
-      TabIndex        =   47
+      TabIndex        =   46
       Top             =   6360
       Width           =   585
-   End
-   Begin VB.Label Label6 
-      BackColor       =   &H00000000&
-      BorderStyle     =   1  'Fixed Single
-      Height          =   345
-      Left            =   120
-      TabIndex        =   38
-      Top             =   6300
-      Width           =   7395
    End
    Begin VB.Label SyncStream 
       BackColor       =   &H000080FF&
@@ -1057,8 +1052,7 @@ Begin VB.Form Tanda01
    End
    Begin VB.Image Image1 
       Height          =   885
-      Left            =   4800
-      Picture         =   "Tanda01.frx":0102
+      Left            =   4830
       Stretch         =   -1  'True
       Top             =   420
       Width           =   2700
@@ -1066,10 +1060,16 @@ Begin VB.Form Tanda01
    Begin VB.Image Image2 
       Height          =   885
       Left            =   75
-      Picture         =   "Tanda01.frx":1972
       Stretch         =   -1  'True
       Top             =   420
       Width           =   4635
+   End
+   Begin VB.Image Image3 
+      Height          =   390
+      Left            =   60
+      Stretch         =   -1  'True
+      Top             =   6270
+      Width           =   7530
    End
    Begin VB.Menu BlockMnu 
       Caption         =   ""
@@ -1312,6 +1312,12 @@ PopupMenu BlockMnu
 End Sub
 
 Private Sub Form_Load()
+
+'*** load some pictures *****
+Me.Picture = LoadPicture(App.path & "\Imagenes\FND_COMPLETO.jpg")
+Me.Image1 = LoadPicture(App.path & "\Imagenes\FND_PANEL_NEW.jpg")
+Me.Image2 = LoadPicture(App.path & "\Imagenes\FND_PANEL_NEW.jpg")
+Me.Image3 = LoadPicture(App.path & "\Imagenes\FND_PANEL_NEW.jpg")
 
 '*** load commands pictures
     T1Next.Picture = LoadResPicture("R_NEXT", 0)
@@ -2213,6 +2219,18 @@ If Button = 2 Then
 Else
     'xxxxxx
 End If
+
+End Sub
+
+Private Sub T1View_OLEDragDrop(Data As MSComctlLib.DataObject, Effect As Long, Button As Integer, Shift As Integer, X As Single, Y As Single)
+
+Debug.Print Data.Files.Item
+
+End Sub
+
+Private Sub T1View_OLEDragOver(Data As MSComctlLib.DataObject, Effect As Long, Button As Integer, Shift As Integer, X As Single, Y As Single, State As Integer)
+
+Debug.Print "over: " & Data.Files.Item
 
 End Sub
 

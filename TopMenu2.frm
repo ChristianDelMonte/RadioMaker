@@ -6,7 +6,7 @@ Begin VB.Form TopMenu
    BackColor       =   &H00808080&
    BorderStyle     =   0  'None
    Caption         =   "Only RadioMaker"
-   ClientHeight    =   870
+   ClientHeight    =   960
    ClientLeft      =   330
    ClientTop       =   375
    ClientWidth     =   18630
@@ -15,8 +15,7 @@ Begin VB.Form TopMenu
    Icon            =   "TopMenu2.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
-   MinButton       =   0   'False
-   ScaleHeight     =   870
+   ScaleHeight     =   960
    ScaleWidth      =   18630
    ShowInTaskbar   =   0   'False
    Begin SysInfoLib.SysInfo SysInfo1 
@@ -170,7 +169,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   9510
+      Left            =   9840
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   41
@@ -181,7 +180,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   9330
+      Left            =   9660
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   40
@@ -192,7 +191,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   9150
+      Left            =   9480
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   39
@@ -203,7 +202,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   8970
+      Left            =   9300
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   38
@@ -214,7 +213,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   8775
+      Left            =   9105
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   37
@@ -225,7 +224,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   8580
+      Left            =   8910
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   36
@@ -236,7 +235,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   8400
+      Left            =   8730
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   35
@@ -247,7 +246,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   8205
+      Left            =   8535
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   34
@@ -258,7 +257,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   8205
+      Left            =   8535
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   33
@@ -269,7 +268,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   8400
+      Left            =   8730
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   32
@@ -280,7 +279,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   8580
+      Left            =   8910
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   31
@@ -291,7 +290,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   8775
+      Left            =   9105
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   30
@@ -302,7 +301,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   8970
+      Left            =   9300
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   29
@@ -313,7 +312,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   9150
+      Left            =   9480
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   28
@@ -324,7 +323,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   9330
+      Left            =   9660
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   27
@@ -335,7 +334,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   210
-      Left            =   9510
+      Left            =   9840
       ScaleHeight     =   210
       ScaleWidth      =   195
       TabIndex        =   26
@@ -378,7 +377,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   11805
+      Left            =   12225
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   18
@@ -389,7 +388,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   11565
+      Left            =   11985
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   17
@@ -400,7 +399,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   11325
+      Left            =   11745
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   16
@@ -411,7 +410,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   11085
+      Left            =   11505
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   15
@@ -422,7 +421,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   10845
+      Left            =   11265
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   14
@@ -433,7 +432,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   10605
+      Left            =   11025
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   13
@@ -444,7 +443,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   10365
+      Left            =   10785
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   12
@@ -455,7 +454,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   10125
+      Left            =   10545
       ScaleHeight     =   300
       ScaleWidth      =   240
       TabIndex        =   11
@@ -466,110 +465,110 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   12540
+      Left            =   13050
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   10
-      Top             =   300
+      Top             =   270
       Width           =   255
    End
    Begin VB.PictureBox f2 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   12810
+      Left            =   13320
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   9
-      Top             =   300
+      Top             =   270
       Width           =   255
    End
    Begin VB.PictureBox f3 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   13050
+      Left            =   13560
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   8
-      Top             =   300
+      Top             =   270
       Width           =   255
    End
    Begin VB.PictureBox f4 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   13290
+      Left            =   13800
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   7
-      Top             =   300
+      Top             =   270
       Width           =   255
    End
    Begin VB.PictureBox f5 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   13530
+      Left            =   14040
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   6
-      Top             =   300
+      Top             =   270
       Width           =   255
    End
    Begin VB.PictureBox f6 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   13770
+      Left            =   14280
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   5
-      Top             =   300
+      Top             =   270
       Width           =   255
    End
    Begin VB.PictureBox f7 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   14010
+      Left            =   14520
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   4
-      Top             =   300
+      Top             =   270
       Width           =   255
    End
    Begin VB.PictureBox f8 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   14250
+      Left            =   14760
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   3
-      Top             =   300
+      Top             =   270
       Width           =   255
    End
    Begin VB.PictureBox f9 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   14490
+      Left            =   15000
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   2
-      Top             =   300
+      Top             =   270
       Width           =   255
    End
    Begin VB.PictureBox f10 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   14730
+      Left            =   15240
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   1
-      Top             =   300
+      Top             =   270
       Width           =   255
    End
    Begin MSComDlg.CommonDialog EstCmd 
@@ -608,7 +607,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       ForeColor       =   &H80000008&
       Height          =   735
-      Left            =   90
+      Left            =   120
       ScaleHeight     =   705
       ScaleWidth      =   2430
       TabIndex        =   0
@@ -668,7 +667,7 @@ Begin VB.Form TopMenu
       Caption         =   "---"
       ForeColor       =   &H00808000&
       Height          =   195
-      Left            =   5550
+      Left            =   5880
       TabIndex        =   42
       Top             =   420
       Width           =   2625
@@ -690,7 +689,7 @@ Begin VB.Form TopMenu
       Caption         =   "---"
       ForeColor       =   &H00808000&
       Height          =   195
-      Left            =   5550
+      Left            =   5880
       TabIndex        =   24
       Top             =   195
       Width           =   2625
@@ -707,8 +706,7 @@ Begin VB.Form TopMenu
    End
    Begin VB.Image Image3 
       Height          =   735
-      Left            =   5460
-      Picture         =   "TopMenu2.frx":7AF8
+      Left            =   5790
       Stretch         =   -1  'True
       Top             =   60
       Width           =   4380
@@ -718,7 +716,7 @@ Begin VB.Form TopMenu
       Caption         =   "Desactivada"
       ForeColor       =   &H00808000&
       Height          =   195
-      Left            =   4380
+      Left            =   4470
       TabIndex        =   22
       Top             =   420
       Width           =   1005
@@ -729,7 +727,7 @@ Begin VB.Form TopMenu
       Caption         =   "Program. de Tandas:"
       ForeColor       =   &H00808080&
       Height          =   195
-      Left            =   2715
+      Left            =   2805
       TabIndex        =   21
       Top             =   420
       Width           =   1590
@@ -739,7 +737,7 @@ Begin VB.Form TopMenu
       Caption         =   "Desactivada"
       ForeColor       =   &H00808000&
       Height          =   195
-      Left            =   4380
+      Left            =   4470
       TabIndex        =   20
       Top             =   195
       Width           =   1005
@@ -750,7 +748,7 @@ Begin VB.Form TopMenu
       Caption         =   "Program. Horaria:"
       ForeColor       =   &H00808080&
       Height          =   195
-      Left            =   2895
+      Left            =   2985
       TabIndex        =   19
       Top             =   195
       Width           =   1410
@@ -758,24 +756,21 @@ Begin VB.Form TopMenu
    Begin VB.Image TopPic 
       Appearance      =   0  'Flat
       Height          =   735
-      Left            =   2610
-      Picture         =   "TopMenu2.frx":9368
+      Left            =   2700
       Stretch         =   -1  'True
       Top             =   60
       Width           =   2985
    End
    Begin VB.Image Image2 
       Height          =   735
-      Left            =   9870
-      Picture         =   "TopMenu2.frx":ABD8
+      Left            =   10290
       Stretch         =   -1  'True
       Top             =   60
       Width           =   2415
    End
    Begin VB.Image Image1 
       Height          =   735
-      Left            =   12300
-      Picture         =   "TopMenu2.frx":C448
+      Left            =   12810
       Stretch         =   -1  'True
       Top             =   60
       Width           =   2895
@@ -1702,6 +1697,12 @@ Private Sub Form_Load()
 
 '***load some pictures ***
 PicSmall.Picture = LoadPicture(App.path & "\Imagenes\RM_SMALL.bmp")
+Me.Picture = LoadPicture(App.path & "\Imagenes\FND_COMPLETO.jpg")
+Me.TopPic = LoadPicture(App.path & "\Imagenes\FND_PANEL_NEW.jpg")
+Me.Image1 = LoadPicture(App.path & "\Imagenes\FND_PANEL_NEW.jpg")
+Me.Image2 = LoadPicture(App.path & "\Imagenes\FND_PANEL_NEW.jpg")
+Me.Image3 = LoadPicture(App.path & "\Imagenes\FND_PANEL_NEW.jpg")
+
 
     On Error Resume Next
     '///Seteamos la prioridad del programa para evitar deshabilitaciones

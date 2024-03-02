@@ -1303,6 +1303,13 @@ Private Sub E1Play_Click()
 
 End Sub
 
+Private Sub Form_Load()
+
+'*** load some pictures *****
+Me.Picture = LoadPicture(App.path & "\Imagenes\FND_COMPLETO.jpg")
+
+End Sub
+
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
 
 HideWindow "Prg01"
