@@ -2198,7 +2198,7 @@ Dim Convt1 As Long
 
 On Error Resume Next
 If Est12Control.StopLabel2.Caption = "Stream" Then
-    TimeLen = Stream02GetLen(1) 'get len of file in time=1
+    TimeLen = GStreamGetLen(2, 1)
     FTime = FormatSegs(TimeLen) 'formateamos el tiempo
     E2Pos.Min = 0
     If FTime = 0 Or FTime = "" Then
@@ -2728,7 +2728,7 @@ End Sub
 Private Sub E2Pause_Click()
 
 If Est12Control.StopLabel2.Caption = "Stream" And Est12Control.Origen2.Caption = "E2" Then
-    Stream02Stop   'stream stop
+    GStreamStop 2
 Else
     If Est12Control.StopLabel2.Caption = "Music" And Est12Control.Origen2.Caption = "E2" Then
         Music02Stop    'music stop
@@ -2759,9 +2759,9 @@ End If
 
 If Est12Control.StopLabel2.Caption = "Stream" And Est12Control.Origen2.Caption = "E2" Then
     If Est02.pcontup.Visible = True Then    'loop enabled?
-        Stream02Play (BASS_SAMPLE_LOOP)
+        GStreamPlay 2, BASS_SAMPLE_LOOP
     Else
-        Stream02Play (0)
+        GStreamPlay 2, 0
     End If
 Else
     If Est12Control.StopLabel2.Caption = "Music" And Est12Control.Origen2.Caption = "E2" Then
@@ -2771,7 +2771,8 @@ Else
     End If
 End If
 
-TitelBar1.Caption = "ESTACION 02 - Reproduciendo"
+'TitelBar1.Caption = "ESTACION 02 - Reproduciendo"
+E2Pic.Picture = LoadPicture(App.path & "\Imagenes\FND_REPRODUCIENDO.jpg")
 RestoreDisplay 2
 Est12Control.Origen2.Caption = "E2"
 Label1.ForeColor = &HFFFF00
@@ -2826,7 +2827,7 @@ Dim Cnv1 As Long
 If Est12Control.StopLabel2.Caption = "Stream" And Est12Control.Origen2.Caption = "E2" Then
     Cnv1 = E2Pos.Value
     'change the stream position
-    Stream02SetPosition Cnv1, 1
+    GStreamSetPosition 2, Cnv1, 1
     E2Pos.ToolTipText = ConvSecToMin(CInt(E2Pos.Value))
 Else
     If Est12Control.StopLabel2.Caption = "Music" And Est12Control.Origen2.Caption = "E2" Then
@@ -2902,25 +2903,7 @@ Private Sub E2Slide_Change()
 
 If Est12Control.StopLabel2.Caption = "Stream" And Est12Control.Origen2.Caption = "E2" Then
     'change the stream pan position
-    Stream02SetPan (E2Slide.Value)
-    E2Slide.ToolTipText = E2Slide.Value
-Else
-    If Est12Control.StopLabel2.Caption = "Music" And Est12Control.Origen2.Caption = "E2" Then
-        'change the music pan position
-        Music02SetPan (E2Slide.Value)
-        E2Slide.ToolTipText = E2Slide.Value
-    Else
-        Exit Sub
-    End If
-End If
-
-End Sub
-
-Private Sub E2Slide_Scroll()
-
-If Est12Control.StopLabel2.Caption = "Stream" And Est12Control.Origen2.Caption = "E2" Then
-    'change the stream pan position
-    Stream02SetPan (E2Slide.Value)
+    GStreamSetPAN 2, E2Slide.Value
     E2Slide.ToolTipText = E2Slide.Value
 Else
     If Est12Control.StopLabel2.Caption = "Music" And Est12Control.Origen2.Caption = "E2" Then
@@ -2944,8 +2927,8 @@ If LFin.Caption = "Auto" Then
 End If
 
 If Est12Control.StopLabel2.Caption = "Stream" And Est12Control.Origen2.Caption = "E2" Then
-    Stream02Restart    'stream restart
-    Stream02Stop       'stream stop
+    GStreamRestart 2
+    GStreamStop 2
 Else
     If Est12Control.StopLabel2.Caption = "Music" And Est12Control.Origen2.Caption = "E2" Then
         Music02Restart     'music restart
@@ -2959,6 +2942,7 @@ Cont:
 'desactivamos el scope
 TmrScopeLite2.Interval = 0
 TmrScopeLite2.Enabled = False
+
 'reset the displays
 Lr.Width = 0
 Ll.Width = 0
@@ -2978,27 +2962,7 @@ Private Sub E2Vol_Change()
 
 If Est12Control.StopLabel2.Caption = "Stream" And Est12Control.Origen2.Caption = "E2" Then
     'change the stream volume
-    Stream02SetVolume (E2Vol.Value)
-    E2Vol.ToolTipText = E2Vol.Value
-    LblCurrVol.Caption = E2Vol.Value
-Else
-    If Est12Control.StopLabel2.Caption = "Music" And Est12Control.Origen2.Caption = "E2" Then
-        'change the music volume
-        Music02SetVolume (E2Vol.Value)
-        E2Vol.ToolTipText = E2Vol.Value
-        LblCurrVol.Caption = E2Vol.Value
-    Else
-        Exit Sub
-    End If
-End If
-
-End Sub
-
-Private Sub E2Vol_Scroll()
-
-If Est12Control.StopLabel2.Caption = "Stream" And Est12Control.Origen2.Caption = "E2" Then
-    'change the stream volume
-    Stream02SetVolume (E2Vol.Value)
+    GStreamSetVolume 2, E2Vol.Value
     E2Vol.ToolTipText = E2Vol.Value
     LblCurrVol.Caption = E2Vol.Value
 Else
@@ -3084,9 +3048,10 @@ CmdActualiz.Caption = LoadResString(2004)
 
 '*** load some pictures *****
 Est02.Picture = LoadPicture(App.path & "\Imagenes\EST_FND.jpg")
+E2Pic.Picture = LoadPicture(App.path & "\Imagenes\FND_DETENIDO.jpg")
 
 '*** load commands pictures
-    E2Pic.Picture = LoadResPicture("EST_02", 0)
+    'E2Pic.Picture = LoadResPicture("EST_02", 0)
     'load led1
     Llback.Picture = LoadPicture(App.path & "\Imagenes\FND_LVL_METER.jpg")
     Ll.Picture = LoadPicture(App.path & "\Imagenes\LVL_METER.jpg")
@@ -3384,8 +3349,8 @@ Private Sub TmOutAuto_Timer()
 
 If E2Vol.Value = 0 Then
     If Est12Control.StopLabel2.Caption = "Stream" And Est12Control.Origen2.Caption = "E2" Then
-        Stream02Restart    'stream restart
-        Stream02Stop       'stream stop
+        GStreamRestart 2
+        GStreamStop 2
     Else
         If Est12Control.StopLabel2.Caption = "Music" And Est12Control.Origen2.Caption = "E2" Then
             Music02Restart     'music restart
@@ -3434,7 +3399,7 @@ Private Sub TmrCUE_Timer()
     'change the stream position for a cue start
 If Est12Control.StopLabel2.Caption = "Stream" Then
     Do While ActualByte >= EndByte
-        Stream02SetPosition StartByte, 2
+        GStreamSetPosition 2, StartByte, 2
         Exit Do
     Loop
     E2Pos.ToolTipText = ConvSecToMin(CInt(E2Pos.Value))
@@ -3460,8 +3425,8 @@ Dim SType As String
 
 If Est12Control.StopLabel2 = "Stream" Then
     If Est12Control.Origen2.Caption = "E2" Then
-        LLft = Stream02GetLEFTLevel
-        RRgt = Stream02GetRIGHTLevel
+        LLft = GStreamGetLEFTlevel(2) 'Stream02GetLEFTLevel
+        RRgt = GStreamGetRIGHTlevel(2) 'Stream02GetRIGHTLevel
         Est02.SetAudioLevel LLft, RRgt
         SType = "Stream"
     End If

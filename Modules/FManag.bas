@@ -255,10 +255,6 @@ Dim FilLn As Long, FinLn As Long
 
 On Error GoTo StripErr
 WFileName = Trim(WFileName)
-'FilLn = Len(WFileName)
-
-'FinLn = InStr(1, WFileName, ".", vbTextCompare)
-'FinLn = FilLn - FinLn
 StripExtFromFile = Right$(WFileName, 3) ' FinLn)
 Exit Function
 
@@ -321,25 +317,25 @@ StripErr:
 StripFileFromExt = "NoFiles..."
 End Function
 
+'/////////////////////////////////////////////////
+'/ Función corregida 07-03-24
+'////////////////////////////////////////////////
 Function FileExist(WFileName As String) As Boolean
 
-Dim Data As String
-Dim FName As String
+
+Dim FName As String, Nombre As String
 
 FName = Trim(WFileName)
 
-On Error GoTo nop
-    '/// check if file exists
-'Open FName For Input As #44
-'Input #44, Data
-'Close #44
-
-FileExist = True
-Exit Function
-
-nop:    '/// file does not exists
-Close #44
 FileExist = False
+
+Nombre = Dir$(FName)
+If Len(Nombre) > 0 Then
+    FileExist = True
+Else
+    FileExist = False
+End If
+
 End Function
 
 Function OpenConfigFile() As ConfigRecord
@@ -459,6 +455,7 @@ OpenPrgFile = "NotOk"
 Close #14
 
 End Function
+
 Public Sub SaveChanges(WOrigen As String)
 
 'guarda los cambios producidos en cualquiera de los
@@ -1831,6 +1828,7 @@ Select Case EstNumber
             Est12Data.V1(NewCont).Caption = Trim(EstData.FType)
 
         Next NewCont
+        Est01.TitelBar1.Caption = "ESTACION 01 - " & FNombre    'cargamos en el titlebar de la estacion 1 el nombre del archivo
         Close #10
         OpenEstDataFile = "OK"
         Exit Function
@@ -1848,6 +1846,7 @@ Select Case EstNumber
             Est12Data.V2(NewCont).Caption = Trim(EstData.FType)
             
         Next NewCont
+        Est02.TitelBar1.Caption = "ESTACION 02 - " & FNombre    'cargamos en el titlebar de la estacion 2 el nombre del archivo
         Close #10
         OpenEstDataFile = "OK"
         Exit Function
@@ -1888,6 +1887,7 @@ Select Case EstNumber
             NumReg = Contador + 1
             Put #10, NumReg, EstData
         Next Contador
+        Est01.TitelBar1.Caption = "ESTACION 01 - " & FNombre    'seteamos en el titlebar de la estacion 1 el nombre del archivo
         Close #10
         SaveEstDataFile = "OK"
         Exit Function
@@ -1902,6 +1902,7 @@ Select Case EstNumber
             NumReg = Contador + 1
             Put #10, NumReg, EstData
         Next Contador
+        Est02.TitelBar1.Caption = "ESTACION 02 - " & FNombre    'seteamos en el titlebar de la estacion 2 el nombre del archivo
         Close #10
         SaveEstDataFile = "OK"
         Exit Function

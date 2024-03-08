@@ -79,7 +79,8 @@ NEnd = CLng(WREnd)
 Select Case WEstNum
     Case 1
         'covertimos el tiempo (segundos) en bytes
-        BytesPS = Stream01GetBytesPS
+        'BytesPS = Stream01GetBytesPS
+        BytesPS = GStreamGetBPS(1)
         If BytesPS = 0 Then
             MsgBox LoadResString(154), vbCritical
             GoSub nop
@@ -95,7 +96,8 @@ Select Case WEstNum
         Exit Function
     Case 2
         'covertimos el tiempo (segundos) en bytes
-        BytesPS = Stream02GetBytesPS
+        'BytesPS = Stream02GetBytesPS
+        BytesPS = GStreamGetBPS(2)
         If BytesPS = 0 Then
             MsgBox LoadResString(154), vbCritical
             GoSub nop

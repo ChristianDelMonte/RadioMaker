@@ -1,12 +1,14 @@
 Attribute VB_Name = "RMBass"
 '////////////////////////////////////////////////////////
 '*
-'*  //////// MULTIMEDIA & FX module for Vb.6+ ////////
+'*  ////// NEWRMBASS & FX module for RadioMaker //////
 '*  ** this module depends on 100% of "modBass.bas" **
-'*  ********* and is for Radiomaker 1.0 only *********
+'*  ********* and is for Radiomaker 1+ only *********
 '*
-'*     Copyright (c) 1987-2002 Only development Inc.
+'*     Copyright (c) 1987-2024 Only development Inc.
 '*     Christian A. Del Monte
+'*     creadig@gmail.com / creadig@hotmail.com
+'*
 '///////////////////////////////////////////////////////
 
 Option Explicit
@@ -108,6 +110,7 @@ End If
 TopMenu.RMPlugIn.DrawMiniFFT D, sSize
 
 End Sub
+
 Public Sub SendMiniScope(ByVal NumStream As Long, TypeStream As String)
 
 'this is the SCOPE data to send to RMPlayer.dll control
@@ -119,8 +122,8 @@ Dim RRgt As Long
 If NumStream = 1 Then
     Select Case TypeStream
         Case "Stream"
-            LLft = Stream01GetLEFTLevel
-            RRgt = Stream01GetRIGHTLevel
+            LLft = GStreamGetLEFTlevel(1) ' Stream01GetLEFTLevel
+            RRgt = GStreamGetRIGHTlevel(1) ' Stream01GetRIGHTLevel
         Case "Music"
             LLft = Music01GetLEFTLevel
             RRgt = Music01GetRIGHTLevel
@@ -131,8 +134,8 @@ Else
     If NumStream = 2 Then
         Select Case TypeStream
             Case "Stream"
-                LLft = Stream02GetLEFTLevel
-                RRgt = Stream02GetRIGHTLevel
+                LLft = GStreamGetLEFTlevel(2) 'Stream02GetLEFTLevel
+                RRgt = GStreamGetRIGHTlevel(2) ' Stream02GetRIGHTLevel
             Case "Music"
                 LLft = Music02GetLEFTLevel
                 RRgt = Music02GetRIGHTLevel
@@ -151,7 +154,7 @@ End Sub
 
 Public Sub CheckForTimers(ByVal WState As Long)
 
-'wstate:   1=activar   0=desactivar
+'wastate:   1=activar   0=desactivar
 
 'gets the config device data
 ConfigData = OpenConfigFile
@@ -529,7 +532,8 @@ Dim ln As Long
 
 Select Case WStream
     Case 1  '/////////////////////////////////////////////// stream01
-        ln = Stream01GetLen(1)  'get stream1 lenght (seconds)
+        'ln = Stream01GetLen(1)  'get stream1 lenght (seconds)
+        ln = GStreamGetLen(1, 1)
         CurrPos = ln - WSegs
         Tanda01.SyncLabel.Caption = CurrPos
         Tanda01.SyncStream.Caption = "Stream01"
@@ -538,7 +542,8 @@ Select Case WStream
         Tanda01.SyncTimer.Interval = 1
         
     Case 2  '/////////////////////////////////////////////// stream02
-        ln = Stream02GetLen(1)  'get stream2 lenght (seconds)
+        'ln = Stream02GetLen(1)  'get stream2 lenght (seconds)
+        ln = GStreamGetLen(2, 1)
         CurrPos = ln - WSegs
         Tanda01.SyncLabel.Caption = CurrPos
         Tanda01.SyncStream.Caption = "Stream02"
@@ -978,7 +983,7 @@ Public Sub DrawScope(ByVal Color1 As Long, ByVal Color2 As Long, ByVal aLeft As 
     End If
 End Sub
 
-Public Sub DrawFFT(ByVal NumStream As Long, TypeStream As String, sSize)
+Public Sub DrawFFT(ByVal WEstNumber As Long, TypeStream As String, sSize)
     
 Dim D() As Single
 Dim TopLevel As Long
@@ -989,15 +994,22 @@ Dim f As String
 Dim Z As Long
 Dim sLeft As Integer
 Dim RetVal As Long
+Dim WPlaychan As Long
+
+If WEstNumber = 1 Then
+    WPlaychan = Strm1
+Else
+    WPlaychan = Strm2
+End If
 
 ReDim D(512) As Single  '1024
     
-If NumStream = 1 Then
+If WEstNumber = 1 Then
     Select Case TypeStream
         Case "Stream"
-            RetVal = BASS_ChannelGetData(Strm1, D(0), BASS_DATA_FFT1024)
+            RetVal = BASS_ChannelGetData(WPlaychan, D(0), BASS_DATA_FFT1024)
         Case "Music"
-            RetVal = BASS_ChannelGetData(Msc1, D(0), BASS_DATA_FFT1024)
+            RetVal = BASS_ChannelGetData(WPlaychan, D(0), BASS_DATA_FFT1024)
         Case Else
             'xxx nothing
     End Select
@@ -1050,12 +1062,12 @@ If NumStream = 1 Then
         sCount = sCount + 1
     Next
 Else
-    If NumStream = 2 Then
+    If WEstNumber = 2 Then
         Select Case TypeStream
             Case "Stream"
-                RetVal = BASS_ChannelGetData(Strm2, D(0), BASS_DATA_FFT1024)
+                RetVal = BASS_ChannelGetData(WPlaychan, D(0), BASS_DATA_FFT1024)
             Case "Music"
-                RetVal = BASS_ChannelGetData(Msc2, D(0), BASS_DATA_FFT1024)
+                RetVal = BASS_ChannelGetData(WPlaychan, D(0), BASS_DATA_FFT1024)
             Case Else
                 'xxx nothing
         End Select
@@ -1115,51 +1127,31 @@ End If
     
 End Sub
 
+'//////////////////////////////////////////////////////////////////////////
+'GENERAL STREAM Get Bytes per Second FUNCTION - 03-03-2024
+'Funcion para extraer los bytes por segundo de un stream
+'Wchan = canal a examinar = stream or music
+'//////////////////////////////////////////////////////////////////////////
+Function GStreamGetBPS(ByVal WEstNumber As Long) As Double
 
-Public Function Stream02GetBytesPS() As Double
+Dim Flags As Long, bps As Long, WPlaychan As Long
+Dim Newf As BASS_CHANNELINFO
 
-'Funcion solo para uso interno de la libreria
- Dim Flags As Long, bps As Long
- Dim Newf As BASS_CHANNELINFO
- 
- On Error GoTo None
+If WEstNumber = 1 Then
+    WPlaychan = Strm1
+Else
+    WPlaychan = Strm2
+End If
 
- Call BASS_ChannelGetAttributes(Strm2, bps, 0, 0)
+If BASS_ChannelGetAttributes(WPlaychan, bps, 0, 0) = BASSTRUE Then
+    Flags = BASS_ChannelGetInfo(WPlaychan, Newf)
+    If Not (Flags & BASS_SAMPLE_MONO) Then bps = bps * 2
+    If Not (Flags & BASS_SAMPLE_8BITS) Then bps = bps * 2
+    GStreamGetBPS = bps
+Else
+    GStreamGetBPS = 0
+End If
  
- 'flags = BASS_ChannelGetFlags(Strm2)
- Flags = BASS_ChannelGetInfo(Strm2, Newf)
- 
- If Not (Flags & BASS_SAMPLE_MONO) Then bps = bps * 2
- If Not (Flags & BASS_SAMPLE_8BITS) Then bps = bps * 2
- 
- Stream02GetBytesPS = bps
-Exit Function
- 
-None:
- Stream02GetBytesPS = 0
-End Function
-
-Function Stream01GetBytesPS() As Double
-
-'Esta funcion es para uso interno de la libreria.
-Dim Flags As Long, bps As Long
- Dim Newf As BASS_CHANNELINFO
-
- On Error GoTo None
- Call BASS_ChannelGetAttributes(Strm1, bps, 0, 0)
- 
- 'flags = BASS_ChannelGetFlags(Strm1)
- Flags = BASS_ChannelGetInfo(Strm1, Newf)
- 
- If Not (Flags & BASS_SAMPLE_MONO) Then bps = bps * 2
- If Not (Flags & BASS_SAMPLE_8BITS) Then bps = bps * 2
- 
- Stream01GetBytesPS = bps
-
-Exit Function
- 
-None:
- Stream01GetBytesPS = 0
 End Function
 
 Function Music02IsPlaying() As Boolean
@@ -1241,140 +1233,105 @@ Sub Music02SetPosition(ByVal WOrder As Long, ByVal WRow As Long)
 
 End Sub
 
-Sub Stream02SetPosition(ByVal WPosOrWseg As Long, ByVal WType As Long)
+'//////////////////////////////////////////////////////////////////////////
+'GENERAL STREAM SET POSITION FUNCTION - 03-03-2024
+'Funcion para setear la posicion de reproduccion de un stream
+'Wchan = canal a procesar
+'WposOrWSeg =
+'WType =
+'//////////////////////////////////////////////////////////////////////////
+Function GStreamSetPosition(ByVal WEstNumber As Long, ByVal WPosOrWseg As Long, ByVal WType As Long) As Boolean
 
-Dim Rst As Long
-Dim RstS As Long
-
-'wtype contants
-'Const StrTime = 1
-'Const StrByte = 2
-
-'CHEQUEOS
-Select Case WType
-    Case StrTime
-        If Stream02IsPlaying = True Then
-            RstS = BASS_ChannelSeconds2Bytes(Strm2, WPosOrWseg)
-            'RstS = (WPosOrWseg * 60000) * 3   'convert the seg into byte
-            'Rst = BASS_StreamGetLength(Strm2)   'get the real lenght (byte)
-            Rst = BASS_ChannelGetLength(Strm2)
-            If RstS > Rst Then  'compare is Ok
-                DisplayMsg LoadResString(160)   '...posicion espec. incorrecta
-            Else
-                If BASS_ChannelSetPosition(Strm2, RstS) = BASSFALSE Then
-                    DisplayMsg LoadResString(160)   '...posicion espec. incorrecta
-                End If
-            End If
-        End If
-
-    Case StrByte
-        If Stream02IsPlaying = True Then
-            'Rst = BASS_StreamGetLength(Strm2)   'get the real lenght (byte)
-            Rst = BASS_ChannelGetLength(Strm2)
-            If WPosOrWseg > Rst Then  'compare is Ok
-                'DisplayMsg "The play position can´t exceed the file position."
-                DisplayMsg LoadResString(160)   '...posicion espec. incorrecta
-            Else
-                If BASS_ChannelSetPosition(Strm2, WPosOrWseg) = BASSFALSE Then
-                    DisplayMsg LoadResString(160)   '...posicion espec. incorrecta
-                End If
-            End If
-        End If
-
-End Select
-
-End Sub
-
-Sub Stream01SetPosition(ByVal WPosOrWseg As Long, ByVal WType As Long)
-
-Dim Rst As Long
-Dim RstS As Long
+Dim Rst As Long, RstS As Long, WPlaychan As Long
 
 'wtype contants
 'Const StrTime = 1
 'Const StrByte = 2
 
+If WEstNumber = 1 Then
+    WPlaychan = Strm1
+Else
+    WPlaychan = Strm2
+End If
+
 'CHEQUEOS
 Select Case WType
     Case StrTime
-        If Stream01IsPlaying = True Then
-            RstS = BASS_ChannelSeconds2Bytes(Strm1, WPosOrWseg)
-            'RstS = (WPosOrWseg * 60000) * 3 'convert the seg into byte
-            'Rst = BASS_StreamGetLength(Strm1)   'get the real lenght (byte)
-            Rst = BASS_ChannelGetLength(Strm1)
+        If BASS_ChannelIsActive(WPlaychan) = BASSTRUE Then
+            RstS = BASS_ChannelSeconds2Bytes(WPlaychan, WPosOrWseg)
+            Rst = BASS_ChannelGetLength(WPlaychan)
             If RstS > Rst Then  'compare is Ok
                 DisplayMsg LoadResString(160)   '...posicion espec. incorrecta
+                GStreamSetPosition = BASSFALSE
             Else
-                If BASS_ChannelSetPosition(Strm1, RstS) = BASSFALSE Then
+                If BASS_ChannelSetPosition(WPlaychan, RstS) = BASSFALSE Then
                     DisplayMsg LoadResString(160)   '...posicion espec. incorrecta
+                    GStreamSetPosition = BASSFALSE
+                Else
+                    GStreamSetPosition = BASSTRUE
                 End If
             End If
+        Else
+            MsgBox "CANAL NO ACTIVO - CHEQUEAR: MOD NewRMBass - GStreamSetPosition"
+            GStreamSetPosition = BASSFALSE
         End If
         
     Case StrByte
-        If Stream01IsPlaying = True Then
-            'Rst = BASS_StreamGetLength(Strm1)   'get the real lenght (byte)
-            Rst = BASS_ChannelGetLength(Strm1)
+        If BASS_ChannelIsActive(WPlaychan) = BASSTRUE Then
+            Rst = BASS_ChannelGetLength(WPlaychan)
             If WPosOrWseg > Rst Then  'compare is Ok
                 DisplayMsg LoadResString(160)   '...posicion espec. incorrecta
+                GStreamSetPosition = BASSFALSE
             Else
-                If BASS_ChannelSetPosition(Strm1, WPosOrWseg) = BASSFALSE Then
+                If BASS_ChannelSetPosition(WPlaychan, WPosOrWseg) = BASSFALSE Then
                     DisplayMsg LoadResString(160)   '...posicion espec. incorrecta
+                    GStreamSetPosition = BASSFALSE
+                Else
+                    GStreamSetPosition = BASSTRUE
                 End If
             End If
+        Else
+            GStreamSetPosition = BASSFALSE
         End If
-        
-End Select
-
-End Sub
-
-Function Stream02GetLen(ByVal WTypeDisplay As Long) As Long
-
-'Const StrTime = 1
-'Const StrByte = 2
-
-Dim SByte As Long
-Dim STime As Long
-
-'SByte = BASS_StreamGetLength(Strm2)  'get stream file lenght (Bytes)
-SByte = BASS_ChannelGetLength(Strm2)
-STime = CLng(BASS_ChannelBytes2Seconds(Strm2, SByte))
-
-Select Case WTypeDisplay
-    Case StrByte
-        Stream02GetLen = SByte
-    
-    Case StrTime
-        Stream02GetLen = STime
-        'BytesPS = Stream02GetBytesPS
-        'Stream02GetLen = SLen / BytesPS
-
 End Select
 
 End Function
 
-Function Stream01GetLen(ByVal WTypeDisplay As Long) As Long
+'//////////////////////////////////////////////////////////////////////////
+'GENERAL STREAM GET LENGHT FUNCTION - 03-03-2024
+'Funcion para extraer la longitud de un stream
+'Wchan = canal a extraer la longitud = stream or music
+'wTypeDisplay = StrTime o StrByte
+'//////////////////////////////////////////////////////////////////////////
+Function GStreamGetLen(ByVal WEstNumber As Long, ByVal WTypeDisplay As Long) As Long
 
 'Const StrTime = 1
 'Const StrByte = 2
 
-Dim SByte As Long
-Dim STime As Long
+Dim SByte As Long, STime As Long, WPlaychan As Long
 
-'SByte = BASS_StreamGetLength(Strm1)  'get stream file lenght (Bytes)
-SByte = BASS_ChannelGetLength(Strm1)
-STime = CLng(BASS_ChannelBytes2Seconds(Strm1, SByte))
+If WEstNumber = 1 Then
+    WPlaychan = Strm1
+Else
+    WPlaychan = Strm2
+End If
+
+SByte = BASS_ChannelGetLength(WPlaychan)    'get stream file lenght (Bytes)
+STime = CLng(BASS_ChannelBytes2Seconds(WPlaychan, SByte))
 
 Select Case WTypeDisplay
     Case StrByte
-        Stream01GetLen = SByte
-    
+        GStreamGetLen = SByte
+        Exit Function
+        
     Case StrTime
-        Stream01GetLen = STime
+        GStreamGetLen = STime
         'BytesPS = Stream01GetBytesPS
         'Stream01GetLen = SLen / BytesPS
-
+        Exit Function
 End Select
+
+GStreamGetLen = 0
 
 End Function
 
@@ -1566,33 +1523,40 @@ End If
 InitDevice = "Ok"
 End Function
 
-Sub Stream02SetPan(ByVal Wpan As Long)
+'//////////////////////////////////////////////////////////////////////////
+'GENERAL STREAM SET CHANNEL volume PAN FUNCTION - 03-03-2024
+'Funcion para setear el paneo de un stream
+'Wchan = canal a procesar = stream or music
+'Wpan = valor del volumen a setear
+'-100 = izq y +100 = der y 0=neutral o ambos canales
+'//////////////////////////////////////////////////////////////////////////
+Function GStreamSetPAN(ByVal WEstNumber As Long, ByVal Wpan As Long) As Boolean
 
-If Stream02IsPlaying = True Then
-    If Wpan < -100 Or Wpan > 100 Then
-        DisplayMsg LoadResString(167)   'invalido
-    Else
-        If BASS_ChannelSetAttributes(Strm2, -1, -1, Wpan) = BASSFALSE Then
-            DisplayMsg LoadResString(168)   'no se puede
-        End If
-    End If
+Dim WPlaychan As Long
+
+If WEstNumber = 1 Then
+    WPlaychan = Strm1
+Else
+    WPlaychan = Strm2
 End If
 
-End Sub
-
-Sub Stream01SetPan(ByVal Wpan As Long)
-
-If Stream01IsPlaying = True Then
+If BASS_ChannelIsActive(WPlaychan) = BASSTRUE Then
     If Wpan < -100 Or Wpan > 100 Then
         DisplayMsg LoadResString(167)   'invalido
+        GStreamSetPAN = BASSFALSE
     Else
-        If BASS_ChannelSetAttributes(Strm1, -1, -1, Wpan) = BASSFALSE Then
+        If BASS_ChannelSetAttributes(WPlaychan, -1, -1, Wpan) = BASSTRUE Then
+            GStreamSetPAN = BASSTRUE
+        Else
             DisplayMsg LoadResString(168)   'no se puede
+            GStreamSetPAN = BASSFALSE
         End If
     End If
+Else
+    GStreamSetPAN = BASSFALSE
 End If
 
-End Sub
+End Function
 
 Sub Music02SetPan(ByVal Wpan As Long)
 
@@ -1622,33 +1586,39 @@ End If
 
 End Sub
 
-Sub Stream02SetVolume(ByVal WVol As Long)
+'//////////////////////////////////////////////////////////////////////////
+'GENERAL STREAM VOLUMEN FUNCTION - 03-03-2024
+'Funcion para el seteo del volumen general de los streams
+'Wchan = canal a reproducir = stream or music
+'Wvol = valor del volumen
+'//////////////////////////////////////////////////////////////////////////
+Function GStreamSetVolume(ByVal WEstNumber As Long, ByVal WVol As Long) As Boolean
 
-If Stream02IsPlaying = True Then
+Dim WPlaychan
+
+If WEstNumber = 1 Then
+    WPlaychan = Strm1
+Else
+    WPlaychan = Strm2
+End If
+
+If BASS_ChannelIsActive(WPlaychan) = BASSTRUE Then
     If WVol < 0 Or WVol > 100 Then
-        DisplayMsg LoadResString(169)   'invalido
+        DisplayMsg LoadResString(169)   'volumen invalido
+        GStreamSetVolume = BASSFALSE
+        Exit Function
     Else
-        If BASS_ChannelSetAttributes(Strm2, -1, WVol, -101) = BASSFALSE Then
+        If BASS_ChannelSetAttributes(WPlaychan, -1, WVol, -101) = BASSFALSE Then
             DisplayMsg LoadResString(170)   'no se puede
+            GStreamSetVolume = BASSFALSE
+            Exit Function
         End If
     End If
 End If
 
-End Sub
+GStreamSetVolume = BASSTRUE
 
-Sub Stream01SetVolume(ByVal WVol As Long)
-
-If Stream01IsPlaying = True Then
-    If WVol < 0 Or WVol > 100 Then
-        DisplayMsg LoadResString(169)   'invalido
-    Else
-        If BASS_ChannelSetAttributes(Strm1, -1, WVol, -101) = BASSFALSE Then
-            DisplayMsg LoadResString(170)   'no se puede
-        End If
-    End If
-End If
-
-End Sub
+End Function
 
 Sub Music02SetVolume(ByVal WVol As Long)
 
@@ -1734,36 +1704,24 @@ Function Music01GetRIGHTLevel() As Long
 
 End Function
 
-Function Stream02GetRIGHTLevel() As Long
+'//////////////////////////////////////////////////////////////////////////
+'GENERAL STREAM Get Right volume level FUNCTION - 03-03-2024
+'Funcion para extraer el volumen derecho de un stream
+'Wchan = canal a examinar = stream or music
+'//////////////////////////////////////////////////////////////////////////
+Function GStreamGetRIGHTlevel(ByVal WEstNumber As Long) As Long
 
-Dim Level As Long, RRRight As Long
+Dim Level As Long, RRRight As Long, WPlaychan As Long
 Dim B As Long
 
-If Stream02IsPlaying = True Then
-    Level = BASS_ChannelGetLevel(Strm2)  'stream file level meter
-    B = 1
-    If (B < 128) Then
-        If HiWord(Level) >= B Then
-            RRRight = HiWord(Level)
-        Else
-            RRRight = HiWord(Level)
-            B = 2 * B - B / 2
-        End If
-    End If
-    Stream02GetRIGHTLevel = RRRight
+If WEstNumber = 1 Then
+    WPlaychan = Strm1
 Else
-    Stream02GetRIGHTLevel = 0
+    WPlaychan = Strm2
 End If
 
-End Function
-
-Function Stream01GetRIGHTLevel() As Long
-
-Dim Level As Long, RRRight As Long
-Dim B As Long
-
-If Stream01IsPlaying = True Then
-    Level = BASS_ChannelGetLevel(Strm1)  'stream file level meter
+If BASS_ChannelIsActive(WPlaychan) = BASSTRUE Then
+    Level = BASS_ChannelGetLevel(WPlaychan)  'stream file level meter
     B = 1
     If (B < 128) Then
         If HiWord(Level) >= B Then
@@ -1773,9 +1731,9 @@ If Stream01IsPlaying = True Then
             B = 2 * B - B / 2
         End If
     End If
-    Stream01GetRIGHTLevel = RRRight
+    GStreamGetRIGHTlevel = RRRight
 Else
-    Stream01GetRIGHTLevel = 0
+    GStreamGetRIGHTlevel = 0
 End If
 
 End Function
@@ -1823,29 +1781,6 @@ Function Music01GetLEFTLevel() As Long
 'Else
 '    Music01GetLEFTLevel = 0
 'End If
-
-End Function
-
-Function Stream02GetLEFTLevel() As Long
-
-Dim Level As Long, LLLeft As Long
-Dim A As Long
-
-If Stream02IsPlaying = True Then
-    Level = BASS_ChannelGetLevel(Strm2)  'stream file level meter
-        A = 93
-    If (A > 0) Then
-        If LoWord(Level) >= A Then
-            LLLeft = LoWord(Level)
-        Else
-            LLLeft = LoWord(Level)
-            A = A * 2 / 3
-        End If
-    End If
-    Stream02GetLEFTLevel = LLLeft
-Else
-    Stream02GetLEFTLevel = 0
-End If
 
 End Function
 
@@ -1899,51 +1834,31 @@ Function Music01GetPosition(ByVal WTypeDisplay As Long) As String
 
 End Function
 
-Function Stream02GetPosition(ByVal WTypeDisplay As Long) As Long
 
-'Const StrTime = 1
-'Const StrByte = 2
+'//////////////////////////////////////////////////////////////////////////
+'GENERAL STREAM RESTART FUNCTION - 03-03-2024
+'Funcion para reinicio general de los streams
+'Wchan = canal a reiniciar = stream or music
+'//////////////////////////////////////////////////////////////////////////
+Function GStreamRestart(ByVal WEstNumber As Long) As Boolean
 
-Dim PosByte As Long
-Dim PosTime As Long
+Dim WPlaychan As Long
 
-If Stream02IsPlaying = True Then
-    PosByte = BASS_ChannelGetPosition(Strm2)  'stream file position (Bytes)
-    PosTime = CLng(BASS_ChannelBytes2Seconds(Strm2, PosByte))
-    
-    Select Case WTypeDisplay
-        Case StrByte
-            Stream02GetPosition = PosByte
-            
-        Case StrTime
-            Stream02GetPosition = PosTime
-            'BytesPS = Stream02GetBytesPS
-            'Stream02GetPosition = Position / BytesPS
-
-    End Select
+If WEstNumber = 1 Then
+    WPlaychan = Strm1
 Else
-    Stream02GetPosition = 0
+    WPlaychan = Strm2
 End If
+
+If BASS_ChannelSetPosition(WPlaychan, 0) = BASSFALSE Then
+    DisplayMsg LoadResString(160)   'no se puede
+    GStreamRestart = BASSFALSE
+    Exit Function
+End If
+
+GStreamRestart = BASSTRUE
 
 End Function
-
-Sub Stream02Restart()
-
-If BASS_ChannelSetPosition(Strm2, 0) = BASSFALSE Then
-    DisplayMsg LoadResString(160)   'no se puede
-    Exit Sub
-End If
-
-End Sub
-
-Sub Stream01Restart()
-
-If BASS_ChannelSetPosition(Strm1, 0) = BASSFALSE Then
-    DisplayMsg LoadResString(160)   'no se puede
-    Exit Sub
-End If
-
-End Sub
 
 Sub Music02Restart()
 
@@ -2167,111 +2082,40 @@ End Select
 
 End Function
 
-Function Stream02Load(WFileName As String, LastHandle As String) As String
+'//////////////////////////////////////////////////////////////////////////
+'GENERAL STREAM LOAD FUNCTION - 03-03-2024
+'Funcion para cargar un archivo stream
+'WFileName =  path completo y nombre de archivo a cargar
+'Wchan = canal anterior a liberar si es que hay cargado uno antes
+'WChanType = si hay un anterior que tipo es = Music o Stream
+'WEstNumber = numero de la estación que intenta cargar el archivo stream
+'//////////////////////////////////////////////////////////////////////////
+Function GStreamLoad(WFileName As String, WChanType As String, WEstNumber As Long) As Boolean
 
-'retorna NotOk si hay algo mal
-'retorna Stream (new handle) si fue satisfactorio
+'retorna BASSTRUE o BASSFALSE segun sea el caso por si hay algo mal
 
-Dim StreamHandle2 As Long
+Dim StreamHandle1 As Long, StreamHandle2 As Long
 Dim Mode1 As Long, Mode2 As Long, Mode3 As Long, Mode4 As Long, Mode5 As Long
 
 'verificamos si hay un handle anterior y lo eliminamos
-If LastHandle = "Music" Then
-    BASS_MusicFree Msc2     'music
-Else
-    If LastHandle = "Stream" Then
-        Stream02Clear
-        'BASS_StreamFree Strm2   'stream
-    Else
-        Stream02Clear
-        'BASS_StreamFree Strm2   'stream
-    End If
-End If
-
-'*********************
-'* Sample info flags *
-'*********************
-'Global Const BASS_SAMPLE_8BITS = 1             ' 8 bit, else 16 bit
-'Global Const BASS_SAMPLE_MONO = 2              ' mono, else stereo
-'Global Const BASS_SAMPLE_3D = 8                ' 3D functionality enabled
-'Global Const BASS_SAMPLE_FX = 128              ' the DX8 effects are enabled
-'Global Const BASS_MP3_HALFRATE = 65536         ' reduced quality MP3/MP2/MP1 (half sample rate)
-'Global Const BASS_MP3_SETPOS = 131072          ' enable pin-point seeking on the MP3/MP2/MP1/OGG
-
-'gets the config device data
-ConfigData = OpenConfigFile
-
-Select Case ConfigData.Aud_Type     '1=8bits    2=16bits
+Select Case WEstNumber
     Case 1
-        Mode1 = BASS_SAMPLE_8BITS
+        If WChanType = "Music" Then
+            'BASS_MusicFree WChan
+        Else
+            GStreamClear 1
+        End If
     Case 2
-        Mode1 = 0
-    Case Else
-        Mode1 = 0
-End Select
-Select Case ConfigData.Aud_Cual     '1=Mono     2=Stereo
-    Case 1
-        Mode2 = BASS_SAMPLE_MONO
-    Case 2
-        Mode2 = 0
-    Case Else
-        Mode2 = 0
-End Select
-Select Case ConfigData.Aud_Mode     '1=Normal   2=A3d   3=3d    4=Ogg
-    Case 1
-        Mode3 = 0
-    Case 2
-        Mode3 = 0
-    Case 3
-        Mode3 = 0
-    Case 4
-        Mode3 = 0
-    Case Else
-        Mode3 = 0
+        If WChanType = "Music" Then
+            'BASS_MusicFree WChan
+        Else
+            GStreamClear 2
+        End If
 End Select
 
-Mode4 = BASS_MP3_SETPOS
-Mode5 = BASS_SAMPLE_FX
-
-StreamHandle2 = BASS_StreamCreateFile(BASSFALSE, WFileName, 0, 0, Mode1 Or Mode2 Or Mode3 Or Mode4 Or Mode5)
-If StreamHandle2 = 0 Then
-    DisplayMsg LoadResString(159)
-    Stream02Load = "NotOk"
-Else
-    Strm2 = StreamHandle2
-    Stream02Load = "Stream"
-End If
-
-End Function
-
-Function Stream01Load(WFileName As String, LastHandle As String) As String
-
-'retorna NotOk si hay algo mal
-'retorna Stream (new handle) si fue satisfactorio
-
-Dim StreamHandle1 As Long
-Dim Mode1 As Long, Mode2 As Long, Mode3 As Long, Mode4 As Long, Mode5 As Long
-
-'verificamos si hay un handle anterior y lo eliminamos
-If LastHandle = "Music" Then
-    BASS_MusicFree Msc1     'music
-Else
-    If LastHandle = "Stream" Then
-        Stream01Clear
-    Else
-        Stream01Clear
-    End If
-End If
-
-'*********************
-'* Sample info flags *
-'*********************
-'Global Const BASS_SAMPLE_8BITS = 1             ' 8 bit, else 16 bit
-'Global Const BASS_SAMPLE_MONO = 2              ' mono, else stereo
-'Global Const BASS_SAMPLE_3D = 8                ' 3D functionality enabled
-'Global Const BASS_SAMPLE_FX = 128              ' the DX8 effects are enabled
-'Global Const BASS_MP3_HALFRATE = 65536         ' reduced quality MP3/MP2/MP1 (half sample rate)
-'Global Const BASS_MP3_SETPOS = 131072          ' enable pin-point seeking on the MP3/MP2/MP1/OGG
+'*******************************************
+'* see Bass Sample info flags for more info*
+'*******************************************
 
 'gets the config device data
 ConfigData = OpenConfigFile
@@ -2308,14 +2152,27 @@ End Select
 Mode4 = BASS_MP3_SETPOS
 Mode5 = BASS_SAMPLE_FX
 
-StreamHandle1 = BASS_StreamCreateFile(BASSFALSE, WFileName, 0, 0, Mode1 Or Mode2 Or Mode3 Or Mode4 Or Mode5)
-If StreamHandle1 = 0 Then
-    DisplayMsg LoadResString(159)
-    Stream01Load = "NotOk"
-Else
-    Strm1 = StreamHandle1
-    Stream01Load = "Stream"
-End If
+'verificamos cual estación es la que quiere reproducir
+Select Case WEstNumber
+    Case 1 '**** Estación 1
+        StreamHandle1 = BASS_StreamCreateFile(BASSFALSE, WFileName, 0, 0, Mode1 Or Mode2 Or Mode3 Or Mode4 Or Mode5)
+        If StreamHandle1 = 0 Then
+            DisplayMsg LoadResString(159)
+            GStreamLoad = BASSFALSE
+        Else
+            Strm1 = StreamHandle1
+            GStreamLoad = BASSTRUE
+        End If
+    Case 2 '**** Estación 2
+        StreamHandle2 = BASS_StreamCreateFile(BASSFALSE, WFileName, 0, 0, Mode1 Or Mode2 Or Mode3 Or Mode4 Or Mode5)
+        If StreamHandle2 = 0 Then
+            DisplayMsg LoadResString(159)
+            GStreamLoad = BASSFALSE
+        Else
+            Strm2 = StreamHandle2
+            GStreamLoad = BASSTRUE
+        End If
+End Select
 
 End Function
 
@@ -2367,115 +2224,153 @@ Sub Music01Play()
 
 End Sub
 
-Sub Stream02Clear()
-
-'remove the last sync
-'Result = StreamRmvSync(2)
-
-BASS_StreamFree Strm2
-
-End Sub
-
-Sub Stream01Clear()
+'//////////////////////////////////////////////////////////////////////////
+'GENERAL STREAM CLEAR FUNCTION - 03-03-2024
+'Funcion para reiniciar y cerrar un stream
+'Wchan = canal a reiniciar = stream or music
+'//////////////////////////////////////////////////////////////////////////
+Function GStreamClear(ByVal WEstNumber As Long) As Boolean
 
 'removes the last sync
 'Result = StreamRmvSync(1)
 
-BASS_StreamFree Strm1
+Dim WPlaychan As Long
 
-End Sub
-
-Sub Stream02Stop()
-
-' Stop the stream
-If BASS_ChannelStop(Strm2) = BASSFALSE Then
-    'DisplayMsg LoadResString(182)
-    Exit Sub
-End If
-
-End Sub
-
-Sub Stream01Stop()
-
-'Stop the stream
-If BASS_ChannelStop(Strm1) = BASSFALSE Then
-    'DisplayMsg LoadResString(182)
-    Exit Sub
-End If
-
-End Sub
-
-Sub Stream02Play(ByVal WFlagStrmSample As Long)
-
-'Play stream, not flushed
-Select Case WFlagStrmSample
-    Case BASS_SAMPLE_LOOP
-        'If BASS_StreamPlay(Strm2, BASSFALSE, BASS_SAMPLE_LOOP) = BASSFALSE Then
-        If BASS_ChannelPlay(Strm2, BASSFALSE) = BASSFALSE Then
-            DisplayMsg LoadResString(183) & " " & LoadResString(172)
-        End If
-    Case Else
-        'If BASS_StreamPlay(Strm2, BASSFALSE, 0) = BASSFALSE Then
-        If BASS_ChannelPlay(Strm2, BASSFALSE) = BASSFALSE Then
-            DisplayMsg LoadResString(159)
-        End If
-End Select
-
-End Sub
-
-Sub Stream01Play(ByVal WFlagStrmSample As Long)
-
-'Play stream
-Select Case WFlagStrmSample
-    Case BASS_SAMPLE_LOOP
-        'If BASS_StreamPlay(Strm1, BASSFALSE, BASS_SAMPLE_LOOP) = BASSFALSE Then
-         If BASS_ChannelPlay(Strm1, BASSFALSE) = BASSFALSE Then
-            DisplayMsg LoadResString(183) & " " & LoadResString(172)
-        End If
-    Case Else
-        'If BASS_StreamPlay(Strm1, BASSFALSE, 0) = BASSFALSE Then
-        If BASS_ChannelPlay(Strm1, BASSFALSE) = BASSFALSE Then
-            DisplayMsg LoadResString(159)
-        End If
-End Select
-
-End Sub
-
-Function Stream01GetPosition(ByVal WTypeDisplay As Long) As Long
-
-'Const StrTime = 1
-'Const StrByte = 2
-
-Dim PosByte As Long
-Dim PosTime As Long
-
-If Stream01IsPlaying = True Then
-    PosByte = BASS_ChannelGetPosition(Strm1)  'get stream file position (Bytes)
-    PosTime = CLng(BASS_ChannelBytes2Seconds(Strm1, PosByte)) 'convert byte 2 sec.
-    
-    Select Case WTypeDisplay
-        Case StrByte
-            Stream01GetPosition = PosByte
-            
-        Case StrTime
-            Stream01GetPosition = PosTime
-            'BytesPS = Stream01GetBytesPS
-            'Stream01GetPosition = Position / BytesPS
-            
-    End Select
+If WEstNumber = 1 Then
+    WPlaychan = Strm1
 Else
-    Stream01GetPosition = 0
+    WPlaychan = Strm2
+End If
+
+If BASS_StreamFree(WPlaychan) = BASSFALSE Then
+    GStreamClear = BASSFALSE
+Else
+    GStreamClear = BASSTRUE
 End If
 
 End Function
 
-Function Stream01GetLEFTLevel() As Long
+'//////////////////////////////////////////////////////////////////////////
+'GENERAL STREAM STOP FUNCTION - 03-03-2024
+'Funcion para detener la reproducción general de los streams
+'Wchan = canal a detener = stream or music
+'//////////////////////////////////////////////////////////////////////////
+Function GStreamStop(ByVal WEstNumber As Long) As Boolean
 
-Dim Level As Long, LLLeft As Long
+Dim WPlaychan As Long
+
+If WEstNumber = 1 Then
+    WPlaychan = Strm1
+Else
+    WPlaychan = Strm2
+End If
+
+'Stop the stream
+If BASS_ChannelIsActive(WPlaychan) = BASSTRUE Then
+    If BASS_ChannelStop(WPlaychan) = BASSFALSE Then
+        DisplayMsg LoadResString(182)
+        GStreamStop = BASSFALSE
+    Else
+        GStreamStop = BASSTRUE
+    End If
+End If
+
+End Function
+
+'//////////////////////////////////////////////////////////////////////////
+'GENERAL STREAM PLAY FUNCTION - 03-03-2024
+'Funcion para la reproducción general de los streams
+'Wchan = canal a reproducir = stream or music
+'Wflag = sample loop o another
+'//////////////////////////////////////////////////////////////////////////
+Function GStreamPlay(ByVal WEstNum As Long, ByVal WFlag As Long) As Boolean
+
+Dim WPlaychan As Long
+
+If WEstNum = 1 Then
+    WPlaychan = Strm1
+Else
+    WPlaychan = Strm2
+End If
+
+Select Case WFlag
+    Case BASS_SAMPLE_LOOP
+         If BASS_ChannelPlay(WPlaychan, BASSFALSE) = BASSFALSE Then
+            DisplayMsg LoadResString(183) & " " & LoadResString(172)
+            GStreamPlay = BASSFALSE
+            Exit Function
+        End If
+    Case Else
+        If BASS_ChannelPlay(WPlaychan, BASSFALSE) = BASSFALSE Then
+            DisplayMsg LoadResString(159)
+            GStreamPlay = BASSFALSE
+            Exit Function
+        End If
+End Select
+
+GStreamPlay = BASSTRUE
+
+End Function
+
+'//////////////////////////////////////////////////////////////////////////
+'GENERAL STREAM GET POSITION FUNCTION - 03-03-2024
+'Funcion para reinicio general de los streams
+'Wchan = canal a extraer la posicion = stream or music
+'wTypeDisplay = StrTime o StrByte
+'//////////////////////////////////////////////////////////////////////////
+Function GStreamGetPosition(ByVal WEstNumber As Long, ByVal WTypeDisplay As Long) As Long
+
+'Const StrTime = 1
+'Const StrByte = 2
+
+Dim PosByte As Long, PosTime As Long, WPlaychan As Long
+
+If WEstNumber = 1 Then
+    WPlaychan = Strm1
+Else
+    WPlaychan = Strm2
+End If
+
+If BASS_ChannelIsActive(WPlaychan) = BASSTRUE Then
+    PosByte = BASS_ChannelGetPosition(WPlaychan)  'get stream file position (Bytes)
+    PosTime = CLng(BASS_ChannelBytes2Seconds(WPlaychan, PosByte)) 'convert byte 2 sec.
+    
+    Select Case WTypeDisplay
+        Case StrByte
+            GStreamGetPosition = PosByte    'devolvemos la pos en bytes
+            Exit Function
+            
+        Case StrTime
+            GStreamGetPosition = PosTime    'devolvemos la pos en segundos
+            'BytesPS = Stream01GetBytesPS
+            'Stream01GetPosition = Position / BytesPS
+            Exit Function
+            
+    End Select
+Else
+    GStreamGetPosition = 0
+End If
+
+End Function
+
+'//////////////////////////////////////////////////////////////////////////
+'GENERAL STREAM Get Left volume level FUNCTION - 03-03-2024
+'Funcion para extraer el volumen izquierdo de un stream
+'Wchan = canal a examinar = stream or music
+'//////////////////////////////////////////////////////////////////////////
+Function GStreamGetLEFTlevel(ByVal WEstNumber As Long) As Long
+
+Dim Level As Long, LLLeft As Long, WPlaychan As Long
 Dim A As Long
 
-If Stream01IsPlaying = True Then
-    Level = BASS_ChannelGetLevel(Strm1)  'stream file level meter
+If WEstNumber = 1 Then
+    WPlaychan = Strm1
+Else
+    WPlaychan = Strm2
+End If
+
+If BASS_ChannelIsActive(WPlaychan) = BASSTRUE Then
+    Level = BASS_ChannelGetLevel(WPlaychan)  'stream file level meter
     A = 93
     If (A > 0) Then
         If LoWord(Level) >= A Then
@@ -2485,13 +2380,12 @@ If Stream01IsPlaying = True Then
             A = A * 2 / 3
         End If
     End If
-    Stream01GetLEFTLevel = LLLeft
+    GStreamGetLEFTlevel = LLLeft
 Else
-    Stream01GetLEFTLevel = 0
+    GStreamGetLEFTlevel = 0
 End If
 
 End Function
-
 
 Sub PHPlay()
 
@@ -2542,12 +2436,10 @@ Select Case WSync
     Case "Yes" '-------------------------------------------------------------------
         If FileTP = "Stream" Then
             If Est12Control.StopLabel2.Caption = "Stream" Then
-                Result = Stream02Load(FileN, "Stream")
+                GStreamLoad FileN, "Stream", 2
             Else
                 If Est12Control.StopLabel2.Caption = "Music" Then
-                    Result = Stream02Load(FileN, "Music")
-                Else
-                    Result = Stream02Load(FileN, "Stream")
+                    GStreamLoad FileN, "Music", 2
                 End If
             End If
             'lets sets the sync
@@ -2610,12 +2502,10 @@ Select Case WSync
     Case "No" '-------------------------------------------------------------------
         If FileTP = "Stream" Then
             If Est12Control.StopLabel2.Caption = "Stream" Then
-                Result = Stream02Load(FileN, "Stream")
+                GStreamLoad FileN, "Stream", 2
             Else
                 If Est12Control.StopLabel2.Caption = "Music" Then
-                    Result = Stream02Load(FileN, "Music")
-                Else
-                    Result = Stream02Load(FileN, "Stream")
+                    GStreamLoad FileN, "Music", 2
                 End If
             End If
             Tanda01.T2Name.Caption = SSTitle
@@ -2690,12 +2580,10 @@ Select Case WSync
     Case "Yes" '-----------------------------------------------------------------
         If FileTP = "Stream" Then
             If Est12Control.StopLabel1.Caption = "Stream" Then
-                Result = Stream01Load(FileN, "Stream")
+                GStreamLoad FileN, "Stream", 1
             Else
                 If Est12Control.StopLabel1.Caption = "Music" Then
-                    Result = Stream01Load(FileN, "Music")
-                Else
-                    Result = Stream01Load(FileN, "Stream")
+                    GStreamLoad FileN, "Music", 1
                 End If
             End If
             'sets the file sync
@@ -2758,12 +2646,10 @@ Select Case WSync
     Case "No" '-----------------------------------------------------------------
         If FileTP = "Stream" Then
             If Est12Control.StopLabel1.Caption = "Stream" Then
-                Result = Stream01Load(FileN, "Stream")
+                GStreamLoad FileN, "Stream", 1
             Else
                 If Est12Control.StopLabel1.Caption = "Music" Then
-                    Result = Stream01Load(FileN, "Music")
-                Else
-                    Result = Stream01Load(FileN, "Stream")
+                    GStreamLoad FileN, "Music", 1
                 End If
             End If
             Tanda01.T1Name.Caption = SSTitle
@@ -2828,6 +2714,8 @@ Function Estacion02Play(ByVal WConNum As Integer) As String
 Dim FileN As String, FileTP As String, SSTitle As String
 Dim ResultFile As Boolean, Result As String
 
+Dim NResult As Boolean
+
 'extraccion de datos necesarios para la reproduccion
 FileN = Est12Data.N2(WConNum).Caption       'nombre y path del archivo
 FileTP = Est12Data.V2(WConNum).Caption      'tipo de archivo Music or Stream?
@@ -2849,7 +2737,7 @@ If ResultFile = False Then
 End If
 
 If Est12Control.StopLabel2.Caption = "Stream" Then
-    Stream02Stop       'stream stop
+    GStreamStop 2
 Else
     If Est12Control.StopLabel2.Caption = "Music" Then
         Music02Stop         'music stop
@@ -2857,19 +2745,17 @@ Else
 End If
 
 If FileTP = "Stream" Then
-    If Est12Control.StopLabel2.Caption = "Stream" Then
-        Result = Stream02Load(FileN, "Stream")
-    Else
-        If Est12Control.StopLabel2.Caption = "Music" Then
-            Result = Stream02Load(FileN, "Music")
-        Else
-            Result = Stream02Load(FileN, "Stream")
-        End If
-    End If
     Est02.Label1.Caption = SSTitle
     Est02.Label1.ForeColor = &HFFFF00     'celeste claro(activado)
-    Est12Control.StopLabel2.Caption = Result
+    Est12Control.StopLabel2.Caption = "Stream"
     Est12Control.Origen2.Caption = "E2"
+    If Est12Control.StopLabel2.Caption = "Stream" Then
+        GStreamLoad FileN, "Stream", 2
+    Else
+        If Est12Control.StopLabel2.Caption = "Music" Then
+            GStreamLoad FileN, "Music", 2
+        End If
+    End If
     'activamos el fx
     If Est12Control.LblFX.Caption = "NoFX" Then
         'xxxxxx
@@ -2879,11 +2765,11 @@ If FileTP = "Stream" Then
     'lets play the file
     If Est02.LAplay.ForeColor = &HFFFF00 Then   'autoplay claro
         If Est02.pcontup.Visible = True Then    'play continuous activado?
-            Stream02Play (BASS_SAMPLE_LOOP)
-            Est02.TitelBar1.Caption = LoadResString(1004)     'reproduciendo
+            NResult = GStreamPlay(2, BASS_SAMPLE_LOOP)
+            Est02.E2Pic.Picture = LoadPicture(App.path & "\Imagenes\FND_REPRODUCIENDO.jpg")
         Else
-            Stream02Play (0)
-            Est02.TitelBar1.Caption = LoadResString(1004) 'reproduciendo
+            NResult = GStreamPlay(2, 0)
+            Est02.E2Pic.Picture = LoadPicture(App.path & "\Imagenes\FND_REPRODUCIENDO.jpg")
         End If
     End If
 Else
@@ -2932,7 +2818,7 @@ Else
         'lets play the music
         If Est02.LAplay.ForeColor = &HFFFF00 Then 'claro
             Music02Play
-            Est02.TitelBar1.Caption = LoadResString(1004) 'reproduciendo
+            Est02.E2Pic.Picture = LoadPicture(App.path & "\Imagenes\FND_REPRODUCIENDO.jpg")
         End If
     Else
         Est02.Label1.ForeColor = &H808000     'celeste oscuro(desactivado)
@@ -2947,6 +2833,8 @@ Function Estacion01Play(ByVal WConNum As Integer) As String
 
 Dim FileN As String, FileTP As String, SSTitle As String
 Dim ResultFile As Boolean, Result As String
+
+Dim NResult As Boolean
 
 'extraccion de datos necesarios para la reproduccion
 FileN = Est12Data.N1(WConNum).Caption       'nombre y path del archivo
@@ -2969,7 +2857,7 @@ If ResultFile = False Then
 End If
 
 If Est12Control.StopLabel1.Caption = "Stream" Then
-    Stream01Stop       'stream stop
+    NResult = GStreamStop(1)
 Else
     If Est12Control.StopLabel1.Caption = "Music" Then
         Music01Stop         'music stop
@@ -2977,19 +2865,17 @@ Else
 End If
 
 If FileTP = "Stream" Then
-    If Est12Control.StopLabel1.Caption = "Stream" Then
-        Result = Stream01Load(FileN, "Stream")
-    Else
-        If Est12Control.StopLabel1.Caption = "Music" Then
-            Result = Stream01Load(FileN, "Music")
-        Else
-            Result = Stream01Load(FileN, "Stream")
-        End If
-    End If
     Est01.Label1.Caption = SSTitle
     Est01.Label1.ForeColor = &HFFFF00     'celeste claro(activado)
-    Est12Control.StopLabel1.Caption = Result
+    Est12Control.StopLabel1.Caption = "Stream"
     Est12Control.Origen1.Caption = "E1"
+    If Est12Control.StopLabel1.Caption = "Stream" Then
+        GStreamLoad FileN, "Stream", 1
+    Else
+        If Est12Control.StopLabel1.Caption = "Music" Then
+            GStreamLoad FileN, "Music", 1
+        End If
+    End If
     'activamos el fx
     If Est12Control.LblFX.Caption = "NoFX" Then
         'xxxxxx
@@ -2999,11 +2885,11 @@ If FileTP = "Stream" Then
     'lets play the file
     If Est01.LAplay.ForeColor = &HFFFF00 Then   'autoplay claro
         If Est01.pcontup.Visible = True Then    'play continuo activado?
-            Stream01Play (BASS_SAMPLE_LOOP)
-            Est01.TitelBar1.Caption = LoadResString(1001) 'reproduciendo
+            NResult = GStreamPlay(1, BASS_SAMPLE_LOOP)
+            Est01.E1Pic.Picture = LoadPicture(App.path & "\Imagenes\FND_REPRODUCIENDO.jpg")
         Else
-            Stream01Play (0)
-            Est01.TitelBar1.Caption = LoadResString(1001) 'reproduciendo
+            NResult = GStreamPlay(1, 0)
+            Est01.E1Pic.Picture = LoadPicture(App.path & "\Imagenes\FND_REPRODUCIENDO.jpg")
         End If
     End If
 Else
@@ -3052,7 +2938,7 @@ Else
         'lets play the music
         If Est01.LAplay.ForeColor = &HFFFF00 Then 'claro
             Music01Play
-            Est01.TitelBar1.Caption = LoadResString(1001) 'reproduciendo
+            Est01.E1Pic.Picture = LoadPicture(App.path & "\Imagenes\FND_REPRODUCIENDO.jpg")
         End If
     Else
         Est01.Label1.ForeColor = &H808000     'celeste oscuro(desactivado)
@@ -3086,4 +2972,3 @@ Sub SYNCPROC_PH(ByVal handle As Long, ByVal channel As Long, ByVal Data As Long,
     Call FrmTime.PHActive_Click
     
 End Sub
-

@@ -26,14 +26,14 @@ Option Explicit
 'Date: 26/12/2021
 'Version: 1.0.0
 '-----------------------------------------------
-Private Declare Function MulDiv Lib "kernel32.dll" (ByVal nNumber As Long, ByVal nNumerator As Long, ByVal nDenominator As Long) As Long
-Private Declare Function GetDC Lib "user32.dll" (ByVal hwnd As Long) As Long
-Private Declare Function ReleaseDC Lib "user32.dll" (ByVal hwnd As Long, ByVal hDC As Long) As Long
-Private Declare Function GetDeviceCaps Lib "gdi32" (ByVal hDC As Long, ByVal nIndex As Long) As Long
+Private Declare Function MulDiv Lib "Kernel32.dll" (ByVal nNumber As Long, ByVal nNumerator As Long, ByVal nDenominator As Long) As Long
+Private Declare Function GetDC Lib "user32.dll" (ByVal hWnd As Long) As Long
+Private Declare Function ReleaseDC Lib "user32.dll" (ByVal hWnd As Long, ByVal hdc As Long) As Long
+Private Declare Function GetDeviceCaps Lib "GDI32" (ByVal hdc As Long, ByVal nIndex As Long) As Long
 Private Declare Function GetSysColor Lib "user32.dll" (ByVal nIndex As Long) As Long
 Private Declare Function GdipDeletePen Lib "GdiPlus.dll" (ByVal mPen As Long) As Long
-Private Declare Function GdipCreateFromHDC Lib "GDIPlus" (ByVal hDC As Long, ByRef graphics As Long) As Long
-Private Declare Function GdipDeleteGraphics Lib "GDIPlus" (ByVal graphics As Long) As Long
+Private Declare Function GdipCreateFromHDC Lib "gdiplus" (ByVal hdc As Long, ByRef graphics As Long) As Long
+Private Declare Function GdipDeleteGraphics Lib "gdiplus" (ByVal graphics As Long) As Long
 Private Declare Function GdipSetSmoothingMode Lib "GdiPlus.dll" (ByVal mGraphics As Long, ByVal mSmoothingMode As Long) As Long
 Private Declare Function GdipDeleteBrush Lib "GdiPlus.dll" (ByVal mBrush As Long) As Long
 Private Declare Function GdipFillEllipseI Lib "GdiPlus.dll" (ByVal mGraphics As Long, ByVal mBrush As Long, ByVal mX As Long, ByVal mY As Long, ByVal mWidth As Long, ByVal mHeight As Long) As Long
@@ -43,32 +43,32 @@ Private Declare Function GdipSetPenEndCap Lib "GdiPlus.dll" (ByVal mPen As Long,
 Private Declare Function GdipSetPenStartCap Lib "GdiPlus.dll" (ByVal mPen As Long, ByVal mStartCap As Long) As Long
 Private Declare Function GdipDrawEllipse Lib "GdiPlus.dll" (ByVal mGraphics As Long, ByVal mPen As Long, ByVal mX As Single, ByVal mY As Single, ByVal mWidth As Single, ByVal mHeight As Single) As Long
 Private Declare Function GdipCreatePen1 Lib "GdiPlus.dll" (ByVal mColor As Long, ByVal mWidth As Single, ByVal mUnit As Long, ByRef mPen As Long) As Long
-Private Declare Function GdipCreateSolidFill Lib "GDIPlus" (ByVal argb As Long, ByRef brush As Long) As Long
+Private Declare Function GdipCreateSolidFill Lib "gdiplus" (ByVal argb As Long, ByRef Brush As Long) As Long
 Private Declare Function GdipCreateFont Lib "GdiPlus.dll" (ByVal mFontFamily As Long, ByVal mEmSize As Single, ByVal mStyle As Long, ByVal mUnit As Long, ByRef mFont As Long) As Long
 Private Declare Function GdipDeleteFont Lib "GdiPlus.dll" (ByVal mFont As Long) As Long
 Private Declare Function GdipDrawString Lib "GdiPlus.dll" (ByVal mGraphics As Long, ByVal mString As Long, ByVal mLength As Long, ByVal mFont As Long, ByRef mLayoutRect As RectF, ByVal mStringFormat As Long, ByVal mBrush As Long) As Long
-Private Declare Function GdipCreateFontFamilyFromName Lib "GDIPlus" (ByVal Name As Long, ByVal fontCollection As Long, fontFamily As Long) As Long
-Private Declare Function GdipDeleteFontFamily Lib "GDIPlus" (ByVal fontFamily As Long) As Long
+Private Declare Function GdipCreateFontFamilyFromName Lib "gdiplus" (ByVal Name As Long, ByVal fontCollection As Long, fontFamily As Long) As Long
+Private Declare Function GdipDeleteFontFamily Lib "gdiplus" (ByVal fontFamily As Long) As Long
 Private Declare Function GdipGetGenericFontFamilySansSerif Lib "GdiPlus.dll" (ByRef mNativeFamily As Long) As Long
-Private Declare Function GdipCreateStringFormat Lib "GDIPlus" (ByVal formatAttributes As Long, ByVal language As Integer, StringFormat As Long) As Long
+Private Declare Function GdipCreateStringFormat Lib "gdiplus" (ByVal formatAttributes As Long, ByVal language As Integer, StringFormat As Long) As Long
 Private Declare Function GdipSetStringFormatFlags Lib "GdiPlus.dll" (ByVal mFormat As Long, ByVal mFlags As StringFormatFlags) As Long
-Private Declare Function GdipSetStringFormatAlign Lib "GDIPlus" (ByVal StringFormat As Long, ByVal Align As StringAlignment) As Long
+Private Declare Function GdipSetStringFormatAlign Lib "gdiplus" (ByVal StringFormat As Long, ByVal Align As StringAlignment) As Long
 Private Declare Function GdipSetStringFormatLineAlign Lib "GdiPlus.dll" (ByVal mFormat As Long, ByVal mAlign As StringAlignment) As Long
 Private Declare Function GdipDeleteStringFormat Lib "GdiPlus.dll" (ByVal mFormat As Long) As Long
-Private Declare Function GdiplusStartup Lib "GDIPlus" (Token As Long, inputbuf As GdiplusStartupInput, Optional ByVal outputbuf As Long = 0) As Long
-Private Declare Sub GdiplusShutdown Lib "GDIPlus" (ByVal Token As Long)
+Private Declare Function GdiplusStartup Lib "gdiplus" (Token As Long, inputbuf As GDIPlusStartupInput, Optional ByVal outputbuf As Long = 0) As Long
+Private Declare Sub GdiplusShutdown Lib "gdiplus" (ByVal Token As Long)
 Private Declare Function GdipDrawLine Lib "GdiPlus.dll" (ByVal mGraphics As Long, ByVal mPen As Long, ByVal mX1 As Single, ByVal mY1 As Single, ByVal mX2 As Single, ByVal mY2 As Single) As Long
 Private Declare Function GdipGetPathWorldBoundsI Lib "GdiPlus.dll" (ByVal path As Long, ByRef bounds As RECTL, ByVal matrix As Long, ByVal pen As Long) As Long
-Private Declare Function GdipCreateMatrix Lib "GDIPlus" (matrix As Long) As Long
-Private Declare Function GdipTranslateMatrix Lib "GDIPlus" (ByVal matrix As Long, ByVal offsetX As Single, ByVal offsetY As Single, ByVal order As MatrixOrder) As Long
-Private Declare Function GdipRotateMatrix Lib "GDIPlus" (ByVal matrix As Long, ByVal Angle As Single, ByVal order As MatrixOrder) As Long
-Private Declare Function GdipTransformPath Lib "GDIPlus" (ByVal path As Long, ByVal matrix As Long) As Long
+Private Declare Function GdipCreateMatrix Lib "gdiplus" (matrix As Long) As Long
+Private Declare Function GdipTranslateMatrix Lib "gdiplus" (ByVal matrix As Long, ByVal offsetX As Single, ByVal offsetY As Single, ByVal order As MatrixOrder) As Long
+Private Declare Function GdipRotateMatrix Lib "gdiplus" (ByVal matrix As Long, ByVal Angle As Single, ByVal order As MatrixOrder) As Long
+Private Declare Function GdipTransformPath Lib "gdiplus" (ByVal path As Long, ByVal matrix As Long) As Long
 Private Declare Function GdipAddPathPolygonI Lib "GdiPlus.dll" (ByVal mPath As Long, ByRef mPoints As POINTL, ByVal mCount As Long) As Long
 Private Declare Function GdipAddPathClosedCurve2I Lib "GdiPlus.dll" (ByVal mPath As Long, ByRef mPoints As POINTL, ByVal mCount As Long, ByVal mTension As Single) As Long
 
 Private Type POINTL
-    X As Long
-    Y As Long
+    x As Long
+    y As Long
 End Type
 
 
@@ -91,8 +91,8 @@ Private Type RECTL
     Height As Long
 End Type
 
-Private Type GdiplusStartupInput
-    GdiplusVersion              As Long
+Private Type GDIPlusStartupInput
+    GdiPlusVersion              As Long
     DebugEventCallback          As Long
     SuppressBackgroundThread    As Long
     SuppressExternalCodecs      As Long
@@ -137,9 +137,9 @@ Private Const GDIP_OK                   As Long = &H0
 Public Event Change()
 Public Event Click()
 Public Event DblClick()
-Public Event MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
-Public Event MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-Public Event MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Public Event MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
+Public Event MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+Public Event MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
 'Public Event PrePaint(hdc As Long)
 'Public Event PostPaint(ByVal hdc As Long)
 Public Event KeyPress(KeyAscii As Integer)
@@ -354,23 +354,23 @@ Public Property Let TickBackColor(ByVal New_Value As OLE_COLOR)
     Refresh
 End Property
 
-Private Sub UserControl_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
-    If Button = vbLeftButton Then m_PointY = Y
+Private Sub UserControl_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
+    If Button = vbLeftButton Then m_PointY = y
     m_MemorPercent = mPercent
-    RaiseEvent MouseDown(Button, Shift, X, Y)
+    RaiseEvent MouseDown(Button, Shift, x, y)
 End Sub
 
-Private Sub UserControl_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-    Dim Dist  As Single
+Private Sub UserControl_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+    Dim dist  As Single
     Dim newValue As Single
     
     If Button = 1 Then
-        Dist = (m_PointY - Y) / nScale
+        dist = (m_PointY - y) / nScale
 
         If m_Steps = 0 Then
-            mPercent = m_MemorPercent + Dist
+            mPercent = m_MemorPercent + dist
         Else
-            mPercent = m_MemorPercent + ((Dist \ 10) * (100 / m_Steps))
+            mPercent = m_MemorPercent + ((dist \ 10) * (100 / m_Steps))
         End If
         
         If mPercent < 0 Then mPercent = 0
@@ -388,12 +388,12 @@ Private Sub UserControl_MouseMove(Button As Integer, Shift As Integer, X As Sing
         End If
     End If
     
-    RaiseEvent MouseMove(Button, Shift, X, Y)
+    RaiseEvent MouseMove(Button, Shift, x, y)
     
 End Sub
 
-Private Sub UserControl_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
-    RaiseEvent MouseUp(Button, Shift, X, Y)
+Private Sub UserControl_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
+    RaiseEvent MouseUp(Button, Shift, x, y)
 End Sub
 
 Private Sub UserControl_ReadProperties(PropBag As PropertyBag)
@@ -470,7 +470,7 @@ Private Sub UserControl_InitProperties()
 End Sub
 
 
-Private Function DrawText(ByVal hGraphics As Long, ByVal text As String, ByVal X As Long, ByVal Y As Long, ByVal Width As Long, ByVal Height As Long, ByVal oFont As StdFont, ByVal ForeColor As Long, Optional HAlign As Long, Optional VAlign As Long, Optional bWordWrap As Boolean) As Long
+Private Function DrawText(ByVal hGraphics As Long, ByVal Text As String, ByVal x As Long, ByVal y As Long, ByVal Width As Long, ByVal Height As Long, ByVal oFont As StdFont, ByVal ForeColor As Long, Optional HAlign As Long, Optional VAlign As Long, Optional bWordWrap As Boolean) As Long
     Dim hBrush As Long
     Dim hFontFamily As Long
     Dim hFormat As Long
@@ -478,7 +478,7 @@ Private Function DrawText(ByVal hGraphics As Long, ByVal text As String, ByVal X
     Dim lFontSize As Long
     Dim lFontStyle As GDIPLUS_FONTSTYLE
     Dim hFont As Long
-    Dim hDC As Long
+    Dim hdc As Long
 
   
     If GdipCreateFontFamilyFromName(StrPtr(oFont.Name), 0, hFontFamily) <> GDIP_OK Then
@@ -499,16 +499,16 @@ Private Function DrawText(ByVal hGraphics As Long, ByVal text As String, ByVal X
     If oFont.Strikethrough Then lFontStyle = lFontStyle Or FontStyleStrikeout
         
 
-    hDC = GetDC(0&)
-    lFontSize = MulDiv(oFont.Size, GetDeviceCaps(hDC, LOGPIXELSY), 72)
-    ReleaseDC 0&, hDC
+    hdc = GetDC(0&)
+    lFontSize = MulDiv(oFont.Size, GetDeviceCaps(hdc, LOGPIXELSY), 72)
+    ReleaseDC 0&, hdc
 
-    layoutRect.Left = X: layoutRect.Top = Y
+    layoutRect.Left = x: layoutRect.Top = y
     layoutRect.Width = Width: layoutRect.Height = Height
 
     If GdipCreateSolidFill(ForeColor, hBrush) = GDIP_OK Then
         If GdipCreateFont(hFontFamily, lFontSize, lFontStyle, UnitPixel, hFont) = GDIP_OK Then
-            GdipDrawString hGraphics, StrPtr(text), -1, hFont, layoutRect, hFormat, hBrush
+            GdipDrawString hGraphics, StrPtr(Text), -1, hFont, layoutRect, hFormat, hBrush
             GdipDeleteFont hFont
         End If
         GdipDeleteBrush hBrush
@@ -521,27 +521,27 @@ Private Function DrawText(ByVal hGraphics As Long, ByVal text As String, ByVal X
 End Function
 
 Public Function GetWindowsDPI() As Double
-    Dim hDC As Long, LPX  As Double
-    hDC = GetDC(0)
-    LPX = CDbl(GetDeviceCaps(hDC, LOGPIXELSX))
-    ReleaseDC 0, hDC
+    Dim hdc As Long, lPx  As Double
+    hdc = GetDC(0)
+    lPx = CDbl(GetDeviceCaps(hdc, LOGPIXELSX))
+    ReleaseDC 0, hdc
 
-    If (LPX = 0) Then
+    If (lPx = 0) Then
         GetWindowsDPI = 1#
     Else
-        GetWindowsDPI = LPX / 96#
+        GetWindowsDPI = lPx / 96#
     End If
 End Function
 
-Private Sub UserControl_HitTest(X As Single, Y As Single, HitResult As Integer)
+Private Sub UserControl_HitTest(x As Single, y As Single, HitResult As Integer)
     If UserControl.Enabled Then
         HitResult = vbHitResultHit
     End If
 End Sub
 
 Private Sub UserControl_Initialize()
-    Dim GdipStartupInput As GdiplusStartupInput
-    GdipStartupInput.GdiplusVersion = 1&
+    Dim GdipStartupInput As GDIPlusStartupInput
+    GdipStartupInput.GdiPlusVersion = 1&
     Call GdiplusStartup(GdipToken, GdipStartupInput, ByVal 0)
     nScale = GetWindowsDPI
 
@@ -578,9 +578,9 @@ End Sub
 
 Private Sub UserControl_Paint()
     Dim lScale As Long
-    lScale = IIf(UserControl.ScaleWidth < UserControl.ScaleHeight, UserControl.ScaleWidth, UserControl.ScaleHeight)
+    lScale = IIF(UserControl.ScaleWidth < UserControl.ScaleHeight, UserControl.ScaleWidth, UserControl.ScaleHeight)
 
-    Draw UserControl.hDC, lScale, lScale
+    Draw UserControl.hdc, lScale, lScale
 End Sub
 
 Public Sub Refresh()
@@ -611,14 +611,14 @@ Public Function RGBtoARGB(ByVal RGBColor As Long, ByVal Opacity As Long) As Long
     
 End Function
 '*-
-Private Sub Draw(hDC As Long, ScaleWidth As Long, ScaleHeight As Long)
+Private Sub Draw(hdc As Long, ScaleWidth As Long, ScaleHeight As Long)
 
     Dim hGraphics   As Long
     Dim hPen As Long, hBrush As Long
     Dim i           As Long
     Dim hPath       As Long
     Dim SL As Single, ST As Single
-    Dim S As Single, c As Single
+    Dim s As Single, c As Single
     Dim MidSize As Single, Size As Single
     Dim lPW As Long
     Dim mTotalLines As Long
@@ -627,7 +627,7 @@ Private Sub Draw(hDC As Long, ScaleWidth As Long, ScaleHeight As Long)
     Dim WheelSize As Long
     Dim bDrawTick As Boolean
     Dim lDif As Long
-    Dim a As Single, P As Single
+    Dim A As Single, p As Single
     
     
     lTicksSize = m_TicksSize * nScale
@@ -637,7 +637,7 @@ Private Sub Draw(hDC As Long, ScaleWidth As Long, ScaleHeight As Long)
     lPW = m_TicksPenWidth * nScale
     
 
-    If GdipCreateFromHDC(hDC, hGraphics) = 0 Then
+    If GdipCreateFromHDC(hdc, hGraphics) = 0 Then
 
         Call GdipSetSmoothingMode(hGraphics, SmoothingModeAntiAlias)
 
@@ -661,11 +661,11 @@ Private Sub Draw(hDC As Long, ScaleWidth As Long, ScaleHeight As Long)
         GdipDeletePen hPen
 
         For i = 0 To mTotalLines '- 1
-            P = i * 100 / mTotalLines
-            a = m_StartAngle + (m_Angle * P / 100)
+            p = i * 100 / mTotalLines
+            A = m_StartAngle + (m_Angle * p / 100)
             
-            S = Sin(a * PI180)
-            c = Cos(a * PI180)
+            s = sIn(A * PI180)
+            c = Cos(A * PI180)
 
             If i Mod m_TicksLongFrequency = 0 Then
                 bDrawTick = True
@@ -679,39 +679,39 @@ Private Sub Draw(hDC As Long, ScaleWidth As Long, ScaleHeight As Long)
 
             If bDrawTick Then
                 If m_TicksStyleCircle Then
-                    If mPercent >= P Or mPercent >= 99 Then
+                    If mPercent >= p Or mPercent >= 99 Then
                         GdipCreateSolidFill RGBtoARGB(m_TickForeColor, 100), hBrush
                     Else
                         GdipCreateSolidFill RGBtoARGB(m_TickBackColor, 100), hBrush
                     End If
-                    GdipFillEllipseI hGraphics, hBrush, SL + (S * (MidSize - lDif)) - (MidSize - Size) / 2, ST - (c * (MidSize - lDif)) - (MidSize - Size) / 2, MidSize - Size, MidSize - Size
+                    GdipFillEllipseI hGraphics, hBrush, SL + (s * (MidSize - lDif)) - (MidSize - Size) / 2, ST - (c * (MidSize - lDif)) - (MidSize - Size) / 2, MidSize - Size, MidSize - Size
                     GdipDeleteBrush hBrush
                 Else
             
-                    If mPercent >= P Or mPercent >= 99 Then
+                    If mPercent >= p Or mPercent >= 99 Then
                         GdipCreatePen1 RGBtoARGB(m_TickForeColor, 100), lPW, UnitPixel, hPen
                     Else
                         GdipCreatePen1 RGBtoARGB(m_TickBackColor, 100), lPW, UnitPixel, hPen
                     End If
                     GdipSetPenStartCap hPen, LineCapRound
                     GdipSetPenEndCap hPen, LineCapRound
-                    Call GdipDrawLine(hGraphics, hPen, SL + (S * MidSize), ST - (c * MidSize), S * Size + SL, -c * Size + ST)
+                    Call GdipDrawLine(hGraphics, hPen, SL + (s * MidSize), ST - (c * MidSize), s * Size + SL, -c * Size + ST)
                     GdipDeletePen hPen
                 End If
             End If
         Next i
 
-        a = m_StartAngle + (m_Angle * mPercent / 100)
+        A = m_StartAngle + (m_Angle * mPercent / 100)
         
         
-        S = Sin(a * PI180)
-        c = Cos(a * PI180)
+        s = sIn(A * PI180)
+        c = Cos(A * PI180)
         
         With cN
             .CleanUp
             .Blur = 4
             .Distance = 2
-            .LightDirection = TopLeft
+            .LightDirection = 0
             .Gradient = True
             .GradientFlip = True
             .StatePressed = False
@@ -721,10 +721,10 @@ Private Sub Draw(hDC As Long, ScaleWidth As Long, ScaleHeight As Long)
         End With
         
         If m_RoundStyle Then
-            cN.Draw hDC, CircleXY + lPW, CircleXY + lPW, WheelSize - lPW * 2, WheelSize - lPW * 2, 0, hGraphics
+            cN.Draw hdc, CircleXY + lPW, CircleXY + lPW, WheelSize - lPW * 2, WheelSize - lPW * 2, 0, hGraphics
         Else
-            hPath = CreateToolPath(WheelSize, WheelSize, 8, 40, 140, a)
-            cN.Draw hDC, CircleXY, CircleXY, WheelSize, WheelSize, hPath, hGraphics
+            hPath = CreateToolPath(WheelSize, WheelSize, 8, 40, 140, A)
+            cN.Draw hdc, CircleXY, CircleXY, WheelSize, WheelSize, hPath, hGraphics
             GdipDeletePath hPath
         End If
         
@@ -734,13 +734,13 @@ Private Sub Draw(hDC As Long, ScaleWidth As Long, ScaleHeight As Long)
             .Distance = 1
             .Gradient = True
             .StatePressed = True
-            .LightDirection = TopLeft
+            .LightDirection = 0
             .Gradient = True
             .GradientFlip = True
             .Radius = 1000
         End With
 
-        cN.Draw hDC, ScaleWidth / 2 - WheelSize / 3.4, ScaleWidth / 2 - WheelSize / 3.4, WheelSize / 1.7, WheelSize / 1.7, 0, hGraphics
+        cN.Draw hdc, ScaleWidth / 2 - WheelSize / 3.4, ScaleWidth / 2 - WheelSize / 3.4, WheelSize / 1.7, WheelSize / 1.7, 0, hGraphics
 
         If m_TicksStyleCircle Then
             Size = WheelSize / 6
@@ -758,14 +758,14 @@ Private Sub Draw(hDC As Long, ScaleWidth As Long, ScaleHeight As Long)
                 '.Intencity = 40
                 .Gradient = True
                 .StatePressed = True
-                .LightDirection = TopLeft
+                .LightDirection = 0
                 .Gradient = True
                 .GradientFlip = True
                 .Radius = 1000
                 .BackColor = m_TickForeColor
             End With
     
-            cN.Draw hDC, SL + (S * MidSize) - (Size / 2), ST - (c * MidSize) - (Size / 2), Size, Size, 0, hGraphics
+            cN.Draw hdc, SL + (s * MidSize) - (Size / 2), ST - (c * MidSize) - (Size / 2), Size, Size, 0, hGraphics
 
 '            GdipCreateSolidFill RGBtoARGB(m_TickForeColor, 100), hBrush
 '            GdipFillEllipseI hGraphics, hBrush, SL + (S * (MidSize - lDif)) - (MidSize - Size) / 2, ST - (C * (MidSize - lDif)) - (MidSize - Size) / 2, MidSize - Size, MidSize - Size
@@ -778,7 +778,7 @@ Private Sub Draw(hDC As Long, ScaleWidth As Long, ScaleHeight As Long)
             GdipSetPenStartCap hPen, LineCapRound
             GdipSetPenEndCap hPen, LineCapRound
 
-            Call GdipDrawLine(hGraphics, hPen, SL + (S * MidSize), ST - (c * MidSize), S * Size + SL, -c * Size + ST)
+            Call GdipDrawLine(hGraphics, hPen, SL + (s * MidSize), ST - (c * MidSize), s * Size + SL, -c * Size + ST)
             GdipDeletePen hPen
         End If
         
@@ -814,26 +814,26 @@ Private Function CreateToolPath(Width As Long, Height As Long, mVertices As Long
     ReDim iPts(mVertices * 2 - 1)
 
     For c = 0 To mVertices * 2 - 1
-        iPts(c).X = (iHeight / 2) * Cos(2 * PI * (c + 1) / (mVertices * 2)) + Width / 2
-        iPts(c).Y = (iHeight / 2) * Sin(2 * PI * (c + 1) / (mVertices * 2)) + Height / 2
+        iPts(c).x = (iHeight / 2) * Cos(2 * PI * (c + 1) / (mVertices * 2)) + Width / 2
+        iPts(c).y = (iHeight / 2) * sIn(2 * PI * (c + 1) / (mVertices * 2)) + Height / 2
     Next c
 
     ReDim iPts2(mVertices - 1)
     iShift = (iHeight / 100 * mShift / 3) '+ 10
 
     For c = 0 To mVertices - 1
-        iPts2(c).X = (iHeight / 2 - iShift) * Cos(2 * PI * (c + 1) / mVertices) + Width / 2
-        iPts2(c).Y = (iHeight / 2 - iShift) * Sin(2 * PI * (c + 1) / mVertices) + Height / 2
+        iPts2(c).x = (iHeight / 2 - iShift) * Cos(2 * PI * (c + 1) / mVertices) + Width / 2
+        iPts2(c).y = (iHeight / 2 - iShift) * sIn(2 * PI * (c + 1) / mVertices) + Height / 2
     Next c
 
     ReDim iPts3(mVertices * 2 - 1)
     For c = 0 To mVertices * 2 - 1
         If c Mod 2 = 0 Then
-            iPts3(c).X = iPts2(c / 2).X
-            iPts3(c).Y = iPts2(c / 2).Y
+            iPts3(c).x = iPts2(c / 2).x
+            iPts3(c).y = iPts2(c / 2).y
         Else
-            iPts3(c).X = iPts((c + 1) Mod (UBound(iPts) + 1)).X
-            iPts3(c).Y = iPts((c + 1) Mod (UBound(iPts) + 1)).Y
+            iPts3(c).x = iPts((c + 1) Mod (UBound(iPts) + 1)).x
+            iPts3(c).y = iPts((c + 1) Mod (UBound(iPts) + 1)).y
         End If
     Next c
 
@@ -843,14 +843,14 @@ Private Function CreateToolPath(Width As Long, Height As Long, mVertices As Long
     If mAngle <> 0 Then
         Dim tMatrix   As Long
         Dim tRect As RECTL
-        Dim cX As Single, cY As Single
+        Dim cx As Single, cy As Single
         GdipGetPathWorldBoundsI hPath, tRect, 0&, 0
-        cX = Width / 2
-        cY = Height / 2
+        cx = Width / 2
+        cy = Height / 2
         GdipCreateMatrix tMatrix
-        GdipTranslateMatrix tMatrix, -cX, -cY, MatrixOrderAppend
+        GdipTranslateMatrix tMatrix, -cx, -cy, MatrixOrderAppend
         GdipRotateMatrix tMatrix, mAngle, MatrixOrderAppend
-        GdipTranslateMatrix tMatrix, cX, cY, MatrixOrderAppend
+        GdipTranslateMatrix tMatrix, cx, cy, MatrixOrderAppend
         GdipTransformPath hPath, tMatrix
     End If
     Call GdipGetPathWorldBoundsI(hPath, tRect, 0&, 0&)

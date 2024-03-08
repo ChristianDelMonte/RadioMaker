@@ -27,6 +27,7 @@ Begin VB.Form Est01
       _ExtentY        =   556
       _Version        =   393216
       BorderStyle     =   1
+      SelectRange     =   -1  'True
    End
    Begin RM100.DC_Control_Bt E1New 
       Height          =   465
@@ -2174,10 +2175,10 @@ Begin VB.Form Est01
       Width           =   1005
    End
    Begin VB.Image E1Pic 
-      Height          =   4560
+      Height          =   4005
       Left            =   7575
       Top             =   495
-      Width           =   390
+      Width           =   495
    End
    Begin VB.Label Lindex 
       BackColor       =   &H00C0FFC0&
@@ -2285,7 +2286,7 @@ Dim Convt1 As Long
 
 On Error Resume Next
 If Est12Control.StopLabel1.Caption = "Stream" Then
-    TimeLen = Stream01GetLen(1) 'get len of file in time=1
+    TimeLen = GStreamGetLen(1, 1)
     FTime = FormatSegs(TimeLen) 'formateamos el tiempo
     E1Pos.Min = 0
     If FTime = 0 Or FTime = "" Then
@@ -2610,7 +2611,7 @@ If ConfigData.Aud_Show_FTT = 1 Or ConfigData.Aud_Show_SCOPE = 1 Then
     TmrScopeLite.Enabled = True
     TmrScopeLite.Interval = 15
 Else
-    'deactivate the level meter
+   'deactivate the level meter
     TmrScopeLite.Interval = 0
     TmrScopeLite.Enabled = False
 End If
@@ -2618,6 +2619,7 @@ End If
 'activate the clock timer
 TopMenu.ProcTimer.Enabled = True
 TopMenu.ProcTimer.Interval = 1
+
 'actualizamos los controles
 UpdatePos
 
@@ -2821,7 +2823,7 @@ End Sub
 Private Sub E1Pause_Click()
 
 If Est12Control.StopLabel1.Caption = "Stream" And Est12Control.Origen1.Caption = "E1" Then
-    Stream01Stop   'stream stop
+    GStreamStop 1
 Else
     If Est12Control.StopLabel1.Caption = "Music" And Est12Control.Origen1.Caption = "E1" Then
         Music01Stop    'music stop
@@ -2852,9 +2854,9 @@ End If
 
 If Est12Control.StopLabel1.Caption = "Stream" And Est12Control.Origen1.Caption = "E1" Then
     If Est01.pcontup.Visible = True Then    'loop enabled?
-        Stream01Play (BASS_SAMPLE_LOOP)
+        GStreamPlay 1, BASS_SAMPLE_LOOP
     Else
-        Stream01Play (0)
+        GStreamPlay 1, 0
     End If
 Else
     If Est12Control.StopLabel1.Caption = "Music" And Est12Control.Origen1.Caption = "E1" Then
@@ -2864,7 +2866,7 @@ Else
     End If
 End If
 
-TitelBar1.Caption = "ESTACION 01 - Reproduciendo"
+E1Pic.Picture = LoadPicture(App.path & "\Imagenes\FND_REPRODUCIENDO.jpg")
 RestoreDisplay 1
 Est12Control.Origen1.Caption = "E1"
 Label1.ForeColor = &HFFFF00
@@ -2921,7 +2923,7 @@ Dim Cnv1 As Long
 If Est12Control.StopLabel1.Caption = "Stream" And Est12Control.Origen1.Caption = "E1" Then
     Cnv1 = E1Pos.Value
     'change the stream position
-    Stream01SetPosition Cnv1, 1
+    GStreamSetPosition 1, Cnv1, 1
     E1Pos.ToolTipText = ConvSecToMin(CInt(E1Pos.Value))
 Else
     If Est12Control.StopLabel1.Caption = "Music" And Est12Control.Origen1.Caption = "E1" Then
@@ -2997,7 +2999,7 @@ Private Sub E1Slide_Change()
 
 If Est12Control.StopLabel1.Caption = "Stream" And Est12Control.Origen1.Caption = "E1" Then
     'change the stream pan position
-    Stream01SetPan (E1Slide.Value)
+    GStreamSetPAN 1, E1Slide.Value
     E1Slide.ToolTipText = E1Slide.Value
 Else
     If Est12Control.StopLabel1.Caption = "Music" And Est12Control.Origen1.Caption = "E1" Then
@@ -3021,8 +3023,8 @@ If LFin.Caption = "Auto" Then
 End If
 
 If Est12Control.StopLabel1.Caption = "Stream" And Est12Control.Origen1.Caption = "E1" Then
-    Stream01Restart    'stream restart
-    Stream01Stop       'stream stop
+    GStreamRestart 1
+    GStreamStop 1
 Else
     If Est12Control.StopLabel1.Caption = "Music" And Est12Control.Origen1.Caption = "E1" Then
         Music01Restart     'music restart
@@ -3036,6 +3038,7 @@ Cont:
 'desactivamos el scope
 TmrScopeLite.Interval = 0
 TmrScopeLite.Enabled = False
+
 'reseteamos los displays
 Lr.Width = 0
 Ll.Width = 0
@@ -3055,7 +3058,7 @@ Private Sub E1Vol_Change()
 
 If Est12Control.StopLabel1.Caption = "Stream" And Est12Control.Origen1.Caption = "E1" Then
     'change the stream volume
-    Stream01SetVolume (E1Vol.Value)
+    GStreamSetVolume 1, E1Vol.Value
     E1Vol.ToolTipText = E1Vol.Value
     LblCurrVol.Caption = E1Vol.Value
 Else
@@ -3142,9 +3145,10 @@ CmdActualiz.Caption = LoadResString(2004)
 
 '*** load some pictures *****
 Est01.Picture = LoadPicture(App.path & "\Imagenes\EST_FND.jpg")
+E1Pic.Picture = LoadPicture(App.path & "\Imagenes\FND_DETENIDO.jpg")
 
 '*** load commands pictures
-    E1Pic.Picture = LoadResPicture("EST_01", 0)
+    'E1Pic.Picture = LoadResPicture("EST_01", 0)
     'load led1
     Llback.Picture = LoadPicture(App.path & "\Imagenes\FND_LVL_METER.jpg")
     Ll.Picture = LoadPicture(App.path & "\Imagenes\LVL_METER.jpg")
@@ -3418,7 +3422,7 @@ End Sub
 
 Private Sub TMin_Timer()
 
-If E1Vol.Value = 100 Or E1Vol.Value = CLng(LblInvol.Caption) Then
+If E1Vol.Value = 100 Then  ' And E1Vol.Value = CLng(LblInvol.Caption) Then
     TMin.Interval = 0
     TMin.Enabled = False
 Else
@@ -3429,7 +3433,7 @@ End Sub
 
 Private Sub Tmout_Timer()
 
-If E1Vol.Value = 0 Or E1Vol.Value = CLng(LblOutvol.Caption) Then
+If E1Vol.Value = 0 Then 'And E1Vol.Value = CLng(LblOutvol.Caption) Then
     Tmout.Interval = 0
     Tmout.Enabled = False
 Else
@@ -3442,8 +3446,8 @@ Private Sub TmOutAuto_Timer()
 
 If E1Vol.Value = 0 Then
     If Est12Control.StopLabel1.Caption = "Stream" And Est12Control.Origen1.Caption = "E1" Then
-        Stream01Restart    'stream restart
-        Stream01Stop       'stream stop
+        GStreamRestart 1
+        GStreamStop 1
     Else
         If Est12Control.StopLabel1.Caption = "Music" And Est12Control.Origen1.Caption = "E1" Then
             Music01Restart     'music restart
@@ -3492,7 +3496,7 @@ Private Sub TmrCUE_Timer()
     'change the stream position for a cue start
 If Est12Control.StopLabel1.Caption = "Stream" Then
     Do While ActualByte >= EndByte
-        Stream01SetPosition StartByte, 2
+        GStreamSetPosition 1, StartByte, 2
         Exit Do
     Loop
     E1Pos.ToolTipText = ConvSecToMin(CInt(E1Pos.Value))
@@ -3518,8 +3522,8 @@ Dim SType As String
 
 If Est12Control.StopLabel1 = "Stream" Then
     If Est12Control.Origen1.Caption = "E1" Then
-        LLft = Stream01GetLEFTLevel
-        RRgt = Stream01GetRIGHTLevel
+        LLft = GStreamGetLEFTlevel(1) 'Stream01GetLEFTLevel
+        RRgt = GStreamGetRIGHTlevel(1) ' Stream01GetRIGHTLevel
         Est01.SetAudioLevel LLft, RRgt
         SType = "Stream"
     End If

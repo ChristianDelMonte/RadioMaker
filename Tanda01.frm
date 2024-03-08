@@ -1406,7 +1406,8 @@ a1 = CLng(SyncTime)
 
 Select Case SStream
     Case "Stream01"
-        a2 = Stream01GetPosition(1) 'position in seconds
+        'a2 = Stream01GetPosition(1) 'position in seconds
+        a2 = GStreamGetPosition(1, 1)
         'MsgBox "Actual Pos: " & a2 & " - Synctime: " & a1
         If a2 >= a1 Then
             SyncStream.Caption = ""
@@ -1417,7 +1418,8 @@ Select Case SStream
         End If
         
     Case "Stream02"
-        a2 = Stream02GetPosition(1) 'position in seconds
+        'a2 = Stream02GetPosition(1) 'position in seconds
+        a2 = GStreamGetPosition(2, 1)
         'MsgBox "Actual Pos: " & a2 & " - Synctime: " & a1
         If a2 >= a1 Then
             SyncStream.Caption = ""
@@ -1686,7 +1688,7 @@ If Stream01IsPlaying = True Or Music01IsPlaying = True Then
         TmIn1.Enabled = True
         TmIn1.Interval = 50
         'close stream1 and play the file
-        Stream01Stop
+        GStreamStop 1
         'load and play the selected file
         Call Tanda01Play(FileN, SSTitle, FileTP, "Yes")  '//// USE DEV 1 ////
         'load CUE info & FX info
@@ -1699,7 +1701,7 @@ If Stream01IsPlaying = True Or Music01IsPlaying = True Then
         TmIn2.Enabled = True
         TmIn2.Interval = 50
         'close stream2 and play the file
-        Stream02Stop
+        GStreamStop 2
         'load and play the selected file
         Call Tanda02Play(FileN, SSTitle, FileTP, "Yes")  '//// USE DEV 2 ////
         'load CUE info & FX info
@@ -1714,7 +1716,7 @@ Else
         TmIn1.Enabled = True
         TmIn1.Interval = 50
         'close stream1 and play the file
-        Stream01Stop
+        GStreamStop 1
         'load and play the selected file
         Call Tanda01Play(FileN, SSTitle, FileTP, "Yes")  '//// USE DEV 1 ////
         'load CUE info & FX info
@@ -1727,7 +1729,7 @@ Else
         TmIn1.Enabled = True
         TmIn1.Interval = 50
         'close stream1 and play the file
-        Stream01Stop
+        GStreamStop 1
         'load and play the selected file
         Call Tanda01Play(FileN, SSTitle, FileTP, "Yes")  '//// USE DEV 1 ////
         'load CUE info & FX info
@@ -1891,7 +1893,7 @@ If Stream01IsPlaying = True Or Music01IsPlaying = True Then
         TmIn1.Enabled = True
         TmIn1.Interval = 50
         'close stream1 and play the file
-        Stream01Stop
+        GStreamStop 1
         'load and play the selected file
         Call Tanda01Play(FileN, SSTitle, FileTP, "No")  '//// USE DEV 1 ////
         'load CUE info & FX info
@@ -1904,7 +1906,7 @@ If Stream01IsPlaying = True Or Music01IsPlaying = True Then
         TmIn2.Enabled = True
         TmIn2.Interval = 50
         'close stream2 and play the file
-        Stream02Stop
+        GStreamStop 2
         'load and play the selected file
         Call Tanda02Play(FileN, SSTitle, FileTP, "No")  '//// USE DEV 2 ////
         'load CUE info & FX info
@@ -1919,7 +1921,7 @@ Else
         TmIn1.Enabled = True
         TmIn1.Interval = 50
         'close stream1 and play the file
-        Stream01Stop
+        GStreamStop 1
         'load and play the selected file
         Call Tanda01Play(FileN, SSTitle, FileTP, "No")  '//// USE DEV 1 ////
         'load CUE info & FX info
@@ -1932,7 +1934,7 @@ Else
         TmIn1.Enabled = True
         TmIn1.Interval = 50
         'close stream1 and play the file
-        Stream01Stop
+        GStreamStop 1
         'load and play the selected file
         Call Tanda01Play(FileN, SSTitle, FileTP, "No")  '//// USE DEV 1 ////
         'load CUE info & FX info
@@ -2238,7 +2240,8 @@ Private Sub T1Vol_Change()
 
 If Est12Control.StopLabel1.Caption = "Stream" Then
     'change the stream volume
-    Stream01SetVolume (T1Vol.Value)
+    'Stream01SetVolume (T1Vol.Value)
+    GStreamSetVolume 1, T1Vol.Value
 Else
     If Est12Control.StopLabel1.Caption = "Music" Then
         'change the music volume
@@ -2254,7 +2257,8 @@ Private Sub T1Vol_Scroll()
 
 If Est12Control.StopLabel1.Caption = "Stream" Then
     'change the stream volume
-    Stream01SetVolume (T1Vol.Value)
+    'Stream01SetVolume (T1Vol.Value)
+    GStreamSetVolume 1, T1Vol.Value
 Else
     If Est12Control.StopLabel1.Caption = "Music" Then
         'change the music volume
@@ -2270,7 +2274,8 @@ Private Sub T2Vol_Change()
 
 If Est12Control.StopLabel2.Caption = "Stream" Then
     'change the stream volume
-    Stream02SetVolume (T2Vol.Value)
+    'Stream02SetVolume (T2Vol.Value)
+    GStreamSetVolume 2, T2Vol.Value
 Else
     If Est12Control.StopLabel2.Caption = "Music" Then
         'change the music volume
@@ -2286,7 +2291,8 @@ Private Sub T2Vol_Scroll()
 
 If Est12Control.StopLabel2.Caption = "Stream" Then
     'change the stream volume
-    Stream02SetVolume (T2Vol.Value)
+    'Stream02SetVolume (T2Vol.Value)
+    GStreamSetVolume 2, T2Vol.Value
 Else
     If Est12Control.StopLabel2.Caption = "Music" Then
         'change the music volume
@@ -2326,8 +2332,9 @@ Private Sub TmOut1_Timer()
 
 If T1Vol.Value = 0 Then
     If Est12Control.StopLabel1.Caption = "Stream" And Est12Control.Origen1.Caption = "T1" Then
-        Stream01Restart    'stream restart
-        Stream01Stop       'stream stop
+        'Stream01Restart    'stream restart
+        GStreamRestart 1
+        GStreamStop 1
     Else
         If Est12Control.StopLabel1.Caption = "Music" And Est12Control.Origen1.Caption = "T1" Then
             Music01Restart     'music restart
@@ -2348,8 +2355,9 @@ Private Sub TmOut2_Timer()
 
 If T2Vol.Value = 0 Then
     If Est12Control.StopLabel1.Caption = "Stream" And Est12Control.Origen2.Caption = "T2" Then
-        Stream02Restart    'stream restart
-        Stream02Stop       'stream stop
+        'Stream02Restart    'stream restart
+        GStreamRestart 2
+        GStreamStop 2
     Else
         If Est12Control.StopLabel1.Caption = "Music" And Est12Control.Origen2.Caption = "T2" Then
             Music02Restart     'music restart

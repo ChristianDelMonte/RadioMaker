@@ -1,31 +1,27 @@
 Attribute VB_Name = "ChipherMod"
-'/////////////////////////////////////////
-'
-' Cab Module Managger.
-' Copyright (c) 2002 ONLY development inc.
-'           reservados todos los derechos.
-' Christian A. Del Monte
-'/////////////////////////////////////////
+'********************* RM100 *********************
+'       RADIO MAKER CRIPTER DATA MODULE
+'COPYRIGHT (C) 1987-2002 ONLY development inc.
+'Christian A. Del Monte
+'*************************************************
 
 Option Explicit
 
-'///////////////////////////////////////////////
-'* Password:   encryption password
-'* TxtOrigen:  encrypted text
-'* return:     text
-'///////////////////////////////////////////////
+Public Const Rm100Ver = "1.001"
+Public Const Rm100Autor = "Christian A. Del Monte"
+Public Const Rm100Copyr = "(c) 2002 ONLY development inc."
+Public Const WWDefPass = "1.001a"
 
-Function Desencriptar(ByVal Password As String, ByVal TxtOrigen As String) As String
+Private Const MIN_ASC = 1
+Private Const MAX_ASC = 255
+Private Const NUM_ASC = MAX_ASC - MIN_ASC + 1
 
-Const MIN_ASC = 1
-Const MAX_ASC = 255
-Const NUM_ASC = MAX_ASC - MIN_ASC + 1
+Sub Desencriptar(Password As String, TxtOrigen As String, TxtDestino As String)
 
 Dim offset As Long
 Dim str_len As Integer
 Dim i As Integer
 Dim ch As Integer
-Dim TxtDestino As String
 
     'Inicializar el generador de numeros aleatorios
     offset = ClaveNumerica(Password)
@@ -46,17 +42,9 @@ Dim TxtDestino As String
         End If
     Next i
 
-Desencriptar = TxtDestino
+End Sub
 
-End Function
-
-'///////////////////////////////////////////////
-'* Password:   encryption password
-'* TxtOrigen:  text to encrypt
-'* return:     encrypted text
-'///////////////////////////////////////////////
-
-Function Encriptar(ByVal Password As String, ByVal TxtOrigen As String) As String
+Sub Encriptar(Password As String, TxtOrigen As String, TxtDestino As String)
 
 Const MIN_ASC = 1
 Const MAX_ASC = 255
@@ -66,7 +54,6 @@ Dim offset As Long
 Dim str_len As Integer
 Dim i As Integer
 Dim ch As Integer
-Dim TxtDestino As String
 
     'Inicializar el generador de numeros aleatorios
     offset = ClaveNumerica(Password)
@@ -86,13 +73,11 @@ Dim TxtDestino As String
         End If
     Next i
 
-Encriptar = TxtDestino
+End Sub
 
-End Function
+Function ClaveNumerica(Password As String) As Long
 
-Function ClaveNumerica(ByVal Password As String) As Long
-
-Dim value As Long
+Dim Value As Long
 Dim ch As Long
 Dim shift1 As Long
 Dim shift2 As Long
@@ -102,13 +87,12 @@ Dim str_len As Integer
     str_len = Len(Password)
     For i = 1 To str_len
         ch = Asc(Mid$(Password, i, 1))
-        value = value Xor (ch * 2 ^ shift1)
-        value = value Xor (ch * 2 ^ shift2)
+        Value = Value Xor (ch * 2 ^ shift1)
+        Value = Value Xor (ch * 2 ^ shift2)
         
         shift1 = (shift1 + 7) Mod 19
         shift2 = (shift2 + 13) Mod 23
     Next i
-    ClaveNumerica = value
+    ClaveNumerica = Value
 
 End Function
-

@@ -6,7 +6,7 @@ Begin VB.Form TopMenu
    BackColor       =   &H00808080&
    BorderStyle     =   0  'None
    Caption         =   "Only RadioMaker"
-   ClientHeight    =   960
+   ClientHeight    =   915
    ClientLeft      =   330
    ClientTop       =   375
    ClientWidth     =   18630
@@ -14,8 +14,9 @@ Begin VB.Form TopMenu
    ForeColor       =   &H00000000&
    Icon            =   "TopMenu2.frx":0000
    LinkTopic       =   "Form1"
+   LockControls    =   -1  'True
    MaxButton       =   0   'False
-   ScaleHeight     =   960
+   ScaleHeight     =   915
    ScaleWidth      =   18630
    ShowInTaskbar   =   0   'False
    Begin SysInfoLib.SysInfo SysInfo1 
@@ -1910,10 +1911,14 @@ Dim Rst1 As String, Rst2 As String
 If Stream01IsPlaying = True Or Music01IsPlaying = True Then
     Select Case Est12Control.Origen1.Caption
         Case "E1"   '////////////////////////////////////////////////////////////
-            PosTime = Stream01GetPosition(1)  'position in time (seconds)
-            LenTime = Stream01GetLen(1)       'lenght in time (seconds)
-            PosByte = Stream01GetPosition(2)  'position in bytes
-            LenByte = Stream01GetLen(2)       'lengh in bytes
+            'PosTime = Stream01GetPosition(1)  'position in time (seconds)
+            PosTime = GStreamGetPosition(1, 1)
+            'LenTime = Stream01GetLen(1)       'lenght in time (seconds)
+            LenTime = GStreamGetLen(1, 1)
+            'PosByte = Stream01GetPosition(2)  'position in bytes
+            PosByte = GStreamGetPosition(1, 2)
+            'LenByte = Stream01GetLen(2)       'lengh in bytes
+            LenByte = GStreamGetLen(1, 2)
             'chequeamos por el tipo de visualizacion (normal o restante)
             If TopMenu.LType.Caption = "Normal" Then
                 Rst1 = ConvSecToMin(PosTime)
@@ -1937,8 +1942,10 @@ If Stream01IsPlaying = True Or Music01IsPlaying = True Then
             Est01.LblCurrent.Caption = ConvSecToMin(PosTime)
             Est01.LblCurrByte.Caption = PosByte
         Case "T1"   '////////////////////////////////////////////////////////////
-            PosTime = Stream01GetPosition(1)  'position in time
-            LenTime = Stream01GetLen(1)   'lenght in time
+            'PosTime = Stream01GetPosition(1)  'position in time
+            PosTime = GStreamGetPosition(1, 1)
+            'LenTime = Stream01GetLen(1)   'lenght in time
+            LenTime = GStreamGetLen(1, 1)
             'chequeamos por el tipo de visualizacion (normal o restante)
             If TopMenu.LType.Caption = "Normal" Then
                 Rst1 = ConvSecToMin(PosTime)
@@ -1954,10 +1961,14 @@ End If
 If Stream02IsPlaying = True Or Music02IsPlaying = True Then
     Select Case Est12Control.Origen2.Caption
         Case "E2"   '////////////////////////////////////////////////////////////
-            PosTime = Stream02GetPosition(1)  'position in time (seconds)
-            LenTime = Stream02GetLen(1)       'lenght in time (seconds)
-            PosByte = Stream02GetPosition(2)  'position in bytes
-            LenByte = Stream02GetLen(2)       'lengh in bytes
+            'PosTime = Stream02GetPosition(1)  'position in time (seconds)
+            PosTime = GStreamGetPosition(2, 1)
+            'LenTime = Stream02GetLen(1)       'lenght in time (seconds)
+            LenTime = GStreamGetLen(2, 1)
+            'PosByte = Stream02GetPosition(2)  'position in bytes
+            PosByte = GStreamGetPosition(2, 2)
+            'LenByte = Stream02GetLen(2)       'lengh in bytes
+            LenByte = GStreamGetLen(2, 2)
             'chequeamos por el tipo de visualizacion (normal o restante)
             If TopMenu.LType.Caption = "Normal" Then
                 Rst1 = ConvSecToMin(PosTime)
@@ -1981,8 +1992,10 @@ If Stream02IsPlaying = True Or Music02IsPlaying = True Then
             Est02.LblCurrent.Caption = ConvSecToMin(PosTime)
             Est02.LblCurrByte.Caption = PosByte
         Case "T2"   '////////////////////////////////////////////////////////////
-            PosTime = Stream02GetPosition(1)  'position in time
-            LenTime = Stream02GetLen(1)   'lenght in time
+            'PosTime = Stream02GetPosition(1)  'position in time
+            PosTime = GStreamGetPosition(2, 1)
+            'LenTime = Stream02GetLen(1)   'lenght in time
+            LenTime = GStreamGetLen(2, 1)
             'chequeamos por el tipo de visualizacion (normal o restante)
             If TopMenu.LType.Caption = "Normal" Then
                 Rst2 = ConvSecToMin(PosTime)
@@ -2000,7 +2013,8 @@ If Stream01IsPlaying = False Then
     Select Case Est12Control.Origen1.Caption
         Case "E1"
             If Music01IsPlaying = False Then
-                Est01.TitelBar1.Caption = "ESTACION 01 - Detenido"
+                'Est01.TitelBar1.Caption = "ESTACION 01 - Detenido"
+                Est01.E1Pic.Picture = LoadPicture(App.path & "\Imagenes\FND_DETENIDO.jpg")
                 RestoreDisplay 1
                 Est01.Label1.ForeColor = &H404040        'gris oscuro(desactivado)
             End If
@@ -2014,7 +2028,8 @@ If Stream02IsPlaying = False Then
     Select Case Est12Control.Origen2.Caption
         Case "E2"
             If Music02IsPlaying = False Then
-                Est02.TitelBar1.Caption = "ESTACION 02 - Detenido"
+                'Est02.TitelBar1.Caption = "ESTACION 02 - Detenido"
+                Est02.E2Pic.Picture = LoadPicture(App.path & "\Imagenes\FND_DETENIDO.jpg")
                 RestoreDisplay 2
                 Est02.Label1.ForeColor = &H404040        'gris oscuro(desactivado)
             End If
@@ -2202,7 +2217,7 @@ Dim Tvol As Long
 
 Result = LoadPlugIn("RMVoice", "LoadSilent")
 If Result = "NotOk" Then
-    MsgBox "Not loaded. rmvoice"
+    MsgBox "Not loaded. Plugin RMCoice."
 Else
     If Stream01IsPlaying = True Then
         Tvol = CLng(Est01.LblCurrVol.Caption) / 4
@@ -2222,7 +2237,7 @@ Else
     Result = LoadPlugIn("RMVoice", "SayHora")
     'RMPlugIn.ExecuteCommand ("SayHora")
     TimerRMVoiceCheck.Enabled = True
-    TimerRMVoiceCheck.Interval = 1000
+    TimerRMVoiceCheck.Interval = 5
 End If
 
 End Sub
@@ -2279,6 +2294,8 @@ Private Sub TimerRMVoiceCheck_Timer()
 Dim Tvol As Long
 
 If RMPlugIn.PlugIsRunning = False Then
+    TimerRMVoiceCheck.Interval = 0
+    TimerRMVoiceCheck.Enabled = False
     If Stream01IsPlaying = True Then
         If Est12Control.Origen1.Caption = "E1" Then
             Est01.TMin.Enabled = True
@@ -2291,6 +2308,8 @@ If RMPlugIn.PlugIsRunning = False Then
                 Est02.TMin.Interval = 5
             End If
         Else
+            Est01.TMin.Enabled = False
+            Est02.TMin.Enabled = False
             TimerRMVoiceCheck.Interval = 0
             TimerRMVoiceCheck.Enabled = False
         End If
@@ -2325,10 +2344,14 @@ On Error Resume Next
 
 If Est12Control.StopLabel1.Caption = "Stream" Then
     If Stream01IsPlaying = True Then
-        Rpos1 = Stream01GetPosition(1)  'position in time
-        Rpos2 = Stream01GetPosition(2)  'position in bytes
-        Rlen1 = Stream01GetLen(1)   'lenght in time
-        Rlen2 = Stream01GetLen(2)   'lengh in bytes
+        'Rpos1 = Stream01GetPosition(1)  'position in time
+        Rpos1 = GStreamGetPosition(1, 1)
+        'Rpos2 = Stream01GetPosition(2)  'position in bytes
+        Rpos2 = GStreamGetPosition(1, 2)
+        'Rlen1 = Stream01GetLen(1)   'lenght in time
+        Rlen1 = GStreamGetLen(1, 1)
+        'Rlen2 = Stream01GetLen(2)   'lengh in bytes
+        Rlen2 = GStreamGetLen(1, 2)
         TimePos = FormatSegs(Rpos1)
         TimePosLen = FormatSegs(Rlen1)
         BytePos = Rpos2
@@ -2372,10 +2395,14 @@ If Est12Control.StopLabel1.Caption = "Stream" Then
         End If
     Else
         If Stream02IsPlaying = True Then
-            Rpos1 = Stream02GetPosition(1)  'position in time
-            Rpos2 = Stream02GetPosition(2)  'position in bytes
-            Rlen1 = Stream02GetLen(1)   'lenght in time
-            Rlen2 = Stream02GetLen(2)   'lengh in bytes
+            'Rpos1 = Stream02GetPosition(1)  'position in time
+            Rpos1 = GStreamGetPosition(2, 1)
+            'Rpos2 = Stream02GetPosition(2)  'position in bytes
+            Rpos2 = GStreamGetPosition(2, 2)
+            'Rlen1 = Stream02GetLen(1)   'lenght in time
+            Rlen1 = GStreamGetLen(2, 1)
+            'Rlen2 = Stream02GetLen(2)   'lengh in bytes
+            Rlen2 = GStreamGetLen(2, 2)
             TimePos = FormatSegs(Rpos1)
             TimePosLen = FormatSegs(Rlen1)
             BytePos = Rpos2

@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "mscomctl.OCX"
-Begin VB.Form XPlorer 
+Begin VB.Form Old_XPlorer 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Explorador de archivos"
    ClientHeight    =   8175
@@ -155,7 +155,7 @@ Begin VB.Form XPlorer
       Width           =   1815
    End
 End
-Attribute VB_Name = "XPlorer"
+Attribute VB_Name = "Old_XPlorer"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
@@ -229,11 +229,11 @@ Node.Sorted = True
 
 Screen.MousePointer = 13
 'true off the redraw for the tree view
-lRet = SendMessage(tvwDirTree.Hwnd, WM_SETREDRAW, False, 0&)
+lRet = SendMessage(tvwDirTree.hWnd, WM_SETREDRAW, False, 0&)
 'list all of the sub directories
 ListDirs XPlorer.tvwDirTree, (Node.Key)
 'redraw the control
-lRet = SendMessage(tvwDirTree.Hwnd, WM_SETREDRAW, True, 0&)
+lRet = SendMessage(tvwDirTree.hWnd, WM_SETREDRAW, True, 0&)
 
 'iAdd the dir so we don't read it twice
 lRet = UBound(sMainDrives)
@@ -300,7 +300,7 @@ End Select
 
 End Sub
 
-Private Sub File1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub File1_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
 
 File1.DragIcon = tvwDirTree.DragIcon
 File1.Drag
