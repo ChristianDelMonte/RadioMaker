@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form DownMenu 
    BackColor       =   &H00808080&
    BorderStyle     =   0  'None
-   ClientHeight    =   1305
+   ClientHeight    =   1095
    ClientLeft      =   0
    ClientTop       =   -75
    ClientWidth     =   15240
@@ -10,12 +10,12 @@ Begin VB.Form DownMenu
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   1305
+   ScaleHeight     =   1095
    ScaleWidth      =   15240
    ShowInTaskbar   =   0   'False
    Begin VB.CommandButton CmdSearch 
       Caption         =   "SRCH"
-      Height          =   750
+      Height          =   630
       Left            =   6030
       Style           =   1  'Graphical
       TabIndex        =   6
@@ -27,7 +27,7 @@ Begin VB.Form DownMenu
    Begin VB.CommandButton CmdBlock 
       Caption         =   "BLOCK"
       Enabled         =   0   'False
-      Height          =   750
+      Height          =   630
       Left            =   5265
       Style           =   1  'Graphical
       TabIndex        =   9
@@ -39,7 +39,7 @@ Begin VB.Form DownMenu
    Begin VB.CommandButton CmdPH 
       Caption         =   "PH"
       Enabled         =   0   'False
-      Height          =   750
+      Height          =   630
       Left            =   4500
       Style           =   1  'Graphical
       TabIndex        =   5
@@ -59,7 +59,7 @@ Begin VB.Form DownMenu
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   750
+      Height          =   630
       Left            =   3555
       Style           =   1  'Graphical
       TabIndex        =   4
@@ -79,7 +79,7 @@ Begin VB.Form DownMenu
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   750
+      Height          =   630
       Left            =   2790
       Style           =   1  'Graphical
       TabIndex        =   3
@@ -90,7 +90,7 @@ Begin VB.Form DownMenu
    End
    Begin VB.CommandButton PrgTndCmd 
       Caption         =   "PRG"
-      Height          =   750
+      Height          =   630
       Left            =   1845
       Style           =   1  'Graphical
       TabIndex        =   2
@@ -101,7 +101,7 @@ Begin VB.Form DownMenu
    End
    Begin VB.CommandButton TndCmd 
       Caption         =   "TND"
-      Height          =   750
+      Height          =   630
       Left            =   1080
       Style           =   1  'Graphical
       TabIndex        =   1
@@ -112,7 +112,7 @@ Begin VB.Form DownMenu
    End
    Begin VB.CommandButton CmdTrash 
       Caption         =   "DEL"
-      Height          =   750
+      Height          =   630
       Left            =   7560
       Style           =   1  'Graphical
       TabIndex        =   7
@@ -123,7 +123,7 @@ Begin VB.Form DownMenu
    End
    Begin VB.CommandButton CmdConfig 
       Caption         =   "CNFG"
-      Height          =   750
+      Height          =   630
       Left            =   135
       Style           =   1  'Graphical
       TabIndex        =   0
@@ -134,12 +134,12 @@ Begin VB.Form DownMenu
    End
    Begin VB.CommandButton XCmd 
       Caption         =   "X"
-      Height          =   750
+      Height          =   630
       Left            =   14310
       Style           =   1  'Graphical
       TabIndex        =   8
       ToolTipText     =   "Salir del Sistema"
-      Top             =   450
+      Top             =   420
       UseMaskColor    =   -1  'True
       Width           =   780
    End
@@ -173,7 +173,8 @@ Begin VB.Form DownMenu
       Caption         =   "  Barra de Herramientas"
       CaptionPosX     =   1
       BorderNormal    =   2
-      BorderColorDarkLight=   12632256
+      BorderColorHighLight=   0
+      BorderColorDarkLight=   4210752
    End
    Begin VB.Label Label1 
       Alignment       =   2  'Center
@@ -182,7 +183,7 @@ Begin VB.Form DownMenu
       Height          =   615
       Left            =   8520
       TabIndex        =   10
-      Top             =   540
+      Top             =   420
       Width           =   5655
    End
 End

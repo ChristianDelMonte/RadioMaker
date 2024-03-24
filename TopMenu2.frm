@@ -6,19 +6,252 @@ Begin VB.Form TopMenu
    BackColor       =   &H00808080&
    BorderStyle     =   0  'None
    Caption         =   "Only RadioMaker"
-   ClientHeight    =   915
+   ClientHeight    =   1545
    ClientLeft      =   330
    ClientTop       =   375
-   ClientWidth     =   18630
+   ClientWidth     =   21405
    FillColor       =   &H00404040&
    ForeColor       =   &H00000000&
    Icon            =   "TopMenu2.frx":0000
    LinkTopic       =   "Form1"
-   LockControls    =   -1  'True
    MaxButton       =   0   'False
-   ScaleHeight     =   915
-   ScaleWidth      =   18630
+   Picture         =   "TopMenu2.frx":08CA
+   ScaleHeight     =   1545
+   ScaleWidth      =   21405
    ShowInTaskbar   =   0   'False
+   Begin VB.PictureBox Pic_Refreshing 
+      BackColor       =   &H000000FF&
+      BorderStyle     =   0  'None
+      Height          =   675
+      Left            =   14910
+      ScaleHeight     =   675
+      ScaleWidth      =   75
+      TabIndex        =   71
+      Top             =   90
+      Visible         =   0   'False
+      Width           =   75
+   End
+   Begin VB.PictureBox Pic_toolbar 
+      BackColor       =   &H00000000&
+      BorderStyle     =   0  'None
+      Height          =   585
+      Left            =   90
+      ScaleHeight     =   585
+      ScaleWidth      =   5115
+      TabIndex        =   56
+      Top             =   870
+      Width           =   5115
+      Begin RM100.DC_Control_Bt SaveCUE 
+         Height          =   465
+         Left            =   90
+         TabIndex        =   57
+         ToolTipText     =   "Guardar eq y cue"
+         Top             =   60
+         Width           =   375
+         _ExtentX        =   661
+         _ExtentY        =   820
+         BackColor       =   4210752
+         ButtonStyle     =   4
+         Caption         =   ""
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   -2147483633
+         MaskColor       =   4210752
+         PicDown         =   "TopMenu2.frx":721E
+         PicHot          =   "TopMenu2.frx":E3F0
+         PicNormal       =   "TopMenu2.frx":155C2
+         PicSize         =   2
+         PicSizeH        =   24
+         PicSizeW        =   24
+      End
+      Begin RM100.DC_Control_Bt DC_Control_Bt1 
+         Height          =   465
+         Left            =   540
+         TabIndex        =   58
+         ToolTipText     =   "Guardar eq y cue"
+         Top             =   60
+         Width           =   375
+         _ExtentX        =   661
+         _ExtentY        =   820
+         BackColor       =   4210752
+         ButtonStyle     =   4
+         Caption         =   ""
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   -2147483633
+         MaskColor       =   4210752
+         PicDown         =   "TopMenu2.frx":1C794
+         PicHot          =   "TopMenu2.frx":23966
+         PicNormal       =   "TopMenu2.frx":2AB38
+         PicSize         =   2
+         PicSizeH        =   24
+         PicSizeW        =   24
+      End
+      Begin RM100.DC_Control_Bt DC_Control_Bt2 
+         Height          =   465
+         Left            =   990
+         TabIndex        =   59
+         ToolTipText     =   "Guardar eq y cue"
+         Top             =   60
+         Width           =   375
+         _ExtentX        =   661
+         _ExtentY        =   820
+         BackColor       =   4210752
+         ButtonStyle     =   4
+         Caption         =   ""
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   -2147483633
+         MaskColor       =   4210752
+         PicDown         =   "TopMenu2.frx":31D0A
+         PicHot          =   "TopMenu2.frx":38EDC
+         PicNormal       =   "TopMenu2.frx":400AE
+         PicSize         =   2
+         PicSizeH        =   24
+         PicSizeW        =   24
+      End
+      Begin RM100.DC_Control_Bt DC_Control_Bt3 
+         Height          =   465
+         Left            =   1440
+         TabIndex        =   60
+         ToolTipText     =   "Guardar eq y cue"
+         Top             =   60
+         Width           =   375
+         _ExtentX        =   661
+         _ExtentY        =   820
+         BackColor       =   4210752
+         ButtonStyle     =   4
+         Caption         =   ""
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   -2147483633
+         MaskColor       =   4210752
+         PicDown         =   "TopMenu2.frx":47280
+         PicHot          =   "TopMenu2.frx":4E452
+         PicNormal       =   "TopMenu2.frx":55624
+         PicSize         =   2
+         PicSizeH        =   24
+         PicSizeW        =   24
+      End
+      Begin RM100.DC_Control_Bt DC_Control_Bt4 
+         Height          =   465
+         Left            =   1890
+         TabIndex        =   61
+         ToolTipText     =   "Guardar eq y cue"
+         Top             =   60
+         Width           =   375
+         _ExtentX        =   661
+         _ExtentY        =   820
+         BackColor       =   4210752
+         ButtonStyle     =   4
+         Caption         =   ""
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   -2147483633
+         MaskColor       =   4210752
+         PicDown         =   "TopMenu2.frx":5C7F6
+         PicHot          =   "TopMenu2.frx":639C8
+         PicNormal       =   "TopMenu2.frx":6AB9A
+         PicSize         =   2
+         PicSizeH        =   24
+         PicSizeW        =   24
+      End
+      Begin RM100.DC_Control_Bt DC_Control_Bt5 
+         Height          =   465
+         Left            =   2370
+         TabIndex        =   62
+         ToolTipText     =   "Guardar eq y cue"
+         Top             =   60
+         Width           =   375
+         _ExtentX        =   661
+         _ExtentY        =   820
+         BackColor       =   4210752
+         ButtonStyle     =   4
+         Caption         =   ""
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   -2147483633
+         MaskColor       =   4210752
+         PicDown         =   "TopMenu2.frx":71D6C
+         PicHot          =   "TopMenu2.frx":78F3E
+         PicNormal       =   "TopMenu2.frx":80110
+         PicSize         =   2
+         PicSizeH        =   24
+         PicSizeW        =   24
+      End
+      Begin RM100.DC_Control_Bt DC_Control_Bt6 
+         Height          =   465
+         Left            =   2820
+         TabIndex        =   63
+         ToolTipText     =   "Guardar eq y cue"
+         Top             =   60
+         Width           =   375
+         _ExtentX        =   661
+         _ExtentY        =   820
+         BackColor       =   4210752
+         ButtonStyle     =   4
+         Caption         =   ""
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   -2147483633
+         MaskColor       =   4210752
+         PicDown         =   "TopMenu2.frx":872E2
+         PicHot          =   "TopMenu2.frx":8E4B4
+         PicNormal       =   "TopMenu2.frx":95686
+         PicSize         =   2
+         PicSizeH        =   24
+         PicSizeW        =   24
+      End
+   End
    Begin SysInfoLib.SysInfo SysInfo1 
       Left            =   10200
       Top             =   4350
@@ -30,125 +263,115 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   14790
+      Left            =   17850
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   55
-      Top             =   1680
-      Visible         =   0   'False
+      Top             =   300
       Width           =   255
    End
    Begin VB.PictureBox c5 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   13440
+      Left            =   16650
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   54
-      Top             =   1680
-      Visible         =   0   'False
+      Top             =   300
       Width           =   255
    End
    Begin VB.PictureBox c9 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   14520
+      Left            =   17610
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   53
-      Top             =   1680
-      Visible         =   0   'False
+      Top             =   300
       Width           =   255
    End
    Begin VB.PictureBox c8 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   14250
+      Left            =   17370
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   52
-      Top             =   1680
-      Visible         =   0   'False
+      Top             =   300
       Width           =   255
    End
    Begin VB.PictureBox c7 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   13980
+      Left            =   17130
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   51
-      Top             =   1680
-      Visible         =   0   'False
+      Top             =   300
       Width           =   255
    End
    Begin VB.PictureBox c6 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   13710
+      Left            =   16890
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   50
-      Top             =   1680
-      Visible         =   0   'False
+      Top             =   300
       Width           =   255
    End
    Begin VB.PictureBox c4 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   13170
+      Left            =   16410
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   49
-      Top             =   1680
-      Visible         =   0   'False
+      Top             =   300
       Width           =   255
    End
    Begin VB.PictureBox c3 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   12900
+      Left            =   16170
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   48
-      Top             =   1680
-      Visible         =   0   'False
+      Top             =   300
       Width           =   255
    End
    Begin VB.PictureBox c2 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   12630
+      Left            =   15930
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   47
-      Top             =   1680
-      Visible         =   0   'False
+      Top             =   300
       Width           =   255
    End
    Begin VB.PictureBox c1 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   12360
+      Left            =   15690
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   46
-      Top             =   1680
-      Visible         =   0   'False
+      Top             =   300
       Width           =   255
    End
    Begin VB.Timer TimerRMVoiceCheck 
       Left            =   10020
-      Top             =   1650
+      Top             =   2880
    End
    Begin VB.Timer ProcTimer 
       Left            =   7710
@@ -156,7 +379,7 @@ Begin VB.Form TopMenu
    End
    Begin VB.Timer TmrSendPos 
       Left            =   10530
-      Top             =   1650
+      Top             =   2880
    End
    Begin MSComDlg.CommonDialog NTSCmd 
       Left            =   2580
@@ -378,7 +601,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   12225
+      Left            =   14535
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   18
@@ -389,7 +612,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   11985
+      Left            =   14295
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   17
@@ -400,7 +623,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   11745
+      Left            =   14055
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   16
@@ -411,7 +634,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   11505
+      Left            =   13815
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   15
@@ -422,7 +645,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   11265
+      Left            =   13575
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   14
@@ -433,7 +656,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   11025
+      Left            =   13335
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   13
@@ -444,7 +667,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   10785
+      Left            =   13095
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   12
@@ -455,7 +678,7 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   10545
+      Left            =   12855
       ScaleHeight     =   300
       ScaleWidth      =   240
       TabIndex        =   11
@@ -466,110 +689,110 @@ Begin VB.Form TopMenu
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   13050
+      Left            =   18360
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   10
-      Top             =   270
+      Top             =   300
       Width           =   255
    End
    Begin VB.PictureBox f2 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   13320
+      Left            =   18600
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   9
-      Top             =   270
+      Top             =   300
       Width           =   255
    End
    Begin VB.PictureBox f3 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   13560
+      Left            =   18840
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   8
-      Top             =   270
+      Top             =   300
       Width           =   255
    End
    Begin VB.PictureBox f4 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   13800
+      Left            =   19080
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   7
-      Top             =   270
+      Top             =   300
       Width           =   255
    End
    Begin VB.PictureBox f5 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   14040
+      Left            =   19320
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   6
-      Top             =   270
+      Top             =   300
       Width           =   255
    End
    Begin VB.PictureBox f6 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   14280
+      Left            =   19560
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   5
-      Top             =   270
+      Top             =   300
       Width           =   255
    End
    Begin VB.PictureBox f7 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   14520
+      Left            =   19800
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   4
-      Top             =   270
+      Top             =   300
       Width           =   255
    End
    Begin VB.PictureBox f8 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   14760
+      Left            =   20040
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   3
-      Top             =   270
+      Top             =   300
       Width           =   255
    End
    Begin VB.PictureBox f9 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   15000
+      Left            =   20280
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   2
-      Top             =   270
+      Top             =   300
       Width           =   255
    End
    Begin VB.PictureBox f10 
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   300
-      Left            =   15240
+      Left            =   20520
       ScaleHeight     =   300
       ScaleWidth      =   255
       TabIndex        =   1
-      Top             =   270
+      Top             =   300
       Width           =   255
    End
    Begin MSComDlg.CommonDialog EstCmd 
@@ -591,7 +814,7 @@ Begin VB.Form TopMenu
       _ExtentY        =   476
       _Version        =   393216
       Cols            =   14
-      Picture         =   "TopMenu2.frx":08CA
+      Picture         =   "TopMenu2.frx":9C858
    End
    Begin PicClip.PictureClip SmallClip 
       Left            =   6420
@@ -600,7 +823,7 @@ Begin VB.Form TopMenu
       _ExtentY        =   344
       _Version        =   393216
       Cols            =   14
-      Picture         =   "TopMenu2.frx":3274
+      Picture         =   "TopMenu2.frx":9F202
    End
    Begin VB.PictureBox PicSmall 
       Appearance      =   0  'Flat
@@ -630,7 +853,166 @@ Begin VB.Form TopMenu
       _ExtentY        =   476
       _Version        =   393216
       Cols            =   17
-      Picture         =   "TopMenu2.frx":484E
+      Picture         =   "TopMenu2.frx":A07DC
+   End
+   Begin RM100.DC_Control_Bt DC_Control_Bt7 
+      Height          =   735
+      Left            =   10290
+      TabIndex        =   64
+      ToolTipText     =   "Guardar eq y cue"
+      Top             =   60
+      Width           =   825
+      _ExtentX        =   1455
+      _ExtentY        =   1296
+      BackColor       =   4210752
+      ButtonStyle     =   4
+      Caption         =   ""
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483633
+      MaskColor       =   4210752
+      PicDown         =   "TopMenu2.frx":A3A86
+      PicHot          =   "TopMenu2.frx":AAC58
+      PicNormal       =   "TopMenu2.frx":B1E2A
+      PicSize         =   2
+      PicSizeH        =   24
+      PicSizeW        =   24
+   End
+   Begin RM100.DC_Control_Bt DC_Control_Bt8 
+      Height          =   735
+      Left            =   11220
+      TabIndex        =   65
+      ToolTipText     =   "Guardar eq y cue"
+      Top             =   60
+      Width           =   825
+      _ExtentX        =   1455
+      _ExtentY        =   1296
+      BackColor       =   4210752
+      ButtonStyle     =   4
+      Caption         =   ""
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483633
+      MaskColor       =   4210752
+      PicDown         =   "TopMenu2.frx":B8FFC
+      PicHot          =   "TopMenu2.frx":C01CE
+      PicNormal       =   "TopMenu2.frx":C73A0
+      PicSize         =   2
+      PicSizeH        =   24
+      PicSizeW        =   24
+   End
+   Begin RM100.DC_Control_Bt Cmd_Time_Play 
+      Height          =   315
+      Left            =   12240
+      TabIndex        =   66
+      ToolTipText     =   "Reproducir la hora actual"
+      Top             =   270
+      Width           =   525
+      _ExtentX        =   926
+      _ExtentY        =   556
+      BackColor       =   4210752
+      ButtonStyle     =   4
+      Caption         =   ""
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483633
+      MaskColor       =   4210752
+      PicDown         =   "TopMenu2.frx":CE572
+      PicHot          =   "TopMenu2.frx":D587C
+      PicNormal       =   "TopMenu2.frx":DCB86
+      PicSize         =   3
+      PicSizeH        =   32
+      PicSizeW        =   32
+   End
+   Begin RM100.DC_Control_Bt Cmd_weather_play 
+      Height          =   315
+      Left            =   15090
+      TabIndex        =   67
+      ToolTipText     =   "Reproducir el clima actual"
+      Top             =   270
+      Width           =   525
+      _ExtentX        =   926
+      _ExtentY        =   556
+      BackColor       =   4210752
+      ButtonStyle     =   4
+      Caption         =   ""
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   -2147483633
+      MaskColor       =   4210752
+      PicDown         =   "TopMenu2.frx":E3E90
+      PicHot          =   "TopMenu2.frx":EB19A
+      PicNormal       =   "TopMenu2.frx":F24A4
+      PicSize         =   3
+      PicSizeH        =   32
+      PicSizeW        =   32
+   End
+   Begin VB.Label Lbl_Location 
+      Alignment       =   2  'Center
+      BackStyle       =   0  'Transparent
+      Caption         =   "--"
+      ForeColor       =   &H00FFFF00&
+      Height          =   195
+      Left            =   15720
+      TabIndex        =   70
+      Top             =   600
+      Width           =   2355
+   End
+   Begin VB.Label Label6 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Temperatura"
+      ForeColor       =   &H00808000&
+      Height          =   195
+      Left            =   15960
+      TabIndex        =   69
+      Top             =   90
+      Width           =   1005
+   End
+   Begin VB.Label Label5 
+      Alignment       =   1  'Right Justify
+      BackStyle       =   0  'Transparent
+      Caption         =   "Humedad"
+      ForeColor       =   &H00808000&
+      Height          =   195
+      Left            =   17070
+      TabIndex        =   68
+      Top             =   90
+      Width           =   945
+   End
+   Begin VB.Image Image4 
+      Height          =   525
+      Left            =   18300
+      Stretch         =   -1  'True
+      Top             =   180
+      Width           =   2535
    End
    Begin VB.Label SType 
       BackColor       =   &H000080FF&
@@ -638,7 +1020,7 @@ Begin VB.Form TopMenu
       Height          =   240
       Left            =   630
       TabIndex        =   45
-      Top             =   1980
+      Top             =   3390
       Visible         =   0   'False
       Width           =   735
    End
@@ -648,7 +1030,7 @@ Begin VB.Form TopMenu
       Height          =   240
       Left            =   630
       TabIndex        =   44
-      Top             =   1440
+      Top             =   2850
       Visible         =   0   'False
       Width           =   735
    End
@@ -658,7 +1040,7 @@ Begin VB.Form TopMenu
       Height          =   240
       Left            =   630
       TabIndex        =   43
-      Top             =   1710
+      Top             =   3120
       Visible         =   0   'False
       Width           =   735
    End
@@ -680,7 +1062,7 @@ Begin VB.Form TopMenu
       Height          =   195
       Left            =   8730
       TabIndex        =   25
-      Top             =   1800
+      Top             =   3030
       Visible         =   0   'False
       Width           =   240
    End
@@ -701,7 +1083,7 @@ Begin VB.Form TopMenu
       Height          =   195
       Left            =   9045
       TabIndex        =   23
-      Top             =   1800
+      Top             =   3030
       Visible         =   0   'False
       Width           =   690
    End
@@ -763,18 +1145,18 @@ Begin VB.Form TopMenu
       Width           =   2985
    End
    Begin VB.Image Image2 
-      Height          =   735
-      Left            =   10290
+      Height          =   525
+      Left            =   12150
       Stretch         =   -1  'True
-      Top             =   60
-      Width           =   2415
+      Top             =   180
+      Width           =   2745
    End
    Begin VB.Image Image1 
       Height          =   735
-      Left            =   12810
+      Left            =   15000
       Stretch         =   -1  'True
       Top             =   60
-      Width           =   2895
+      Width           =   3195
    End
    Begin VB.Menu RmMenu 
       Caption         =   "&RadioMaker"
@@ -1100,28 +1482,43 @@ Dim NewResult As Boolean
 Dim A As Integer, B As Integer
 
 'PlugIn DLL object dim
-Public RMPlugIn As Object
+Public RMVPlugIn As Object  'para rmvoice
+Public RMPPlugin As Object  'para rmplayer
 
 Public Function LoadPlugIn(WFPlugInName As String, WAction As String) As String
 
 Nuevamente:
 On Error GoTo ErrorInShell
 
-    Set RMPlugIn = CreateObject(WFPlugInName & ".AddonClass")
-    If RMPlugIn.LoadControl("P•@`wœÔ6©>©™ø=Ø/1Ð0pâ:²", WAction) = 0 Then
-        MsgBox "Error al intentar cargar el AddOn. Consulte a su proveedor de software", vbCritical, WFPlugInName & " - LoadControl ERROR!"
-        Set RMPlugIn = Nothing
-        LoadPlugIn = "NotOk"
-        Exit Function
-    Else
-        LoadPlugIn = "Ok"
-    End If
-    
+Select Case WFPlugInName
+    Case "RMVoice"
+        Set RMVPlugIn = CreateObject(WFPlugInName & ".AddonClass")
+        If RMVPlugIn.LoadControl("P•@`wœÔ6©>©™ø=Ø/1Ð0pâ:²", WAction) = 0 Then
+            MsgBox "Error al intentar cargar el AddOn. Consulte a su proveedor de software", vbCritical, WFPlugInName & " - LoadControl ERROR!"
+            Set RMVPlugIn = Nothing
+            LoadPlugIn = "NotOk"
+            Exit Function
+        Else
+            LoadPlugIn = "Ok"
+        End If
+        
+    Case "RMPlayer"
+        Set RMPPlugin = CreateObject(WFPlugInName & ".AddonClass")
+        If RMPPlugin.LoadControl("P•@`wœÔ6©>©™ø=Ø/1Ð0pâ:²", WAction) = 0 Then
+            MsgBox "Error al intentar cargar el AddOn. Consulte a su proveedor de software", vbCritical, WFPlugInName & " - LoadControl ERROR!"
+            Set RMPPlugin = Nothing
+            LoadPlugIn = "NotOk"
+            Exit Function
+        Else
+            LoadPlugIn = "Ok"
+        End If
+End Select
+
 Exit Function
 
 ErrorInShell:
 'err 429=objeto no registrado
-Set RMPlugIn = Nothing
+Set RMVPlugIn = Nothing: Set RMPPlugin = Nothing
 If err.Number = 429 Then
     NewResult = RegUNRegLib(WFPlugInName, 1)
     If NewResult = True Then
@@ -1197,7 +1594,7 @@ End Function
 Public Function GetPlugInList(WPlugInName As String) As String
 
 '-------------------
-'revisar 22-12-2007
+'revisar 23-03-24
 '-------------------
 
 Dim Directory As String
@@ -1226,6 +1623,10 @@ If FileExist(Directory) = True Then
         Case "RMVoice.dll"
             TopMenu.PlugInNataly.Visible = True
             TopMenu.PlugInNataly.Enabled = True
+            TopMenu.Cmd_Time_Play.Enabled = True
+            TopMenu.Cmd_Time_Play.ToolTipText = "Reproducir usando RMVoice"
+            TopMenu.Cmd_weather_play.Enabled = True
+            TopMenu.Cmd_weather_play.ToolTipText = "Reproducir usando RMVoice"
         Case "RMController.dll"
             TopMenu.PlugInController.Visible = True
             TopMenu.PlugInController.Enabled = True
@@ -1258,6 +1659,10 @@ Else
         Case "RMVoice.dll"
             TopMenu.PlugInNataly.Visible = False
             TopMenu.PlugInNataly.Enabled = False
+            TopMenu.Cmd_Time_Play.Enabled = False
+            TopMenu.Cmd_Time_Play.ToolTipText = "Deshabilitado - Plugin RMVoice no cargado."
+            TopMenu.Cmd_weather_play.Enabled = False
+            TopMenu.Cmd_weather_play.ToolTipText = "Deshabilitado - Plugin RMVoice no cargado."
         Case "RMController.dll"
             TopMenu.PlugInController.Visible = False
             TopMenu.PlugInController.Enabled = False
@@ -1304,11 +1709,11 @@ nIndex = nIndex - 1
 Tanda01.T1View.ListItems.Item(nIndex).Selected = True
 
 'actualizamos los datos de los demas temas
-RMPlugIn.SetNextTime Trim(NextLanz)
+RMPPlugin.SetNextTime Trim(NextLanz)
 Exit Sub
 
 err:
-RMPlugIn.SetNextTime "00:00:00"
+RMPPlugin.SetNextTime "00:00:00"
 
 End Sub
 
@@ -1406,95 +1811,10 @@ Acerca.Show 1, Me
 
 End Sub
 
-Private Sub c0_Click()
-
-Call c1_Click
-
-End Sub
-
-Private Sub c1_Click()
-
-Dim Tvol As Long
-
-Result = LoadPlugIn("RMVoice", "LoadSilent")
-If Result = "NotOk" Then
-    MsgBox "Not loaded. rmvoice"
-Else
-    If Stream01IsPlaying = True Then
-        Tvol = CLng(Est01.LblCurrVol.Caption) / 4
-        Est01.LblOutvol.Caption = Tvol
-        Est01.LblInvol.Caption = Est01.LblCurrVol.Caption
-        Est01.Tmout.Enabled = True
-        Est01.Tmout.Interval = 5
-    Else
-        If Stream02IsPlaying = True Then
-            Tvol = CLng(Est02.LblCurrVol.Caption) / 4
-            Est02.LblOutvol.Caption = Tvol
-            Est02.LblInvol.Caption = Est02.LblCurrVol.Caption
-            Est02.Tmout.Enabled = True
-            Est02.Tmout.Interval = 5
-        End If
-    End If
-    Result = LoadPlugIn("RMVoice", "SayTemperatura")
-    'RMPlugIn.ExecuteCommand ("SayHora")
-    TimerRMVoiceCheck.Enabled = True
-    TimerRMVoiceCheck.Interval = 1000
-End If
-
-End Sub
-
-Private Sub c2_Click()
-
-Call c1_Click
-
-End Sub
-
-Private Sub c3_Click()
-
-Call c1_Click
-
-End Sub
-
-Private Sub c4_Click()
-
-Call c1_Click
-
-End Sub
-
-Private Sub c5_Click()
-
-Call c1_Click
-
-End Sub
-
-Private Sub c6_Click()
-
-Call c1_Click
-
-End Sub
-
-Private Sub c7_Click()
-
-Call c1_Click
-
-End Sub
-
-Private Sub c8_Click()
-
-Call c1_Click
-
-End Sub
-
-Private Sub c9_Click()
-
-Call c1_Click
-
-End Sub
-
 Private Sub ClockTimer_Timer()
 
 '---------------------
-'revisado 07-12-2008
+'revisar 11-03-24
 '---------------------
 
 'chequeamos la hora del sistema y visualizamos
@@ -1502,35 +1822,44 @@ RealClock = time$
 Call TopClock(RealClock)
 
 'chequeamos el contador para mostrar la temperatura y humedad o la fecha del sistema
-If A = 10 Then
+If A = 10 And TopMenu.Cmd_Time_Play.Enabled = True And TopMenu.Cmd_weather_play.Enabled = True Then
     If B = 10 Then
         'desabilitamos el tiempo y mostramos la fecha nuevamente
-        ClimaDisplay -1
+        ClimaDisplay 1
         DateDisplay 1
         RealDate = Date$
         Call TopDate(RealDate)
         A = 0: B = 0
     Else
     'cargamos el plugin para evitar problemas
-        'Result = LoadPlugIn("RMVoice", "LoadSilent")
-        'If Result = "NotOk" Then
-            'xxx nada
-        'Else
+        Pic_Refreshing.Visible = True
+        Result = LoadPlugIn("RMVoice", "LoadSilent")
+        If Result = "NotOk" Then
+            Call TopClima("000°C", "00%")
+            Lbl_Location.Caption = "--"
+            Pic_Refreshing.Visible = False
+            'nada error
+        Else
             'mostramos los datos del tiempo
-            'If RMPlugIn.wtemperature = "N/A" Then
-                'Call TopClima("000°C", "00%")
+            If RMVPlugIn.wtemperature = "N/A" Then
+                Call TopClima("000°C", "00%")
+                Lbl_Location.Caption = "--"
+                Pic_Refreshing.Visible = False
                 'nada error
-            'Else
-                'ClimaDisplay 1
-                'DateDisplay -1
-                'Call TopClima(RMPlugIn.wtemperature & "°C", RMPlugIn.whumedad & "%")
-            'End If
+            Else
+                On Error Resume Next
+                ClimaDisplay 1
+                DateDisplay 1
+                Call TopClima(RMVPlugIn.wtemperature & "°C", RMVPlugIn.whumedad & "%")
+                'Lbl_Location.Caption = RMVPlugIn.WGetlocation
+            End If
             B = B + 1
-        'End If
+        End If
+        Pic_Refreshing.Visible = False
     End If
 Else
     'desabilitamos el tiempo y mostramos la fecha nuevamente
-    ClimaDisplay -1
+    ClimaDisplay 1
     DateDisplay 1
     RealDate = Date$
     Call TopDate(RealDate)
@@ -1608,8 +1937,37 @@ End If
 Continue:
 End Sub
 
+Private Sub Cmd_Time_Play_Click()
 
-Private Sub f1_Click()
+Dim Tvol As Long
+
+Result = LoadPlugIn("RMVoice", "LoadSilent")
+If Result = "NotOk" Then
+    MsgBox "Not loaded. Plugin RMCoice."
+Else
+    If Stream01IsPlaying = True Then
+        Tvol = CLng(Est01.LblCurrVol.Caption) / 4
+        Est01.LblOutvol.Caption = Tvol
+        Est01.LblInvol.Caption = Est01.LblCurrVol.Caption
+        Est01.Tmout.Enabled = True
+        Est01.Tmout.Interval = 5
+    Else
+        If Stream02IsPlaying = True Then
+            Tvol = CLng(Est02.LblCurrVol.Caption) / 4
+            Est02.LblOutvol.Caption = Tvol
+            Est02.LblInvol.Caption = Est02.LblCurrVol.Caption
+            Est02.Tmout.Enabled = True
+            Est02.Tmout.Interval = 5
+        End If
+    End If
+    Result = LoadPlugIn("RMVoice", "SayHora")
+    TimerRMVoiceCheck.Enabled = True
+    TimerRMVoiceCheck.Interval = 5
+End If
+
+End Sub
+
+Private Sub Cmd_weather_play_Click()
 
 Dim Tvol As Long
 
@@ -1633,64 +1991,9 @@ Else
         End If
     End If
     Result = LoadPlugIn("RMVoice", "SayTemperatura")
-    'RMPlugIn.ExecuteCommand ("SayHora")
     TimerRMVoiceCheck.Enabled = True
     TimerRMVoiceCheck.Interval = 1000
 End If
-
-End Sub
-
-Private Sub f10_Click()
-
-Call f1_Click
-
-End Sub
-
-Private Sub f2_Click()
-
-Call f1_Click
-
-End Sub
-
-Private Sub f3_Click()
-
-Call f1_Click
-
-End Sub
-
-Private Sub f4_Click()
-
-Call f1_Click
-
-End Sub
-
-Private Sub f5_Click()
-
-Call f1_Click
-
-End Sub
-
-Private Sub f6_Click()
-
-Call f1_Click
-
-End Sub
-
-Private Sub f7_Click()
-
-Call f1_Click
-
-End Sub
-
-Private Sub f8_Click()
-
-Call f1_Click
-
-End Sub
-
-Private Sub f9_Click()
-
-Call f1_Click
 
 End Sub
 
@@ -1703,7 +2006,7 @@ Me.TopPic = LoadPicture(App.path & "\Imagenes\FND_PANEL_NEW.jpg")
 Me.Image1 = LoadPicture(App.path & "\Imagenes\FND_PANEL_NEW.jpg")
 Me.Image2 = LoadPicture(App.path & "\Imagenes\FND_PANEL_NEW.jpg")
 Me.Image3 = LoadPicture(App.path & "\Imagenes\FND_PANEL_NEW.jpg")
-
+Me.Image4 = LoadPicture(App.path & "\Imagenes\FND_PANEL_NEW.jpg")
 
     On Error Resume Next
     '///Seteamos la prioridad del programa para evitar deshabilitaciones
@@ -1720,8 +2023,7 @@ Me.Image3 = LoadPicture(App.path & "\Imagenes\FND_PANEL_NEW.jpg")
 
 Me.Caption = "Only RadioMaker v." & App.Major & "." & App.Minor & " - Rev." & App.Revision
 
-Me.Width = SysInfo1.WorkAreaWidth
-Me.Height = 1530
+Pic_toolbar.Width = (SysInfo1.WorkAreaWidth - 350)
 
 End Sub
 
@@ -1911,13 +2213,9 @@ Dim Rst1 As String, Rst2 As String
 If Stream01IsPlaying = True Or Music01IsPlaying = True Then
     Select Case Est12Control.Origen1.Caption
         Case "E1"   '////////////////////////////////////////////////////////////
-            'PosTime = Stream01GetPosition(1)  'position in time (seconds)
             PosTime = GStreamGetPosition(1, 1)
-            'LenTime = Stream01GetLen(1)       'lenght in time (seconds)
             LenTime = GStreamGetLen(1, 1)
-            'PosByte = Stream01GetPosition(2)  'position in bytes
             PosByte = GStreamGetPosition(1, 2)
-            'LenByte = Stream01GetLen(2)       'lengh in bytes
             LenByte = GStreamGetLen(1, 2)
             'chequeamos por el tipo de visualizacion (normal o restante)
             If TopMenu.LType.Caption = "Normal" Then
@@ -1940,11 +2238,10 @@ If Stream01IsPlaying = True Or Music01IsPlaying = True Then
             Est01.E1Pos.Value = PosTime
             Est01.E1Pos.ToolTipText = ConvSecToMin(CDbl(Est01.E1Pos.Value))
             Est01.LblCurrent.Caption = ConvSecToMin(PosTime)
+            Call SetDigClock2(ConvSecToMin(PosTime), 1, 1)
             Est01.LblCurrByte.Caption = PosByte
         Case "T1"   '////////////////////////////////////////////////////////////
-            'PosTime = Stream01GetPosition(1)  'position in time
             PosTime = GStreamGetPosition(1, 1)
-            'LenTime = Stream01GetLen(1)   'lenght in time
             LenTime = GStreamGetLen(1, 1)
             'chequeamos por el tipo de visualizacion (normal o restante)
             If TopMenu.LType.Caption = "Normal" Then
@@ -1961,13 +2258,9 @@ End If
 If Stream02IsPlaying = True Or Music02IsPlaying = True Then
     Select Case Est12Control.Origen2.Caption
         Case "E2"   '////////////////////////////////////////////////////////////
-            'PosTime = Stream02GetPosition(1)  'position in time (seconds)
             PosTime = GStreamGetPosition(2, 1)
-            'LenTime = Stream02GetLen(1)       'lenght in time (seconds)
             LenTime = GStreamGetLen(2, 1)
-            'PosByte = Stream02GetPosition(2)  'position in bytes
             PosByte = GStreamGetPosition(2, 2)
-            'LenByte = Stream02GetLen(2)       'lengh in bytes
             LenByte = GStreamGetLen(2, 2)
             'chequeamos por el tipo de visualizacion (normal o restante)
             If TopMenu.LType.Caption = "Normal" Then
@@ -1990,11 +2283,10 @@ If Stream02IsPlaying = True Or Music02IsPlaying = True Then
             Est02.E2Pos.Value = PosTime
             Est02.E2Pos.ToolTipText = ConvSecToMin(CDbl(Est02.E2Pos.Value))
             Est02.LblCurrent.Caption = ConvSecToMin(PosTime)
+            Call SetDigClock2(ConvSecToMin(PosTime), 2, 1)
             Est02.LblCurrByte.Caption = PosByte
         Case "T2"   '////////////////////////////////////////////////////////////
-            'PosTime = Stream02GetPosition(1)  'position in time
             PosTime = GStreamGetPosition(2, 1)
-            'LenTime = Stream02GetLen(1)   'lenght in time
             LenTime = GStreamGetLen(2, 1)
             'chequeamos por el tipo de visualizacion (normal o restante)
             If TopMenu.LType.Caption = "Normal" Then
@@ -2012,8 +2304,16 @@ End If
 If Stream01IsPlaying = False Then
     Select Case Est12Control.Origen1.Caption
         Case "E1"
+            Est01.Tmout.Enabled = True
+            Est01.Tmout.Interval = 30
+            'desactivamos el scope
+            Est01.TmrScopeLite.Interval = 0
+            Est01.TmrScopeLite.Enabled = False
+            'reseteamos los displays
+            Est01.Lr.Width = 0
+            Est01.Ll.Width = 0
+            Est01.Picfft1.Cls
             If Music01IsPlaying = False Then
-                'Est01.TitelBar1.Caption = "ESTACION 01 - Detenido"
                 Est01.E1Pic.Picture = LoadPicture(App.path & "\Imagenes\FND_DETENIDO.jpg")
                 RestoreDisplay 1
                 Est01.Label1.ForeColor = &H404040        'gris oscuro(desactivado)
@@ -2027,9 +2327,17 @@ End If
 If Stream02IsPlaying = False Then
     Select Case Est12Control.Origen2.Caption
         Case "E2"
+            Est02.Tmout.Enabled = True
+            Est02.Tmout.Interval = 30
+            'desactivamos el scope
+            Est02.TmrScopeLite2.Interval = 0
+            Est02.TmrScopeLite2.Enabled = False
+            'reseteamos los displays
+            Est02.Lr.Width = 0
+            Est02.Ll.Width = 0
+            Est02.Picfft2.Cls
             If Music02IsPlaying = False Then
-                'Est02.TitelBar1.Caption = "ESTACION 02 - Detenido"
-                Est02.E2Pic.Picture = LoadPicture(App.path & "\Imagenes\FND_DETENIDO.jpg")
+                Est02.E2Pic.Picture = LoadPicture(App.path & "\Imagenes\FND_DETENIDO_2.jpg")
                 RestoreDisplay 2
                 Est02.Label1.ForeColor = &H404040        'gris oscuro(desactivado)
             End If
@@ -2110,22 +2418,22 @@ End Sub
 
 Private Sub SbEst02_Click()
 
-    If TopMenu.SbEst02.Checked = False Then
-        ShowWindow "Est02"
-        If Est02.Command1.Caption = ">" Then
-            Est02.Width = 15360
-            Est02.Left = 0
-        End If
-        If Prg01.WindowState = 0 Then
-            ShowWindow "Prg01"
-        End If
-    Else
-        HideWindow "Est02"
-        If Prg01.WindowState = 0 Then
-            ShowWindow "Prg01"
-        End If
-    End If
-
+    'If TopMenu.SbEst02.Checked = False Then
+    '    ShowWindow "Est02"
+    '    If Est02.Command1.Caption = ">" Then
+    '        Est02.Width = 15360
+    '        Est02.Left = 0
+    '    End If
+    '    If Prg01.WindowState = 0 Then
+    '        ShowWindow "Prg01"
+    '    End If
+    'Else
+    '    HideWindow "Est02"
+    '    If Prg01.WindowState = 0 Then
+    '        ShowWindow "Prg01"
+    '    End If
+    'End If
+'
 End Sub
 
 Private Sub SbExplor_Click()
@@ -2211,79 +2519,6 @@ Private Sub SbTnd01_Click()
 
 End Sub
 
-Private Sub t1_Click()
-
-Dim Tvol As Long
-
-Result = LoadPlugIn("RMVoice", "LoadSilent")
-If Result = "NotOk" Then
-    MsgBox "Not loaded. Plugin RMCoice."
-Else
-    If Stream01IsPlaying = True Then
-        Tvol = CLng(Est01.LblCurrVol.Caption) / 4
-        Est01.LblOutvol.Caption = Tvol
-        Est01.LblInvol.Caption = Est01.LblCurrVol.Caption
-        Est01.Tmout.Enabled = True
-        Est01.Tmout.Interval = 5
-    Else
-        If Stream02IsPlaying = True Then
-            Tvol = CLng(Est02.LblCurrVol.Caption) / 4
-            Est02.LblOutvol.Caption = Tvol
-            Est02.LblInvol.Caption = Est02.LblCurrVol.Caption
-            Est02.Tmout.Enabled = True
-            Est02.Tmout.Interval = 5
-        End If
-    End If
-    Result = LoadPlugIn("RMVoice", "SayHora")
-    'RMPlugIn.ExecuteCommand ("SayHora")
-    TimerRMVoiceCheck.Enabled = True
-    TimerRMVoiceCheck.Interval = 5
-End If
-
-End Sub
-
-Private Sub t2_Click()
-
-Call t1_Click
-
-End Sub
-
-Private Sub t3_Click()
-
-Call t1_Click
-
-End Sub
-
-Private Sub t4_Click()
-
-Call t1_Click
-
-End Sub
-
-Private Sub t5_Click()
-
-Call t1_Click
-
-End Sub
-
-Private Sub t6_Click()
-
-Call t1_Click
-
-End Sub
-
-Private Sub t7_Click()
-
-Call t1_Click
-
-End Sub
-
-Private Sub t8_Click()
-
-Call t1_Click
-
-End Sub
-
 Private Sub TimerRMVoiceCheck_Timer()
 
 '//////////////////////////////////////////////////
@@ -2293,7 +2528,7 @@ Private Sub TimerRMVoiceCheck_Timer()
 
 Dim Tvol As Long
 
-If RMPlugIn.PlugIsRunning = False Then
+If RMVPlugIn.PlugIsRunning = False Then
     TimerRMVoiceCheck.Interval = 0
     TimerRMVoiceCheck.Enabled = False
     If Stream01IsPlaying = True Then
@@ -2358,36 +2593,36 @@ If Est12Control.StopLabel1.Caption = "Stream" Then
         BytePosLen = Rlen2
         'chequeamos por el tipo de visualizacion (normal o restante)
         If Est12Control.Origen1.Caption = "E1" Then
-            RMPlugIn.SetStreamName Est01.Label1.Caption
-            RMPlugIn.SetStatusText ("Estación 01")
+            RMPPlugin.SetStreamName Est01.Label1.Caption
+            RMPPlugin.SetStatusText ("Estación 01")
             If TopMenu.LType.Caption = "Normal" Then
                 Test = CLng(Trim(TimePos))
                 Test2 = CLng(Trim(BytePos))
-                RMPlugIn.SetTime ConvSecToMin(CDbl(Test)), "Normal"
+                RMPPlugin.SetTime ConvSecToMin(CDbl(Test)), "Normal"
                 Call SendMiniFFT(1, "Stream", 6) 'fft spectrum display
                 Call SendMiniScope(1, "Stream")
             Else
                 Test = CLng(Trim(TimePosLen)) - CLng(Trim(TimePos))
                 Test2 = CLng(Trim(BytePosLen)) - CLng(Trim(BytePos))
-                RMPlugIn.SetTime ConvSecToMin(CDbl(Test)), "Restante"
+                RMPPlugin.SetTime ConvSecToMin(CDbl(Test)), "Restante"
                 Call SendMiniFFT(1, "Stream", 6) 'fft spectrum display
                 Call SendMiniScope(1, "Stream")
             End If
         Else
             If Est12Control.Origen1.Caption = "T1" Then
-                RMPlugIn.SetStreamName Tanda01.T1Name.Caption
-                RMPlugIn.SetStatusText "Tanda - Dev: 1"
+                RMPPlugin.SetStreamName Tanda01.T1Name.Caption
+                RMPPlugin.SetStatusText "Tanda - Dev: 1"
                 Call GetNextStreamTime
                 If TopMenu.LType.Caption = "Normal" Then
                     Test = CLng(Trim(TimePos))
                     Test2 = CLng(Trim(BytePos))
-                    RMPlugIn.SetTime ConvSecToMin(CDbl(Test)), "Normal"
+                    RMPPlugin.SetTime ConvSecToMin(CDbl(Test)), "Normal"
                     Call SendMiniFFT(1, "Stream", 6) 'fft spectrum display
                     Call SendMiniScope(1, "Stream")
                 Else
                     Test = CLng(Trim(TimePosLen)) - CLng(Trim(TimePos))
                     Test2 = CLng(Trim(BytePosLen)) - CLng(Trim(BytePos))
-                    RMPlugIn.SetTime ConvSecToMin(CDbl(Test)), "Restante"
+                    RMPPlugin.SetTime ConvSecToMin(CDbl(Test)), "Restante"
                     Call SendMiniFFT(1, "Stream", 6) 'fft spectrum display
                     Call SendMiniScope(1, "Stream")
                 End If
@@ -2409,44 +2644,44 @@ If Est12Control.StopLabel1.Caption = "Stream" Then
             BytePosLen = Rlen2
             'chequeamos por el tipo de visualizacion (normal o restante)
             If Est12Control.Origen2.Caption = "E2" Then
-                RMPlugIn.SetStreamName Est02.Label1.Caption
-                RMPlugIn.SetStatusText "Estación 02"
+                RMPPlugin.SetStreamName Est02.Label1.Caption
+                RMPPlugin.SetStatusText "Estación 02"
                 If TopMenu.LType.Caption = "Normal" Then
                     Test = CLng(Trim(TimePos))
                     Test2 = CLng(Trim(BytePos))
-                    RMPlugIn.SetTime ConvSecToMin(CDbl(Test)), "Normal"
+                    RMPPlugin.SetTime ConvSecToMin(CDbl(Test)), "Normal"
                     Call SendMiniFFT(2, "Stream", 6) 'fft spectrum display
                     Call SendMiniScope(2, "Stream")
                 Else
                     Test = CLng(Trim(TimePosLen)) - CLng(Trim(TimePos))
                     Test2 = CLng(Trim(BytePosLen)) - CLng(Trim(BytePos))
-                    RMPlugIn.SetTime ConvSecToMin(CDbl(Test)), "Restante"
+                    RMPPlugin.SetTime ConvSecToMin(CDbl(Test)), "Restante"
                     Call SendMiniFFT(2, "Stream", 6) 'fft spectrum display
                     Call SendMiniScope(2, "Stream")
                 End If
             Else
                 If Est12Control.Origen2.Caption = "T2" Then
-                    RMPlugIn.SetStreamName Tanda01.T2Name.Caption
-                    RMPlugIn.SetStatusText "Tanda - Dev: 2"
+                    RMPPlugin.SetStreamName Tanda01.T2Name.Caption
+                    RMPPlugin.SetStatusText "Tanda - Dev: 2"
                     Call GetNextStreamTime
                     If TopMenu.LType.Caption = "Normal" Then
                         Test = CLng(Trim(TimePos))
                         Test2 = CLng(Trim(BytePos))
-                        RMPlugIn.SetTime ConvSecToMin(CDbl(Test)), "Normal"
+                        RMPPlugin.SetTime ConvSecToMin(CDbl(Test)), "Normal"
                         Call SendMiniFFT(2, "Stream", 6) 'fft spectrum display
                         Call SendMiniScope(2, "Stream")
                     Else
                         Test = CLng(Trim(TimePosLen)) - CLng(Trim(TimePos))
                         Test2 = CLng(Trim(BytePosLen)) - CLng(Trim(BytePos))
-                        RMPlugIn.SetTime ConvSecToMin(CDbl(Test)), "Restante"
+                        RMPPlugin.SetTime ConvSecToMin(CDbl(Test)), "Restante"
                         Call SendMiniFFT(2, "Stream", 6) 'fft spectrum display
                         Call SendMiniScope(2, "Stream")
                     End If
                 End If
             End If
         Else
-            RMPlugIn.SetStreamName "---"
-            RMPlugIn.SetStatusText "- D E T E N I D O -"
+            RMPPlugin.SetStreamName "---"
+            RMPPlugin.SetStatusText "- D E T E N I D O -"
         End If
     End If
 End If

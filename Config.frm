@@ -64,13 +64,13 @@ Begin VB.Form Config
       _Version        =   393216
       Style           =   1
       Tabs            =   4
+      Tab             =   3
       TabsPerRow      =   4
       TabHeight       =   520
       TabCaption(0)   =   "General"
       TabPicture(0)   =   "Config.frx":000C
-      Tab(0).ControlEnabled=   -1  'True
+      Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "Frame13"
-      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).ControlCount=   1
       TabCaption(1)   =   "Audio"
       TabPicture(1)   =   "Config.frx":0028
@@ -85,18 +85,24 @@ Begin VB.Form Config
       Tab(2).ControlCount=   1
       TabCaption(3)   =   "Seguridad"
       TabPicture(3)   =   "Config.frx":0060
-      Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "DefPass"
-      Tab(3).Control(1)=   "Frame8"
-      Tab(3).Control(2)=   "Frame7"
-      Tab(3).Control(3)=   "Frame6"
-      Tab(3).Control(4)=   "Frame5"
-      Tab(3).Control(5)=   "Frame4"
+      Tab(3).ControlEnabled=   -1  'True
+      Tab(3).Control(0)=   "Frame4"
+      Tab(3).Control(0).Enabled=   0   'False
+      Tab(3).Control(1)=   "Frame5"
+      Tab(3).Control(1).Enabled=   0   'False
+      Tab(3).Control(2)=   "Frame6"
+      Tab(3).Control(2).Enabled=   0   'False
+      Tab(3).Control(3)=   "Frame7"
+      Tab(3).Control(3).Enabled=   0   'False
+      Tab(3).Control(4)=   "Frame8"
+      Tab(3).Control(4).Enabled=   0   'False
+      Tab(3).Control(5)=   "DefPass"
+      Tab(3).Control(5).Enabled=   0   'False
       Tab(3).ControlCount=   6
       Begin VB.Frame Frame13 
          Caption         =   "Opciones Generales"
          Height          =   4695
-         Left            =   225
+         Left            =   -74775
          TabIndex        =   113
          Top             =   675
          Width           =   8160
@@ -277,7 +283,7 @@ Begin VB.Form Config
          Caption         =   "&Definir password"
          Enabled         =   0   'False
          Height          =   330
-         Left            =   -74820
+         Left            =   180
          TabIndex        =   96
          Top             =   4770
          Width           =   1545
@@ -986,7 +992,7 @@ Begin VB.Form Config
       Begin VB.Frame Frame8 
          Caption         =   "Secciones especiales"
          Height          =   915
-         Left            =   -74820
+         Left            =   180
          TabIndex        =   37
          Top             =   3780
          Width           =   8250
@@ -1048,7 +1054,7 @@ Begin VB.Form Config
       Begin VB.Frame Frame7 
          Caption         =   "General"
          Height          =   600
-         Left            =   -74820
+         Left            =   180
          TabIndex        =   24
          Top             =   585
          Width           =   8250
@@ -1090,7 +1096,7 @@ Begin VB.Form Config
       Begin VB.Frame Frame6 
          Caption         =   "Programación de Tandas"
          Height          =   2355
-         Left            =   -69240
+         Left            =   5760
          TabIndex        =   23
          Top             =   1305
          Width           =   2670
@@ -1134,7 +1140,7 @@ Begin VB.Form Config
       Begin VB.Frame Frame5 
          Caption         =   "Tanda 01"
          Height          =   2355
-         Left            =   -72030
+         Left            =   2970
          TabIndex        =   22
          Top             =   1305
          Width           =   2715
@@ -1178,7 +1184,7 @@ Begin VB.Form Config
       Begin VB.Frame Frame4 
          Caption         =   "Estacion 01 y 02"
          Height          =   2355
-         Left            =   -74820
+         Left            =   180
          TabIndex        =   17
          Top             =   1305
          Width           =   2715
@@ -1430,10 +1436,10 @@ CmdPrg.DialogTitle = "RM100 - Seleccione archivo de programa"
 CmdPrg.CancelError = True
 CmdPrg.ShowOpen
 
-If err.Number = 32755 Then Exit Sub
+If Err.Number = 32755 Then Exit Sub
 
 PRGName = CmdPrg.filename
-ARepName.text = PRGName
+ARepName.Text = PRGName
 
 End Sub
 
@@ -1449,9 +1455,9 @@ ConfigData.Gen_ActiveReport = ARep.Value
 ConfigData.Gen_ReportEst = Rep1.Value
 ConfigData.Gen_ReportTnd = Rep2.Value
 ConfigData.Gen_ReportAll = RepAll.Value
-ConfigData.Gen_ReportProg = SetCipherConfigData(Trim(ARepName.text))
-ConfigData.Gen_EditProg = SetCipherConfigData(Trim(EdName.text))
-ConfigData.Gen_GrabProg = SetCipherConfigData(Trim(GrabName.text))
+ConfigData.Gen_ReportProg = SetCipherConfigData(Trim(ARepName.Text))
+ConfigData.Gen_EditProg = SetCipherConfigData(Trim(EdName.Text))
+ConfigData.Gen_GrabProg = SetCipherConfigData(Trim(GrabName.Text))
 
 'AUDIO OPTIONS
 If M8b.Value = 1 Then       '1=8bits    2=16bits
@@ -1558,10 +1564,10 @@ ConfigData.Aud_Show_FTT = MVFFT.Value
 ConfigData.Aud_Show_SCOPE = MVSCOPE.Value
 
 'DIRECTORY OPTIONS
-ConfigData.Dir_Tem = SetCipherConfigData(Trim(Tx(0).text))
-ConfigData.Dir_Com = SetCipherConfigData(Trim(Tx(1).text))
-ConfigData.Dir_Inst = SetCipherConfigData(Trim(Tx(2).text))
-ConfigData.Dir_Hor = SetCipherConfigData(Trim(Tx(3).text))
+ConfigData.Dir_Tem = SetCipherConfigData(Trim(Tx(0).Text))
+ConfigData.Dir_Com = SetCipherConfigData(Trim(Tx(1).Text))
+ConfigData.Dir_Inst = SetCipherConfigData(Trim(Tx(2).Text))
+ConfigData.Dir_Hor = SetCipherConfigData(Trim(Tx(3).Text))
 
 'SECURITY OPTIONS
 If None.Value = 1 Then      '1=none     2=password      3=deneid access
@@ -1646,20 +1652,20 @@ CmdPrg.DialogTitle = "RM100 - Seleccione archivo de programa"
 CmdPrg.CancelError = True
 CmdPrg.ShowOpen
 
-If err.Number = 32755 Then Exit Sub
+If Err.Number = 32755 Then Exit Sub
 
 PRGName = CmdPrg.filename
-EdName.text = PRGName
+EdName.Text = PRGName
 
 End Sub
 
-Private Sub Exam_Click(index As Integer)
+Private Sub Exam_Click(Index As Integer)
 
 Dim Result As String
 
 Result = BrowseForFolder("Seleccione la nueva carpeta.")
 
-Tx(index).text = Result & "\"
+Tx(Index).Text = Result & "\"
 
 End Sub
 
@@ -1695,9 +1701,9 @@ ARep.Value = ConfigData.Gen_ActiveReport
 Rep1.Value = ConfigData.Gen_ReportEst
 Rep2.Value = ConfigData.Gen_ReportTnd
 RepAll.Value = ConfigData.Gen_ReportAll
-ARepName.text = GetCipherConfigData(Trim(ConfigData.Gen_ReportProg))
-EdName.text = GetCipherConfigData(Trim(ConfigData.Gen_EditProg))
-GrabName.text = GetCipherConfigData(Trim(ConfigData.Gen_GrabProg))
+ARepName.Text = GetCipherConfigData(Trim(ConfigData.Gen_ReportProg))
+EdName.Text = GetCipherConfigData(Trim(ConfigData.Gen_EditProg))
+GrabName.Text = GetCipherConfigData(Trim(ConfigData.Gen_GrabProg))
 
 If ARep.Value = 0 Then
     Rep1.Enabled = False
@@ -1827,10 +1833,10 @@ MVFFT.Value = ConfigData.Aud_Show_FTT
 MVSCOPE.Value = ConfigData.Aud_Show_SCOPE
 
 '////////////////////////////////// DIRECTORY OPTIONS
-Tx(0).text = GetCipherConfigData(Trim(ConfigData.Dir_Tem))
-Tx(1).text = GetCipherConfigData(Trim(ConfigData.Dir_Com))
-Tx(2).text = GetCipherConfigData(Trim(ConfigData.Dir_Inst))
-Tx(3).text = GetCipherConfigData(Trim(ConfigData.Dir_Hor))
+Tx(0).Text = GetCipherConfigData(Trim(ConfigData.Dir_Tem))
+Tx(1).Text = GetCipherConfigData(Trim(ConfigData.Dir_Com))
+Tx(2).Text = GetCipherConfigData(Trim(ConfigData.Dir_Inst))
+Tx(3).Text = GetCipherConfigData(Trim(ConfigData.Dir_Hor))
 
 '////////////////////////////////// SECURITY OPTIONS
 Select Case ConfigData.Sec_Type
@@ -1880,10 +1886,10 @@ CmdPrg.DialogTitle = "RM100 - Seleccione archivo de programa"
 CmdPrg.CancelError = True
 CmdPrg.ShowOpen
 
-If err.Number = 32755 Then Exit Sub
+If Err.Number = 32755 Then Exit Sub
 
 PRGName = CmdPrg.filename
-GrabName.text = PRGName
+GrabName.Text = PRGName
 
 End Sub
 
@@ -2187,6 +2193,6 @@ End If
 
 End Sub
 
-Private Sub TxTem_Click(index As Integer)
+Private Sub TxTem_Click(Index As Integer)
 
 End Sub

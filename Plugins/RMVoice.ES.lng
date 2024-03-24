@@ -1,9 +1,11 @@
 100  RMVoice - RadioMaker plugin app
-101  Hora Actual
-102  Temperatura
-103  Humedad
-104  Comandos
-105  Configuraciones generales
+101  Hora Actual:
+102  Temperatura:
+103  Humedad:
+104  Consola:
+105  Configuraciones generales:
+105a Cuenta climática:
+105b Condiciones climáticas:
 106  Archivo de Hora:
 107  Archivo de minutos:
 108  Archivo de Temperatura:
@@ -15,21 +17,38 @@
 114  C&errar
 1144 actualizando...
 115  ONLY RMVoice Plug-In para ONLY Radiomaker. Dirijase a Radiomaker y haga click en el panel de hora del sistema para ejecutar la aplicacion. Ante cualquier duda consulte la documentacion.
+1151 Consultas GRATIS realizadas:
+1152 Consultas GRATIS restantes:
+1153 Puedes actualizar tu cuenta a premium en weatherstack.com para incrementar la cantidad de consultas. Si tienes una cuenta gratis recuerda que solo puedes realizar 250 consultas al mes. Este contador te ayudará en el proceso.
+1154 Api Key de weatherstack.com:
+1155 Precipitación:
+1156 Velocidad del viento:
+1157 Humedad:
+1158 Sensación térmica:
+1159 Nubosidad:
+115a Visibilidad:
+115b Indice UV:
+115c Período de tiempo:
+115d Descripción completa:
+115e Observado en:
+115f Ultima actualización:
+115g Por favor ingrese una API KEY de weatherstack.com. (puedes obtener una cuenta gratis ingresando en la web correspondiente)
+115h Has alcandado el límite de consultas para este mes. Puedes actualizar tu cuenta a premium en weatherstack.com para incrementar la cantidad de consultas.
 1166 Configuraciones generales
-116  Seleccione Idioma
+116  Seleccione Idioma de aplicación:
 117  Seleccione Estado / Provincia para la extracción de datos climáticos
-118  Visualización de temperatura
+118  Visualización de temperatura:
 119  Grados Farenhit
 120  Grados Centigrados
-121  Tiempo de actualizacion on-line
+121  Tiempo de actualizacion on-line:
 122  Recuerde que debe poseer una coneccion a internet permanente para poder actualizar los datos climáticos
-123  Tiempo de refresco
+123  Tiempo de refresco:
 124  segundos.
-125  Seleccion de voces
+125  Seleccion de voces:
 126  Masculina
 127  Femenina
 128  Personalizada
-129  Archivos de audio personalizados
+129  Archivos de audio personalizados:
 130  Hora:
 131  Minutos:
 132  Temperatura:
@@ -45,8 +64,8 @@
 141  &Importar...
 142  &Guardar y Continuar
 143  &Cerrar
-144  Ingresar nueva descripción
-145  Ingresar nueva url
+144  Ingresar nueva descripción:
+145  Ingresar nueva url:
 146  ONLY RMVoice - importar archivo de texto
 147  Archivos de texto (*.txt)|*.txt|Archivos de texto
 148  Archivos de audio (*.pak)|*.pak|Archivos de Audio
@@ -56,6 +75,21 @@
 152  Reproducir temperatura...
 153  Reproducir humedad...
 154  &Acerca...
+155  Por favor ingrese abajo el estado o provincia a extraer los datos climáticos. Puede ser cualquier dato como una ciudad, un codigo postal, un estado o paìs o una Latitud/Longitud par, o una direcciòn IP. No use coma.
+156  Estado / Provincia:
+157  +INFO
+158  &Buscar
+159  &Guardar
+160  Lugares guardados:
+161  [doble click para usar]
+162  &Limpiar lista
+163  &Remover seleccionado
+164  Los lugares son automáticamente guardados y agregados a la lista una vez que se realiza una búsqueda.
+165  No separe las localidades (como ciudades o estados) con coma, cada item separado será contado como un lugar nuevo. Las cuentas gratis permiten solo 1 item por busqueda.
+165a Malo: Tampa, Florida   Bueno: Tampa Florida
+165b Malo: Chad, Africa     Bueno: Chad Africa
+165c Malo 40.521,-81.474    Bueno: 40.521 -81.474
+166  Esta seguro que desea limpiar la lista?
 1001 No se puede reproducir el archivo desde la posición especificada.
 1002 No se puede inicializar la libreria de audio Bass.dll.
 1003 No se puede acceder al sistema de audio digital.

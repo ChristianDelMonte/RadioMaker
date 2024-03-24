@@ -244,12 +244,13 @@ Close #iFreefile
     
 ' Populate the info variables
 If Left(sData, 3) = "TAG" Then
+    On Error GoTo Mp3TagErr
     MP3Info.sTitle = RTrim(Mid(sData, 4, 30))
     MP3Info.sArtist = RTrim(Mid(sData, 34, 30))
     MP3Info.sAlbum = RTrim(Mid(sData, 64, 30))
     MP3Info.sYear = RTrim(Mid(sData, 94, 4))
     MP3Info.sComment = RTrim(Mid(sData, 98, 30))
-    MP3Info.sGenre = RTrim(sGenre(Asc(Mid(sData, 128, 1))))
+    'MP3Info.sGenre = RTrim(sGenre(Asc(Mid(sData, 128, 1))))
 End If
 Exit Function
     
@@ -266,7 +267,7 @@ End Function
 ''''''Read MP3 Header BEGIN''''''
 Public Function ReadMP3Header(sPassFileName As String)
 
-Dim z, i
+Dim Z, i
 Dim BinaryString As String
 Dim byteArray(4) As Byte    'array that store first four bytes
 Dim bin As String           'string that store binary number converted from readed bytes
@@ -278,21 +279,21 @@ Dim FreeMp3
 FreeMp3 = FreeFile
 On Error GoTo Mp3FileErr
 Open sPassFileName For Binary Access Read As #FreeMp3  'open file for read
-For z = 1 To 4                           'step through four bytes
-    Get #FreeMp3, z, byteArray(z)                  'store every(z)byte  in array position z
-Next z                                   'back for next byte
+For Z = 1 To 4                           'step through four bytes
+    Get #FreeMp3, Z, byteArray(Z)                  'store every(z)byte  in array position z
+Next Z                                   'back for next byte
 Close #FreeMp3                                   'close file
 
 bin = ""                                   'reset and build the desired binary number in this string
-For z = 1 To 4                           'convert all bytes to binary
+For Z = 1 To 4                           'convert all bytes to binary
     For i = 0 To 7 Step 1                  'Here comes the decimal=>binary conversion
-        If byteArray(z) And (2 ^ i) Then   'Use the logical "AND" operator.
+        If byteArray(Z) And (2 ^ i) Then   'Use the logical "AND" operator.
             bin = bin + "1"
         Else
             bin = bin + "0"
         End If
     Next i                             'End of binary conversion
-Next z
+Next Z
 BinaryString = bin
 
 '''''''''check MP3HeaderInfo.Frequency''''
@@ -468,13 +469,13 @@ Select Case DecString
 End Select
 
 With MP3HInfo
-    Dim min, sec
+    Dim Min, sec
     .Bitrate = Int(.Bitrate)
     .mFileSize = FileSizeMP3(sPassFileName)
     .FPlayTime = ((.mFileSize * 8) / (.Bitrate * 1000))
-    min = .FPlayTime \ 60         'minutes
-    sec = .FPlayTime - (min * 60) 'seconds
-    .FPlayTime = Format(min, "#0#") & ":" & Format(sec, "0#") 'format time to 00:00
+    Min = .FPlayTime \ 60         'minutes
+    sec = .FPlayTime - (Min * 60) 'seconds
+    .FPlayTime = Format(Min, "#0#") & ":" & Format(sec, "0#") 'format time to 00:00
 End With
 Exit Function
 

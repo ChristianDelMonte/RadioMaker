@@ -1,9 +1,11 @@
 100  RMVoice - RadioMaker plugin app
-101  Actual Time
-102  Temperature
-103  Humidity
-104  Commands
-105  General Config
+101  Actual Time:
+102  Temperature:
+103  Humidity:
+104  Console:
+105  General Config:
+105a Climatic Account:
+105b Climatic Conditions:
 106  Hour file:
 107  Minutes file:
 108  Temperature file:
@@ -15,6 +17,23 @@
 114  C&lose
 1144 refreshing...
 115  ONLY RMVoice Plug-In for ONLY Radiomaker. Please go to the Radiomaker Main window and click in system hour main panel to lunch the app. Refeer to documentation for more info.
+1151 Free CALLS made:
+1152 Free CALLS left:
+1153 You can upgrade your account on weatherstack.com to increase the number of calls allowed. On free accounts you have 250 free calls a month. This counter will help you.
+1154 Api Key from weatherstack.com:
+1155 Precipitation:
+1156 Wind Speed:
+1157 Humidity:
+1158 Feels like:
+1159 Cloud cover:
+115a Visibility:
+115b UV Index:
+115c Time period:
+115d Full description:
+115e Observed at:
+115f Last update:
+115g Please enter an API KEY from weatherstack.com. (you can get a free account from weatherstack web page)
+115h You have reached the maximum allowed api calls for this month. You can upgrade your account on weatherstack.com to increase the number of calls allowed.
 1166 General Config
 116  Select Lenguaje
 117  Select State / Province for climatic data extraction
@@ -51,11 +70,26 @@
 147  All Text files (*.txt)|*.txt|Text files
 148  All audio files (*.mp3)|*.mp3|Audio files
 149  ONLY RMVoice - Open audio file
-150  play hour...
-151  play minutes...
-152  play temperature...
-153  play humidity...
+150  Play hour...
+151  Play minutes...
+152  Play temperature...
+153  Play humidity...
 154  &About...
+155  Please enter a search Location below. This can be any location name such as city, zipcode, state, country or a Latitude/Longitude pair, or an IP address. Do not use Comma's.
+156  State / Country:
+157  +INFO
+158  &Search
+159  S&ave
+160  Saved places:
+161  [double click to use]
+162  &List clear
+163  &Remove selected
+164  Locations are automatically added to the list when you perform a search for it.
+165  Do not seperate locations (such as cities and states) with comma's, as each comma seperated item will count as a new item. Free accounts are only allowed 1 item per search.
+165a Bad: Tampa, Florida   Good: Tampa Florida
+165b Bad: Chad, Africa     Good: Chad Africa
+165c Bad: 40.521,-81.474   Good: 40.521 -81.474
+166  Are you sure you want to clear the list?
 1001 Cant play the file from given position.
 1002 Cant initialize Bass.dll audio library
 1003 Cant access to digital audio sustem

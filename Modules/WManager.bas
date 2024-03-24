@@ -9,7 +9,7 @@ Attribute VB_Name = "WindowManager"
 
 Option Explicit
 
-Private Declare Function SetWindowPos Lib "user32" (ByVal Hwnd As Long, ByVal hWndInsertAfter As Long, ByVal X As Long, ByVal Y As Long, ByVal cX As Long, ByVal cY As Long, ByVal wFlags As Long) As Long
+Private Declare Function SetWindowPos Lib "user32" (ByVal Hwnd As Long, ByVal hWndInsertAfter As Long, ByVal X As Long, ByVal Y As Long, ByVal cx As Long, ByVal cy As Long, ByVal wFlags As Long) As Long
 
 'constantes KEEPOnTop
 Private Const SWP_NOMOVE = &H2
@@ -171,8 +171,8 @@ Select Case WWOrder
             Case "TopMenu"  '--------------------------------------------------
                 TopMenu.Top = 0
                 TopMenu.Left = 0
-                TopMenu.Width = TopMenu.SysInfo1.WorkAreaWidth
-                TopMenu.Height = 1530
+                TopMenu.Width = TopMenu.SysInfo1.WorkAreaWidth 'largo
+                TopMenu.Height = 2280   'alto
             Case "DwMenu"   '--------------------------------------------------
                 If TopMenu.SbHerram.Checked = False Then
                     DownMenu.WindowState = 0
@@ -183,26 +183,6 @@ Select Case WWOrder
                 DownMenu.Height = 1400
                 DownMenu.Top = TopMenu.SysInfo1.WorkAreaHeight - DownMenu.Height
                 DownMenu.Width = TopMenu.SysInfo1.WorkAreaWidth
-            Case "Est01"    '--------------------------------------------------
-                If TopMenu.SbEst01.Checked = False Then
-                    Est01.WindowState = 0
-                    Est01.Visible = True
-                    TopMenu.SbEst01.Checked = True
-                End If
-                Est01.Top = TopMenu.Height
-                Est01.Left = WidthMax / 3
-                'ordenamos las ventanas
-                'Result = GetWPos(1, "Default")
-            Case "Est02"    '--------------------------------------------------
-                If TopMenu.SbEst02.Checked = False Then
-                    Est02.WindowState = 0
-                    Est02.Visible = True
-                    TopMenu.SbEst02.Checked = True
-                End If
-                Est02.Top = TopMenu.Height + Est01.Height
-                Est02.Left = WidthMax / 3
-                'ordenamos las ventanas
-                'Result = GetWPos(2, "Default")
             Case "Tnd01"    '--------------------------------------------------
                 If TopMenu.SbTnd01.Checked = False Then
                     Tanda01.WindowState = 0
@@ -211,8 +191,6 @@ Select Case WWOrder
                 End If
                 Tanda01.Top = TopMenu.Height
                 Tanda01.Left = 0
-                'ordenamos los controles
-                'SetWinPos "Tnd01", WWOrder
             Case "Prg01"    '--------------------------------------------------
                 If TopMenu.SbPrg01.Checked = False Then
                     Prg01.WindowState = 0
@@ -221,13 +199,32 @@ Select Case WWOrder
                 End If
                 Prg01.Top = TopMenu.Height + Tanda01.Height
                 Prg01.Left = 0
+            Case "Est01"    '--------------------------------------------------
+                If TopMenu.SbEst01.Checked = False Then
+                    Est01.WindowState = 0
+                    Est01.Visible = True
+                    TopMenu.SbEst01.Checked = True
+                End If
+                Est01.Top = TopMenu.Height
+                Est01.Left = Tanda01.Width
+            Case "Est02"    '--------------------------------------------------
+                If TopMenu.SbEst02.Checked = False Then
+                    Est02.WindowState = 0
+                    Est02.Visible = True
+                    TopMenu.SbEst02.Checked = True
+                End If
+                Est02.Top = TopMenu.Height + Est01.Height
+                Est02.Left = Tanda01.Width
+                'ordenamos las ventanas
+                'Result = GetWPos(2, "Default")
             Case "Explor01" '--------------------------------------------------
                 If TopMenu.SbExplor.Checked = False Then
-                    XPlorer.Show
+                    XPlorer.WindowState = 0
+                    XPlorer.Visible = True
                     TopMenu.SbExplor.Checked = True
                 End If
-                'ordenamos la ventana y sus controles
-                'SetWinPos "Explor01", WWOrder
+                XPlorer.Top = TopMenu.Height
+                XPlorer.Left = Tanda01.Width + Est01.Width
             Case Else   '--------------------------------------------------
         
         End Select
@@ -252,67 +249,8 @@ Select Case WWOrder
     Case "Default"  '********************************************************
         Select Case WWindow
             Case "Explor01"
-                XPlorer.tvwDirTree.Height = 4695: XPlorer.tvwDirTree.Left = 120
-                XPlorer.tvwDirTree.Top = 720: XPlorer.tvwDirTree.Width = 3015
-                XPlorer.File1.Height = 3795: XPlorer.File1.Left = 3240
-                XPlorer.File1.Top = 720: XPlorer.File1.Width = 3495
-                XPlorer.Label4.Height = 255: XPlorer.Label4.Left = 3240
-                XPlorer.Label4.Top = 4800: XPlorer.Label4.Width = 1815
-                XPlorer.ExCombo.Left = 3240
-                XPlorer.ExCombo.Top = 5040: XPlorer.ExCombo.Width = 3495
-                XPlorer.Line1.X1 = 120: XPlorer.Line1.X2 = 6720
-                XPlorer.Line1.Y1 = 5520: XPlorer.Line1.Y2 = 5520
-                XPlorer.Command1.Height = 375: XPlorer.Command1.Left = 5640
-                XPlorer.Command1.Top = 5640: XPlorer.Command1.Width = 1095
-                XPlorer.Command2.Height = 375: XPlorer.Command2.Left = 120
-                XPlorer.Command2.Top = 5640: XPlorer.Command2.Width = 2055
+
             Case "Tnd01"
-                Tanda01.T1View.Height = Tanda01.Height - 2200
-                Tanda01.T1View.Width = Tanda01.Width - 300
-                    Tanda01.Label6.Top = Tanda01.Height - 1210
-                    Tanda01.Label5.Top = Tanda01.Label6.Top + 70
-                    Tanda01.Label7.Top = Tanda01.Label6.Top + 70
-                    Tanda01.Label8.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1T1.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1T2.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1T3.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1T4.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1T5.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1t6.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1t7.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1t8.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1I1.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1I2.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1I3.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1I4.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1I5.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1I6.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1I7.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1I8.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1F1.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1F2.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1F3.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1F4.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1F5.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1F6.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1F7.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1F8.Top = Tanda01.Label6.Top + 70
-                Tanda01.T1Shape.Top = Tanda01.Height - 850
-                Tanda01.CmdBlock.Top = Tanda01.T1Shape.Top + 70
-                Tanda01.T1Next.Top = Tanda01.T1Shape.Top + 70
-                Tanda01.T1Play.Top = Tanda01.T1Shape.Top + 70
-                Tanda01.T1Stop.Top = Tanda01.T1Shape.Top + 70
-                Tanda01.T1New.Top = Tanda01.T1Shape.Top + 70
-                Tanda01.T1Open.Top = Tanda01.T1Shape.Top + 70
-                Tanda01.T1Save.Top = Tanda01.T1Shape.Top + 70
-                Tanda01.T1Prop.Top = Tanda01.T1Shape.Top + 70
-                Tanda01.T1Up.Top = Tanda01.T1Shape.Top + 70
-                Tanda01.T1Down.Top = Tanda01.T1Shape.Top + 70
-                Tanda01.T1Del.Top = Tanda01.T1Shape.Top + 70
-                Tanda01.T1Order.Top = Tanda01.T1Shape.Top + 70
-                Tanda01.T1OrderA.Top = Tanda01.T1Shape.Top + 70
-                Tanda01.Prbar1.Top = Tanda01.Height - 1530
-                Tanda01.Prbar1.Width = Tanda01.T1View.Width
                 'xxx
             Case "Prg01"
                 'xxx
@@ -322,115 +260,12 @@ Select Case WWOrder
     Case "4x4v"     '********************************************************
         Select Case WWindow
             Case "Explor01"
-                XPlorer.tvwDirTree.Height = 4695: XPlorer.tvwDirTree.Left = 120
-                XPlorer.tvwDirTree.Top = 720: XPlorer.tvwDirTree.Width = 3015
-                XPlorer.File1.Height = 3795: XPlorer.File1.Left = 3240
-                XPlorer.File1.Top = 720: XPlorer.File1.Width = 3495
-                XPlorer.Label4.Height = 255: XPlorer.Label4.Left = 3240
-                XPlorer.Label4.Top = 4800: XPlorer.Label4.Width = 1815
-                XPlorer.ExCombo.Left = 3240
-                XPlorer.ExCombo.Top = 5040: XPlorer.ExCombo.Width = 3495
-                XPlorer.Line1.X1 = 120: XPlorer.Line1.X2 = 6720
-                XPlorer.Line1.Y1 = 5520: XPlorer.Line1.Y2 = 5520
-                XPlorer.Command1.Height = 375: XPlorer.Command1.Left = 5640
-                XPlorer.Command1.Top = 5640: XPlorer.Command1.Width = 1095
-                XPlorer.Command2.Height = 375: XPlorer.Command2.Left = 120
-                XPlorer.Command2.Top = 5640: XPlorer.Command2.Width = 2055
+
             Case "Tnd01"
                 If Prg01.WindowState = 1 Then
-                    Tanda01.T1View.Height = Tanda01.Height - 2200
-                    Tanda01.T1View.Width = Tanda01.Width - 300
-                        Tanda01.Label6.Top = Tanda01.Height - 1210
-                        Tanda01.Label5.Top = Tanda01.Label6.Top + 70
-                        Tanda01.Label7.Top = Tanda01.Label6.Top + 70
-                        Tanda01.Label8.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1T1.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1T2.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1T3.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1T4.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1T5.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1t6.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1t7.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1t8.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I1.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I2.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I3.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I4.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I5.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I6.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I7.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I8.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F1.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F2.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F3.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F4.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F5.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F6.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F7.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F8.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1Shape.Top = Tanda01.Height - 850
-                    Tanda01.CmdBlock.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Next.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Play.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Stop.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1New.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Open.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Save.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Prop.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Up.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Down.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Del.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Order.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1OrderA.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.Prbar1.Top = Tanda01.Height - 1530
-                    Tanda01.Prbar1.Width = Tanda01.T1View.Width
+
                 Else
-                    Tanda01.T1View.Height = Tanda01.Height - 2200   '1850
-                    Tanda01.T1View.Width = Tanda01.Width - 300
-                        Tanda01.Label6.Top = Tanda01.Height - 1210
-                        Tanda01.Label5.Top = Tanda01.Label6.Top + 70
-                        Tanda01.Label7.Top = Tanda01.Label6.Top + 70
-                        Tanda01.Label8.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1T1.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1T2.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1T3.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1T4.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1T5.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1t6.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1t7.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1t8.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I1.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I2.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I3.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I4.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I5.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I6.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I7.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I8.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F1.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F2.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F3.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F4.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F5.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F6.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F7.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F8.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1Shape.Top = Tanda01.Height - 850
-                    Tanda01.CmdBlock.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Next.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Play.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Stop.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1New.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Open.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Save.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Prop.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Up.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Down.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Del.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Order.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1OrderA.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.Prbar1.Top = Tanda01.Height - 1530
-                    Tanda01.Prbar1.Width = Tanda01.T1View.Width
+
                 End If
             Case "Prg01"
                 'xxx
@@ -440,115 +275,12 @@ Select Case WWOrder
     Case "4x4h"     '********************************************************
         Select Case WWindow
             Case "Explor01"
-                XPlorer.tvwDirTree.Height = 4695: XPlorer.tvwDirTree.Left = 120
-                XPlorer.tvwDirTree.Top = 720: XPlorer.tvwDirTree.Width = 3015
-                XPlorer.File1.Height = 3795: XPlorer.File1.Left = 3240
-                XPlorer.File1.Top = 720: XPlorer.File1.Width = 3495
-                XPlorer.Label4.Height = 255: XPlorer.Label4.Left = 3240
-                XPlorer.Label4.Top = 4800: XPlorer.Label4.Width = 1815
-                XPlorer.ExCombo.Left = 3240
-                XPlorer.ExCombo.Top = 5040: XPlorer.ExCombo.Width = 3495
-                XPlorer.Line1.X1 = 120: XPlorer.Line1.X2 = 6720
-                XPlorer.Line1.Y1 = 5520: XPlorer.Line1.Y2 = 5520
-                XPlorer.Command1.Height = 375: XPlorer.Command1.Left = 5640
-                XPlorer.Command1.Top = 5640: XPlorer.Command1.Width = 1095
-                XPlorer.Command2.Height = 375: XPlorer.Command2.Left = 120
-                XPlorer.Command2.Top = 5640: XPlorer.Command2.Width = 2055
+
             Case "Tnd01"
                 If Est01.WindowState = 1 Then
-                    Tanda01.T1View.Height = Tanda01.Height - 2200
-                    Tanda01.T1View.Width = Tanda01.Width - 300
-                        Tanda01.Label6.Top = Tanda01.Height - 1210
-                        Tanda01.Label5.Top = Tanda01.Label6.Top + 70
-                        Tanda01.Label7.Top = Tanda01.Label6.Top + 70
-                        Tanda01.Label8.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1T1.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1T2.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1T3.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1T4.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1T5.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1t6.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1t7.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1t8.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I1.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I2.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I3.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I4.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I5.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I6.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I7.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I8.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F1.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F2.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F3.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F4.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F5.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F6.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F7.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F8.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1Shape.Top = Tanda01.Height - 850
-                    Tanda01.CmdBlock.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Next.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Play.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Stop.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1New.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Open.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Save.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Prop.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Up.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Down.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Del.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Order.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1OrderA.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.Prbar1.Top = Tanda01.Height - 1530
-                    Tanda01.Prbar1.Width = Tanda01.T1View.Width
+
                 Else
-                    Tanda01.T1View.Height = Tanda01.Height - 2200
-                    Tanda01.T1View.Width = Tanda01.Width - 300
-                        Tanda01.Label6.Top = Tanda01.Height - 1210
-                        Tanda01.Label5.Top = Tanda01.Label6.Top + 70
-                        Tanda01.Label7.Top = Tanda01.Label6.Top + 70
-                        Tanda01.Label8.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1T1.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1T2.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1T3.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1T4.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1T5.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1t6.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1t7.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1t8.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I1.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I2.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I3.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I4.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I5.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I6.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I7.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1I8.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F1.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F2.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F3.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F4.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F5.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F6.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F7.Top = Tanda01.Label6.Top + 70
-                        Tanda01.T1F8.Top = Tanda01.Label6.Top + 70
-                    Tanda01.T1Shape.Top = Tanda01.Height - 850
-                    Tanda01.CmdBlock.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Next.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Play.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Stop.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1New.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Open.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Save.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Prop.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Up.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Down.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Del.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1Order.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.T1OrderA.Top = Tanda01.T1Shape.Top + 70
-                    Tanda01.Prbar1.Top = Tanda01.Height - 1530
-                    Tanda01.Prbar1.Width = Tanda01.T1View.Width
+
                 End If
             Case "Prg01"
                 'xxx
@@ -646,7 +378,12 @@ Select Case WWindow
         End If
         OrderWindow "Est02", WWOrder
     Case "Explor01" '--------------------------------------------------
-        XPlorer.Show
+        If XPlorer.WindowState = 1 Then
+            XPlorer.WindowState = 0
+            XPlorer.Visible = True
+        Else
+            XPlorer.Show
+        End If
         OrderWindow "Explor01", WWOrder
     Case "All"  '--------------------------------------------------
         'Activamos las ventanas determinadas por defecto en el programa
@@ -692,6 +429,13 @@ Select Case WWindow
             Est02.Show
         End If
         OrderWindow "Est02", WWOrder
+        If XPlorer.WindowState = 1 Then
+            XPlorer.WindowState = 0
+            XPlorer.Visible = True
+        Else
+            XPlorer.Show
+        End If
+        OrderWindow "Explor01", WWOrder
     Case Else   '--------------------------------------------------
         'xxx nothing...
 End Select

@@ -65,7 +65,7 @@ Select Case WOrderMode
         nIndex = 1
         Tanda01.T1View.ListItems.Item(nIndex).Selected = True
         'extraemos los datos del tema seleccionado
-        DataA(0) = Tanda01.T1View.SelectedItem.text    'file & path
+        DataA(0) = Tanda01.T1View.SelectedItem.Text    'file & path
         'DataA(1) = Tanda01.T1View.SelectedItem.ListSubItems(1).Text     'filetype
         'DataA(2) = Tanda01.T1View.SelectedItem.ListSubItems(2).Text     'filename
         'DataA(3) = Tanda01.T1View.SelectedItem.ListSubItems(3).Text     'duracion
@@ -98,7 +98,7 @@ Select Case WOrderMode
     
     '///// RESETEA A LA HORA ACTUAL DE LO SELECCIONADO PARA ABAJO
     Case "ResetSelected"
-        nIndex = Tanda01.T1View.SelectedItem.index   'numero de index
+        nIndex = Tanda01.T1View.SelectedItem.Index   'numero de index
         Tanda01.T1View.ListItems.Item(nIndex).Selected = True
         'extraemos los datos del tema seleccionado
         'DataA(0) = Tanda01.T1View.SelectedItem.Text    'file & path
@@ -134,8 +134,8 @@ Select Case WOrderMode
     
     '///// REORDENA LO SELECCIONADO Y HACIA ABAJO
     Case "Selected"
-        nIndex = Tanda01.T1View.SelectedItem.index   'numero de index
-        HoldIT = Tanda01.T1View.SelectedItem.index   'numero de index
+        nIndex = Tanda01.T1View.SelectedItem.Index   'numero de index
+        HoldIT = Tanda01.T1View.SelectedItem.Index   'numero de index
         'NIndex = CInt(Trim(Lidx.Caption))           'numero de index
         nCount = Tanda01.T1View.ListItems.count      'total de streams en la lista
         For i = nIndex To nCount    'start from stream selected in the list
@@ -144,7 +144,7 @@ Select Case WOrderMode
             End If
             Tanda01.T1View.ListItems.Item(i).Selected = True
             'extraemos los datos del tema seleccionado
-            DataA(0) = Tanda01.T1View.SelectedItem.text    'file & path
+            DataA(0) = Tanda01.T1View.SelectedItem.Text    'file & path
             'DataA(1) = Tanda01.T1View.SelectedItem.ListSubItems(1).Text     'filetype
             'DataA(2) = Tanda01.T1View.SelectedItem.ListSubItems(2).Text     'filename
             'DataA(3) = Tanda01.T1View.SelectedItem.ListSubItems(3).Text     'duracion
@@ -163,7 +163,7 @@ Select Case WOrderMode
             Time1 = ConvMinToSec(DTema) 'duracion
             Time2 = ConvMinToSec(HTema) 'hora de lanzamiento
             'extraemos el tiempo de mixado intermedio
-            TMint = CInt(Trim(Tanda01.Intr.text))
+            TMint = CInt(Trim(Tanda01.Intr.Text))
             RTime = Time2 + Time1 'sumamos los tiempos
             RTime = (RTime - TMint) + 1
             HNew = ConvSecToMin(RTime)
@@ -171,7 +171,7 @@ Select Case WOrderMode
             nIndex = i + 1
             Tanda01.T1View.ListItems.Item(nIndex).Selected = True
             'extraemos los datos del tema seleccionado
-            DataB(0) = Tanda01.T1View.SelectedItem.text    'file & path
+            DataB(0) = Tanda01.T1View.SelectedItem.Text    'file & path
             'DataB(1) = Tanda01.T1View.SelectedItem.ListSubItems(1).Text     'filetype
             'DataB(2) = Tanda01.T1View.SelectedItem.ListSubItems(2).Text     'filename
             'DataB(3) = Tanda01.T1View.SelectedItem.ListSubItems(3).Text     'duracion
@@ -331,6 +331,73 @@ End Select
 
 End Sub
 
+Public Sub SetDigClock2(WTime As String, WEstNum As String, WClockNum As Long)
+
+'formatea el tiempo de salida de los temas
+'para mostrarlos en el display
+'WTime debe ser: 00:00:00 y el resultado es: 00:00 or 00:00
+'WEstNum debe ser: 1 or 2 or other is there is more (numero de est. donde display)
+'WClockNum debe ser 1 o 2 - 1=reloj izquierdo de posicion - 2=reloj derecho
+
+Dim Hora As String, Minutos As String, Segundos As String, Resultado As String
+Dim h1, h2 As Integer
+Dim M1, M2 As Integer
+Dim s1, s2 As Integer
+
+'formateamos el tiempo y separamos los minutos de los segundos
+Resultado = Trim(Right$(WTime, 8))
+Hora = Left$(Resultado, 2)
+Minutos = Mid$(Resultado, 4, 2)
+Segundos = Right$(Resultado, 2)
+h1 = CInt(Left$(Hora, 1)): h2 = CInt(Right$(Hora, 1))
+M1 = CInt(Left$(Minutos, 1)): M2 = CInt(Right$(Minutos, 1))
+s1 = CInt(Left$(Segundos, 1)): s2 = CInt(Right$(Segundos, 1))
+
+'seteamos el display con los numeros correspondientes
+Select Case WEstNum
+    Case 1, "1"     '****************** ESTACION 01
+        If WClockNum = 1 Then
+            Est01.E1t0.Picture = TopMenu.SmallClip.GraphicCell(h1)
+            Est01.E1t1.Picture = TopMenu.SmallClip.GraphicCell(h2)
+            Est01.E1t2.Picture = TopMenu.SmallClip.GraphicCell(11) ': desactivado
+            Est01.E1t3.Picture = TopMenu.SmallClip.GraphicCell(M1)
+            Est01.E1t4.Picture = TopMenu.SmallClip.GraphicCell(M2)
+            Est01.E1t5.Picture = TopMenu.SmallClip.GraphicCell(11) ': activado
+            Est01.E1t6.Picture = TopMenu.SmallClip.GraphicCell(s1)
+            Est01.E1t7.Picture = TopMenu.SmallClip.GraphicCell(s2)
+        Else
+            Est01.E1f0.Picture = TopMenu.SmallClip.GraphicCell(h1)
+            Est01.E1f1.Picture = TopMenu.SmallClip.GraphicCell(h2)
+            Est01.E1f2.Picture = TopMenu.SmallClip.GraphicCell(11) ': desactivado
+            Est01.E1f3.Picture = TopMenu.SmallClip.GraphicCell(M1)
+            Est01.E1f4.Picture = TopMenu.SmallClip.GraphicCell(M2)
+            Est01.E1f5.Picture = TopMenu.SmallClip.GraphicCell(11) ': activado
+            Est01.E1f6.Picture = TopMenu.SmallClip.GraphicCell(s1)
+            Est01.E1f7.Picture = TopMenu.SmallClip.GraphicCell(s2)
+        End If
+    Case 2, "2"     '****************** ESTACION 02
+        If WClockNum = 1 Then
+            Est02.E2t0.Picture = TopMenu.SmallClip.GraphicCell(h1)
+            Est02.E2t1.Picture = TopMenu.SmallClip.GraphicCell(h2)
+            Est02.E2t2.Picture = TopMenu.SmallClip.GraphicCell(11) ': desactivado
+            Est02.E2t3.Picture = TopMenu.SmallClip.GraphicCell(M1)
+            Est02.E2t4.Picture = TopMenu.SmallClip.GraphicCell(M2)
+            Est02.E2t5.Picture = TopMenu.SmallClip.GraphicCell(11) ': activado
+            Est02.E2t6.Picture = TopMenu.SmallClip.GraphicCell(s1)
+            Est02.E2t7.Picture = TopMenu.SmallClip.GraphicCell(s2)
+        Else
+            Est02.E2f0.Picture = TopMenu.SmallClip.GraphicCell(h1)
+            Est02.E2f1.Picture = TopMenu.SmallClip.GraphicCell(h2)
+            Est02.E2f2.Picture = TopMenu.SmallClip.GraphicCell(11) ': desactivado
+            Est02.E2f3.Picture = TopMenu.SmallClip.GraphicCell(M1)
+            Est02.E2f4.Picture = TopMenu.SmallClip.GraphicCell(M2)
+            Est02.E2f5.Picture = TopMenu.SmallClip.GraphicCell(11) ': activado
+            Est02.E2f6.Picture = TopMenu.SmallClip.GraphicCell(s1)
+            Est02.E2f7.Picture = TopMenu.SmallClip.GraphicCell(s2)
+        End If
+End Select
+
+End Sub
 Public Sub SetDigClock(WTime As String, WEstNum As String, WType As String)
 
 'formatea el tiempo de salida de los temas
@@ -517,6 +584,8 @@ End Sub
 
 Public Sub SetStartTime()
 
+'solo para TANDA
+
 Dim Atime As String, NTime As String
 Dim IDX As Integer
 Dim Data1 As String
@@ -527,7 +596,7 @@ Dim OldIndex As Integer
 Atime = time$       'hora actual
 
 'extraemos el index del tema actual
-OldIndex = Tanda01.T1View.SelectedItem.index
+OldIndex = Tanda01.T1View.SelectedItem.Index
 
 'extraemos los datos del ultimo tema en la Tanda
 On Error GoTo nop
@@ -555,6 +624,7 @@ Exit Sub
 nop:
 Tanda01.T1View.ListItems.Item(OldIndex).Selected = True
 End Sub
+
 Public Sub SetTOPTime(DNum As String)
 
 'SOLO PARA PHTIMER

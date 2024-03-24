@@ -55,13 +55,13 @@ Begin VB.Form Tanda01
       Value           =   100
    End
    Begin MSComctlLib.ListView T1View 
-      Height          =   4455
-      Left            =   150
+      Height          =   4485
+      Left            =   120
       TabIndex        =   73
-      Top             =   1410
-      Width           =   7335
-      _ExtentX        =   12938
-      _ExtentY        =   7858
+      Top             =   1380
+      Width           =   7395
+      _ExtentX        =   13044
+      _ExtentY        =   7911
       View            =   3
       LabelWrap       =   -1  'True
       HideSelection   =   0   'False
@@ -69,8 +69,6 @@ Begin VB.Form Tanda01
       FlatScrollBar   =   -1  'True
       FullRowSelect   =   -1  'True
       GridLines       =   -1  'True
-      HotTracking     =   -1  'True
-      HoverSelection  =   -1  'True
       _Version        =   393217
       Icons           =   "ImageList1"
       SmallIcons      =   "ImageList1"
@@ -573,7 +571,7 @@ Begin VB.Form Tanda01
    Begin VB.CommandButton T1Del 
       Enabled         =   0   'False
       Height          =   375
-      Left            =   3795
+      Left            =   3780
       Style           =   1  'Graphical
       TabIndex        =   6
       ToolTipText     =   "Eliminar"
@@ -810,7 +808,8 @@ Begin VB.Form Tanda01
       Caption         =   "  TANDAS - Detenido"
       CaptionPosX     =   1
       BorderNormal    =   2
-      BorderColorDarkLight=   12632256
+      BorderColorHighLight=   0
+      BorderColorDarkLight=   4210752
    End
    Begin MSComctlLib.Slider T2Vol 
       Height          =   255
@@ -1146,11 +1145,12 @@ Dim PosNcv As String
 
 'dimensiones de listitem
 Dim ItmZ As ListItem
+Dim ItmX As ListItem
 
 Dim TxtKey As String
 Dim NewKey As String
 Dim ANum As Integer
-Dim ONum As Integer
+Dim ONum As Long
 Dim NNum As Long
 Dim nIndex As Integer
 
@@ -1169,6 +1169,8 @@ Dim Time1 As Double
 Dim Time2 As Double
 Dim TMint As Double
 Dim Resultado As Double
+Dim FileNTag As String
+Dim StrVal As String, StrVal2 As String
 
 If XPlorer.File1.filename = "" Or XPlorer.File1.filename = " " Then
     MsgBox LoadResString(137), vbCritical
@@ -1176,10 +1178,24 @@ If XPlorer.File1.filename = "" Or XPlorer.File1.filename = " " Then
 End If
 
 '.wav, .mp3, .it, .xm
+'.wav, .mp3, .it, .xm
 FileExt = StripExtFromFile(XPlorer.File1.filename)
 FileN = StripFileFromExt(XPlorer.File1.filename)
-FileNPath = Right$(XPlorer.lblPath, Len(XPlorer.lblPath) - 2)
-Completo = Right$(XPlorer.lblPath, Len(XPlorer.lblPath) - 2) & "\" & XPlorer.File1.filename
+FileNPath = Trim(XPlorer.lblPath)
+Completo = Trim(XPlorer.lblPath) & "\" & XPlorer.File1.filename
+
+If GetMP3Tag(Completo) = True Then
+    StrVal = Replace(Trim(MP3Info.sArtist), Chr(0), "")
+    StrVal2 = Replace(Trim(MP3Info.sTitle), Chr(0), "")
+    FileNTag = StrVal & " - " & StrVal2
+    'Debug.Print FileNTag
+    'Dim i As Integer
+    'For i = 1 To Len(MP3Info.sArtist)
+    '    Debug.Print Mid(MP3Info.sArtist, i, 1) & "   Ascii =  " & Asc(Mid(MP3Info.sArtist, i, 1))
+    'Next
+Else
+    FileNTag = FileN
+End If
 
 'seleccion de formato de archivo y extraccion de informacion header
 Select Case Trim(UCase(FileExt))
@@ -1193,7 +1209,7 @@ Select Case Trim(UCase(FileExt))
         
         Set ItmZ = T1View.ListItems.Add(NNum, NewKey, Completo) 'path & file
         ItmZ.SubItems(1) = "Stream"     'file type
-        ItmZ.SubItems(2) = FileN        'file name
+        ItmZ.SubItems(2) = FileNTag        'file name
         'gets the file len and convert into time
         ConvertTx = FileLoadLen(Completo, "Stream")
         TimeNcv = FormatSegs(ConvertTx)
@@ -1204,7 +1220,7 @@ Select Case Trim(UCase(FileExt))
             Time1 = ConvMinToSec(OTime)
             Time2 = ConvMinToSec(NTime)
             'tiempo de mixado intermedio
-            TMint = CDbl(Trim(Tanda01.Intr.text))
+            TMint = CDbl(Trim(Tanda01.Intr.Text))
             Resultado = Time1 + Time2
             Resultado = (Resultado - TMint) + 1
             RTime = ConvSecToMin(Resultado)
@@ -1337,19 +1353,19 @@ End Sub
 
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
 
-HideWindow "Tnd01"
+'HideWindow "Tnd01"
 
 End Sub
 
 Private Sub Form_Terminate()
 
-HideWindow "Tnd01"
+'HideWindow "Tnd01"
 
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
 
-HideWindow "Tnd01"
+'HideWindow "Tnd01"
 
 End Sub
 
@@ -1455,7 +1471,7 @@ TTime = Trim(Ltime.Caption)
 Time1 = ConvMinToSec(TTime)
 Time2 = ConvMinToSec(RTime)
 'tiempo de mixado intermedio
-TMint = CDbl(Trim(Tanda01.Intr.text))
+TMint = CDbl(Trim(Tanda01.Intr.Text))
 Resultado = Time1 - Time2
 Resultado = (Resultado + TMint) - 1
 Result = ConvSecToMin(Resultado)
@@ -1511,47 +1527,47 @@ NNum = T1View.SelectedItem.index + 1
 If NNum > nCount Or nCount = ONum Then Exit Sub
 
 'extraemos los datos del item
-DataA(0) = T1View.SelectedItem.text    'file & path
-'DataA(1) = T1View.SelectedItem.SubItems(1).Text   'filetype
-'DataA(2) = T1View.SelectedItem.SubItems(2).Text  'filename
-'DataA(3) = T1View.SelectedItem.SubItems(3).Text
-'DataA(4) = T1View.SelectedItem.SubItems(4).Text
-'DataA(5) = T1View.SelectedItem.SubItems(5).Text
-'DataA(6) = T1View.SelectedItem.SubItems(6).Text
-'DataA(7) = T1View.SelectedItem.SubItems(7).Text
-'DataA(8) = T1View.SelectedItem.SubItems(8).Text
-'DataA(9) = T1View.SelectedItem.SubItems(9).Text
-'DataKa = T1View.SelectedItem.Key
+DataA(0) = T1View.SelectedItem.Text    'file & path
+DataA(1) = T1View.SelectedItem.SubItems(1) 'filetype
+DataA(2) = T1View.SelectedItem.SubItems(2) 'filename
+DataA(3) = T1View.SelectedItem.SubItems(3)
+DataA(4) = T1View.SelectedItem.SubItems(4)
+DataA(5) = T1View.SelectedItem.SubItems(5)
+DataA(6) = T1View.SelectedItem.SubItems(6)
+DataA(7) = T1View.SelectedItem.SubItems(7)
+DataA(8) = T1View.SelectedItem.SubItems(8)
+DataA(9) = T1View.SelectedItem.SubItems(9)
+DataKa = T1View.SelectedItem.Key
 
 'seleccionamos el siguiente item hacia abajo
 nIndex = NNum
 T1View.ListItems.Item(nIndex).Selected = True
 
 'extraemos los datos del item
-DataB(0) = T1View.SelectedItem.text    'file & path
-'DataB(1) = T1View.SelectedItem.SubItems(1).Text   'filetype
-'DataB(2) = T1View.SelectedItem.SubItems(2).Text  'filename
-'DataB(3) = T1View.SelectedItem.SubItems(3).Text
-'DataB(4) = T1View.SelectedItem.SubItems(4).Text
-'DataB(5) = T1View.SelectedItem.SubItems(5).Text
-'DataB(6) = T1View.SelectedItem.SubItems(6).Text
-'DataB(7) = T1View.SelectedItem.SubItems(7).Text
-'DataB(8) = T1View.SelectedItem.SubItems(8).Text
-'DataB(9) = T1View.SelectedItem.SubItems(9).Text
-'DataKb = T1View.SelectedItem.Key
+DataB(0) = T1View.SelectedItem.Text    'file & path
+DataB(1) = T1View.SelectedItem.SubItems(1)   'filetype
+DataB(2) = T1View.SelectedItem.SubItems(2)  'filename
+DataB(3) = T1View.SelectedItem.SubItems(3)
+DataB(4) = T1View.SelectedItem.SubItems(4)
+DataB(5) = T1View.SelectedItem.SubItems(5)
+DataB(6) = T1View.SelectedItem.SubItems(6)
+DataB(7) = T1View.SelectedItem.SubItems(7)
+DataB(8) = T1View.SelectedItem.SubItems(8)
+DataB(9) = T1View.SelectedItem.SubItems(9)
+DataKb = T1View.SelectedItem.Key
 
 'ponemos los nuevos datos
 T1View.ListItems.Remove (nIndex)
-'Set ItmX = T1View.ListItems.Add(nIndex, DataKb, DataA(0)) 'path & file
-'ItmX.SubItems(1) = DataA(1)
-'ItmX.SubItems(2) = DataA(2)
-'ItmX.SubItems(3) = DataA(3)
-'ItmX.SubItems(4) = DataA(4)
-'ItmX.SubItems(5) = DataA(5)
-'ItmX.SubItems(6) = DataA(6)
-'ItmX.SubItems(7) = DataA(7)
-'ItmX.SubItems(8) = DataA(8)
-'ItmX.SubItems(9) = DataA(9)
+Set ItmX = T1View.ListItems.Add(nIndex, DataKb, DataA(0)) 'path & file
+ItmX.SubItems(1) = DataA(1)
+ItmX.SubItems(2) = DataA(2)
+ItmX.SubItems(3) = DataA(3)
+ItmX.SubItems(4) = DataA(4)
+ItmX.SubItems(5) = DataA(5)
+ItmX.SubItems(6) = DataA(6)
+ItmX.SubItems(7) = DataA(7)
+ItmX.SubItems(8) = DataA(8)
+ItmX.SubItems(9) = DataA(9)
 
 'seleccionamos el index anterior
 nIndex = nIndex - 1
@@ -1559,16 +1575,16 @@ T1View.ListItems.Item(nIndex).Selected = True
 
 'ponemos los nuevos datos
 T1View.ListItems.Remove (nIndex)
-'Set ItmX = T1View.ListItems.Add(nIndex, DataKa, DataB(0)) 'path & file
-'ItmX.SubItems(1) = DataB(1)
-'ItmX.SubItems(2) = DataB(2)
-'ItmX.SubItems(3) = DataB(3)
-'ItmX.SubItems(4) = DataB(4)
-'ItmX.SubItems(5) = DataB(5)
-'ItmX.SubItems(6) = DataB(6)
-'ItmX.SubItems(7) = DataB(7)
-'ItmX.SubItems(8) = DataB(8)
-'ItmX.SubItems(9) = DataB(9)
+Set ItmX = T1View.ListItems.Add(nIndex, DataKa, DataB(0)) 'path & file
+ItmX.SubItems(1) = DataB(1)
+ItmX.SubItems(2) = DataB(2)
+ItmX.SubItems(3) = DataB(3)
+ItmX.SubItems(4) = DataB(4)
+ItmX.SubItems(5) = DataB(5)
+ItmX.SubItems(6) = DataB(6)
+ItmX.SubItems(7) = DataB(7)
+ItmX.SubItems(8) = DataB(8)
+ItmX.SubItems(9) = DataB(9)
 
 'una vez finalizado. seleccionamos el item
 nIndex = nIndex + 1
@@ -1654,9 +1670,9 @@ nIndex = CInt(LKey.Caption) 'get the index of the file to play
 T1View.ListItems.Item(nIndex).Selected = True   'select the item
 
 'gets the file info
-FileN = T1View.SelectedItem.text    'file
-FileTP = T1View.SelectedItem.SubItems(1).text   'filetype
-SSTitle = T1View.SelectedItem.SubItems(2).text  'file title
+FileN = T1View.SelectedItem.Text    'file
+FileTP = T1View.SelectedItem.SubItems(1)   'filetype
+SSTitle = T1View.SelectedItem.SubItems(2)  'file title
 
 '//// checks for file exists
 If FileExist(FileN) = False Then
@@ -1666,9 +1682,9 @@ If FileExist(FileN) = False Then
     End If
     Tanda01.T1View.ListItems.Item(nIndex).Selected = True
     'gets the file info of new file
-    FileN = T1View.SelectedItem.text    'file
-    FileTP = T1View.SelectedItem.SubItems(1).text   'filetype
-    SSTitle = T1View.SelectedItem.SubItems(2).text  'file title
+    FileN = T1View.SelectedItem.Text    'file
+    FileTP = T1View.SelectedItem.SubItems(1)   'filetype
+    SSTitle = T1View.SelectedItem.SubItems(2) 'file title
 End If
 
 '****************** FILE CUE & FX PRESETS load...
@@ -1858,7 +1874,7 @@ nIndex = CInt(LKey.Caption) 'get the index of the file to play
 T1View.ListItems.Item(nIndex).Selected = True   'select the item
 
 '//// gets the file info
-FileN = T1View.SelectedItem.text    'file
+FileN = T1View.SelectedItem.Text    'file
 FileTP = T1View.SelectedItem.SubItems(1)   'filetype
 SSTitle = T1View.SelectedItem.SubItems(2)  'file title
 
@@ -1870,7 +1886,7 @@ If FileExist(FileN) = False Then
     End If
     Tanda01.T1View.ListItems.Item(nIndex).Selected = True
     'gets the file info of new file
-    FileN = T1View.SelectedItem.text    'file
+    FileN = T1View.SelectedItem.Text    'file
     FileTP = T1View.SelectedItem.SubItems(1)  'filetype
     SSTitle = T1View.SelectedItem.SubItems(2) 'file title
 End If
@@ -1956,7 +1972,7 @@ Private Sub T1Prop_Click()
 
 Dim filename As String
 
-filename = Trim(Tanda01.T1View.SelectedItem.text)    'file & path
+filename = Trim(Tanda01.T1View.SelectedItem.Text)    'file & path
 
 'chequeamos por la validez de los datos
 If FileExist(filename) = False Then
@@ -2090,16 +2106,16 @@ NNum = T1View.SelectedItem.index - 1
 If NNum < 0 Or ONum = 1 Then Exit Sub
 
 'extraemos los datos del item seleccionado
-DataA(0) = T1View.SelectedItem.text    'file & path
-'DataA(1) = T1View.SelectedItem.SubItems(1).Text   'filetype
-'DataA(2) = T1View.SelectedItem.SubItems(2).Text  'filename
-'DataA(3) = T1View.SelectedItem.SubItems(3).Text
-'DataA(4) = T1View.SelectedItem.SubItems(4).Text
-'DataA(5) = T1View.SelectedItem.SubItems(5).Text
-'DataA(6) = T1View.SelectedItem.SubItems(6).Text
-'DataA(7) = T1View.SelectedItem.SubItems(7).Text
-'DataA(8) = T1View.SelectedItem.SubItems(8).Text
-'DataA(9) = T1View.SelectedItem.SubItems(9).Text
+DataA(0) = T1View.SelectedItem.Text    'file & path
+DataA(1) = T1View.SelectedItem.SubItems(1)   'filetype
+DataA(2) = T1View.SelectedItem.SubItems(2)  'filename
+DataA(3) = T1View.SelectedItem.SubItems(3)
+DataA(4) = T1View.SelectedItem.SubItems(4)
+DataA(5) = T1View.SelectedItem.SubItems(5)
+DataA(6) = T1View.SelectedItem.SubItems(6)
+DataA(7) = T1View.SelectedItem.SubItems(7)
+DataA(8) = T1View.SelectedItem.SubItems(8)
+DataA(9) = T1View.SelectedItem.SubItems(9)
 DataKa = T1View.SelectedItem.Key
 
 'seleccionamos el siguiente item hacia abajo
@@ -2107,30 +2123,30 @@ nIndex = NNum
 T1View.ListItems.Item(nIndex).Selected = True
 
 'extraemos los datos del item
-DataB(0) = T1View.SelectedItem.text    'file & path
-'DataB(1) = T1View.SelectedItem.SubItems(1).Text   'filetype
-'DataB(2) = T1View.SelectedItem.SubItems(2).Text  'filename
-'DataB(3) = T1View.SelectedItem.SubItems(3).Text
-'DataB(4) = T1View.SelectedItem.SubItems(4).Text
-'DataB(5) = T1View.SelectedItem.SubItems(5).Text
-'DataB(6) = T1View.SelectedItem.SubItems(6).Text
-'DataB(7) = T1View.SelectedItem.SubItems(7).Text
-'DataB(8) = T1View.SelectedItem.SubItems(8).Text
-'DataB(9) = T1View.SelectedItem.SubItems(9).Text
+DataB(0) = T1View.SelectedItem.Text    'file & path
+DataB(1) = T1View.SelectedItem.SubItems(1)   'filetype
+DataB(2) = T1View.SelectedItem.SubItems(2)  'filename
+DataB(3) = T1View.SelectedItem.SubItems(3)
+DataB(4) = T1View.SelectedItem.SubItems(4)
+DataB(5) = T1View.SelectedItem.SubItems(5)
+DataB(6) = T1View.SelectedItem.SubItems(6)
+DataB(7) = T1View.SelectedItem.SubItems(7)
+DataB(8) = T1View.SelectedItem.SubItems(8)
+DataB(9) = T1View.SelectedItem.SubItems(9)
 DataKb = T1View.SelectedItem.Key
 
 'ponemos los nuevos datos
 T1View.ListItems.Remove (nIndex)
-'Set ItmX = T1View.ListItems.Add(nIndex, DataKb, DataA(0)) 'path & file
-'ItmX.SubItems(1) = DataA(1)
-'ItmX.SubItems(2) = DataA(2)
-'ItmX.SubItems(3) = DataA(3)
-'ItmX.SubItems(4) = DataA(4)
-'ItmX.SubItems(5) = DataA(5)
-'ItmX.SubItems(6) = DataA(6)
-'ItmX.SubItems(7) = DataA(7)
-'ItmX.SubItems(8) = DataA(8)
-'ItmX.SubItems(9) = DataA(9)
+Set ItmX = T1View.ListItems.Add(nIndex, DataKb, DataA(0)) 'path & file
+ItmX.SubItems(1) = DataA(1)
+ItmX.SubItems(2) = DataA(2)
+ItmX.SubItems(3) = DataA(3)
+ItmX.SubItems(4) = DataA(4)
+ItmX.SubItems(5) = DataA(5)
+ItmX.SubItems(6) = DataA(6)
+ItmX.SubItems(7) = DataA(7)
+ItmX.SubItems(8) = DataA(8)
+ItmX.SubItems(9) = DataA(9)
 
 'seleccionamos el index anterior
 nIndex = nIndex + 1
@@ -2138,16 +2154,16 @@ T1View.ListItems.Item(nIndex).Selected = True
 
 'ponemos los nuevos datos
 T1View.ListItems.Remove (nIndex)
-'Set ItmX = T1View.ListItems.Add(nIndex, DataKa, DataB(0)) 'path & file
-'ItmX.SubItems(1) = DataB(1)
-'ItmX.SubItems(2) = DataB(2)
-'ItmX.SubItems(3) = DataB(3)
-'ItmX.SubItems(4) = DataB(4)
-'ItmX.SubItems(5) = DataB(5)
-'ItmX.SubItems(6) = DataB(6)
-'ItmX.SubItems(7) = DataB(7)
-'ItmX.SubItems(8) = DataB(8)
-'ItmX.SubItems(9) = DataB(9)
+Set ItmX = T1View.ListItems.Add(nIndex, DataKa, DataB(0)) 'path & file
+ItmX.SubItems(1) = DataB(1)
+ItmX.SubItems(2) = DataB(2)
+ItmX.SubItems(3) = DataB(3)
+ItmX.SubItems(4) = DataB(4)
+ItmX.SubItems(5) = DataB(5)
+ItmX.SubItems(6) = DataB(6)
+ItmX.SubItems(7) = DataB(7)
+ItmX.SubItems(8) = DataB(8)
+ItmX.SubItems(9) = DataB(9)
 
 'una vez finalizado. seleccionamos el item
 nIndex = nIndex - 1
@@ -2221,18 +2237,6 @@ If Button = 2 Then
 Else
     'xxxxxx
 End If
-
-End Sub
-
-Private Sub T1View_OLEDragDrop(Data As MSComctlLib.DataObject, Effect As Long, Button As Integer, Shift As Integer, X As Single, Y As Single)
-
-Debug.Print Data.Files.Item
-
-End Sub
-
-Private Sub T1View_OLEDragOver(Data As MSComctlLib.DataObject, Effect As Long, Button As Integer, Shift As Integer, X As Single, Y As Single, State As Integer)
-
-Debug.Print "over: " & Data.Files.Item
 
 End Sub
 
@@ -2376,6 +2380,6 @@ End Sub
 
 Private Sub VScroll1_Change()
 
-Intr.text = VScroll1.Value
+Intr.Text = VScroll1.Value
 
 End Sub

@@ -225,14 +225,15 @@ Select Case ConfigData.Aud_Disp_Samp    '1=normal   2=rest
 End Select
     
 '/// Actualizamos los displays (por defecto)
-'Call RestoreDisplay(1)   'EST01
-'Call RestoreDisplay(2)   'EST02
-'Call RestoreDisplay(3)   'TANDA 01
-'Call RestoreDisplay(4)   'TANDA 02
-'Call RestoreDisplay(5)   'TOTAL TIME TANDA 01 Y 02
-'Call RestoreDisplay(6)   'LUNCH TIME in PHTIMER
-'Call RestoreDisplay(7)   'PROG TANDAS TIMER module
-'Call RestoreDisplay(10)  'PROG TANDAS TIME DISPLAY
+Call RestoreDisplay(1)   'EST01
+Call RestoreDisplay(2)   'EST02
+Call RestoreDisplay(3)   'TANDA 01
+Call RestoreDisplay(4)   'TANDA 02
+Call RestoreDisplay(5)   'TOTAL TIME TANDA 01 Y 02
+Call RestoreDisplay(6)   'LUNCH TIME in PHTIMER
+Call RestoreDisplay(7)   'PROG TANDAS TIMER module
+Call RestoreDisplay(10)  'PROG TANDAS TIME DISPLAY
+Call RestoreDisplay(11)  'TOP MENU CLIMA
 
 '/// extraemos el ultimo estado del programa
 CallResult = GetState
@@ -254,6 +255,7 @@ TopMenu.ClockTimer.Interval = 1000
 Unload RMSplash
 
 '/// chequeamos por la existencia de Plug-Ins
+TopMenu.GetPlugInList "RMXplorer.dll"
 TopMenu.GetPlugInList "RMPlayer.dll"
 TopMenu.GetPlugInList "RMRipper.dll"
 TopMenu.GetPlugInList "RMVoice.dll"

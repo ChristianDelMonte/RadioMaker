@@ -703,7 +703,7 @@ Begin VB.Form Prg01
       CaptionPosX     =   1
       BorderNormal    =   2
       BorderColorHighLight=   0
-      BorderColorDarkLight=   12632256
+      BorderColorDarkLight=   4210752
    End
    Begin RM100.DC_Control_Bt P1New 
       Height          =   585
@@ -913,7 +913,7 @@ Begin VB.Form Prg01
    End
    Begin VB.Label Label3 
       Appearance      =   0  'Flat
-      BackColor       =   &H00000000&
+      BackColor       =   &H00404040&
       BorderStyle     =   1  'Fixed Single
       ForeColor       =   &H80000008&
       Height          =   345
@@ -1312,19 +1312,19 @@ End Sub
 
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
 
-HideWindow "Prg01"
+'HideWindow "Prg01"
 
 End Sub
 
 Private Sub Form_Terminate()
 
-HideWindow "Prg01"
+'HideWindow "Prg01"
 
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
 
-HideWindow "Prg01"
+'HideWindow "Prg01"
 
 End Sub
 
@@ -1467,7 +1467,7 @@ If Button = 2 Then
     TxtRename.Left = Prg1(index).Left
     TxtRename.Height = Prg1(index).Height
     TxtRename.Width = Prg1(index).Width
-    TxtRename.text = Prg1(index).Caption
+    TxtRename.Text = Prg1(index).Caption
     TxtRename.SetFocus
     'seteamos el label para saber de que control se trata
     Lindex.Caption = index
@@ -1488,8 +1488,8 @@ Dim IDX As Integer
 
 If KeyAscii = 13 Then   'ENTER
     IDX = CInt(Lindex.Caption)
-    Prg1(IDX).Caption = TxtRename.text
-    Est12Data.PC(IDX).Caption = TxtRename.text
+    Prg1(IDX).Caption = TxtRename.Text
+    Est12Data.PC(IDX).Caption = TxtRename.Text
     TxtRename.Visible = False
 End If
 If KeyAscii = 27 Or KeyAscii = 13 Then 'ESCAPE or ENTER

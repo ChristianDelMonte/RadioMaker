@@ -1,183 +1,386 @@
 VERSION 5.00
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "mscomctl.OCX"
-Begin VB.Form Old_XPlorer 
-   BorderStyle     =   3  'Fixed Dialog
+Begin VB.Form XPlorer 
+   BackColor       =   &H00404040&
+   BorderStyle     =   0  'None
    Caption         =   "Explorador de archivos"
-   ClientHeight    =   8175
-   ClientLeft      =   45
-   ClientTop       =   345
-   ClientWidth     =   9930
+   ClientHeight    =   10290
+   ClientLeft      =   0
+   ClientTop       =   -45
+   ClientWidth     =   5790
    ControlBox      =   0   'False
    ForeColor       =   &H8000000F&
    LinkTopic       =   "Form1"
+   LockControls    =   -1  'True
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   8175
-   ScaleWidth      =   9930
+   ScaleHeight     =   10290
+   ScaleWidth      =   5790
    ShowInTaskbar   =   0   'False
-   Begin MSComctlLib.ImageList imgDirTree 
-      Left            =   1110
-      Top             =   7470
-      _ExtentX        =   1005
-      _ExtentY        =   1005
-      BackColor       =   -2147483643
-      ImageWidth      =   16
-      ImageHeight     =   16
-      MaskColor       =   12632256
-      _Version        =   393216
-      BeginProperty Images {2C247F25-8591-11D1-B16A-00C0F0283628} 
-         NumListImages   =   8
-         BeginProperty ListImage1 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "Explorer.frx":0000
-            Key             =   "open"
+   Begin VB.Frame Frame1 
+      BackColor       =   &H00808080&
+      Caption         =   "Iformación de Archivo:"
+      Height          =   1995
+      Left            =   150
+      TabIndex        =   9
+      Top             =   7710
+      Width           =   4545
+      Begin VB.CommandButton Cmdplus 
+         Caption         =   "+"
+         Height          =   255
+         Left            =   4260
+         TabIndex        =   22
+         Top             =   0
+         Width           =   285
+      End
+      Begin VB.Label LblGenero 
+         BackColor       =   &H00C0C0C0&
+         BackStyle       =   0  'Transparent
+         Caption         =   "--"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
          EndProperty
-         BeginProperty ListImage2 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "Explorer.frx":0112
-            Key             =   "closed"
+         Height          =   195
+         Left            =   1200
+         TabIndex        =   21
+         Top             =   1710
+         Width           =   3255
+      End
+      Begin VB.Label Lblano 
+         BackColor       =   &H00C0C0C0&
+         BackStyle       =   0  'Transparent
+         Caption         =   "--"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
          EndProperty
-         BeginProperty ListImage3 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "Explorer.frx":0224
-            Key             =   "leaf"
+         Height          =   195
+         Left            =   1200
+         TabIndex        =   20
+         Top             =   1470
+         Width           =   3255
+      End
+      Begin VB.Label LblComentario 
+         BackColor       =   &H00C0C0C0&
+         BackStyle       =   0  'Transparent
+         Caption         =   "--"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
          EndProperty
-         BeginProperty ListImage4 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "Explorer.frx":0336
-            Key             =   "floppy"
+         Height          =   405
+         Left            =   1200
+         TabIndex        =   19
+         Top             =   1020
+         Width           =   3255
+      End
+      Begin VB.Label LblAlbum 
+         BackColor       =   &H00C0C0C0&
+         BackStyle       =   0  'Transparent
+         Caption         =   "--"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
          EndProperty
-         BeginProperty ListImage5 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "Explorer.frx":0448
-            Key             =   "hard"
+         Height          =   195
+         Left            =   1200
+         TabIndex        =   18
+         Top             =   780
+         Width           =   3255
+      End
+      Begin VB.Label LblArtista 
+         BackColor       =   &H00C0C0C0&
+         BackStyle       =   0  'Transparent
+         Caption         =   "--"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
          EndProperty
-         BeginProperty ListImage6 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "Explorer.frx":055A
-            Key             =   "cdroom"
+         Height          =   195
+         Left            =   1200
+         TabIndex        =   17
+         Top             =   540
+         Width           =   3255
+      End
+      Begin VB.Label LblTitulo 
+         BackColor       =   &H00C0C0C0&
+         BackStyle       =   0  'Transparent
+         Caption         =   "--"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
          EndProperty
-         BeginProperty ListImage7 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "Explorer.frx":066C
-            Key             =   "net"
-         EndProperty
-         BeginProperty ListImage8 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "Explorer.frx":077E
-            Key             =   "desk"
-         EndProperty
-      EndProperty
+         Height          =   195
+         Left            =   1200
+         TabIndex        =   16
+         Top             =   300
+         Width           =   3255
+      End
+      Begin VB.Label Label7 
+         Alignment       =   1  'Right Justify
+         BackColor       =   &H00C0C0C0&
+         BackStyle       =   0  'Transparent
+         Caption         =   "Genero:"
+         Height          =   195
+         Left            =   120
+         TabIndex        =   15
+         Top             =   1710
+         Width           =   1000
+      End
+      Begin VB.Label Label6 
+         Alignment       =   1  'Right Justify
+         BackColor       =   &H00C0C0C0&
+         BackStyle       =   0  'Transparent
+         Caption         =   "Año:"
+         Height          =   195
+         Left            =   120
+         TabIndex        =   14
+         Top             =   1470
+         Width           =   1000
+      End
+      Begin VB.Label Label5 
+         Alignment       =   1  'Right Justify
+         BackColor       =   &H00C0C0C0&
+         BackStyle       =   0  'Transparent
+         Caption         =   "Comentario:"
+         Height          =   195
+         Left            =   120
+         TabIndex        =   13
+         Top             =   1020
+         Width           =   1000
+      End
+      Begin VB.Label Label3 
+         Alignment       =   1  'Right Justify
+         BackColor       =   &H00C0C0C0&
+         BackStyle       =   0  'Transparent
+         Caption         =   "Album:"
+         Height          =   195
+         Left            =   120
+         TabIndex        =   12
+         Top             =   780
+         Width           =   1000
+      End
+      Begin VB.Label Label2 
+         Alignment       =   1  'Right Justify
+         BackColor       =   &H00C0C0C0&
+         BackStyle       =   0  'Transparent
+         Caption         =   "Artista:"
+         Height          =   195
+         Left            =   120
+         TabIndex        =   11
+         Top             =   540
+         Width           =   1000
+      End
+      Begin VB.Label Label1 
+         Alignment       =   1  'Right Justify
+         BackColor       =   &H00C0C0C0&
+         BackStyle       =   0  'Transparent
+         Caption         =   "Título:"
+         Height          =   195
+         Left            =   120
+         TabIndex        =   10
+         Top             =   300
+         Width           =   1000
+      End
+   End
+   Begin VB.DriveListBox Drive1 
+      Height          =   315
+      Left            =   150
+      TabIndex        =   7
+      Top             =   450
+      Width           =   4545
+   End
+   Begin VB.DirListBox Dir1 
+      Height          =   2340
+      Left            =   150
+      TabIndex        =   6
+      Top             =   870
+      Width           =   4545
    End
    Begin MSComctlLib.TreeView tvwDirTree 
-      Height          =   4785
-      Left            =   210
-      TabIndex        =   7
-      Top             =   720
+      Height          =   1455
+      Left            =   5970
+      TabIndex        =   5
+      Top             =   5910
+      Visible         =   0   'False
       Width           =   4365
       _ExtentX        =   7699
-      _ExtentY        =   8440
+      _ExtentY        =   2566
       _Version        =   393217
       HideSelection   =   0   'False
       Style           =   7
       Appearance      =   1
    End
-   Begin VB.PictureBox picIcon 
-      AutoRedraw      =   -1  'True
-      AutoSize        =   -1  'True
-      BackColor       =   &H00FFFFFF&
-      BorderStyle     =   0  'None
-      Height          =   235
-      Left            =   1800
-      ScaleHeight     =   16
-      ScaleMode       =   3  'Pixel
-      ScaleWidth      =   16
-      TabIndex        =   5
-      Top             =   7680
-      Visible         =   0   'False
-      Width           =   235
-   End
    Begin VB.ComboBox ExCombo 
-      DragIcon        =   "Explorer.frx":0890
+      DragIcon        =   "Explorer.frx":0000
       Height          =   315
-      Left            =   4470
+      Left            =   150
       TabIndex        =   1
-      Top             =   6030
-      Width           =   3165
+      Top             =   7260
+      Width           =   4545
    End
-   Begin VB.CommandButton Command2 
-      Caption         =   "&Información de archivo..."
-      Height          =   375
-      Left            =   1230
-      TabIndex        =   2
-      Top             =   6540
-      Width           =   2055
-   End
-   Begin VB.CommandButton Command1 
+   Begin VB.CommandButton Cmdclose 
       Caption         =   "&Cerrar"
       Height          =   375
-      Left            =   6510
-      TabIndex        =   4
-      Top             =   6540
+      Left            =   3600
+      TabIndex        =   3
+      Top             =   9810
       Width           =   1095
    End
    Begin VB.FileListBox File1 
-      DragIcon        =   "Explorer.frx":0B9A
-      Height          =   4770
-      Left            =   4710
+      DragIcon        =   "Explorer.frx":030A
+      Height          =   3600
+      Left            =   150
       TabIndex        =   0
-      Top             =   720
-      Width           =   5175
+      Top             =   3360
+      Width           =   4545
    End
-   Begin VB.Line Line2 
-      BorderColor     =   &H80000014&
-      X1              =   7590
-      X2              =   1230
-      Y1              =   6435
-      Y2              =   6435
-   End
-   Begin VB.Line Line1 
-      BorderColor     =   &H80000010&
-      X1              =   7590
-      X2              =   1215
-      Y1              =   6420
-      Y2              =   6420
+   Begin RM100.TitelBar TitelBar1 
+      Align           =   1  'Align Top
+      Height          =   375
+      Left            =   0
+      TabIndex        =   8
+      Top             =   0
+      Width           =   5790
+      _ExtentX        =   10213
+      _ExtentY        =   661
+      BackColor       =   8421504
+      BackColorCover  =   3
+      BackColorV2Begin=   4210752
+      BackColorV2End  =   0
+      BackColorV1Begin=   4210752
+      BackColorV1End  =   0
+      ForeColor       =   16777215
+      ShowMinimized   =   0   'False
+      ShowMaximizedEnabled=   -1  'True
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "System"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Caption         =   " Explorador de Archivos"
+      CaptionPosX     =   1
+      BorderNormal    =   2
+      BorderColorHighLight=   0
+      BorderColorDarkLight=   4210752
    End
    Begin VB.Label lblPath 
+      BackColor       =   &H00FFFF80&
       ForeColor       =   &H00C0C0C0&
-      Height          =   495
-      Left            =   120
-      TabIndex        =   6
-      Top             =   120
-      Width           =   6570
+      Height          =   255
+      Left            =   5970
+      TabIndex        =   4
+      Top             =   5400
+      Width           =   2940
    End
    Begin VB.Label Label4 
       BackColor       =   &H00C0C0C0&
       BackStyle       =   0  'Transparent
       Caption         =   "Tipos de Archivos:"
-      ForeColor       =   &H00000000&
+      ForeColor       =   &H00FFFFFF&
       Height          =   255
-      Left            =   4485
-      TabIndex        =   3
-      Top             =   5715
+      Left            =   150
+      TabIndex        =   2
+      Top             =   7020
       Width           =   1815
    End
 End
-Attribute VB_Name = "Old_XPlorer"
+Attribute VB_Name = "XPlorer"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
-Dim RResult As String
-Dim sMainDrives() As String
+Private Sub Cmdclose_Click()
+
+Unload Me
+
+End Sub
+
+Private Sub Dir1_Change()
+
+File1.path = Dir1.path
+
+End Sub
+
+Private Sub Drive1_Change()
+
+On Error Resume Next
+Dir1.path = Drive1.Drive
+
+End Sub
+
+Private Sub File1_Click()
+
+Dim Completo As String
+
+lblPath.Caption = File1.path
+
+'extraemos la informacion TAG del archivo si existe
+
+Completo = Trim(lblPath.Caption) & "\" & File1.filename
+
+If GetMP3Tag(Completo) = True Then
+    LblTitulo.Caption = Replace(Trim(MP3Info.sTitle), Chr(0), "")
+    LblArtista.Caption = Replace(Trim(MP3Info.sArtist), Chr(0), "")
+    LblAlbum.Caption = Replace(Trim(MP3Info.sAlbum), Chr(0), "")
+    LblComentario.Caption = Replace(Trim(MP3Info.sComment), Chr(0), "")
+    Lblano.Caption = Replace(Trim(MP3Info.sYear), Chr(0), "")
+    LblGenero.Caption = Replace(Trim(MP3Info.sGenre), Chr(0), "")
+Else
+    LblTitulo.Caption = "sin información"
+    LblArtista.Caption = "sin información"
+    LblAlbum.Caption = "sin información"
+    LblComentario.Caption = "sin información"
+    Lblano.Caption = "sin información"
+    LblGenero.Caption = "sin información"
+End If
+
+End Sub
 
 Private Sub Form_Load()
 
-Dim k As Integer, sSelectDrive As String
-Dim sTemp2 As String, sTemp As String, iSlashSpot As Integer
+'*** load some pictures *****
+Me.Picture = LoadPicture(App.path & "\Imagenes\FND_COMPLETO.jpg")
 
 Dim CmbItem(0 To 5)
 Dim i
-
-Left = (Screen.Width - Width) / 2
-Top = (Screen.Height - Height) / 2
-
-ReDim sMainDrives(0)
-sSelectDrive = ListDrives(Me, XPlorer.tvwDirTree, XPlorer.imgDirTree, XPlorer.picIcon)
 
 CmbItem(0) = "Todos los Archivos (*.wav;*.mp3;*.mp2;*.mp1;*.xm;*.mod;*.s3m;*.it;*.mtm;*.mo3;*.umx;*.ogg;*.tnd)"
 CmbItem(1) = "Audio de Ondas (*.wav)"
@@ -192,60 +395,13 @@ Next i
 
 ExCombo.ListIndex = 0
 
-'Drive1.Drive = Left$(App.Path, 2)
-'Dir1.Path = App.Path
-File1.path = lblPath.Caption
+Dir1.path = App.path
+Drive1.Drive = Left$(App.path, 2)
+
+File1.path = Dir1.path
 File1.Pattern = "*.wav;*.Wav;*.WAV;*.mp3;*.Mp3;*.MP3;*.mp2;*.mp1;*.xm;*.mod;*.s3m;*.it;*.mtm;*.mo3;*.umx;*.ogg;*.tnd"
 
-KeepOnTop XPlorer
-
-End Sub
-
-Private Sub tvwDirTree_Collapse(ByVal Node As MSComctlLib.Node)
-
-tvwDirTree_NodeClick Node
-
-End Sub
-
-Private Sub tvwDirTree_Expand(ByVal Node As MSComctlLib.Node)
-
-Dim lRet As Long, k As Integer
-On Error Resume Next
-If Node.Key = "root" Or Node.Key = "desk" Then
-    Exit Sub
-End If
-
-'check to see if the drive or dir has been read
-For k = 0 To UBound(sMainDrives)
-    If sMainDrives(k) = Node.Key Then
-        'We've already listed the sub dirs once so get out
-        Exit Sub
-    End If
-Next
-'check to see if there are sub dirs. If not get out
-If Node.Children = 0 Then Exit Sub
-
-Node.Sorted = True
-
-Screen.MousePointer = 13
-'true off the redraw for the tree view
-lRet = SendMessage(tvwDirTree.hWnd, WM_SETREDRAW, False, 0&)
-'list all of the sub directories
-ListDirs XPlorer.tvwDirTree, (Node.Key)
-'redraw the control
-lRet = SendMessage(tvwDirTree.hWnd, WM_SETREDRAW, True, 0&)
-
-'iAdd the dir so we don't read it twice
-lRet = UBound(sMainDrives)
-ReDim Preserve sMainDrives(lRet + 1)
-sMainDrives(lRet + 1) = Node.Key
-Screen.MousePointer = 0
-
-End Sub
-
-Private Sub Command1_Click()
-
-HideWindow "Explor01"
+'KeepOnTop XPlorer
 
 End Sub
 
@@ -253,22 +409,22 @@ Private Sub ExCombo_Change()
 
 Select Case ExCombo.ListIndex
     Case 0
-        File1.path = Right$(lblPath, Len(lblPath) - 2)
+        File1.path = Dir1.path
         File1.Pattern = "*.wav;*.Wav;*.WAV;*.mp3;*.Mp3;*.MP3;*.mp2;*.mp1;*.xm;*.mod;*.s3m;*.it;*.mtm;*.mo3;*.umx;*.ogg;*.tnd"
     Case 1
-        File1.path = Right$(lblPath, Len(lblPath) - 2)
+        File1.path = Dir1.path
         File1.Pattern = "*.wav;*.Wav;*.WAV"
     Case 2
-        File1.path = Right$(lblPath, Len(lblPath) - 2)
+        File1.path = Dir1.path
         File1.Pattern = "*.mp3;*.Mp3;*.MP3;*.mp2;*.Mp2;*.MP2;*.mp1;*.Mp1;*.MP1;*.ogg"
     Case 3
-        File1.path = Right$(lblPath, Len(lblPath) - 2)
+        File1.path = Dir1.path
         File1.Pattern = "*.xm;*.mod;*.s3m;*.it;*.mtm;*.mo3;*.umx"
     Case 4
-        File1.path = Right$(lblPath, Len(lblPath) - 2)
+        File1.path = Dir1.path
         File1.Pattern = "*.tnd"
     Case 5
-        File1.path = Right$(lblPath, Len(lblPath) - 2)
+        File1.path = Dir1.path
         File1.Pattern = "*.*"
 End Select
 
@@ -279,78 +435,31 @@ Private Sub ExCombo_Click()
 On Error Resume Next
 Select Case ExCombo.ListIndex
     Case 0
-        File1.path = Right$(lblPath, Len(lblPath) - 2)
+        File1.path = Dir1.path
         File1.Pattern = "*.wav;*.Wav;*.WAV;*.mp3;*.Mp3;*.MP3;*.mp2;*.mp1;*.xm;*.mod;*.s3m;*.it;*.mtm;*.mo3;*.umx;*.ogg;*.tnd"
     Case 1
-        File1.path = Right$(lblPath, Len(lblPath) - 2)
+        File1.path = Dir1.path
         File1.Pattern = "*.wav;*.Wav;*.WAV"
     Case 2
-        File1.path = Right$(lblPath, Len(lblPath) - 2)
+        File1.path = Dir1.path
         File1.Pattern = "*.mp3;*.Mp3;*.MP3;*.mp2;*.Mp2;*.MP2;*.mp1;*.Mp1;*.MP1;*.ogg"
     Case 3
-        File1.path = Right$(lblPath, Len(lblPath) - 2)
+        File1.path = Dir1.path
         File1.Pattern = "*.xm;*.mod;*.s3m;*.it;*.mtm;*.mo3;*.umx"
     Case 4
-        File1.path = Right$(lblPath, Len(lblPath) - 2)
+        File1.path = Dir1.path
         File1.Pattern = "*.tnd"
     Case 5
-        File1.path = Right$(lblPath, Len(lblPath) - 2)
+        File1.path = Dir1.path
         File1.Pattern = "*.*"
 End Select
 
 End Sub
 
-Private Sub File1_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub File1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
 
 File1.DragIcon = tvwDirTree.DragIcon
 File1.Drag
 
 End Sub
-
-Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
-
-Set XPlorer = Nothing
-HideWindow "Explor01"
-
-End Sub
-
-Private Sub Form_Terminate()
-
-HideWindow "Explor01"
-
-End Sub
-
-Private Sub Form_Unload(Cancel As Integer)
-
-HideWindow "Explor01"
-
-End Sub
-
-Private Sub tvwDirTree_NodeClick(ByVal Node As MSComctlLib.Node)
-
-On Error Resume Next
-'if it is a floppy then recheck
-If Node.Key = "A:" Or Node.Key = "B:" Then
-    Screen.MousePointer = 13
-    ListDirs XPlorer.tvwDirTree, (Node.Key)
-    Screen.MousePointer = 0
-End If
-
-If Node.Key = "root" Or Node.Key = "desk" Then
-    lblPath = ""
-    File1.path = ""
-    Exit Sub
-End If
-
-If TextWidth(Node.Key) > lblPath.Width Then
-    lblPath = Node.Key
-    File1.path = Right$(lblPath, Len(lblPath) - 2)
-Else
-    ' if not put it at the bottom
-    lblPath = vbCrLf & Node.Key
-    File1.path = Right$(lblPath, Len(lblPath) - 2)
-End If
-
-End Sub
-
 

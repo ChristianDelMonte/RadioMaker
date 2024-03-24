@@ -389,15 +389,15 @@ For X = 1 To LastRecord
     Get #10, NumRg, PHData
     'put the data in a list
     NewCont = NumRg - 1
-    FrmTime.Text1(NewCont).text = Trim(PHData.filename)
-    If FrmTime.Text1(NewCont).text = "" Then
+    FrmTime.Text1(NewCont).Text = Trim(PHData.filename)
+    If FrmTime.Text1(NewCont).Text = "" Then
         FrmTime.Text1(NewCont).BackColor = &HFFFFFF   'normal
         FrmTime.Text2(NewCont).BackColor = &HFFFFFF   'normal
     Else
         FrmTime.Text1(NewCont).BackColor = &HC0FFFF 'amarillo
         FrmTime.Text2(NewCont).BackColor = &HC0FFFF 'amarillo
     End If
-    FrmTime.Text2(NewCont).text = Trim(PHData.FileLounch)
+    FrmTime.Text2(NewCont).Text = Trim(PHData.FileLounch)
 Next X
 'close the ph file
 Close #10
@@ -566,8 +566,8 @@ nIndex = 0
 MaxIndex = 23
 'contador de proceso en accion
 For Z = nIndex To MaxIndex
-    PHData.filename = FrmTime.Text1(Z).text
-    PHData.FileLounch = FrmTime.Text2(Z).text
+    PHData.filename = FrmTime.Text1(Z).Text
+    PHData.FileLounch = FrmTime.Text2(Z).Text
     NumReg = Z + 1
     Put #10, NumReg, PHData
     nIndex = Z
@@ -644,7 +644,7 @@ For X = 1 To LastRecord
         NTime = Trim(TndData.Duracion)
         Op1 = ConvMinToSec(OTime)
         Op2 = ConvMinToSec(NTime)
-        TMint = CDbl(Trim(Tanda01.Intr.text))
+        TMint = CDbl(Trim(Tanda01.Intr.Text))
         Suma = Op1 + Op2
         Suma = (Suma - TMint) + 1
         RTime = ConvSecToMin(Suma)
@@ -752,7 +752,7 @@ MaxIndex = Tanda01.T1View.ListItems.count
 'contador de proceso en accion
 For Z = OIndex To MaxIndex
     TndData.id = Z
-    TndData.Direccion = Tanda01.T1View.SelectedItem.text
+    TndData.Direccion = Tanda01.T1View.SelectedItem.Text
     TndData.FNType = Tanda01.T1View.SelectedItem.SubItems(1)
     TndData.Name = Tanda01.T1View.SelectedItem.SubItems(2)
     TndData.Duracion = Tanda01.T1View.SelectedItem.SubItems(3)
@@ -791,9 +791,13 @@ Function GetWPos(WEst As Long, WMode As String) As String
 'esta funcion extrae las posiciones width,left,top,height
 'de los archivos y ordena las ventanas y sus controles
 'en las estaciones 01 y 02
+'********************************************************
+'PROBABLEMENTE HAYA QUE REMOVER ESTA FUNCION
+'-- 23-03-24
+'********************************************************
 
 Dim i As Integer
-Dim Data1 As Long, Data2 As Long, Data3 As Long, Data4 As Long, start As Long
+Dim Data1 As Long, Data2 As Long, Data3 As Long, Data4 As Long, Start As Long
 
 Select Case WEst
     Case 1
@@ -810,35 +814,7 @@ Select Case WEst
                 Next i
                 Close #33
                 'ordenamos los demas controles
-                Est01.E1Play.Height = 375: Est01.E1Play.Left = 120
-                Est01.E1Play.Top = 8400: Est01.E1Play.Width = 735
-                Est01.E1Pause.Height = 375: Est01.E1Pause.Left = 840
-                Est01.E1Pause.Top = 8400: Est01.E1Pause.Width = 615
-                Est01.E1Stop.Height = 375: Est01.E1Stop.Left = 1440
-                Est01.E1Stop.Top = 8400: Est01.E1Stop.Width = 735
-                Est01.E1New.Height = 375: Est01.E1New.Left = 2520
-                Est01.E1New.Top = 8400: Est01.E1New.Width = 375
-                Est01.E1Open.Height = 375: Est01.E1Open.Left = 2880
-                Est01.E1Open.Top = 8400: Est01.E1Open.Width = 375
-                Est01.E1Save.Height = 375: Est01.E1Save.Left = 3240
-                Est01.E1Save.Top = 8400: Est01.E1Save.Width = 375
-                Est01.Pn.Height = 255: Est01.Pn.Left = 120
-                Est01.Pn.Top = 960: Est01.Pn.Width = 255
-                start = 360
-                For i = 0 To 8
-                    Est01.P11(i).Height = 255
-                    Est01.P11(i).Left = start
-                    Est01.P11(i).Top = 960
-                    Est01.P11(i).Width = 375
-                    start = Est01.P11(i).Left + 360
-                Next i
-                'Est01.Command1.Height = 255: Est01.Command1.Left = 120
-                'Est01.Command1.Top = 1320: Est01.Command1.Width = 375
-                'Est01.Command1.Enabled = False
-                'Est01.Command2.Height = 255: Est01.Command2.Left = 3120
-                'Est01.Command2.top = 1320: Est01.Command2.Width = 495
-                'Est01.E1Shape.Height = 495: Est01.E1Shape.Left = 60
-                'Est01.E1Shape.Top = 8340: Est01.E1Shape.Width = 3615
+
                 GetWPos = "Ok"
                 
             Case "4x4h" '*******************************************************
@@ -853,35 +829,7 @@ Select Case WEst
                 Next i
                 Close #33
                 'ordenamos los demas controles
-                Est01.E1Play.Height = 375: Est01.E1Play.Left = 3960
-                Est01.E1Play.Top = 3780: Est01.E1Play.Width = 735
-                Est01.E1Pause.Height = 375: Est01.E1Pause.Left = 4680
-                Est01.E1Pause.Top = 3780: Est01.E1Pause.Width = 615
-                Est01.E1Stop.Height = 375: Est01.E1Stop.Left = 5280
-                Est01.E1Stop.Top = 3780: Est01.E1Stop.Width = 735
-                Est01.E1New.Height = 375: Est01.E1New.Left = 6300
-                Est01.E1New.Top = 3780: Est01.E1New.Width = 375
-                Est01.E1Open.Height = 375: Est01.E1Open.Left = 6660
-                Est01.E1Open.Top = 3780: Est01.E1Open.Width = 375
-                Est01.E1Save.Height = 375: Est01.E1Save.Left = 7020
-                Est01.E1Save.Top = 3780: Est01.E1Save.Width = 375
-                Est01.Pn.Height = 255: Est01.Pn.Left = 3900
-                Est01.Pn.Top = 600: Est01.Pn.Width = 315
-                start = 4200
-                For i = 0 To 8
-                    Est01.P11(i).Height = 255
-                    Est01.P11(i).Left = start
-                    Est01.P11(i).Top = 600
-                    Est01.P11(i).Width = 375
-                    start = Est01.P11(i).Left + 360
-                Next i
-                'Est01.Command1.Height = 255: Est01.Command1.Left = 3900
-                'Est01.Command1.Top = 180: Est01.Command1.Width = 375
-                'Est01.Command1.Enabled = True
-                'Est01.Command2.Height = 255: Est01.Command2.Left = 6960
-                'Est01.Command2.top = 180: Est01.Command2.Width = 495
-                'Est01.E1Shape.Height = 495: Est01.E1Shape.Left = 3840
-                'Est01.E1Shape.Top = 3720: Est01.E1Shape.Width = 3675
+
                 GetWPos = "Ok"
                 
             Case "4x4v" '*******************************************************
@@ -896,35 +844,7 @@ Select Case WEst
                 Next i
                 Close #33
                 'ordenamos los demas controles
-                Est01.E1Play.Height = 375: Est01.E1Play.Left = 3960
-                Est01.E1Play.Top = 3780: Est01.E1Play.Width = 735
-                Est01.E1Pause.Height = 375: Est01.E1Pause.Left = 4680
-                Est01.E1Pause.Top = 3780: Est01.E1Pause.Width = 615
-                Est01.E1Stop.Height = 375: Est01.E1Stop.Left = 5280
-                Est01.E1Stop.Top = 3780: Est01.E1Stop.Width = 735
-                Est01.E1New.Height = 375: Est01.E1New.Left = 6300
-                Est01.E1New.Top = 3780: Est01.E1New.Width = 375
-                Est01.E1Open.Height = 375: Est01.E1Open.Left = 6660
-                Est01.E1Open.Top = 3780: Est01.E1Open.Width = 375
-                Est01.E1Save.Height = 375: Est01.E1Save.Left = 7020
-                Est01.E1Save.Top = 3780: Est01.E1Save.Width = 375
-                Est01.Pn.Height = 255: Est01.Pn.Left = 3900
-                Est01.Pn.Top = 600: Est01.Pn.Width = 315
-                start = 4200
-                For i = 0 To 8
-                    Est01.P11(i).Height = 255
-                    Est01.P11(i).Left = start
-                    Est01.P11(i).Top = 600
-                    Est01.P11(i).Width = 375
-                    start = Est01.P11(i).Left + 360
-                Next i
-                'Est01.Command1.Height = 255: Est01.Command1.Left = 3900
-                'Est01.Command1.Top = 180: Est01.Command1.Width = 375
-                'Est01.Command1.Enabled = True
-                'Est01.Command2.Height = 255: Est01.Command2.Left = 6960
-                'Est01.Command2.top = 180: Est01.Command2.Width = 495
-                'Est01.E1Shape.Height = 495: Est01.E1Shape.Left = 3840
-                'Est01.E1Shape.Top = 3720: Est01.E1Shape.Width = 3675
+
                 GetWPos = "Ok"
                 
         End Select
@@ -942,35 +862,7 @@ Select Case WEst
                 Next i
                 Close #33
                 'ordenamos los demas controles
-                Est02.E2Play.Height = 375: Est02.E2Play.Left = 120
-                Est02.E2Play.Top = 8400: Est02.E2Play.Width = 735
-                Est02.E2Pause.Height = 375: Est02.E2Pause.Left = 840
-                Est02.E2Pause.Top = 8400: Est02.E2Pause.Width = 615
-                Est02.E2Stop.Height = 375: Est02.E2Stop.Left = 1440
-                Est02.E2Stop.Top = 8400: Est02.E2Stop.Width = 735
-                Est02.E2New.Height = 375: Est02.E2New.Left = 2520
-                Est02.E2New.Top = 8400: Est02.E2New.Width = 375
-                Est02.E2Open.Height = 375: Est02.E2Open.Left = 2880
-                Est02.E2Open.Top = 8400: Est02.E2Open.Width = 375
-                Est02.E2Save.Height = 375: Est02.E2Save.Left = 3240
-                Est02.E2Save.Top = 8400: Est02.E2Save.Width = 375
-                Est02.Pn.Height = 255: Est02.Pn.Left = 120
-                Est02.Pn.Top = 960: Est02.Pn.Width = 255
-                start = 360
-                For i = 0 To 8
-                    Est02.P21(i).Height = 255
-                    Est02.P21(i).Left = start
-                    Est02.P21(i).Top = 960
-                    Est02.P21(i).Width = 375
-                    start = Est02.P21(i).Left + 360
-                Next i
-                Est02.Command1.Height = 255: Est02.Command1.Left = 120
-                Est02.Command1.Top = 1320: Est02.Command1.Width = 375
-                Est02.Command1.Enabled = False
-                'Est02.Command2.Height = 255: Est02.Command2.Left = 3120
-                'Est02.Command2.top = 1320: Est02.Command2.Width = 495
-                'Est02.E2Shape.Height = 495: Est02.E2Shape.Left = 60
-                'Est02.E2Shape.top = 8340: Est02.E2Shape.Width = 3615
+
                 GetWPos = "Ok"
                 
             Case "4x4h" '*******************************************************
@@ -985,35 +877,7 @@ Select Case WEst
                 Next i
                 Close #33
                 'ordenamos los demas controles
-                Est02.E2Play.Height = 375: Est02.E2Play.Left = 3960
-                Est02.E2Play.Top = 3780: Est02.E2Play.Width = 735
-                Est02.E2Pause.Height = 375: Est02.E2Pause.Left = 4680
-                Est02.E2Pause.Top = 3780: Est02.E2Pause.Width = 615
-                Est02.E2Stop.Height = 375: Est02.E2Stop.Left = 5280
-                Est02.E2Stop.Top = 3780: Est02.E2Stop.Width = 735
-                Est02.E2New.Height = 375: Est02.E2New.Left = 6300
-                Est02.E2New.Top = 3780: Est02.E2New.Width = 375
-                Est02.E2Open.Height = 375: Est02.E2Open.Left = 6660
-                Est02.E2Open.Top = 3780: Est02.E2Open.Width = 375
-                Est02.E2Save.Height = 375: Est02.E2Save.Left = 7020
-                Est02.E2Save.Top = 3780: Est02.E2Save.Width = 375
-                Est02.Pn.Height = 255: Est02.Pn.Left = 3900
-                Est02.Pn.Top = 600: Est02.Pn.Width = 315
-                start = 4200
-                For i = 0 To 8
-                    Est02.P21(i).Height = 255
-                    Est02.P21(i).Left = start
-                    Est02.P21(i).Top = 600
-                    Est02.P21(i).Width = 375
-                    start = Est02.P21(i).Left + 360
-                Next i
-                Est02.Command1.Height = 255: Est02.Command1.Left = 3900
-                Est02.Command1.Top = 180: Est02.Command1.Width = 375
-                Est02.Command1.Enabled = True
-                'Est02.Command2.Height = 255: Est02.Command2.Left = 6960
-                'Est02.Command2.top = 180: Est02.Command2.Width = 495
-                'Est02.E2Shape.Height = 495: Est02.E2Shape.Left = 3840
-                'Est02.E2Shape.top = 3720: Est02.E2Shape.Width = 3675
+
                 GetWPos = "Ok"
                 
             Case "4x4v" '*******************************************************
@@ -1028,35 +892,7 @@ Select Case WEst
                 Next i
                 Close #33
                 'ordenamos los demas controles
-                Est02.E2Play.Height = 375: Est02.E2Play.Left = 3960
-                Est02.E2Play.Top = 3780: Est02.E2Play.Width = 735
-                Est02.E2Pause.Height = 375: Est02.E2Pause.Left = 4680
-                Est02.E2Pause.Top = 3780: Est02.E2Pause.Width = 615
-                Est02.E2Stop.Height = 375: Est02.E2Stop.Left = 5280
-                Est02.E2Stop.Top = 3780: Est02.E2Stop.Width = 735
-                Est02.E2New.Height = 375: Est02.E2New.Left = 6300
-                Est02.E2New.Top = 3780: Est02.E2New.Width = 375
-                Est02.E2Open.Height = 375: Est02.E2Open.Left = 6660
-                Est02.E2Open.Top = 3780: Est02.E2Open.Width = 375
-                Est02.E2Save.Height = 375: Est02.E2Save.Left = 7020
-                Est02.E2Save.Top = 3780: Est02.E2Save.Width = 375
-                Est02.Pn.Height = 255: Est02.Pn.Left = 3900
-                Est02.Pn.Top = 600: Est02.Pn.Width = 315
-                start = 4200
-                For i = 0 To 8
-                    Est02.P21(i).Height = 255
-                    Est02.P21(i).Left = start
-                    Est02.P21(i).Top = 600
-                    Est02.P21(i).Width = 375
-                    start = Est02.P21(i).Left + 360
-                Next i
-                Est02.Command1.Height = 255: Est02.Command1.Left = 3900
-                Est02.Command1.Top = 180: Est02.Command1.Width = 375
-                Est02.Command1.Enabled = True
-                'Est02.Command2.Height = 255: Est02.Command2.Left = 6960
-                'Est02.Command2.top = 180: Est02.Command2.Width = 495
-                'Est02.E2Shape.Height = 495: Est02.E2Shape.Left = 3840
-                'Est02.E2Shape.top = 3720: Est02.E2Shape.Width = 3675
+
                 GetWPos = "Ok"
                 
         End Select
@@ -1546,10 +1382,10 @@ Select Case EstNumber
             Data5 = DecipherData(CUEFilePass, CUEData.CUEStartByte)
             Data6 = DecipherData(CUEFilePass, CUEData.CUEEndByte)
             '*** actualizamos los datos
-            Est01.Text1.text = Trim(Data1)
-            Est01.Text2.text = Trim(Data2)
-            Est01.E1Pos.SelStart = Trim(Data3)
-            Est01.E1Pos.SelLength = Trim(Data4)
+            Est01.Text1.Text = Trim(Data1)
+            Est01.Text2.Text = Trim(Data2)
+            'Est01.E1Pos.SelStart = Trim(Data3)
+            'Est01.E1Pos.SelLength = Trim(Data4)
             Est01.LblStartCUE.Caption = Trim(Data5)
             Est01.LblEndCue.Caption = Trim(Data6)
             '*** actualizamos el EQ
@@ -1576,10 +1412,10 @@ Select Case EstNumber
             Data5 = DecipherData(CUEFilePass, CUEData.CUEStartByte)
             Data6 = DecipherData(CUEFilePass, CUEData.CUEEndByte)
             '*** actualizamos los datos
-            Est02.Text1.text = Trim(Data1)
-            Est02.Text2.text = Trim(Data2)
-            Est02.E2Pos.SelStart = Trim(Data3)
-            Est02.E2Pos.SelLength = Trim(Data4)
+            Est02.Text1.Text = Trim(Data1)
+            Est02.Text2.Text = Trim(Data2)
+            'Est02.E2Pos.SelStart = Trim(Data3)
+            'Est02.E2Pos.SelLength = Trim(Data4)
             Est02.LblStartCUE.Caption = Trim(Data5)
             Est02.LblEndCue.Caption = Trim(Data6)
             '*** actualizamos el EQ
@@ -1611,8 +1447,8 @@ Exit Sub
 Restore:
 Select Case EstNumber
     Case 1
-        Est01.Text1.text = "00:00:00"
-        Est01.Text2.text = "00:00:00"
+        Est01.Text1.Text = "00:00:00"
+        Est01.Text2.Text = "00:00:00"
         Est01.E1Pos.SelStart = 0
         Est01.E1Pos.SelLength = 0
         Est01.LblStartCUE.Caption = "0"
@@ -1623,8 +1459,8 @@ Select Case EstNumber
         Next X
         Est01.fxsc(10).Value = 18
     Case 2
-        Est02.Text1.text = "00:00:00"
-        Est02.Text2.text = "00:00:00"
+        Est02.Text1.Text = "00:00:00"
+        Est02.Text2.Text = "00:00:00"
         Est02.E2Pos.SelStart = 0
         Est02.E2Pos.SelLength = 0
         Est02.LblStartCUE.Caption = "0"
@@ -1674,8 +1510,8 @@ NumReg = 1
 Select Case EstNumber
     Case 1  '*** ESTACION 1
         '*** actualizamos los datos
-        DD1 = Trim(Est01.Text1.text)
-        DD2 = Trim(Est01.Text2.text)
+        DD1 = Trim(Est01.Text1.Text)
+        DD2 = Trim(Est01.Text2.Text)
         DD3 = Trim(Est01.E1Pos.SelStart)
         DD4 = Trim(Est01.E1Pos.SelLength)
         DD5 = Trim(Est01.LblStartCUE.Caption)
@@ -1706,8 +1542,8 @@ Select Case EstNumber
         Exit Sub
     Case 2  'ESTACION 2
         '*** actualizamos los datos
-        DD1 = Trim(Est02.Text1.text)
-        DD2 = Trim(Est02.Text2.text)
+        DD1 = Trim(Est02.Text1.Text)
+        DD2 = Trim(Est02.Text2.Text)
         DD3 = Trim(Est02.E2Pos.SelStart)
         DD4 = Trim(Est02.E2Pos.SelLength)
         DD5 = Trim(Est02.LblStartCUE.Caption)
@@ -1982,6 +1818,12 @@ Result = SaveEstDataFile(EstNum, PageNum, FName)
 '... y verificamos que este ok
 If Result = "NotOK" Then
     GoSub SaveFileErr
+End If
+
+If EstNum = 1 Then
+    Est01.TitelBar1.Caption = " ESTACION 01 - " & FName
+Else
+    Est02.TitelBar1.Caption = " ESTACION 02 - " & FName
 End If
 
 'ahora guardamos el archivo principal de la estacion

@@ -27,16 +27,16 @@ Function ClimaDisplay(WMode As Long)
 
 Select Case WMode
     Case 1  'show
-        TopMenu.c1.Visible = True: TopMenu.c1.Top = 240
-        TopMenu.c2.Visible = True: TopMenu.c2.Top = 240
-        TopMenu.c3.Visible = True: TopMenu.c3.Top = 240
-        TopMenu.c4.Visible = True: TopMenu.c4.Top = 240
-        TopMenu.c5.Visible = True: TopMenu.c5.Top = 240
-        TopMenu.c6.Visible = True: TopMenu.c6.Top = 240
-        TopMenu.c7.Visible = True: TopMenu.c7.Top = 240
-        TopMenu.c8.Visible = True: TopMenu.c8.Top = 240
-        TopMenu.c9.Visible = True: TopMenu.c9.Top = 240
-        TopMenu.c0.Visible = True: TopMenu.c0.Top = 240
+        TopMenu.c1.Visible = True
+        TopMenu.c2.Visible = True
+        TopMenu.c3.Visible = True
+        TopMenu.c4.Visible = True
+        TopMenu.c5.Visible = True
+        TopMenu.c6.Visible = True
+        TopMenu.c7.Visible = True
+        TopMenu.c8.Visible = True
+        TopMenu.c9.Visible = True
+        TopMenu.c0.Visible = True
         
     Case -1 'hide
         TopMenu.c1.Visible = False
@@ -167,9 +167,27 @@ Select Case DispNum
         Est01.E1p6.Picture = TopMenu.SmallClip.GraphicCell(10)
         Est01.E1p7.Picture = TopMenu.SmallClip.GraphicCell(10)
         Est01.E1p8.Picture = TopMenu.SmallClip.GraphicCell(10)
-        Est01.E1p9.Picture = TopMenu.SmallClip.GraphicCell(12)
+        Est01.E1p9.Picture = TopMenu.SmallClip.GraphicCell(12) ':
         Est01.E1p10.Picture = TopMenu.SmallClip.GraphicCell(10)
         Est01.E1p11.Picture = TopMenu.SmallClip.GraphicCell(10)
+        'otro
+        Est01.E1t0.Picture = TopMenu.SmallClip.GraphicCell(10)
+        Est01.E1t1.Picture = TopMenu.SmallClip.GraphicCell(10)
+        Est01.E1t2.Picture = TopMenu.SmallClip.GraphicCell(12) ':
+        Est01.E1t3.Picture = TopMenu.SmallClip.GraphicCell(10)
+        Est01.E1t4.Picture = TopMenu.SmallClip.GraphicCell(10)
+        Est01.E1t5.Picture = TopMenu.SmallClip.GraphicCell(12) ':
+        Est01.E1t6.Picture = TopMenu.SmallClip.GraphicCell(10)
+        Est01.E1t7.Picture = TopMenu.SmallClip.GraphicCell(10)
+        'otro
+        Est01.E1f0.Picture = TopMenu.SmallClip.GraphicCell(10)
+        Est01.E1f1.Picture = TopMenu.SmallClip.GraphicCell(10)
+        Est01.E1f2.Picture = TopMenu.SmallClip.GraphicCell(12) ':
+        Est01.E1f3.Picture = TopMenu.SmallClip.GraphicCell(10)
+        Est01.E1f4.Picture = TopMenu.SmallClip.GraphicCell(10)
+        Est01.E1f5.Picture = TopMenu.SmallClip.GraphicCell(12) ':
+        Est01.E1f6.Picture = TopMenu.SmallClip.GraphicCell(10)
+        Est01.E1f7.Picture = TopMenu.SmallClip.GraphicCell(10)
         
     Case 2      'ESTACION 02
         'wave only
@@ -186,7 +204,25 @@ Select Case DispNum
         Est02.E2p9.Picture = TopMenu.SmallClip.GraphicCell(12)
         Est02.E2p10.Picture = TopMenu.SmallClip.GraphicCell(10)
         Est02.E2p11.Picture = TopMenu.SmallClip.GraphicCell(10)
-        
+        'otro
+        Est02.E2t0.Picture = TopMenu.SmallClip.GraphicCell(10)
+        Est02.E2t1.Picture = TopMenu.SmallClip.GraphicCell(10)
+        Est02.E2t2.Picture = TopMenu.SmallClip.GraphicCell(12) ':
+        Est02.E2t3.Picture = TopMenu.SmallClip.GraphicCell(10)
+        Est02.E2t4.Picture = TopMenu.SmallClip.GraphicCell(10)
+        Est02.E2t5.Picture = TopMenu.SmallClip.GraphicCell(12) ':
+        Est02.E2t6.Picture = TopMenu.SmallClip.GraphicCell(10)
+        Est02.E2t7.Picture = TopMenu.SmallClip.GraphicCell(10)
+        'otro
+        Est02.E2f0.Picture = TopMenu.SmallClip.GraphicCell(10)
+        Est02.E2f1.Picture = TopMenu.SmallClip.GraphicCell(10)
+        Est02.E2f2.Picture = TopMenu.SmallClip.GraphicCell(12) ':
+        Est02.E2f3.Picture = TopMenu.SmallClip.GraphicCell(10)
+        Est02.E2f4.Picture = TopMenu.SmallClip.GraphicCell(10)
+        Est02.E2f5.Picture = TopMenu.SmallClip.GraphicCell(12) ':
+        Est02.E2f6.Picture = TopMenu.SmallClip.GraphicCell(10)
+        Est02.E2f7.Picture = TopMenu.SmallClip.GraphicCell(10)
+
     Case 3      'TANDA 01
         'time only
         Tanda01.T1p0.Picture = TopMenu.SmallClip.GraphicCell(10)
@@ -206,11 +242,11 @@ Select Case DispNum
         
     Case 5      'TOTAL time in TANDA 01 Y 02
         'Time only
-        Tanda01.T1T1.Picture = TopMenu.SmallClip.GraphicCell(10)
-        Tanda01.T1T2.Picture = TopMenu.SmallClip.GraphicCell(10)
-        Tanda01.T1T3.Picture = TopMenu.SmallClip.GraphicCell(12)
-        Tanda01.T1T4.Picture = TopMenu.SmallClip.GraphicCell(10)
-        Tanda01.T1T5.Picture = TopMenu.SmallClip.GraphicCell(10)
+        Tanda01.T1t1.Picture = TopMenu.SmallClip.GraphicCell(10)
+        Tanda01.T1t2.Picture = TopMenu.SmallClip.GraphicCell(10)
+        Tanda01.T1t3.Picture = TopMenu.SmallClip.GraphicCell(12)
+        Tanda01.T1t4.Picture = TopMenu.SmallClip.GraphicCell(10)
+        Tanda01.T1t5.Picture = TopMenu.SmallClip.GraphicCell(10)
         Tanda01.T1t6.Picture = TopMenu.SmallClip.GraphicCell(12)
         Tanda01.T1t7.Picture = TopMenu.SmallClip.GraphicCell(10)
         Tanda01.T1t8.Picture = TopMenu.SmallClip.GraphicCell(10)
@@ -256,11 +292,11 @@ Select Case DispNum
         
     Case 8      'AUDIO PROP DISPLAY
         'file display
-        AudioProp.T1T1.Picture = TopMenu.SmallClip.GraphicCell(10)
-        AudioProp.T1T2.Picture = TopMenu.SmallClip.GraphicCell(10)
-        AudioProp.T1T3.Picture = TopMenu.SmallClip.GraphicCell(12)
-        AudioProp.T1T4.Picture = TopMenu.SmallClip.GraphicCell(10)
-        AudioProp.T1T5.Picture = TopMenu.SmallClip.GraphicCell(10)
+        AudioProp.T1t1.Picture = TopMenu.SmallClip.GraphicCell(10)
+        AudioProp.T1t2.Picture = TopMenu.SmallClip.GraphicCell(10)
+        AudioProp.T1t3.Picture = TopMenu.SmallClip.GraphicCell(12)
+        AudioProp.T1t4.Picture = TopMenu.SmallClip.GraphicCell(10)
+        AudioProp.T1t5.Picture = TopMenu.SmallClip.GraphicCell(10)
     Case 9      'AUDIO PROP DISPLAY
         'mix display
         AudioProp.T1M1.Picture = TopMenu.SmallClip.GraphicCell(10)
@@ -279,11 +315,27 @@ Select Case DispNum
         Prg01.p1t6.Picture = TopMenu.SmallClip.GraphicCell(12)
         Prg01.p1t7.Picture = TopMenu.SmallClip.GraphicCell(10)
         Prg01.p1t8.Picture = TopMenu.SmallClip.GraphicCell(10)
-    
+
+    Case 11     'DISPLAY DEL CLIMA EN EL TOPMENU
+        TopMenu.c1.Picture = TopMenu.TempClip.GraphicCell(10)
+        TopMenu.c2.Picture = TopMenu.TempClip.GraphicCell(10)
+        TopMenu.c3.Picture = TopMenu.TempClip.GraphicCell(10)
+        TopMenu.c4.Picture = TopMenu.TempClip.GraphicCell(10)
+        TopMenu.c5.Picture = TopMenu.TempClip.GraphicCell(10)
+        TopMenu.c6.Picture = TopMenu.TempClip.GraphicCell(10)
+        TopMenu.c7.Picture = TopMenu.TempClip.GraphicCell(10)
+        TopMenu.c8.Picture = TopMenu.TempClip.GraphicCell(10)
+        TopMenu.c9.Picture = TopMenu.TempClip.GraphicCell(10)
+        TopMenu.c0.Picture = TopMenu.TempClip.GraphicCell(12)
 End Select
 
 End Sub
 
+'---------------------------------------------------------------------
+'Funcion para establecer la temperatura y humedad del dia en el reloj
+'principal del topmenu.
+'EN REVISION 11-03-24
+'---------------------------------------------------------------------'
 Sub TopClima(Wtemp As String, Whume As String)
 
 'wdata debe estar formateado de la siguiente manera
@@ -513,6 +565,10 @@ TopMenu.c0.Picture = TopMenu.TempClip.GraphicCell(12)
 
 End Sub
 
+'---------------------------------------------------------------------
+'Funcion para establecer la fecha del dia en el reloj principal
+'del topmenu.
+'---------------------------------------------------------------------'
 Sub TopDate(WNumber As String)
 
 On Error GoTo NoClock
@@ -628,6 +684,10 @@ TopMenu.f9.Picture = TopMenu.BigClip.GraphicCell(0)
 TopMenu.f10.Picture = TopMenu.BigClip.GraphicCell(0)
 End Sub
 
+'---------------------------------------------------------------------
+'Funcion para establecer la hora del dia en el reloj principal
+'del topmenu.
+'---------------------------------------------------------------------
 Sub TopClock(WNumber As String)
 
 On Error GoTo NoClock

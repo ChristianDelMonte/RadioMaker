@@ -107,7 +107,7 @@ Else
 End If
 
 'sending the fft data to rmm-mini player control
-TopMenu.RMPlugIn.DrawMiniFFT D, sSize
+TopMenu.RMPPlugin.DrawMiniFFT D, sSize
 
 End Sub
 
@@ -148,7 +148,7 @@ Else
 End If
 
 'sending the fft data to rmm-mini player control
-TopMenu.RMPlugIn.SetBuffLevel LLft, RRgt
+TopMenu.RMPPlugin.SetBuffLevel LLft, RRgt
 
 End Sub
 
@@ -565,10 +565,10 @@ v = Est02.fxsc(B).Value
   
 Select Case B
     Case 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-        Dim P As BASS_FXPARAMEQ
-        Call BASS_FXGetParameters(fx2(B), P)
-        P.fGain = 10 - v
-        Call BASS_FXSetParameters(fx2(B), P)
+        Dim p As BASS_FXPARAMEQ
+        Call BASS_FXGetParameters(fx2(B), p)
+        p.fGain = 10 - v
+        Call BASS_FXSetParameters(fx2(B), p)
     Case 10
         Dim p1 As BASS_FXREVERB
         Call BASS_FXGetParameters(fx2(B), p1)
@@ -589,10 +589,10 @@ v = Est01.fxsc(B).Value
   
 Select Case B
     Case 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-        Dim P As BASS_FXPARAMEQ
-        Call BASS_FXGetParameters(fx1(B), P)
-        P.fGain = 10 - v
-        Call BASS_FXSetParameters(fx1(B), P)
+        Dim p As BASS_FXPARAMEQ
+        Call BASS_FXGetParameters(fx1(B), p)
+        p.fGain = 10 - v
+        Call BASS_FXSetParameters(fx1(B), p)
     Case 10
         Dim p1 As BASS_FXREVERB
         Call BASS_FXGetParameters(fx1(B), p1)
@@ -607,7 +607,7 @@ End Sub
 
 Sub InitEffect(ByVal channel As Long, ChanType As String)
 
-Dim P As BASS_FXPARAMEQ
+Dim p As BASS_FXPARAMEQ
 Dim count As Integer
 
 On Error Resume Next
@@ -641,28 +641,28 @@ Select Case channel
                 fx1(10) = BASS_ChannelSetFX(Msc1, BASS_FX_REVERB, 0) 'reverb
                 'fx1(11) = not implemented... yet...
         End Select
-        P.fGain = 0
-        P.fBandwidth = 18
-        P.fCenter = 60
-        Call BASS_FXSetParameters(fx1(0), P)
-        P.fCenter = 170                    ' bass (125hz)
-        Call BASS_FXSetParameters(fx1(1), P)
-        P.fCenter = 310
-        Call BASS_FXSetParameters(fx1(2), P)
-        P.fCenter = 600
-        Call BASS_FXSetParameters(fx1(3), P)
-        P.fCenter = 1000                   ' mid (1khz)
-        Call BASS_FXSetParameters(fx1(4), P)
-        P.fCenter = 3000
-        Call BASS_FXSetParameters(fx1(5), P)
-        P.fCenter = 6000                   ' treble (8khz)
-        Call BASS_FXSetParameters(fx1(6), P)
-        P.fCenter = 12000
-        Call BASS_FXSetParameters(fx1(7), P)
-        P.fCenter = 14000
-        Call BASS_FXSetParameters(fx1(8), P)
-        P.fCenter = 16000
-        Call BASS_FXSetParameters(fx1(9), P)
+        p.fGain = 0
+        p.fBandwidth = 18
+        p.fCenter = 60
+        Call BASS_FXSetParameters(fx1(0), p)
+        p.fCenter = 170                    ' bass (125hz)
+        Call BASS_FXSetParameters(fx1(1), p)
+        p.fCenter = 310
+        Call BASS_FXSetParameters(fx1(2), p)
+        p.fCenter = 600
+        Call BASS_FXSetParameters(fx1(3), p)
+        p.fCenter = 1000                   ' mid (1khz)
+        Call BASS_FXSetParameters(fx1(4), p)
+        p.fCenter = 3000
+        Call BASS_FXSetParameters(fx1(5), p)
+        p.fCenter = 6000                   ' treble (8khz)
+        Call BASS_FXSetParameters(fx1(6), p)
+        p.fCenter = 12000
+        Call BASS_FXSetParameters(fx1(7), p)
+        p.fCenter = 14000
+        Call BASS_FXSetParameters(fx1(8), p)
+        p.fCenter = 16000
+        Call BASS_FXSetParameters(fx1(9), p)
         ' you can add more EQ bands with changing:
         ' p.fCenter = N [hz] N>=80 and N<=16000
         For count = 0 To 10
@@ -695,28 +695,28 @@ Select Case channel
                 fx2(9) = BASS_ChannelSetFX(Msc2, BASS_FX_PARAMEQ, 0) 'treble
                 fx2(10) = BASS_ChannelSetFX(Msc2, BASS_FX_REVERB, 0) 'reverb
         End Select
-        P.fGain = 0
-        P.fBandwidth = 18
-        P.fCenter = 60
-        Call BASS_FXSetParameters(fx2(0), P)
-        P.fCenter = 170                    ' bass (125hz)
-        Call BASS_FXSetParameters(fx2(1), P)
-        P.fCenter = 310
-        Call BASS_FXSetParameters(fx2(2), P)
-        P.fCenter = 600
-        Call BASS_FXSetParameters(fx2(3), P)
-        P.fCenter = 1000                   ' mid (1khz)
-        Call BASS_FXSetParameters(fx2(4), P)
-        P.fCenter = 3000
-        Call BASS_FXSetParameters(fx2(5), P)
-        P.fCenter = 6000                   ' treble (8khz)
-        Call BASS_FXSetParameters(fx2(6), P)
-        P.fCenter = 12000
-        Call BASS_FXSetParameters(fx2(7), P)
-        P.fCenter = 14000
-        Call BASS_FXSetParameters(fx2(8), P)
-        P.fCenter = 16000
-        Call BASS_FXSetParameters(fx2(9), P)
+        p.fGain = 0
+        p.fBandwidth = 18
+        p.fCenter = 60
+        Call BASS_FXSetParameters(fx2(0), p)
+        p.fCenter = 170                    ' bass (125hz)
+        Call BASS_FXSetParameters(fx2(1), p)
+        p.fCenter = 310
+        Call BASS_FXSetParameters(fx2(2), p)
+        p.fCenter = 600
+        Call BASS_FXSetParameters(fx2(3), p)
+        p.fCenter = 1000                   ' mid (1khz)
+        Call BASS_FXSetParameters(fx2(4), p)
+        p.fCenter = 3000
+        Call BASS_FXSetParameters(fx2(5), p)
+        p.fCenter = 6000                   ' treble (8khz)
+        Call BASS_FXSetParameters(fx2(6), p)
+        p.fCenter = 12000
+        Call BASS_FXSetParameters(fx2(7), p)
+        p.fCenter = 14000
+        Call BASS_FXSetParameters(fx2(8), p)
+        p.fCenter = 16000
+        Call BASS_FXSetParameters(fx2(9), p)
         ' you can add more EQ bands with changing:
         ' p.fCenter = N [hz] N>=80 and N<=16000
         For count = 0 To 10
@@ -755,7 +755,7 @@ Public Sub DrawScope(ByVal Color1 As Long, ByVal Color2 As Long, ByVal aLeft As 
     
     Static PeakVal As Integer
     Dim RetVal As Long
-    Dim S() As Integer
+    Dim s() As Integer
     Dim A As Long
     Dim T As Long
     Dim sBool As Boolean
@@ -767,21 +767,21 @@ Public Sub DrawScope(ByVal Color1 As Long, ByVal Color2 As Long, ByVal aLeft As 
     Thickness = 1
     
     If ScopeMode = ScopeDouble Then
-        ReDim S(MaxX * 2) As Integer
+        ReDim s(MaxX * 2) As Integer
         
         If Stream = 1 Then
             Select Case WTypeStream
                 Case "Stream"
-                    RetVal = BASS_ChannelGetData(Strm1, S(0), MaxX * 2)
+                    RetVal = BASS_ChannelGetData(Strm1, s(0), MaxX * 2)
                 Case "Music"
-                    RetVal = BASS_ChannelGetData(Msc1, S(0), MaxX * 2)
+                    RetVal = BASS_ChannelGetData(Msc1, s(0), MaxX * 2)
             End Select
             Est01.Picfft1.Cls
             ' ScopeDouble
             T = 0
             For A = 0 To MaxX * 2
                 sBool = Not sBool
-                sVal = S(A) Xor 0
+                sVal = s(A) Xor 0
                 sVal = RoundDown(sVal + 16384, 32768, MaxY)
                 If sBool = False Then
                     Est01.Picfft1.Line (aLeft + T, aTop + sVal)-(aLeft + T + Thickness, aTop + sVal), Color1
@@ -795,16 +795,16 @@ Public Sub DrawScope(ByVal Color1 As Long, ByVal Color2 As Long, ByVal aLeft As 
             If Stream = 2 Then
                 Select Case WTypeStream
                     Case "Stream"
-                        RetVal = BASS_ChannelGetData(Strm2, S(0), MaxX * 2)
+                        RetVal = BASS_ChannelGetData(Strm2, s(0), MaxX * 2)
                     Case "Music"
-                        RetVal = BASS_ChannelGetData(Msc2, S(0), MaxX * 2)
+                        RetVal = BASS_ChannelGetData(Msc2, s(0), MaxX * 2)
                 End Select
                 Est02.Picfft2.Cls
                 ' ScopeDouble
                 T = 0
                 For A = 0 To MaxX * 2
                     sBool = Not sBool
-                    sVal = S(A) Xor 0
+                    sVal = s(A) Xor 0
                     sVal = RoundDown(sVal + 16384, 32768, MaxY)
                     If sBool = False Then
                         Est02.Picfft2.Line (aLeft + T, aTop + sVal)-(aLeft + T + Thickness, aTop + sVal), Color1
@@ -821,21 +821,21 @@ Public Sub DrawScope(ByVal Color1 As Long, ByVal Color2 As Long, ByVal aLeft As 
     End If
     
     If ScopeMode = ScopeLeftOnly Then
-        ReDim S(MaxX * 2) As Integer
+        ReDim s(MaxX * 2) As Integer
         
         If Stream = 1 Then
             Select Case WTypeStream
                 Case "Stream"
-                    RetVal = BASS_ChannelGetData(Strm1, S(0), MaxX * 2)
+                    RetVal = BASS_ChannelGetData(Strm1, s(0), MaxX * 2)
                 Case "Music"
-                    RetVal = BASS_ChannelGetData(Msc1, S(0), MaxX * 2)
+                    RetVal = BASS_ChannelGetData(Msc1, s(0), MaxX * 2)
             End Select
             Est01.Picfft1.Cls
             ' ScopeDouble
             T = 0
             For A = 0 To MaxX * 2
                 sBool = Not sBool
-                sVal = S(A) Xor 0
+                sVal = s(A) Xor 0
                 sVal = RoundDown(sVal + 16384, 32768, MaxY)
                 If sBool = False Then
                     Est01.Picfft1.Line (aLeft + T, aTop + sVal)-(aLeft + T + Thickness, aTop + sVal), Color1
@@ -849,16 +849,16 @@ Public Sub DrawScope(ByVal Color1 As Long, ByVal Color2 As Long, ByVal aLeft As 
             If Stream = 2 Then
                 Select Case WTypeStream
                     Case "Stream"
-                        RetVal = BASS_ChannelGetData(Strm2, S(0), MaxX * 2)
+                        RetVal = BASS_ChannelGetData(Strm2, s(0), MaxX * 2)
                     Case "Music"
-                        RetVal = BASS_ChannelGetData(Msc2, S(0), MaxX * 2)
+                        RetVal = BASS_ChannelGetData(Msc2, s(0), MaxX * 2)
                 End Select
                 Est02.Picfft2.Cls
                 ' ScopeDouble
                 T = 0
                 For A = 0 To MaxX * 2
                     sBool = Not sBool
-                    sVal = S(A) Xor 0
+                    sVal = s(A) Xor 0
                     sVal = RoundDown(sVal + 16384, 32768, MaxY)
                     If sBool = False Then
                         Est02.Picfft2.Line (aLeft + T, aTop + sVal)-(aLeft + T + Thickness, aTop + sVal), Color1
@@ -875,21 +875,21 @@ Public Sub DrawScope(ByVal Color1 As Long, ByVal Color2 As Long, ByVal aLeft As 
     End If
     
     If ScopeMode = ScopeRightOnly Then
-        ReDim S(MaxX * 2) As Integer
+        ReDim s(MaxX * 2) As Integer
         
         If Stream = 1 Then
             Select Case WTypeStream
                 Case "Stream"
-                    RetVal = BASS_ChannelGetData(Strm1, S(0), MaxX * 2)
+                    RetVal = BASS_ChannelGetData(Strm1, s(0), MaxX * 2)
                 Case "Music"
-                    RetVal = BASS_ChannelGetData(Msc1, S(0), MaxX * 2)
+                    RetVal = BASS_ChannelGetData(Msc1, s(0), MaxX * 2)
             End Select
             Est01.Picfft1.Cls
             ' ScopeDouble
             T = 0
             For A = 0 To MaxX * 2
                 sBool = Not sBool
-                sVal = S(A) Xor 0
+                sVal = s(A) Xor 0
                 sVal = RoundDown(sVal + 16384, 32768, MaxY)
                 If sBool = False Then
 '                    est01.picfft1.Line (aLeft + T, aTop + sVal)-(aLeft + T + Thickness, aTop + sVal), Color1
@@ -903,16 +903,16 @@ Public Sub DrawScope(ByVal Color1 As Long, ByVal Color2 As Long, ByVal aLeft As 
             If Stream = 2 Then
                 Select Case WTypeStream
                     Case "Stream"
-                        RetVal = BASS_ChannelGetData(Strm2, S(0), MaxX * 2)
+                        RetVal = BASS_ChannelGetData(Strm2, s(0), MaxX * 2)
                     Case "Music"
-                        RetVal = BASS_ChannelGetData(Msc2, S(0), MaxX * 2)
+                        RetVal = BASS_ChannelGetData(Msc2, s(0), MaxX * 2)
                 End Select
                 Est02.Picfft2.Cls
                 ' ScopeDouble
                 T = 0
                 For A = 0 To MaxX * 2
                     sBool = Not sBool
-                    sVal = S(A) Xor 0
+                    sVal = s(A) Xor 0
                     sVal = RoundDown(sVal + 16384, 32768, MaxY)
                     If sBool = False Then
 '                       est02.picfft2.Line (aLeft + T, aTop + sVal)-(aLeft + T + Thickness, aTop + sVal), Color1
@@ -929,21 +929,21 @@ Public Sub DrawScope(ByVal Color1 As Long, ByVal Color2 As Long, ByVal aLeft As 
     End If
     
     If ScopeMode = ScopeSideBySide Then
-        ReDim S(MaxX * 2) As Integer
+        ReDim s(MaxX * 2) As Integer
         
         If Stream = 1 Then
             Select Case WTypeStream
                 Case "Stream"
-                    RetVal = BASS_ChannelGetData(Strm1, S(0), MaxX)
+                    RetVal = BASS_ChannelGetData(Strm1, s(0), MaxX)
                 Case "Music"
-                    RetVal = BASS_ChannelGetData(Msc1, S(0), MaxX)
+                    RetVal = BASS_ChannelGetData(Msc1, s(0), MaxX)
             End Select
             Est01.Picfft1.Cls
             ' ScopeDouble
             T = 0
             For A = 0 To MaxX / 2
                 sBool = Not sBool
-                sVal = S(A) Xor 0
+                sVal = s(A) Xor 0
                 sVal = RoundDown(sVal + 16384, 32768, MaxY)
                 If sBool = False Then
                     Est01.Picfft1.Line (aLeft + T, aTop + sVal)-(aLeft + T + Thickness, aTop + sVal), Color1
@@ -957,16 +957,16 @@ Public Sub DrawScope(ByVal Color1 As Long, ByVal Color2 As Long, ByVal aLeft As 
             If Stream = 2 Then
                 Select Case WTypeStream
                     Case "Stream"
-                        RetVal = BASS_ChannelGetData(Strm2, S(0), MaxX)
+                        RetVal = BASS_ChannelGetData(Strm2, s(0), MaxX)
                     Case "Music"
-                        RetVal = BASS_ChannelGetData(Msc2, S(0), MaxX)
+                        RetVal = BASS_ChannelGetData(Msc2, s(0), MaxX)
                 End Select
                 Est02.Picfft2.Cls
                 ' ScopeDouble
                 T = 0
                 For A = 0 To MaxX / 2
                     sBool = Not sBool
-                    sVal = S(A) Xor 0
+                    sVal = s(A) Xor 0
                     sVal = RoundDown(sVal + 16384, 32768, MaxY)
                     If sBool = False Then
                         Est02.Picfft2.Line (aLeft + T, aTop + sVal)-(aLeft + T + Thickness, aTop + sVal), Color1
@@ -2157,7 +2157,7 @@ Select Case WEstNumber
     Case 1 '**** Estación 1
         StreamHandle1 = BASS_StreamCreateFile(BASSFALSE, WFileName, 0, 0, Mode1 Or Mode2 Or Mode3 Or Mode4 Or Mode5)
         If StreamHandle1 = 0 Then
-            DisplayMsg LoadResString(159)
+            DisplayMsg "GstreamLoad Error - " & LoadResString(159)
             GStreamLoad = BASSFALSE
         Else
             Strm1 = StreamHandle1
@@ -2166,7 +2166,7 @@ Select Case WEstNumber
     Case 2 '**** Estación 2
         StreamHandle2 = BASS_StreamCreateFile(BASSFALSE, WFileName, 0, 0, Mode1 Or Mode2 Or Mode3 Or Mode4 Or Mode5)
         If StreamHandle2 = 0 Then
-            DisplayMsg LoadResString(159)
+            DisplayMsg "GstreamLoad Error - " & LoadResString(159)
             GStreamLoad = BASSFALSE
         Else
             Strm2 = StreamHandle2
@@ -2296,13 +2296,13 @@ End If
 Select Case WFlag
     Case BASS_SAMPLE_LOOP
          If BASS_ChannelPlay(WPlaychan, BASSFALSE) = BASSFALSE Then
-            DisplayMsg LoadResString(183) & " " & LoadResString(172)
+            DisplayMsg "GStreamPlay Error - " & LoadResString(183) & " " & LoadResString(172)
             GStreamPlay = BASSFALSE
             Exit Function
         End If
     Case Else
         If BASS_ChannelPlay(WPlaychan, BASSFALSE) = BASSFALSE Then
-            DisplayMsg LoadResString(159)
+            DisplayMsg "GStreamPlay Error - " & LoadResString(183) & " " & LoadResString(172)
             GStreamPlay = BASSFALSE
             Exit Function
         End If
@@ -2443,7 +2443,7 @@ Select Case WSync
                 End If
             End If
             'lets sets the sync
-            IntrSeg = CLng(Tanda01.Intr.text)
+            IntrSeg = CLng(Tanda01.Intr.Text)
             ResultDisplay = StreamSetSyncPos(2, IntrSeg)
             'continue
             Tanda01.T2Name.Caption = SSTitle
@@ -2457,7 +2457,8 @@ Select Case WSync
                 Call InitEffect(2, "Stream")
             End If
             'lets play the file
-            Stream02Play (0)
+            'Stream02Play (0)
+            GStreamPlay 2, 0
             Tanda01.Caption = LoadResString(1007)   'reproduciendo
         Else
             If FileTP = "Music" Then
@@ -2519,7 +2520,8 @@ Select Case WSync
                 Call InitEffect(2, "Stream")
             End If
             'lets play the file
-            Stream02Play (0)
+            'Stream02Play (0)
+            GStreamPlay 2, 0
             Tanda01.Caption = LoadResString(1007)   'reproduciendo
         Else
             If FileTP = "Music" Then
@@ -2587,7 +2589,7 @@ Select Case WSync
                 End If
             End If
             'sets the file sync
-            IntrSeg = CLng(Tanda01.Intr.text)
+            IntrSeg = CLng(Tanda01.Intr.Text)
             ResultDisplay = StreamSetSyncPos(1, IntrSeg)
             'continue
             Tanda01.T1Name.Caption = SSTitle
@@ -2601,7 +2603,8 @@ Select Case WSync
                 Call InitEffect(1, "Stream")
             End If
             'lets play the file
-            Stream01Play (0)
+            'Stream01Play (0)
+            GStreamPlay 1, 0
             Tanda01.Caption = LoadResString(1007)   'reproduciendo
         Else
             If FileTP = "Music" Then
@@ -2663,7 +2666,8 @@ Select Case WSync
                 Call InitEffect(1, "Stream")
             End If
             'lets play the file nosync
-            Stream01Play (0)
+            'Stream01Play (0)
+            GStreamPlay 1, 0
             Tanda01.Caption = LoadResString(1007)   'reproduciendo
         Else
             If FileTP = "Music" Then
@@ -2766,10 +2770,10 @@ If FileTP = "Stream" Then
     If Est02.LAplay.ForeColor = &HFFFF00 Then   'autoplay claro
         If Est02.pcontup.Visible = True Then    'play continuous activado?
             NResult = GStreamPlay(2, BASS_SAMPLE_LOOP)
-            Est02.E2Pic.Picture = LoadPicture(App.path & "\Imagenes\FND_REPRODUCIENDO.jpg")
+            Est02.E2Pic.Picture = LoadPicture(App.path & "\Imagenes\FND_REPRODUCIENDO_2.jpg")
         Else
             NResult = GStreamPlay(2, 0)
-            Est02.E2Pic.Picture = LoadPicture(App.path & "\Imagenes\FND_REPRODUCIENDO.jpg")
+            Est02.E2Pic.Picture = LoadPicture(App.path & "\Imagenes\FND_REPRODUCIENDO_2.jpg")
         End If
     End If
 Else
@@ -2818,7 +2822,7 @@ Else
         'lets play the music
         If Est02.LAplay.ForeColor = &HFFFF00 Then 'claro
             Music02Play
-            Est02.E2Pic.Picture = LoadPicture(App.path & "\Imagenes\FND_REPRODUCIENDO.jpg")
+            Est02.E2Pic.Picture = LoadPicture(App.path & "\Imagenes\FND_REPRODUCIENDO_2.jpg")
         End If
     Else
         Est02.Label1.ForeColor = &H808000     'celeste oscuro(desactivado)

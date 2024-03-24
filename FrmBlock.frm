@@ -28,7 +28,6 @@ Begin VB.Form FrmBlock
       _Version        =   393216
       Appearance      =   0
       Min             =   1e-4
-      Max             =   100
    End
    Begin MSComctlLib.ListView ViewBlock 
       Height          =   3975
@@ -250,15 +249,15 @@ Begin VB.Form FrmBlock
          Height          =   285
          Left            =   780
          TabIndex        =   10
-         Text            =   "08-01-2002"
+         Text            =   "08-01-2024"
          Top             =   480
-         Width           =   1005
+         Width           =   1245
       End
       Begin VB.TextBox FEnd 
          Height          =   285
          Left            =   3480
          TabIndex        =   9
-         Text            =   "08-01-2002"
+         Text            =   "08-01-2024"
          Top             =   480
          Width           =   1005
       End
@@ -502,7 +501,7 @@ Private Sub ADDdata()
 'add the data to the lists
 '***********************************
 
-Combo1.text = "Cualquier horario"
+Combo1.Text = "Cualquier horario"
 Combo1.AddItem "Cualquier horario", 0
 Combo1.AddItem "1 a 2 hs", 1
 Combo1.AddItem "2 a 3 hs", 2
@@ -529,7 +528,7 @@ Combo1.AddItem "22 a 23 hs", 22
 Combo1.AddItem "23 a 00 hs", 23
 Combo1.AddItem "00 a 1 hs", 24
 
-Combo2.text = "Todos los días"
+Combo2.Text = "Todos los días"
 Combo2.AddItem "Todos los días", 0
 Combo2.AddItem "Domingo", 1
 Combo2.AddItem "Lunes", 2
@@ -549,39 +548,39 @@ Dim i As Integer
 For i = 0 To 2      '///// extract the user selected data (DAY)
     Select Case WData.FPrefD(i)
         Case BlockPrefD.Dom
-            PFD(i).text = "Domingo"
+            PFD(i).Text = "Domingo"
             PFD(i).BackColor = &HC0FFFF
             CmdD(i).Enabled = True
         Case BlockPrefD.Lun
-            PFD(i).text = "Lunes"
+            PFD(i).Text = "Lunes"
             PFD(i).BackColor = &HC0FFFF
             CmdD(i).Enabled = True
         Case BlockPrefD.Mar
-            PFD(i).text = "Martes"
+            PFD(i).Text = "Martes"
             PFD(i).BackColor = &HC0FFFF
             CmdD(i).Enabled = True
         Case BlockPrefD.Mie
-            PFD(i).text = "Miercoles"
+            PFD(i).Text = "Miercoles"
             PFD(i).BackColor = &HC0FFFF
             CmdD(i).Enabled = True
         Case BlockPrefD.Jue
-            PFD(i).text = "Jueves"
+            PFD(i).Text = "Jueves"
             PFD(i).BackColor = &HC0FFFF
             CmdD(i).Enabled = True
         Case BlockPrefD.Vie
-            PFD(i).text = "Viernes"
+            PFD(i).Text = "Viernes"
             PFD(i).BackColor = &HC0FFFF
             CmdD(i).Enabled = True
         Case BlockPrefD.Sab
-            PFD(i).text = "Sábado"
+            PFD(i).Text = "Sábado"
             PFD(i).BackColor = &HC0FFFF
             CmdD(i).Enabled = True
         Case BlockPrefD.All
-            PFD(i).text = "Todos los días"
+            PFD(i).Text = "Todos los días"
             PFD(i).BackColor = &HC0FFFF
             CmdD(i).Enabled = True
         Case BlockPrefD.Vacio
-            PFD(i).text = ""
+            PFD(i).Text = ""
             PFD(i).BackColor = &HFFFFFF
             CmdD(i).Enabled = False
     End Select
@@ -590,107 +589,107 @@ Next i
 For i = 0 To 2      '///// extract the user selected data (HOUR)
     Select Case WData.FPrefH(i)
         Case BlockPrefH.d1a2
-            PFH(i).text = "1 a 2 hs"
+            PFH(i).Text = "1 a 2 hs"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.d2a3
-            PFH(i).text = "2 a 3 hs"
+            PFH(i).Text = "2 a 3 hs"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.d3a4
-            PFH(i).text = "3 a 4 hs"
+            PFH(i).Text = "3 a 4 hs"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.d4a5
-            PFH(i).text = "4 a 5 hs"
+            PFH(i).Text = "4 a 5 hs"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.d5a6
-            PFH(i).text = "5 a 6 hs"
+            PFH(i).Text = "5 a 6 hs"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.d6a7
-            PFH(i).text = "6 a 7 hs"
+            PFH(i).Text = "6 a 7 hs"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.d7a8
-            PFH(i).text = "7 a 8 hs"
+            PFH(i).Text = "7 a 8 hs"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.d8a9
-            PFH(i).text = "8 a 9 hs"
+            PFH(i).Text = "8 a 9 hs"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.d9a10
-            PFH(i).text = "9 a 10 hs"
+            PFH(i).Text = "9 a 10 hs"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.d10a11
-            PFH(i).text = "10 a 11 hs"
+            PFH(i).Text = "10 a 11 hs"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.d11a12
-            PFH(i).text = "11 a 12 hs"
+            PFH(i).Text = "11 a 12 hs"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.d12a13
-            PFH(i).text = "12 a 13 hs"
+            PFH(i).Text = "12 a 13 hs"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.d13a14
-            PFH(i).text = "13 a 14 hs"
+            PFH(i).Text = "13 a 14 hs"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.d14a15
-            PFH(i).text = "14 a 15 hs"
+            PFH(i).Text = "14 a 15 hs"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.d15a16
-            PFH(i).text = "15 a 16 hs"
+            PFH(i).Text = "15 a 16 hs"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.d16a17
-            PFH(i).text = "16 a 17 hs"
+            PFH(i).Text = "16 a 17 hs"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.d17a18
-            PFH(i).text = "17 a 18 hs"
+            PFH(i).Text = "17 a 18 hs"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.d18a19
-            PFH(i).text = "18 a 19 hs"
+            PFH(i).Text = "18 a 19 hs"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.d19a20
-            PFH(i).text = "19 a 20 hs"
+            PFH(i).Text = "19 a 20 hs"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.d20a21
-            PFH(i).text = "20 a 21 hs"
+            PFH(i).Text = "20 a 21 hs"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.d21a22
-            PFH(i).text = "21 a 22 hs"
+            PFH(i).Text = "21 a 22 hs"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.d22a23
-            PFH(i).text = "22 a 23 hs"
+            PFH(i).Text = "22 a 23 hs"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.d23a0
-            PFH(i).text = "23 a 00 hs"
+            PFH(i).Text = "23 a 00 hs"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.d0a1
-            PFH(i).text = "00 a 1 hs"
+            PFH(i).Text = "00 a 1 hs"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.All
-            PFH(i).text = "Cualquier horario"
+            PFH(i).Text = "Cualquier horario"
             PFH(i).BackColor = &HC0FFFF
             CmdH(i).Enabled = True
         Case BlockPrefH.Vacio
-            PFH(i).text = ""
+            PFH(i).Text = ""
             PFH(i).BackColor = &HFFFFFF
             CmdH(i).Enabled = False
     End Select
@@ -698,16 +697,16 @@ Next i
 
 For i = 0 To 2      '///// extract the reproducer cant
     If WData.FCantV(i) = 0 Then
-        TxtCant(i).text = WData.FCantV(i) + 1
+        TxtCant(i).Text = WData.FCantV(i) + 1
         VScroll1(i).Value = WData.FCantV(i) + 1
     Else
-        TxtCant(i).text = WData.FCantV(i)
+        TxtCant(i).Text = WData.FCantV(i)
         VScroll1(i).Value = WData.FCantV(i)
     End If
 Next i
 
-FInit.text = Trim(WData.FPubInit)
-FEnd.text = Trim(WData.FPubFin)
+FInit.Text = Trim(WData.FPubInit)
+FEnd.Text = Trim(WData.FPubFin)
 LblDur.Caption = Trim(WData.FFileDur)
 
 End Sub
@@ -718,19 +717,19 @@ Private Sub RestoreData()
 'restore the data to default values
 '************************************
 
-PFH(0).text = "": PFH(0).BackColor = &HFFFFFF
-PFH(1).text = "": PFH(1).BackColor = &HFFFFFF
-PFH(2).text = "": PFH(2).BackColor = &HFFFFFF
+PFH(0).Text = "": PFH(0).BackColor = &HFFFFFF
+PFH(1).Text = "": PFH(1).BackColor = &HFFFFFF
+PFH(2).Text = "": PFH(2).BackColor = &HFFFFFF
 CmdH(1).Enabled = False: CmdH(2).Enabled = False
 
-PFD(0).text = "": PFD(0).BackColor = &HFFFFFF
-PFD(1).text = "": PFD(1).BackColor = &HFFFFFF
-PFD(2).text = "": PFD(2).BackColor = &HFFFFFF
+PFD(0).Text = "": PFD(0).BackColor = &HFFFFFF
+PFD(1).Text = "": PFD(1).BackColor = &HFFFFFF
+PFD(2).Text = "": PFD(2).BackColor = &HFFFFFF
 CmdD(1).Enabled = False: CmdD(2).Enabled = False
 
 TxtCant(0) = "1": TxtCant(1) = "1": TxtCant(2) = "1"
 VScroll1(0).Value = 1: VScroll1(1).Value = 1: VScroll1(2).Value = 1
-FInit.text = Date: FEnd.text = Date ': LblDur.Caption = "00:00:00"
+FInit.Text = Date: FEnd.Text = Date ': LblDur.Caption = "00:00:00"
 
 End Sub
 
@@ -846,7 +845,7 @@ TopMenu.BlockCmd.DialogTitle = "Bloques de publicidad - Abrir archivo de bloque.
 TopMenu.BlockCmd.CancelError = True
 TopMenu.BlockCmd.ShowOpen
 
-If err.Number = 32755 Then Exit Sub
+If Err.Number = 32755 Then Exit Sub
 
 ConvertTx = TopMenu.BlockCmd.filename
 
@@ -856,7 +855,7 @@ DataFile = ViewBlock.SelectedItem.SubItems(1)
 '/// lets open the file for read the data and check it for OK
 BlockData = OpenBlockFile(ConvertTx, DataFile, 0)
 
-If BlockData.id <= 0 Then
+If BlockData.Id <= 0 Then
     LblName.Caption = ConvertTx
     Label9.Caption = "Archivo: // " & StripFileFromDir(ConvertTx) & " \\"
     Call RestoreData
@@ -878,23 +877,23 @@ Dim i As Integer, RgID As Integer
 Dim Result As Boolean
 
 '/// check the days validity--------------------
-If PFD(0).text = "" Or PFD(0).text = " " Then
+If PFD(0).Text = "" Or PFD(0).Text = " " Then
     MsgBox "Los días seleccionados no son correctos.", vbCritical, Me.Caption
     Exit Sub
 End If
 '/// check the hours validity-------------------
-If PFH(0).text = "" Or PFH(0).text = " " Then
+If PFH(0).Text = "" Or PFH(0).Text = " " Then
     MsgBox "La hora seleccionada no es correcta.", vbCritical, Me.Caption
     Exit Sub
 End If
 '/// check the date validity--------------------
-Result = CheckDateVal(FInit.text)
-If IsDate(Trim(FInit.text)) = False Or Result = False Then
+Result = CheckDateVal(FInit.Text)
+If IsDate(Trim(FInit.Text)) = False Or Result = False Then
     MsgBox "La fecha de inicio no es correcta.", vbCritical, Me.Caption
     Exit Sub
 End If
-Result = CheckDateVal(FEnd.text)
-If IsDate(Trim(FEnd.text)) = False Or Result = False Then
+Result = CheckDateVal(FEnd.Text)
+If IsDate(Trim(FEnd.Text)) = False Or Result = False Then
     MsgBox "La fecha de finalización no es correcta.", vbCritical, Me.Caption
     Exit Sub
 End If
@@ -908,7 +907,7 @@ If Trim(LblName.Caption) = "" Then
     TopMenu.BlockCmd.DialogTitle = "Bloques de publicidad - Guardar archivo de bloque."
     TopMenu.BlockCmd.CancelError = True
     TopMenu.BlockCmd.ShowSave
-    If err.Number = 32755 Then Exit Sub
+    If Err.Number = 32755 Then Exit Sub
     ConvertTx = TopMenu.BlockCmd.filename
 Else
     ConvertTx = Trim(LblName.Caption)
@@ -916,7 +915,7 @@ End If
 
 '/// get the correct data before save
 For i = 0 To 2      '///// extract the user selected data (DAY)
-    Select Case Trim(PFD(i).text)
+    Select Case Trim(PFD(i).Text)
         Case "Domingo"
             Day(i) = BlockPrefD.Dom
         Case "Lunes"
@@ -939,7 +938,7 @@ For i = 0 To 2      '///// extract the user selected data (DAY)
 Next i
 
 For i = 0 To 2      '///// extract the user selected data (HOUR)
-    Select Case Trim(PFH(i).text)
+    Select Case Trim(PFH(i).Text)
         Case "1 a 2 hs"
             Hor(i) = BlockPrefH.d1a2
         Case "2 a 3 hs"
@@ -996,13 +995,13 @@ For i = 0 To 2      '///// extract the user selected data (HOUR)
 Next i
 
 For i = 0 To 2      '///// extract the reproducer cant
-    Cant(i) = CInt(TxtCant(i).text)
+    Cant(i) = CInt(TxtCant(i).Text)
 Next i
 
 '/// continue...
 '/// set the data to be saved
 BlockData.FFileName = ViewBlock.SelectedItem.SubItems(1)
-BlockData.FFilePath = ViewBlock.SelectedItem.text
+BlockData.FFilePath = ViewBlock.SelectedItem.Text
 BlockData.FFileDur = LblDur.Caption
 BlockData.FPrefD(0) = Day(0)
 BlockData.FPrefD(1) = Day(1)
@@ -1013,8 +1012,8 @@ BlockData.FPrefH(2) = Hor(2)
 BlockData.FCantV(0) = Cant(0)
 BlockData.FCantV(1) = Cant(1)
 BlockData.FCantV(2) = Cant(2)
-BlockData.FPubInit = FInit.text
-BlockData.FPubFin = FEnd.text
+BlockData.FPubInit = FInit.Text
+BlockData.FPubFin = FEnd.Text
 
 '/// SAVE THE DATA INTO THE FILE
 RgID = CInt(LblID.Caption)
@@ -1041,38 +1040,38 @@ Unload Me
 
 End Sub
 
-Private Sub CmdD_Click(index As Integer)
+Private Sub CmdD_Click(Index As Integer)
 
-If Combo2.text = "Todos los días" Then
-    PFD(index).text = Combo2.text
-    PFD(index).BackColor = &HC0FFFF
+If Combo2.Text = "Todos los días" Then
+    PFD(Index).Text = Combo2.Text
+    PFD(Index).BackColor = &HC0FFFF
     Exit Sub
 End If
 
-PFD(index).text = Combo2.text
-PFD(index).BackColor = &HC0FFFF
+PFD(Index).Text = Combo2.Text
+PFD(Index).BackColor = &HC0FFFF
 
 '/// enable the next control
 On Error Resume Next
-CmdD(index + 1).Enabled = True
+CmdD(Index + 1).Enabled = True
 
 End Sub
 
-Private Sub CmdH_Click(index As Integer)
+Private Sub CmdH_Click(Index As Integer)
 
-If Combo1.text = "Cualquier horario" Then
-    PFH(index).text = Combo1.text
-    PFH(index).BackColor = &HC0FFFF
+If Combo1.Text = "Cualquier horario" Then
+    PFH(Index).Text = Combo1.Text
+    PFH(Index).BackColor = &HC0FFFF
     Exit Sub
 End If
 
-PFH(index).text = Combo1.text
-PFH(index).BackColor = &HC0FFFF
+PFH(Index).Text = Combo1.Text
+PFH(Index).BackColor = &HC0FFFF
 
 '/// enable the next control
 On Error Resume Next
-CmdH(index + 1).Enabled = True
-VScroll1(index + 1).Enabled = True
+CmdH(Index + 1).Enabled = True
+VScroll1(Index + 1).Enabled = True
 
 End Sub
 
@@ -1094,14 +1093,14 @@ End Sub
 Private Sub FEnd_GotFocus()
 
 FEnd.SelStart = 0
-FEnd.SelLength = Len(FEnd.text)
+FEnd.SelLength = Len(FEnd.Text)
 
 End Sub
 
 Private Sub FInit_GotFocus()
 
 FInit.SelStart = 0
-FInit.SelLength = Len(FInit.text)
+FInit.SelLength = Len(FInit.Text)
 
 End Sub
 
@@ -1118,8 +1117,8 @@ LbLProgress.Caption = ""
 
 Call RestoreData
 Call ADDdata
-FInit.text = Date
-FEnd.text = Date
+FInit.Text = Date
+FEnd.Text = Date
 
 'cargamos los datos guardados en el archivo de configuracion
 ConfigData = OpenConfigFile
@@ -1142,7 +1141,7 @@ Dim fileLen As String, TimeNcv As String, Result As String
 Dim FName As String
 
 'load the block data in FrmBlock
-DataFile = ViewBlock.SelectedItem.text
+DataFile = ViewBlock.SelectedItem.Text
 ConvertTx = Trim(LblName.Caption)
 
 'set the file path & name
@@ -1166,7 +1165,7 @@ Else
         DataFile = ViewBlock.SelectedItem.SubItems(1)
         '/// lets open the file for read the data and check it for OK
         BlockData = OpenBlockFile(ConvertTx, DataFile, 0)
-        If BlockData.id <= 0 Then
+        If BlockData.Id <= 0 Then
             LblName.Caption = ConvertTx
             Label9.Caption = "Archivo: // " & StripFileFromDir(ConvertTx) & " \\"
             Call RestoreData
@@ -1175,15 +1174,15 @@ Else
             LblName.Caption = ConvertTx
             Label9.Caption = "Archivo: // " & StripFileFromDir(ConvertTx) & " \\"
             Call PutData(BlockData)
-            LblID.Caption = BlockData.id
+            LblID.Caption = BlockData.Id
         End If
     End If
 End If
 
 End Sub
 
-Private Sub VScroll1_Change(index As Integer)
+Private Sub VScroll1_Change(Index As Integer)
 
-TxtCant(index).text = VScroll1(index).Value
+TxtCant(Index).Text = VScroll1(Index).Value
 
 End Sub
