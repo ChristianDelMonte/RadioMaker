@@ -52,7 +52,7 @@ Compatible con Windows 7 SP2, 8.1, 10 y 11. - Actualmente en fase de desarollo B
 
 # Comenzando
 
-Puedes descargar de aqui: <a href="https://github.com/ChristianDelMonte/RadioMaker/releases/latest/download/Rm100_Beta.rar">la última versión</a>, descomprimir y ejecutar Setup_RM100_Beta.exe. para instalar la aplicación en su computadora. A continuación si es necesario les dejamos unos instructivos:
+Puedes descargar de aqui: <a href="https://github.com/ChristianDelMonte/RadioMaker/releases/tag/v1.2.36-beta.1">la última versión</a>, descomprimir y ejecutar Setup_RM100_Beta.exe. para instalar la aplicación en su computadora. A continuación si es necesario les dejamos unos instructivos:
 
 - <a href="https://github.com/ChristianDelMonte/RadioMaker/docs/rm100_install_es.md">Guia de Instalación y configuración de RadioMaker</a>
 - <a href="https://github.com/ChristianDelMonte/RadioMaker/docs/rm100_user_manual_es.md">Manual del Usuario Final</a>
