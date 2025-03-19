@@ -12,6 +12,11 @@
 	Creado para Estaciones radiales que necesiten un sistema <b>Simple</b>, <b>Estable</b>, <b>Robusto</b>, <b>y facil de usar</b> para transmitir en diversos medios.
 </p>
 
+</p> 
+<p align="center">
+	<a href="https://github.com/ChristianDelMonte/RadioMaker/releases/tag/v1.2.36-beta.1">DESCARGAR</a>
+</p>
+
 <hr>
 <p align="center">
 Compatible con Windows 7 SP2, 8.1, 10 y 11. - Actualmente en fase de desarollo BETA
