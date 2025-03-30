@@ -14,8 +14,8 @@
 
 </p> 
 <p align="center">
-	<a href="https://github.com/ChristianDelMonte/RadioMaker/releases/tag/v1.2.36-beta.1">VER INFORMACION DEL RELEASE AQUI </a> O
-	<a href="https://github.com/ChristianDelMonte/RadioMaker/releases/download/v1.2.36-beta.1/OnlyRM100_Beta_Setup.exe"> DESCARGAR AQUI</a>
+	<a href="https://github.com/ChristianDelMonte/RadioMaker/releases/tag/v1.2.37-beta.1">VER INFORMACION DEL RELEASE AQUI </a> O
+	<a href="https://github.com/ChristianDelMonte/RadioMaker/releases/download/v1.2.37-beta.1/OnlyRM100_Beta_Setup.exe"> DESCARGAR AQUI</a>
 </p>
 
 <hr>
